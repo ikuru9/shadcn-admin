@@ -26,6 +26,8 @@ export function useSignOut(options?: { onConfirm?: () => Promise<void> }) {
     const result = await confirm({
       title: "로그아웃",
       description: "로그아웃 하시겠습니까?",
+      confirmText: "예",
+      cancelText: "아니오",
       destructive: true,
       className: "sm:max-w-sm",
     });

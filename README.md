@@ -2,10 +2,10 @@
 
 Admin Dashboard UI crafted with Shadcn and Vite. Built with responsiveness and accessibility in mind.
 
-
 ## 빌드/린트/테스트 명령어
 
 ### 개발 및 빌드
+
 ```bash
 # 개발 서버 실행
 pnpm run dev
@@ -29,8 +29,8 @@ pnpm run fmt:staged
 pnpm run commit
 ```
 
-
 ### 테스트 실행
+
 ```bash
 # 전체 테스트 실행 (Vitest)
 npx vitest
