@@ -8,11 +8,6 @@ node_modules
 # testing
 /coverage
 
-# next.js
-.next/
-out/
-next-env.d.ts
-
 # production
 build
 dist
@@ -30,16 +25,17 @@ yarn-error.log*
 # local env files
 .env*.local
 
-# vercel
-.vercel
-
 # typescript
 *.tsbuildinfo
 
 # ai
 .opencode
 
+# github
+.github
+
+# scripts
+scripts/.postinstall-ran
+
 # mock
 public/mockServiceWorker.js
-
-.github

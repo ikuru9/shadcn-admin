@@ -10,11 +10,12 @@
     "lint:staged": "oxlint",
     "fmt:staged": "oxfmt --write",
     "lint": "oxlint --fix",
-    "fmt": "oxfmt --write .",
+    "fmt": "oxfmt --write",
     "commit": "git-cz",
     "test": "vitest",
     "test:watch": "vitest --watch",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "postinstall": "node scripts/postinstall.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
