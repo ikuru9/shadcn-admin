@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { z } from "zod";
+import * as v from "valibot";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { valibotResolver } from "@hookform/resolvers/valibot";
 import { useNavigate } from "@tanstack/react-router";
 import { showSubmittedData } from "@/lib/show-submitted-data";
 import { cn } from "@/lib/utils";
@@ -21,8 +21,8 @@ import {
   InputOTPSeparator,
 } from "@/components/ui/input-otp";
 
-const formSchema = z.object({
-  otp: z.string().min(6, "Please enter the 6-digit code.").max(6, "Please enter the 6-digit code."),
+const formSchema = v.object({
+  otp: v.pipe(v.string(), v.length(6, "Please enter the 6-digit code.")),
 });
 
 type OtpFormProps = React.HTMLAttributes<HTMLFormElement>;
@@ -31,15 +31,15 @@ export function OtpForm({ className, ...props }: OtpFormProps) {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<v.InferOutput<typeof formSchema>>({
+    resolver: valibotResolver(formSchema),
     defaultValues: { otp: "" },
   });
 
   // oxlint-disable-next-line react-hooks/incompatible-library
   const otp = form.watch("otp");
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
+  function onSubmit(data: v.InferOutput<typeof formSchema>) {
     setIsLoading(true);
     showSubmittedData(data);
 

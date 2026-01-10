@@ -1,20 +1,14 @@
-import z from "zod";
+import * as v from "valibot";
 import { createFileRoute } from "@tanstack/react-router";
 import { Tasks } from "@/features/tasks";
 import { priorities, statuses } from "@/features/tasks/data/data";
 
-const taskSearchSchema = z.object({
-  page: z.number().optional().catch(1),
-  pageSize: z.number().optional().catch(10),
-  status: z
-    .array(z.enum(statuses.map((status) => status.value)))
-    .optional()
-    .catch([]),
-  priority: z
-    .array(z.enum(priorities.map((priority) => priority.value)))
-    .optional()
-    .catch([]),
-  filter: z.string().optional().catch(""),
+const taskSearchSchema = v.object({
+  page: v.optional(v.number(), 1),
+  pageSize: v.optional(v.number(), 10),
+  status: v.optional(v.array(v.picklist(statuses.map((status) => status.value))), []),
+  priority: v.optional(v.array(v.picklist(priorities.map((priority) => priority.value))), []),
+  filter: v.optional(v.string(), ""),
 });
 
 export const Route = createFileRoute("/_authenticated/tasks/")({

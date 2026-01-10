@@ -330,12 +330,12 @@ class ErrorBoundary extends Component {
   }
 }
 
-// ✅ Good: Zod validation with error handling
-import { z } from "zod";
+// ✅ Good: Valibot validation with error handling
+import * as v from "valibot";
 
-const userSchema = z.object({
-  name: z.string().min(1),
-  email: z.string().email()
+const userSchema = v.object({
+  name: v.pipe(v.string(), v.minLength(1)),
+  email: v.pipe(v.string(), v.email())
 });
 
 function validateUser(data: unknown) {

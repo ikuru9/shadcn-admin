@@ -1,6 +1,6 @@
-import { z } from "zod";
+import * as v from "valibot";
 import { useFieldArray, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { valibotResolver } from "@hookform/resolvers/valibot";
 import { Link } from "@tanstack/react-router";
 import { showSubmittedData } from "@/lib/show-submitted-data";
 import { cn } from "@/lib/utils";
@@ -24,25 +24,20 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
-const profileFormSchema = z.object({
-  username: z
-    .string("Please enter your username.")
-    .min(2, "Username must be at least 2 characters.")
-    .max(30, "Username must not be longer than 30 characters."),
-  email: z.email({
-    error: (iss) => (iss.input === undefined ? "Please select an email to display." : undefined),
-  }),
-  bio: z.string().max(160).min(4),
-  urls: z
-    .array(
-      z.object({
-        value: z.url("Please enter a valid URL."),
-      }),
-    )
-    .optional(),
+const profileFormSchema = v.object({
+  username: v.pipe(
+    v.string("Please enter your username."),
+    v.minLength(2, "Username must be at least 2 characters."),
+    v.maxLength(30, "Username must not be longer than 30 characters."),
+  ),
+  email: v.pipe(v.string(), v.email("Please select an email to display.")),
+  bio: v.pipe(v.string(), v.maxLength(160), v.minLength(4)),
+  urls: v.optional(
+    v.array(v.object({ value: v.pipe(v.string(), v.url("Please enter a valid URL.")) })),
+  ),
 });
 
-type ProfileFormValues = z.infer<typeof profileFormSchema>;
+type ProfileFormValues = v.InferOutput<typeof profileFormSchema>;
 
 // This can come from your database or API.
 const defaultValues: Partial<ProfileFormValues> = {
@@ -52,7 +47,7 @@ const defaultValues: Partial<ProfileFormValues> = {
 
 export function ProfileForm() {
   const form = useForm<ProfileFormValues>({
-    resolver: zodResolver(profileFormSchema),
+    resolver: valibotResolver(profileFormSchema),
     defaultValues,
     mode: "onChange",
   });

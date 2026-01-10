@@ -1,7 +1,7 @@
-import { z } from "zod";
+import * as v from "valibot";
 import { useForm } from "react-hook-form";
 import { ChevronDown } from "lucide-react";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { valibotResolver } from "@hookform/resolvers/valibot";
 import { fonts } from "@/config/fonts";
 import { showSubmittedData } from "@/lib/show-submitted-data";
 import { cn } from "@/lib/utils";
@@ -19,12 +19,12 @@ import {
 } from "@/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
-const appearanceFormSchema = z.object({
-  theme: z.enum(["light", "dark"]),
-  font: z.enum(fonts),
+const appearanceFormSchema = v.object({
+  theme: v.picklist(["light", "dark"]),
+  font: v.picklist(fonts),
 });
 
-type AppearanceFormValues = z.infer<typeof appearanceFormSchema>;
+type AppearanceFormValues = v.InferOutput<typeof appearanceFormSchema>;
 
 export function AppearanceForm() {
   const { font, setFont } = useFont();
@@ -37,7 +37,7 @@ export function AppearanceForm() {
   };
 
   const form = useForm<AppearanceFormValues>({
-    resolver: zodResolver(appearanceFormSchema),
+    resolver: valibotResolver(appearanceFormSchema),
     defaultValues,
   });
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { z } from "zod";
+import * as v from "valibot";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { valibotResolver } from "@hookform/resolvers/valibot";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { Loader2, LogIn } from "lucide-react";
 import { toast } from "sonner";
@@ -20,14 +20,13 @@ import {
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/password-input";
 
-const formSchema = z.object({
-  email: z.email({
-    error: (iss) => (iss.input === "" ? "Please enter your email" : undefined),
-  }),
-  password: z
-    .string()
-    .min(1, "Please enter your password")
-    .min(7, "Password must be at least 7 characters long"),
+const formSchema = v.object({
+  email: v.pipe(v.string(), v.email("Please enter your email")),
+  password: v.pipe(
+    v.string(),
+    v.minLength(1, "Please enter your password"),
+    v.minLength(7, "Password must be at least 7 characters long"),
+  ),
 });
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLFormElement> {
@@ -39,15 +38,15 @@ export function UserAuthForm({ className, redirectTo, ...props }: UserAuthFormPr
   const navigate = useNavigate();
   const { auth } = useAuthStore();
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<v.InferOutput<typeof formSchema>>({
+    resolver: valibotResolver(formSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
+  function onSubmit(data: v.InferOutput<typeof formSchema>) {
     setIsLoading(true);
 
     toast.promise(sleep(2000), {

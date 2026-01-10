@@ -1,9 +1,9 @@
 import { createEnv } from "@t3-oss/env-core";
-import { z } from "zod";
+import * as v from "valibot";
 
 export const env = createEnv({
   server: {
-    SERVER_URL: z.url().optional(),
+    SERVER_URL: v.optional(v.string()),
   },
 
   /**
@@ -13,7 +13,7 @@ export const env = createEnv({
   clientPrefix: "VITE_",
 
   client: {
-    VITE_APP_TITLE: z.string().min(1).optional(),
+    VITE_APP_TITLE: v.optional(v.pipe(v.string(), v.minLength(1))),
   },
 
   /**

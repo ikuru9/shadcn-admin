@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { z } from "zod";
+import * as v from "valibot";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "@tanstack/react-router";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { toast } from "sonner";
@@ -16,23 +15,22 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { valibotResolver } from "@hookform/resolvers/valibot";
 
-const formSchema = z.object({
-  email: z.email({
-    error: (iss) => (iss.input === "" ? "Please enter your email" : undefined),
-  }),
+const formSchema = v.object({
+  email: v.pipe(v.string(), v.email("Please enter your email")),
 });
 
 export function ForgotPasswordForm({ className, ...props }: React.HTMLAttributes<HTMLFormElement>) {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<v.InferOutput<typeof formSchema>>({
+    resolver: valibotResolver(formSchema),
     defaultValues: { email: "" },
   });
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
+  function onSubmit(data: v.InferOutput<typeof formSchema>) {
     setIsLoading(true);
     // oxlint-disable-next-line no-console
     console.log(data);

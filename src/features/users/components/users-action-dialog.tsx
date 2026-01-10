@@ -1,8 +1,8 @@
 "use client";
 
-import { z } from "zod";
+import * as v from "valibot";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { valibotResolver } from "@hookform/resolvers/valibot";
 import { showSubmittedData } from "@/lib/show-submitted-data";
 import { Button } from "@/components/ui/button";
 import {
@@ -27,71 +27,40 @@ import { SelectDropdown } from "@/components/select-dropdown";
 import { roles } from "../data/data";
 import { type User } from "../data/schema";
 
-const formSchema = z
-  .object({
-    firstName: z.string().min(1, "First Name is required."),
-    lastName: z.string().min(1, "Last Name is required."),
-    username: z.string().min(1, "Username is required."),
-    phoneNumber: z.string().min(1, "Phone number is required."),
-    email: z.email({
-      error: (iss) => (iss.input === "" ? "Email is required." : undefined),
-    }),
-    password: z.string().transform((pwd) => pwd.trim()),
-    role: z.string().min(1, "Role is required."),
-    confirmPassword: z.string().transform((pwd) => pwd.trim()),
-    isEdit: z.boolean(),
-  })
-  .refine(
-    (data) => {
-      if (data.isEdit && !data.password) return true;
-      return data.password.length > 0;
-    },
-    {
-      message: "Password is required.",
-      path: ["password"],
-    },
-  )
-  .refine(
-    ({ isEdit, password }) => {
-      if (isEdit && !password) return true;
-      return password.length >= 8;
-    },
-    {
-      message: "Password must be at least 8 characters long.",
-      path: ["password"],
-    },
-  )
-  .refine(
-    ({ isEdit, password }) => {
-      if (isEdit && !password) return true;
-      return /[a-z]/.test(password);
-    },
-    {
-      message: "Password must contain at least one lowercase letter.",
-      path: ["password"],
-    },
-  )
-  .refine(
-    ({ isEdit, password }) => {
-      if (isEdit && !password) return true;
-      return /\d/.test(password);
-    },
-    {
-      message: "Password must contain at least one number.",
-      path: ["password"],
-    },
-  )
-  .refine(
-    ({ isEdit, password, confirmPassword }) => {
-      if (isEdit && !password) return true;
-      return password === confirmPassword;
-    },
-    {
-      message: "Passwords don't match.",
-      path: ["confirmPassword"],
-    },
-  );
-type UserForm = z.infer<typeof formSchema>;
+const formSchema = v.pipe(
+  v.object({
+    firstName: v.pipe(v.string(), v.minLength(1, "First Name is required.")),
+    lastName: v.pipe(v.string(), v.minLength(1, "Last Name is required.")),
+    username: v.pipe(v.string(), v.minLength(1, "Username is required.")),
+    phoneNumber: v.pipe(v.string(), v.minLength(1, "Phone number is required.")),
+    email: v.pipe(v.string(), v.email("Email is required.")),
+    password: v.pipe(
+      v.string(),
+      v.transform((pwd) => pwd.trim()),
+    ),
+    role: v.pipe(v.string(), v.minLength(1, "Role is required.")),
+    confirmPassword: v.pipe(
+      v.string(),
+      v.transform((pwd) => pwd.trim()),
+    ),
+    isEdit: v.boolean(),
+  }),
+  v.check((data) => {
+    if (data.isEdit && !data.password) return true;
+    if (data.isEdit && data.password && data.password.length < 7) return false;
+    if (!data.isEdit && data.password.length < 7) return false;
+    return true;
+  }, "Password must be at least 7 characters long"),
+  v.forward(
+    v.check((data) => {
+      if (data.isEdit && !data.confirmPassword) return true;
+      if (!data.isEdit && data.password !== data.confirmPassword) return false;
+      return true;
+    }, "Passwords do not match"),
+    ["confirmPassword"],
+  ),
+);
+type UserForm = v.InferOutput<typeof formSchema>;
 
 interface UserActionDialogProps {
   currentRow?: User;
@@ -102,7 +71,7 @@ interface UserActionDialogProps {
 export function UsersActionDialog({ currentRow, open, onOpenChange }: UserActionDialogProps) {
   const isEdit = !!currentRow;
   const form = useForm<UserForm>({
-    resolver: zodResolver(formSchema),
+    resolver: valibotResolver(formSchema),
     defaultValues: isEdit
       ? {
           ...currentRow,

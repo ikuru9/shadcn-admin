@@ -1,13 +1,13 @@
-import { z } from "zod";
+import * as v from "valibot";
 
 // We're keeping a simple non-relational schema here.
 // IRL, you will have a schema for your data models.
-export const taskSchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  status: z.string(),
-  label: z.string(),
-  priority: z.string(),
+export const taskSchema = v.object({
+  id: v.string(),
+  title: v.string(),
+  status: v.string(),
+  label: v.string(),
+  priority: v.string(),
 });
 
-export type Task = z.infer<typeof taskSchema>;
+export type Task = v.InferOutput<typeof taskSchema>;

@@ -1,32 +1,38 @@
-import { z } from "zod";
+import * as v from "valibot";
 
-const userStatusSchema = z.union([
-  z.literal("active"),
-  z.literal("inactive"),
-  z.literal("invited"),
-  z.literal("suspended"),
+const userStatusSchema = v.union([
+  v.literal("active"),
+  v.literal("inactive"),
+  v.literal("invited"),
+  v.literal("suspended"),
 ]);
-export type UserStatus = z.infer<typeof userStatusSchema>;
+export type UserStatus = v.InferOutput<typeof userStatusSchema>;
 
-const userRoleSchema = z.union([
-  z.literal("superadmin"),
-  z.literal("admin"),
-  z.literal("cashier"),
-  z.literal("manager"),
+const userRoleSchema = v.union([
+  v.literal("superadmin"),
+  v.literal("admin"),
+  v.literal("cashier"),
+  v.literal("manager"),
 ]);
 
-const userSchema = z.object({
-  id: z.string(),
-  firstName: z.string(),
-  lastName: z.string(),
-  username: z.string(),
-  email: z.string(),
-  phoneNumber: z.string(),
+const userSchema = v.object({
+  id: v.string(),
+  firstName: v.string(),
+  lastName: v.string(),
+  username: v.string(),
+  email: v.string(),
+  phoneNumber: v.string(),
   status: userStatusSchema,
   role: userRoleSchema,
-  createdAt: z.coerce.date(),
-  updatedAt: z.coerce.date(),
+  createdAt: v.pipe(
+    v.string(),
+    v.transform((x: string) => new Date(x)),
+  ),
+  updatedAt: v.pipe(
+    v.string(),
+    v.transform((x: string) => new Date(x)),
+  ),
 });
-export type User = z.infer<typeof userSchema>;
+export type User = v.InferOutput<typeof userSchema>;
 
-export const userListSchema = z.array(userSchema);
+export const userListSchema = v.array(userSchema);

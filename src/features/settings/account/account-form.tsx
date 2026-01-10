@@ -1,7 +1,7 @@
-import { z } from "zod";
+import * as v from "valibot";
 import { useForm } from "react-hook-form";
 import { ArrowUpDown, Check } from "lucide-react";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { valibotResolver } from "@hookform/resolvers/valibot";
 import { showSubmittedData } from "@/lib/show-submitted-data";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -38,17 +38,18 @@ const languages = [
   { label: "Chinese", value: "zh" },
 ] as const;
 
-const accountFormSchema = z.object({
-  name: z
-    .string()
-    .min(1, "Please enter your name.")
-    .min(2, "Name must be at least 2 characters.")
-    .max(30, "Name must not be longer than 30 characters."),
-  dob: z.date("Please select your date of birth."),
-  language: z.string("Please select a language."),
+const accountFormSchema = v.object({
+  name: v.pipe(
+    v.string(),
+    v.minLength(1, "Please enter your name."),
+    v.minLength(2, "Name must be at least 2 characters."),
+    v.maxLength(30, "Name must not be longer than 30 characters."),
+  ),
+  dob: v.date("Please select your date of birth."),
+  language: v.string("Please select a language."),
 });
 
-type AccountFormValues = z.infer<typeof accountFormSchema>;
+type AccountFormValues = v.InferOutput<typeof accountFormSchema>;
 
 // This can come from your database or API.
 const defaultValues: Partial<AccountFormValues> = {
@@ -57,7 +58,7 @@ const defaultValues: Partial<AccountFormValues> = {
 
 export function AccountForm() {
   const form = useForm<AccountFormValues>({
-    resolver: zodResolver(accountFormSchema),
+    resolver: valibotResolver(accountFormSchema),
     defaultValues,
   });
 

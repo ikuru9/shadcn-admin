@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { z } from "zod";
+import * as v from "valibot";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { valibotResolver } from "@hookform/resolvers/valibot";
 import { IconFacebook, IconGithub } from "@/assets/brand-icons";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -16,27 +16,27 @@ import {
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/password-input";
 
-const formSchema = z
-  .object({
-    email: z.email({
-      error: (iss) => (iss.input === "" ? "Please enter your email" : undefined),
-    }),
-    password: z
-      .string()
-      .min(1, "Please enter your password")
-      .min(7, "Password must be at least 7 characters long"),
-    confirmPassword: z.string().min(1, "Please confirm your password"),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords don't match.",
-    path: ["confirmPassword"],
-  });
+const formSchema = v.pipe(
+  v.object({
+    email: v.pipe(v.string(), v.email("Please enter your email")),
+    password: v.pipe(
+      v.string(),
+      v.minLength(1, "Please enter your password"),
+      v.minLength(7, "Password must be at least 7 characters long"),
+    ),
+    confirmPassword: v.pipe(v.string(), v.minLength(1, "Please confirm your password")),
+  }),
+  v.forward(
+    v.check((input) => input.password === input.confirmPassword, "Passwords don't match."),
+    ["confirmPassword"],
+  ),
+);
 
 export function SignUpForm({ className, ...props }: React.HTMLAttributes<HTMLFormElement>) {
   const [isLoading, setIsLoading] = useState(false);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<v.InferOutput<typeof formSchema>>({
+    resolver: valibotResolver(formSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -44,7 +44,7 @@ export function SignUpForm({ className, ...props }: React.HTMLAttributes<HTMLFor
     },
   });
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
+  function onSubmit(data: v.InferOutput<typeof formSchema>) {
     setIsLoading(true);
     // oxlint-disable-next-line no-console
     console.log(data);

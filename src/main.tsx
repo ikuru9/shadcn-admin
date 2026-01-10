@@ -12,6 +12,12 @@ import "./styles/index.css";
 // Report
 import reportWebVitals from "@/reportWebVitals.ts";
 
+// valibot
+import * as v from "valibot";
+import "@valibot/i18n/kr";
+
+v.setGlobalConfig({ lang: "kr" });
+
 // MSW setup
 if (import.meta.env.DEV) {
   const { worker } = await import("../mocks/browser");

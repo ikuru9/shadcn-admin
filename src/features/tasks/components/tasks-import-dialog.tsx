@@ -1,6 +1,6 @@
-import { z } from "zod";
+import * as v from "valibot";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { valibotResolver } from "@hookform/resolvers/valibot";
 import { showSubmittedData } from "@/lib/show-submitted-data";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,13 +22,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-const formSchema = z.object({
-  file: z
-    .instanceof(FileList)
-    .refine((files) => files.length > 0, {
-      message: "Please upload a file",
-    })
-    .refine((files) => ["text/csv"].includes(files?.[0]?.type), "Please upload csv format."),
+const formSchema = v.object({
+  file: v.pipe(
+    v.instance(FileList),
+    v.check((files) => files.length > 0, "Please upload a file"),
+    v.check((files) => ["text/csv"].includes(files?.[0]?.type), "Please upload csv format."),
+  ),
 });
 
 interface TaskImportDialogProps {
@@ -37,8 +36,8 @@ interface TaskImportDialogProps {
 }
 
 export function TasksImportDialog({ open, onOpenChange }: TaskImportDialogProps) {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<v.InferOutput<typeof formSchema>>({
+    resolver: valibotResolver(formSchema),
     defaultValues: { file: undefined },
   });
 
