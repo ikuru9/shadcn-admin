@@ -44,17 +44,15 @@ export function AlertDialog({
         </div>
       </AlertDialogHeader>
       <AlertDialogFooter>
-        <AlertDialogAction
-          render={
-            <Button
-              variant={destructive ? "destructive" : "default"}
-              disabled={disabled || isLoading}
-              onClick={() => onClose(true)}
-            >
-              {okText}
-            </Button>
-          }
-        />
+        <AlertDialogAction>
+          <Button
+            variant={destructive ? "destructive" : "default"}
+            disabled={disabled || isLoading}
+            onClick={() => onClose(true)}
+          >
+            {okText}
+          </Button>
+        </AlertDialogAction>
       </AlertDialogFooter>
     </>
   );

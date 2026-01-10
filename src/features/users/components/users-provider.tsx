@@ -22,7 +22,7 @@ export function UsersProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
+// oxlint-disable-next-line react-refresh/only-export-components
 export const useUsers = () => {
   const usersContext = React.useContext(UsersContext);
 

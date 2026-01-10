@@ -48,31 +48,27 @@ export function ConfirmDialog({
         </div>
       </AlertDialogHeader>
       <AlertDialogFooter>
-        <AlertDialogCancel
-          render={
-            <Button
-              variant="outline"
-              disabled={isLoading}
-              onClick={() => {
-                onCancel?.();
-                onClose(false);
-              }}
-            >
-              {cancelText}
-            </Button>
-          }
-        />
-        <AlertDialogAction
-          render={
-            <Button
-              variant={destructive ? "destructive" : "default"}
-              disabled={disabled || isLoading}
-              onClick={() => onClose(true)}
-            >
-              {confirmText}
-            </Button>
-          }
-        />
+        <AlertDialogCancel asChild>
+          <Button
+            variant="outline"
+            disabled={isLoading}
+            onClick={() => {
+              onCancel?.();
+              onClose(false);
+            }}
+          >
+            {cancelText}
+          </Button>
+        </AlertDialogCancel>
+        <AlertDialogAction asChild>
+          <Button
+            variant={destructive ? "destructive" : "default"}
+            disabled={disabled || isLoading}
+            onClick={() => onClose(true)}
+          >
+            {confirmText}
+          </Button>
+        </AlertDialogAction>
       </AlertDialogFooter>
     </>
   );
