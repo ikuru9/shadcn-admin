@@ -3,6 +3,10 @@ import path from "node:path";
 import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
+if (import.meta.env.CI) {
+  process.exit(0);
+}
+
 const marker = path.join(path.dirname(fileURLToPath(import.meta.url)), ".postinstall-ran");
 
 if (fs.existsSync(marker)) {

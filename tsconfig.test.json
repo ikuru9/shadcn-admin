@@ -4,5 +4,5 @@
     "composite": true,
     "types": ["vitest/globals"]
   },
-  "include": ["tests", "src"]
+  "include": ["tests", "src", "vitest.config.ts"]
 }
