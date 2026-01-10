@@ -1,51 +1,92 @@
-import { format } from 'date-fns'
-import { Calendar as CalendarIcon } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Calendar } from '@/components/ui/calendar'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover'
+"use client";
 
-type DatePickerProps = {
-  selected: Date | undefined
-  onSelect: (date: Date | undefined) => void
-  placeholder?: string
+import * as React from "react";
+import { CalendarIcon } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+import { Calendar } from "@/components/ui/calendar";
+import { Input } from "@/components/ui/input";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { formatDate } from "@/lib/formatter";
+import { isValid, toDate } from "date-fns";
+
+interface DatePickerProps {
+  value?: Date | null;
+  onChange?: (date: Date | null) => void;
+  placeholder?: string;
+  disabled?: boolean;
+  min?: Date;
+  max?: Date;
+  className?: string;
 }
 
-export function DatePicker({
-  selected,
-  onSelect,
-  placeholder = 'Pick a date',
+function DatePicker({
+  value,
+  onChange,
+  placeholder = "Pick a date",
+  disabled = false,
+  min,
+  max,
+  className,
 }: DatePickerProps) {
+  const [open, setOpen] = React.useState(false);
+  const [inputValue, setInputValue] = React.useState(formatDate(value));
+
+  React.useEffect(() => {
+    setInputValue(formatDate(value));
+  }, [value]);
+
+  const handleSelect = (date: Date | undefined) => {
+    onChange?.(date ?? null);
+    setOpen(false);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    setInputValue(newValue);
+
+    if (isValid(newValue)) {
+      const dateObj = toDate(newValue);
+      if ((!min || dateObj >= min) && (!max || dateObj <= max)) {
+        onChange?.(dateObj);
+      }
+    } else if (newValue === "") {
+      onChange?.(null);
+    }
+  };
+
   return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button
-          variant='outline'
-          data-empty={!selected}
-          className='w-[240px] justify-start text-start font-normal data-[empty=true]:text-muted-foreground'
-        >
-          {selected ? (
-            format(selected, 'MMM d, yyyy')
-          ) : (
-            <span>{placeholder}</span>
-          )}
-          <CalendarIcon className='ms-auto h-4 w-4 opacity-50' />
-        </Button>
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger>
+        <div className="relative w-full">
+          <Input
+            value={inputValue}
+            onChange={handleInputChange}
+            placeholder={placeholder}
+            disabled={disabled}
+            mask="datetime"
+            maskOptions={{ inputFormat: "yyyy-mm-dd" }}
+            aria-label="Date picker"
+            aria-describedby={value ? "selected-date" : undefined}
+            className={cn("pr-10", !value && "text-muted-foreground", className)}
+          />
+          <CalendarIcon className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground pointer-events-none" />
+        </div>
       </PopoverTrigger>
-      <PopoverContent className='w-auto p-0'>
+      <PopoverContent className="w-auto p-0">
         <Calendar
-          mode='single'
-          captionLayout='dropdown'
-          selected={selected}
-          onSelect={onSelect}
-          disabled={(date: Date) =>
-            date > new Date() || date < new Date('1900-01-01')
-          }
+          mode="single"
+          selected={value ?? undefined}
+          onSelect={handleSelect}
+          disabled={(date) => {
+            if (min && date < min) return true;
+            if (max && date > max) return true;
+            return false;
+          }}
         />
       </PopoverContent>
     </Popover>
-  )
+  );
 }
+
+export { DatePicker };

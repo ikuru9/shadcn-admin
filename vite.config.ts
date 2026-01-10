@@ -1,22 +1,38 @@
-import path from 'path'
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
-import tailwindcss from '@tailwindcss/vite'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { defineConfig } from "vite";
+import { devtools } from "@tanstack/devtools-vite";
+import viteReact from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 
-// https://vite.dev/config/
+import { tanstackRouter } from "@tanstack/router-plugin/vite";
+import { fileURLToPath } from "node:url";
+import oxlintPlugin from "vite-plugin-oxlint";
+
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    devtools(),
     tanstackRouter({
-      target: 'react',
+      target: "react",
       autoCodeSplitting: true,
     }),
-    react(),
+    viteReact(),
     tailwindcss(),
+    oxlintPlugin(),
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
-})
+  optimizeDeps: {
+    exclude: ["mocks"],
+  },
+  build: {
+    rollupOptions: {
+      external: (id) => {
+        // Exclude mocks folder from production build
+        return id.includes("mocks");
+      },
+    },
+  },
+});
