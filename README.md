@@ -33,25 +33,25 @@ pnpm run commit
 
 ```bash
 # 전체 테스트 실행 (Vitest)
-npx vitest
+pnpm run test
 
 # 단일 테스트 파일 실행
-npx vitest run src/components/ui/button.test.tsx
+pnpm run test run src/components/ui/button.test.tsx
 
 # 특정 패턴의 테스트 실행
-npx vitest run --pattern="button"
+pnpm run test run --pattern="button"
 
 # 워치 모드
-npx vitest --watch
+pnpm run test:watch
 
 # 커버리지 리포트 생성
-npx vitest --coverage
+pnpm run test:coverage
 ```
 
 ## 프로젝트 구조
 
 ```tree
-public/                # 정적 에셋
+public/                  # 정적 에셋
 ├── favicon.ico
 ├── robots.txt
 src/
@@ -64,11 +64,12 @@ src/
 ├── features/            # Feature-specific logic and components (could be feature folders)
 ├── lib/                 # 유틸리티 함수
 ├── types/               # TypeScript 타입 정의
+├── config/              # 애플리케이션 설정
+│   └── env.ts           # @t3-oss/env-core 환경 변수
 ├── constants/           # 애플리케이션 상수
 ├── context/             # React Context 제공자
-├── styles/              # 전역 스타일
-└── env.ts             # @t3-oss/env-core 환경 변수
-tests/                 # 테스트 파일
+└── styles/              # 전역 스타일
+tests/                   # 테스트 파일
 ```
 
 ## 기술 스택

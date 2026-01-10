@@ -46,7 +46,7 @@ export function NewChat({ users, onOpenChange, open }: NewChatProps) {
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-[600px]">
+      <DialogContent className="sm:max-w-150">
         <DialogHeader>
           <DialogTitle>New message</DialogTitle>
         </DialogHeader>

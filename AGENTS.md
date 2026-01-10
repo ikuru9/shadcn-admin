@@ -18,10 +18,11 @@ src/
 ├── features/            # Feature-specific logic and components (could be feature folders)
 ├── lib/                 # 유틸리티 함수
 ├── types/               # TypeScript 타입 정의
+├── config/              # 애플리케이션 설정
+│   └── env.ts           # @t3-oss/env-core 환경 변수
 ├── constants/           # 애플리케이션 상수
 ├── context/             # React Context 제공자
 ├── styles/              # 전역 스타일
-└── env.ts             # @t3-oss/env-core 환경 변수
 tests/                 # 테스트 파일
 ```
 
