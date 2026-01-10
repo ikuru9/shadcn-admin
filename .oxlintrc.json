@@ -1,0 +1,100 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["import", "typescript", "react"],
+  "rules": {
+    "eqeqeq": ["error", "smart"],
+    "no-param-reassign": "error",
+    "no-unused-vars": [
+      "error",
+      {
+        "ignoreRestSiblings": true,
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "no-undef": "error",
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowShortCircuit": true,
+        "allowTernary": true,
+        "allowTaggedTemplates": true
+      }
+    ],
+    "typescript/consistent-type-imports": [
+      "error",
+      {
+        "prefer": "type-imports",
+        "fixStyle": "inline-type-imports",
+        "disallowTypeAnnotations": false
+      }
+    ],
+    "typescript/adjacent-overload-signatures": "error",
+    "typescript/array-type": "error",
+    "typescript/ban-tslint-comment": "error",
+    "typescript/consistent-generic-constructors": "error",
+    "typescript/consistent-indexed-object-style": "error",
+    "typescript/consistent-type-definitions": "error",
+    "typescript/no-confusing-non-null-assertion": "error",
+    "typescript/no-empty-function": "off",
+    "typescript/no-inferrable-types": "off",
+    "typescript/prefer-for-of": "error",
+    "typescript/prefer-function-type": "error",
+    "typescript/no-explicit-any": "error",
+
+    "import/no-relative-paths": "error",
+    "import/order": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "no-duplicate-imports": "error",
+
+    "react/rules-of-hooks": "error"
+  },
+  "settings": {
+    "import/internal-regex": "^@/",
+    "jsx-a11y": {
+      "polymorphicPropName": null,
+      "components": {},
+      "attributes": {}
+    },
+    "next": {
+      "rootDir": []
+    },
+    "react": {
+      "formComponents": [],
+      "linkComponents": []
+    },
+    "jsdoc": {
+      "ignorePrivate": false,
+      "ignoreInternal": false,
+      "ignoreReplacesDocs": true,
+      "overrideReplacesDocs": true,
+      "augmentsExtendsReplacesDocs": false,
+      "implementsReplacesDocs": false,
+      "exemptDestructuredRootsFromChecks": false,
+      "tagNamePreference": {}
+    },
+    "vitest": {
+      "typecheck": false
+    }
+  },
+  "env": {
+    "node": true,
+    "commonjs": true,
+    "es2023": true,
+    "browser": true
+  },
+  "globals": {},
+  "overrides": [
+    {
+      "files": ["**/*.test.ts", "**/*.spec.ts"],
+      "env": null,
+      "globals": null,
+      "plugins": null,
+      "rules": {
+        "typescript/no-explicit-any": "allow"
+      }
+    }
+  ],
+  "ignorePatterns": []
+}

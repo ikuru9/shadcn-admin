@@ -1,0 +1,33 @@
+pre-commit:
+  parallel: false
+  commands:
+    oxlint:
+      glob: "*.{js,jsx,ts,tsx}"
+      run: |
+        # Lint ONLY staged files
+        pnpm -s lint:staged {staged_files}
+
+    oxfmt:
+      glob: "*.{js,jsx,ts,tsx,json}"
+      run: |
+        # Format ONLY staged files (writes changes)
+        pnpm -s fmt:staged {staged_files}
+
+        # Re-stage formatted files so commit includes changes
+        git add {staged_files}
+
+commit-msg:
+  commands:
+    commitlint:
+      run: |
+        # commit message 파일 경로는 lefthook이 인자로 넘겨줌
+        # ($1 = .git/COMMIT_EDITMSG 같은 파일)
+        pnpm -s commitlint --edit "$1"
+
+pre-push:
+  parallel: false
+  commands:
+    oxlint_all:
+      run: |
+        # Option A) Lint entire repo (simple & reliable)
+        # pnpm -s lint
