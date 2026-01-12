@@ -15,6 +15,7 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest --coverage",
+    "generate": "kubb generate",
     "postinstall": "node scripts/postinstall.js"
   },
   "dependencies": {
@@ -70,6 +71,15 @@
     "@commitlint/cz-commitlint": "^20",
     "@commitlint/types": "^20",
     "@faker-js/faker": "^10",
+    "@kubb/cli": "^4.15.0",
+    "@kubb/core": "^4.15.0",
+    "@kubb/plugin-client": "^4.15.0",
+    "@kubb/plugin-faker": "^4.15.0",
+    "@kubb/plugin-mcp": "^4.15.0",
+    "@kubb/plugin-msw": "^4.15.0",
+    "@kubb/plugin-oas": "^4.15.0",
+    "@kubb/plugin-react-query": "^4.15.0",
+    "@kubb/plugin-ts": "^4.15.0",
     "@tanstack/devtools-vite": "^0",
     "@tanstack/react-devtools": "^0",
     "@tanstack/react-query-devtools": "^5",

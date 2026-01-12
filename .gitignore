@@ -39,3 +39,9 @@ scripts/.postinstall-ran
 
 # mock
 public/mockServiceWorker.js
+mocks/modules
+
+# kubb
+.kubb
+src/.gen
+mocks/faker
