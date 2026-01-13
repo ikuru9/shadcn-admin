@@ -17,13 +17,14 @@ import {
 import { labels } from "../data/data";
 import { taskSchema } from "../data/schema";
 import { useTasks } from "./tasks-provider";
+import * as v from "valibot";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
 }
 
 export function DataTableRowActions<TData>({ row }: DataTableRowActionsProps<TData>) {
-  const task = taskSchema.parse(row.original);
+  const task = v.parse(taskSchema, row.original);
 
   const { setOpen, setCurrentRow } = useTasks();
 

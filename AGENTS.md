@@ -3,30 +3,43 @@
 This repository is a React 19 application built with Vite, TanStack Router, Valibot, and Shadcn UI. Follow these rules for all changes.
 
 ## Technology Stack
+
 - **React 19** + **TypeScript** (strict mode)
 - **Vite 7** for build tooling
-- **TanStack Router** for routing 
-- **TanStack Query** for data fetching
+- **TanStack Router** for routing
+- **TanStack Query** + **TanStack Table** for data fetching
 - **Zustand** for state management
 - **Valibot** for validation (replaces Zod)
-- **Shadcn UI** + **Tailwind CSS** for UI
-- **Vitest** + **Testing Library** for testing
+- **Shadcn UI** + **Radix UI** + **Tailwind CSS** for UI
+- **Vitest** + **Testing Library** + **MSW** for testing
+- **Axios** for HTTP client
+- **date-fns** for date manipulation
+- **Lucide React** for icons
+- **React Hook Form** for form handling
+- **Lefthook** for git hooks
+- **oxlint** + **oxfmt** for code quality
+- **commitizen** + **commitlint** for conventional commits
 
 ## Essential Commands
 
 ### Development Server
+
 ```bash
-pnpm dev    # Start Vite dev server (port 3000)
+pnpm dev    # Start Vite dev server
 ```
 
 ### Build & Test Commands
+
 ```bash
 pnpm run build     # Vite build + TypeScript check
 pnpm run preview   # Preview production build
-pnpm run test      # Run all Vitest tests
+pnpm run test      # Run all Vitest tests (browser mode)
+pnpm run generate  # Generate API client with Kubb
+pnpm run commit    # Interactive conventional commit
 ```
 
 ### Running a Single Test File
+
 ```bash
 # Run specific test file
 pnpm test tests/components/custom-input/date-picker.test.tsx
@@ -39,6 +52,7 @@ pnpm test --run --reporter=verbose date-picker
 ```
 
 ### Code Quality & Formatting
+
 ```bash
 pnpm lint          # Lint entire repo (oxlint)
 pnpm fmt           # Format entire repo (oxfmt)
@@ -46,50 +60,72 @@ pnpm lint:staged   # Lint/formatted staged files (pre-commit)
 pnpm fmt:staged    # Format staged files (pre-commit)
 ```
 
-## 코드 스타일 가이드라인
+## Coding Guidelines
 
-### Import/Export 패턴
-- 절대 경로 imports만 사용: `@/*`
-- 그룹화된 imports
-- 명확한 exports
+### Import/Export Patterns
+
+- Use absolute path imports only: `@/*`
+- Grouped imports (external → internal → relative)
+- Clear exports (named exports preferred)
 - Barrel exports in index.ts files
+- "use client" directive for client components
 
-### 네이밍 컨벤션
-- 컴포넌트: PascalCase
-- 훅: camelCase, 'use' 접두사
-- 타입: PascalCase
-- 상수: UPPER_SNAKE_CASE
-- 함수: camelCase
-- 파일: kebab-case
+### Naming Conventions
 
-### TypeScript 패턴
-- Strict typing with utility types
-- 제네릭 사용
+- Components: PascalCase
+- Hooks: camelCase with 'use' prefix
+- Types: PascalCase
+- Interfaces: PascalCase without 'I' prefix
+- Constants: UPPER_SNAKE_CASE
+- Functions: camelCase
+- Files: kebab-case
+- Test files: .test.tsx
+
+### TypeScript Patterns
+
+- Strict mode with noUnusedLocals/noUnusedParameters
+- Use type instead of interface
+- Use generics
 - Discriminated unions
-- 타입 가드
-- any 금지 (test files 제외)
+- Type guard functions
+- No any types (except in test files)
+- React.ComponentProps<HTMLElement> for prop typing
 
-### React 컴포넌트 패턴
-- 함수 컴포넌트 + 훅
-- forwardRef 금지 (React 19)
+### React Component Patterns
+
+- Function components + hooks
+- No forwardRef (React 19)
 - CVA (class-variance-authority) for variants
+- data-slot attributes for styling hooks
+- Slot pattern from Radix UI for composition
+- ref prop directly (not via forwardRef)
 
-### 스타일링 패턴
-- cn() 유틸리티로 클래스 결합
-- 조건부 스타일링 with cn()
-- Tailwind theme variables
+### Styling Patterns
 
-### 에러 처리 패턴
+- Use cn() utility for class merging (clsx + tailwind-merge)
+- Conditional styling with cn()
+- Tailwind theme variables (text-primary, bg-accent, etc.)
+- data-slot attributes for component styling
+- Use Lucide React icons
+
+### Error Handling Patterns
+
 - try-catch with proper error types
 - Valibot validation with error handling
+- Axios error handling with custom utilities
+- Error boundaries for React components
 
-### 테스트 작성 패턴
-- Vitest + Testing Library
-- 모킹 for external libraries
+### Test Writing Patterns
 
-## 에이전트를 위한 빠른 시작
+- Vitest + Testing Library + MSW
+- Extensive mocking (vi.mock)
+- Test descriptions in Korean
+- data-testid attributes for testing
+- fireEvent and waitFor patterns
 
-### 프로젝트 설정
+## Quick Start for Agents
+
+### Project Setup
 
 1. **Install deps:** `pnpm install`
 2. **Run dev server:** `pnpm dev`
@@ -97,91 +133,35 @@ pnpm fmt:staged    # Format staged files (pre-commit)
 4. **Check linting:** `pnpm lint`
 5. **Run tests:** `pnpm test`
 
-### AI 코딩 도구 통합
+## Important Restrictions
 
-**Cursor Rules:**
-
-```jsonc
-// .cursorrules 또는 .vscode/settings.json
-{
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.oxc": "explicit",
-  },
-  "files.associations": {
-    "*.css": "tailwindcss",
-    "*.scss": "tailwindcss",
-  },
-  "tailwindCSS.classFunctions": ["cn", "clsx"],
-}
-```
-
-**Copilot Instructions:**
-
-```markdown
-# @example/coding-guidelines
-
-이 프로젝트의 코딩 가이드라인:
-
-## 기술 스택
-
-- React 19 + TypeScript (strict mode)
-- Vite 7
-- TanStack Router + TanStack Query + TanStack Table
-- Tailwind CSS + Shadcn/ui
-- Vitest + Testing Library
-
-## 필수 규칙
-
-- 절대 경로 imports만 사용 (@/\*)
-- cn() 유틸리티로 클래스 결합
-- CVA (class-variance-authority)로 컴포넌트 variants
-- TypeScript strict mode 준수
-- 테스트 파일에만 any 타입 허용
-- 커밋 메시지는 conventional commits 형식
-
-## 금지사항
-
-- npm/yarn 사용 (pnpm만 허용)
-- 상대 경로 imports
-- @ts-ignore, as any 사용
-- git hooks 우회
-- 직접 스타일 컴포넌트 수정 (frontend-ui-ux-engineer에 위임)
-```
-
-## 중요 제한사항
-
-### 절대 금지사항
+### Absolute Prohibitions
 
 - **NO `npm` or `yarn`** - use `pnpm` only (enforced by engines)
-- **NO `@ts-ignore` or `as any`** in production code (test files 제외)
+- **NO `@ts-ignore` or `as any`** in production code (except test files)
 - **NO bypassing git hooks** - they ensure code quality
 - **NO git commits** - Never commit changes without explicit user request
 - **NO direct style edits** to visual components - delegate to `frontend-ui-ux-engineer`
 - **ALWAYS** use path aliases instead of relative imports (`@/*`)
 - **ALWAYS** run `lsp_diagnostics` on changed files before completion
 
-### 에이전트 위임 가이드라인
+### Agent Delegation Guidelines
 
-**frontend-ui-ux-engineer에게 위임:**
+**Delegate to frontend-ui-ux-engineer (VISUAL CHANGES ONLY):**
 
-- CSS 클래스 수정, 색상 변경, 간격 조정
-- 애니메이션, 트랜지션 추가
-- 레이아웃 변경 (flex/grid 조정)
-- 반응형 디자인 수정
-- 시각적 컴포넌트 스타일링
+- Changes related to style, className, tailwind, color, background, border, shadow, margin, padding, width, height, flex, grid, animation, transition, hover, responsive, font-size, icon, svg
 
-**직접 처리:**
+**Handle directly (LOGIC CHANGES):**
 
-- API 호출, 데이터 fetching 로직
-- 상태 관리 (Zustand/TanStack Query)
-- 이벤트 핸들러, 폼 validation
-- TypeScript 타입 정의
-- 유틸리티 함수
+- API calls, data fetching logic
+- State management (Zustand/TanStack Query)
+- Event handlers, form validation
+- TypeScript type definitions
+- Utility functions
 
-**특별한 경우 위임:**
+**Delegate for special cases:**
 
-- 복잡한 아키텍처 결정 → `oracle` 에이전트
-- 외부 라이브러리 문제 해결 → `librarian` 에이전트
-- 코드베이스 탐색 → `explore` 에이전트
-- 문서 작성 → `document-writer` 에이전트
+- Complex architecture decisions → `oracle` agent
+- External library issues → `librarian` agent
+- Codebase exploration → `explore` agent
+- Browser automation/testing → `playwright` skill

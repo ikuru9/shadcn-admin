@@ -14,6 +14,7 @@
     "commit": "git-cz",
     "test": "vitest --browser",
     "generate": "kubb generate",
+    "stats": "pnpx vite-bundle-visualizer",
     "postinstall": "node scripts/postinstall.js"
   },
   "dependencies": {
@@ -99,6 +100,7 @@
     "oxlint": "^1",
     "typescript": "^5",
     "vite": "^7.3.0",
+    "vite-plugin-compression2": "^2.4.0",
     "vite-plugin-oxlint": "^1",
     "vitest": "^4",
     "vitest-browser-react": "^2",
