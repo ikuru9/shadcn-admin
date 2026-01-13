@@ -12,9 +12,7 @@
     "lint": "oxlint --fix",
     "fmt": "oxfmt --write",
     "commit": "git-cz",
-    "test": "vitest",
-    "test:watch": "vitest --watch",
-    "test:coverage": "vitest --coverage",
+    "test": "vitest --browser",
     "generate": "kubb generate",
     "postinstall": "node scripts/postinstall.js"
   },
@@ -91,9 +89,10 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5",
+    "@vitest/browser-playwright": "^4",
     "commitizen": "^4",
+    "cross-env": "^10.1.0",
     "globals": "^17",
-    "jsdom": "^27.4.0",
     "lefthook": "^2",
     "msw": "^2",
     "oxfmt": "^0",
@@ -101,7 +100,8 @@
     "typescript": "^5",
     "vite": "^7.3.0",
     "vite-plugin-oxlint": "^1",
-    "vitest": "^4.0.16",
+    "vitest": "^4",
+    "vitest-browser-react": "^2",
     "web-vitals": "^5"
   },
   "config": {

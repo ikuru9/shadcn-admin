@@ -3,7 +3,7 @@ import path from "node:path";
 import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
-if (import.meta.env.CI) {
+if (import.meta.env?.CI) {
   process.exit(0);
 }
 
@@ -36,6 +36,19 @@ const lefthookChild = spawn(cmd, lefthookArgs, {
 });
 
 lefthookChild.on("close", (code) => {
+  console.log(`- process exited with code ${code}`);
+});
+
+const vitestArgs =
+  process.platform === "win32"
+    ? ["/c", "pnpm exec playwright install"]
+    : ["-c", "pnpm exec playwright install"];
+
+const vitestChild = spawn(cmd, vitestArgs, {
+  stdio: "inherit", // 콘솔에 그대로 출력
+});
+
+vitestChild.on("close", (code) => {
   console.log(`- process exited with code ${code}`);
 });
 

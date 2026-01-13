@@ -18,7 +18,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { PasswordInput } from "@/components/password-input";
+import { PasswordInput } from "@/components/custom-input/password-input";
 
 const formSchema = v.object({
   email: v.pipe(v.string(), v.email("Please enter your email")),

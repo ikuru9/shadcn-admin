@@ -87,11 +87,13 @@
   "globals": {},
   "overrides": [
     {
-      "files": ["**/*.test.ts", "**/*.spec.ts"],
+      "files": ["**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}"],
       "env": null,
       "globals": null,
       "plugins": null,
       "rules": {
+        "no-undef": "allow",
+        "no-unused-vars": "allow",
         "typescript/no-explicit-any": "allow"
       }
     }

@@ -29,16 +29,13 @@ pnpm run test      # Run all Vitest tests
 ### Running a Single Test File
 ```bash
 # Run specific test file
-pnpm test tests/components/date-picker.test.tsx
+pnpm test tests/components/custom-input/date-picker.test.tsx
 
 # Run test in watch mode
-pnpm test tests/components/date-picker.test.tsx --watch
+pnpm test tests/components/custom-input/date-picker.test.tsx --watch
 
 # Run tests matching pattern
 pnpm test --run --reporter=verbose date-picker
-
-# Run tests with coverage
-pnpm run test:coverage
 ```
 
 ### Code Quality & Formatting

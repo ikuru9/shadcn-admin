@@ -2,7 +2,15 @@
   "extends": "./tsconfig.app.json",
   "compilerOptions": {
     "composite": true,
+    "lib": ["ESNext", "DOM"],
+
+    /* Alias */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
     "types": ["vitest/globals"]
   },
-  "include": ["tests", "src", "vitest.config.ts"]
+  "include": ["src", "tests", "vite.config.ts", "vitest.config.ts"]
 }
