@@ -43,5 +43,5 @@ mocks/modules
 
 # kubb
 .kubb
-src/.gen
+src/gen
 mocks/faker

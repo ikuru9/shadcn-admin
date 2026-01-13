@@ -5,7 +5,7 @@ This repository is a React 19 application built with Vite, TanStack Router, Vali
 ## Technology Stack
 - **React 19** + **TypeScript** (strict mode)
 - **Vite 7** for build tooling
-- **TanStack Router** for routing
+- **TanStack Router** for routing 
 - **TanStack Query** for data fetching
 - **Zustand** for state management
 - **Valibot** for validation (replaces Zod)

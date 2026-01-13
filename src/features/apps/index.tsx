@@ -1,6 +1,4 @@
-import { type ChangeEvent, useState } from "react";
-import { getRouteApi } from "@tanstack/react-router";
-import { SlidersHorizontal, ArrowUpAZ, ArrowDownAZ } from "lucide-react";
+import { Main } from "@/components/layout/main";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -11,12 +9,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { ConfigDrawer } from "@/components/config-drawer";
-import { Header } from "@/components/layout/header";
-import { Main } from "@/components/layout/main";
-import { ProfileDropdown } from "@/components/profile-dropdown";
-import { Search } from "@/components/search";
-import { ThemeSwitch } from "@/components/theme-switch";
+import { getRouteApi } from "@tanstack/react-router";
+import { ArrowDownAZ, ArrowUpAZ, SlidersHorizontal } from "lucide-react";
+import { type ChangeEvent, useState } from "react";
 import { apps } from "./data/apps";
 
 const route = getRouteApi("/_authenticated/apps/");
@@ -71,16 +66,6 @@ export function Apps() {
 
   return (
     <>
-      {/* ===== Top Heading ===== */}
-      <Header>
-        <Search />
-        <div className="ms-auto flex items-center gap-4">
-          <ThemeSwitch />
-          <ConfigDrawer />
-          <ProfileDropdown />
-        </div>
-      </Header>
-
       {/* ===== Content ===== */}
       <Main fixed>
         <div>

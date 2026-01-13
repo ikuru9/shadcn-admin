@@ -33,6 +33,8 @@ import { Route as AuthenticatedSettingsDisplayRouteImport } from './routes/_auth
 import { Route as AuthenticatedSettingsAppearanceRouteImport } from './routes/_authenticated/settings/appearance'
 import { Route as AuthenticatedSettingsAccountRouteImport } from './routes/_authenticated/settings/account'
 import { Route as AuthenticatedErrorsErrorRouteImport } from './routes/_authenticated/errors/$error'
+import { Route as AuthenticatedSamplesPetsIndexRouteImport } from './routes/_authenticated/samples/pets/index'
+import { Route as AuthenticatedSamplesPetsIdRouteImport } from './routes/_authenticated/samples/pets/$id'
 
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
@@ -161,6 +163,18 @@ const AuthenticatedErrorsErrorRoute =
     path: '/errors/$error',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedSamplesPetsIndexRoute =
+  AuthenticatedSamplesPetsIndexRouteImport.update({
+    id: '/samples/pets/',
+    path: '/samples/pets/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedSamplesPetsIdRoute =
+  AuthenticatedSamplesPetsIdRouteImport.update({
+    id: '/samples/pets/$id',
+    path: '/samples/pets/$id',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
@@ -186,6 +200,8 @@ export interface FileRoutesByFullPath {
   '/settings/': typeof AuthenticatedSettingsIndexRoute
   '/tasks': typeof AuthenticatedTasksIndexRoute
   '/users': typeof AuthenticatedUsersIndexRoute
+  '/samples/pets/$id': typeof AuthenticatedSamplesPetsIdRoute
+  '/samples/pets': typeof AuthenticatedSamplesPetsIndexRoute
 }
 export interface FileRoutesByTo {
   '/forgot-password': typeof authForgotPasswordRoute
@@ -210,6 +226,8 @@ export interface FileRoutesByTo {
   '/settings': typeof AuthenticatedSettingsIndexRoute
   '/tasks': typeof AuthenticatedTasksIndexRoute
   '/users': typeof AuthenticatedUsersIndexRoute
+  '/samples/pets/$id': typeof AuthenticatedSamplesPetsIdRoute
+  '/samples/pets': typeof AuthenticatedSamplesPetsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -237,6 +255,8 @@ export interface FileRoutesById {
   '/_authenticated/settings/': typeof AuthenticatedSettingsIndexRoute
   '/_authenticated/tasks/': typeof AuthenticatedTasksIndexRoute
   '/_authenticated/users/': typeof AuthenticatedUsersIndexRoute
+  '/_authenticated/samples/pets/$id': typeof AuthenticatedSamplesPetsIdRoute
+  '/_authenticated/samples/pets/': typeof AuthenticatedSamplesPetsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -264,6 +284,8 @@ export interface FileRouteTypes {
     | '/settings/'
     | '/tasks'
     | '/users'
+    | '/samples/pets/$id'
+    | '/samples/pets'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/forgot-password'
@@ -288,6 +310,8 @@ export interface FileRouteTypes {
     | '/settings'
     | '/tasks'
     | '/users'
+    | '/samples/pets/$id'
+    | '/samples/pets'
   id:
     | '__root__'
     | '/_authenticated'
@@ -314,6 +338,8 @@ export interface FileRouteTypes {
     | '/_authenticated/settings/'
     | '/_authenticated/tasks/'
     | '/_authenticated/users/'
+    | '/_authenticated/samples/pets/$id'
+    | '/_authenticated/samples/pets/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -500,6 +526,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedErrorsErrorRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/samples/pets/': {
+      id: '/_authenticated/samples/pets/'
+      path: '/samples/pets'
+      fullPath: '/samples/pets'
+      preLoaderRoute: typeof AuthenticatedSamplesPetsIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/samples/pets/$id': {
+      id: '/_authenticated/samples/pets/$id'
+      path: '/samples/pets/$id'
+      fullPath: '/samples/pets/$id'
+      preLoaderRoute: typeof AuthenticatedSamplesPetsIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
@@ -535,6 +575,8 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedHelpCenterIndexRoute: typeof AuthenticatedHelpCenterIndexRoute
   AuthenticatedTasksIndexRoute: typeof AuthenticatedTasksIndexRoute
   AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute
+  AuthenticatedSamplesPetsIdRoute: typeof AuthenticatedSamplesPetsIdRoute
+  AuthenticatedSamplesPetsIndexRoute: typeof AuthenticatedSamplesPetsIndexRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -546,6 +588,8 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedHelpCenterIndexRoute: AuthenticatedHelpCenterIndexRoute,
   AuthenticatedTasksIndexRoute: AuthenticatedTasksIndexRoute,
   AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,
+  AuthenticatedSamplesPetsIdRoute: AuthenticatedSamplesPetsIdRoute,
+  AuthenticatedSamplesPetsIndexRoute: AuthenticatedSamplesPetsIndexRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =

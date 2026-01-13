@@ -8,12 +8,14 @@ import { pluginFaker } from "@kubb/plugin-faker";
 
 import { fileURLToPath } from "node:url";
 
+const baseURL = "/api" as const;
+
 export default defineConfig(() => ({
   input: {
     path: "https://petstore3.swagger.io/api/v3/openapi.json",
   },
   output: {
-    path: fileURLToPath(new URL("./src/.gen", import.meta.url)),
+    path: fileURLToPath(new URL("./src/gen", import.meta.url)),
     clean: true,
     format: false,
     lint: false,
@@ -25,23 +27,39 @@ export default defineConfig(() => ({
     pluginClient({
       client: "axios",
       importPath: "@/lib/client",
+      baseURL,
       dataReturnType: "data",
+      group: {
+        type: "path",
+      },
     }),
     pluginReactQuery({
       client: {
         importPath: "@/lib/client",
+      },
+      group: {
+        type: "path",
       },
     }),
     pluginFaker({
       output: {
         path: fileURLToPath(new URL("./mocks/faker", import.meta.url)),
       },
+      group: {
+        type: "path",
+      },
+      dateParser: "date-fns",
     }),
     pluginMsw({
+      parser: "faker",
+      baseURL,
       output: {
         path: fileURLToPath(new URL("./mocks/modules", import.meta.url)),
       },
-      parser: "faker",
+      group: {
+        type: "path",
+      },
+      handlers: true,
     }),
   ],
 }));
