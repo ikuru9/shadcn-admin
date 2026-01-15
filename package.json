@@ -92,6 +92,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5",
     "@vitest/browser-playwright": "^4",
+    "@vitest/coverage-v8": "4.0.17",
     "commitizen": "^4",
     "cross-env": "^10",
     "globals": "^17",

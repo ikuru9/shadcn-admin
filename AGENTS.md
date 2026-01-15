@@ -72,14 +72,14 @@ pnpm fmt:staged    # Format staged files (pre-commit)
 
 ### Naming Conventions
 
-- Components: PascalCase
-- Hooks: camelCase with 'use' prefix
-- Types: PascalCase
-- Interfaces: PascalCase without 'I' prefix
-- Constants: UPPER_SNAKE_CASE
-- Functions: camelCase
-- Files: kebab-case
-- Test files: .test.tsx
+- Components: PascalCase(e.g., UserProfile)
+- Hooks: camelCase with 'use' prefix(e.g., useUserProfile)
+- Types: PascalCase(e.g., UserProfile)
+- Interfaces: PascalCase without 'I' prefix(e.g., UserProfileProps)
+- Constants: UPPER_SNAKE_CASE(e.g., MAX_RETRY_COUNT)
+- Functions: camelCase(e.g., getUserProfile)
+- Files: kebab-case(e.g., user-profile.tsx)
+- Test files: .test.tsx(e.g., user-profile.test.tsx)
 
 ### TypeScript Patterns
 
@@ -88,8 +88,8 @@ pnpm fmt:staged    # Format staged files (pre-commit)
 - Use generics
 - Discriminated unions
 - Type guard functions
-- No any types (except in test files)
-- React.ComponentProps<HTMLElement> for prop typing
+- No any types - use unknown and narrow types (except in test files)
+- Prefer named exports over default exports
 
 ### React Component Patterns
 
@@ -99,6 +99,7 @@ pnpm fmt:staged    # Format staged files (pre-commit)
 - data-slot attributes for styling hooks
 - Slot pattern from Radix UI for composition
 - ref prop directly (not via forwardRef)
+- React.ComponentProps<HTMLElement> for prop typing
 
 ### Styling Patterns
 
