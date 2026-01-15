@@ -42,10 +42,10 @@ pnpm run commit    # Interactive conventional commit
 
 ```bash
 # Run specific test file
-pnpm test tests/components/custom-input/date-picker.test.tsx
+pnpm test src/components/custom-input/date-picker.test.tsx
 
 # Run test in watch mode
-pnpm test tests/components/custom-input/date-picker.test.tsx --watch
+pnpm test src/components/custom-input/date-picker.test.tsx --watch
 
 # Run tests matching pattern
 pnpm test --run --reporter=verbose date-picker

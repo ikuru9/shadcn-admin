@@ -7,11 +7,10 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { OctagonAlert } from "lucide-react";
 
-export interface ConfirmDialogProps {
-  title: string;
-  description: string;
+export type ConfirmDialogProps = React.PropsWithChildren<{
+  title: React.JSX.Element | string;
+  description: React.JSX.Element | string;
   confirmText?: string;
   cancelText?: string;
   onClose: (result: boolean) => void;
@@ -19,12 +18,13 @@ export interface ConfirmDialogProps {
 
   destructive?: boolean;
   disabled?: boolean;
-  isLoading?: boolean;
-}
+  isPending?: boolean;
+}>;
 
 export function ConfirmDialog({
   title,
   description,
+  children,
   confirmText = "확인",
   cancelText = "취소",
   onClose,
@@ -32,26 +32,24 @@ export function ConfirmDialog({
 
   destructive,
   disabled = false,
-  isLoading,
+  isPending,
 }: ConfirmDialogProps) {
   return (
     <>
       <AlertDialogHeader className="rounded-none">
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-3 py-3 border-b">
-            {destructive && (
-              <OctagonAlert className="size-5 shrink-0 text-destructive fill-destructive/10" />
-            )}
-            <AlertDialogTitle>{title}</AlertDialogTitle>
-          </div>
-          <AlertDialogDescription className="py-3">{description}</AlertDialogDescription>
-        </div>
+        <AlertDialogHeader className="text-start">
+          <AlertDialogTitle>{title}</AlertDialogTitle>
+          <AlertDialogDescription asChild>
+            <div>{description}</div>
+          </AlertDialogDescription>
+        </AlertDialogHeader>
       </AlertDialogHeader>
+      {children}
       <AlertDialogFooter>
         <AlertDialogCancel asChild>
           <Button
             variant="outline"
-            disabled={isLoading}
+            disabled={isPending}
             onClick={() => {
               onCancel?.();
               onClose(false);
@@ -63,7 +61,7 @@ export function ConfirmDialog({
         <AlertDialogAction asChild>
           <Button
             variant={destructive ? "destructive" : "default"}
-            disabled={disabled || isLoading}
+            disabled={disabled || isPending}
             onClick={() => onClose(true)}
           >
             {confirmText}

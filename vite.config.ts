@@ -6,7 +6,7 @@ import { compression } from "vite-plugin-compression2";
 
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import { fileURLToPath } from "node:url";
-import oxlintPlugin from "vite-plugin-oxlint";
+import { playwright } from "@vitest/browser-playwright";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -18,7 +18,6 @@ export default defineConfig(({ mode }) => ({
     }),
     viteReact(),
     tailwindcss(),
-    oxlintPlugin(),
     compression({
       algorithms: ["gzip", "brotliCompress"],
       exclude: [/\.(br)$/, /\.(gz)$/, /\.(png|jpe?g|gif|webp|woff2?)$/],
@@ -30,6 +29,17 @@ export default defineConfig(({ mode }) => ({
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
+  },
+  optimizeDeps: {
+    include: [
+      "axios",
+      "date-fns",
+      "clsx",
+      "class-variance-authority",
+      "@radix-ui/react-alert-dialog",
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-popover",
+    ],
   },
   esbuild: {
     pure:
@@ -67,5 +77,22 @@ export default defineConfig(({ mode }) => ({
         entryFileNames: "assets/[name]-[hash].js",
       },
     },
+  },
+  test: {
+    globals: true,
+    include: ["**/*.{test,spec}.{ts,tsx}"],
+    browser: {
+      enabled: true,
+      provider: playwright(),
+      // https://vitest.dev/config/browser/playwright
+      instances: [
+        { browser: "chromium" },
+        // { browser: "firefox" },
+        // { browser: "webkit" },
+      ],
+      // Optional: run in headed mode during development
+      headless: process.env.CI ? true : false,
+    },
+    setupFiles: [`${fileURLToPath(new URL("./src", import.meta.url))}/vitest.setup.ts`],
   },
 }));

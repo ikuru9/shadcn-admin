@@ -6,11 +6,10 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { OctagonAlert } from "lucide-react";
 
-export interface AlertDialogProps {
-  title: string;
-  description: string;
+export type AlertDialogProps = React.PropsWithChildren<{
+  title: React.JSX.Element | string;
+  description: React.JSX.Element | string;
   okText?: string;
   onClose: (result: boolean) => void;
   onCancel?: () => void;
@@ -18,11 +17,13 @@ export interface AlertDialogProps {
   destructive: boolean;
   disabled?: boolean;
   isLoading?: boolean;
-}
+}>;
 
 export function AlertDialog({
   title,
   description,
+  children,
+
   okText = "확인",
   onClose,
 
@@ -33,16 +34,14 @@ export function AlertDialog({
   return (
     <>
       <AlertDialogHeader className="rounded-none">
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-3 py-3 border-b">
-            {destructive && (
-              <OctagonAlert className="size-5 shrink-0 text-destructive fill-destructive/10" />
-            )}
-            <AlertDialogTitle>{title}</AlertDialogTitle>
-          </div>
-          <AlertDialogDescription className="py-3">{description}</AlertDialogDescription>
-        </div>
+        <AlertDialogHeader className="text-start">
+          <AlertDialogTitle>{title}</AlertDialogTitle>
+          <AlertDialogDescription asChild>
+            <div>{description}</div>
+          </AlertDialogDescription>
+        </AlertDialogHeader>
       </AlertDialogHeader>
+      {children}
       <AlertDialogFooter>
         <AlertDialogAction>
           <Button

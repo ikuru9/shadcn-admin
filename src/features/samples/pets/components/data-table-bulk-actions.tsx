@@ -5,12 +5,13 @@ import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { DataTableBulkActions as BulkActionsToolbar } from "@/components/data-table";
 import { PetsMultiDeleteDialog } from "./pets-multi-delete-dialog";
+import { type Pet } from "../data/schema";
 
-interface DataTableBulkActionsProps<TData> {
-  table: Table<TData>;
+interface DataTableBulkActionsProps {
+  table: Table<Pet>;
 }
 
-export function DataTableBulkActions<TData>({ table }: DataTableBulkActionsProps<TData>) {
+export function DataTableBulkActions({ table }: DataTableBulkActionsProps) {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   return (
