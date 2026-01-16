@@ -1,4 +1,4 @@
-import { type PetStatus } from "@/features/samples/pets/data/schema";
+import type { PetStatus } from "@/features/samples/pets/data/schema";
 
 export const petsStatuses = new Map<PetStatus, string>([
   ["available", "bg-teal-100/30 text-teal-900 dark:text-teal-200 border-teal-200"],

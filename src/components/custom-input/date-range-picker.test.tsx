@@ -1,5 +1,6 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { vi } from "vitest";
+
 import { DateRangePicker } from "@/components/custom-input/date-range-picker";
 
 vi.mock("@/components/ui/input", () => ({
@@ -33,6 +34,7 @@ vi.mock("@/components/ui/calendar", () => ({
   Calendar: ({ onSelect }: any) => (
     <div data-testid="calendar">
       <button
+        type="button"
         data-testid="calendar-range"
         onClick={() => onSelect({ from: new Date("2023-01-01"), to: new Date("2023-01-02") })}
       >

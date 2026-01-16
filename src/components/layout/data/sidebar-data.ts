@@ -1,28 +1,29 @@
 import {
-  Construction,
-  LayoutDashboard,
-  Monitor,
-  Bug,
-  ListTodo,
-  FileX,
-  HelpCircle,
-  Lock,
+  AudioWaveform,
   Bell,
+  Bug,
+  Command,
+  Construction,
+  FileX,
+  GalleryVerticalEnd,
+  HelpCircle,
+  LayoutDashboard,
+  ListTodo,
+  Lock,
+  LockIcon,
+  MessagesSquare,
+  Monitor,
   Package,
   Palette,
   ServerOff,
   Settings,
-  Wrench,
   UserCog,
-  UserX,
   Users,
-  MessagesSquare,
-  AudioWaveform,
-  Command,
-  GalleryVerticalEnd,
-  LockIcon,
+  UserX,
+  Wrench,
 } from "lucide-react";
-import { type SidebarData } from "../types";
+
+import type { SidebarData } from "../types";
 
 export const sidebarData: SidebarData = {
   user: {

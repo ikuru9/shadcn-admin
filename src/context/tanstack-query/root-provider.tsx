@@ -1,9 +1,11 @@
-import { handleServerError } from "@/lib/handle-server-error";
-import { router } from "@/main";
 import { QueryCache, QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { toast } from "sonner";
 
+import { handleServerError } from "@/lib/handle-server-error";
+import { router } from "@/main";
+
+// biome-ignore lint/style/useComponentExportOnlyModules: getContext
 export function getContext() {
   const queryClient = new QueryClient({
     defaultOptions: {

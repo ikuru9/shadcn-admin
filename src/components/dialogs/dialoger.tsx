@@ -1,7 +1,7 @@
-import { useDialog } from "@/hooks/use-dialog";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { cn } from "@/lib/utils";
 import { AlertDialog, AlertDialogContent } from "@/components/ui/alert-dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { useDialog } from "@/hooks/use-dialog";
+import { cn } from "@/lib/utils";
 
 export function Dialoger() {
   const { dialogs, closeDialog, cancelDialog } = useDialog();
@@ -22,26 +22,19 @@ export function Dialoger() {
         if (isAlertDialog) {
           return (
             <AlertDialog key={key} open={open} onOpenChange={(open) => !open && cancelDialog()}>
-              <AlertDialogContent
-                className={cn(_props.className && _props.className)}
-                style={{ zIndex }}
-              >
+              <AlertDialogContent className={cn(_props.className && _props.className)} style={{ zIndex }}>
                 <Component {...props} onClose={closeDialog} onCancel={cancelDialog} />
               </AlertDialogContent>
             </AlertDialog>
           );
-        } else {
-          return (
-            <Dialog key={key} open={open} onOpenChange={(open) => !open && cancelDialog()}>
-              <DialogContent
-                className={cn(_props.className && _props.className)}
-                style={{ zIndex }}
-              >
-                <Component {...props} onClose={closeDialog} onCancel={cancelDialog} />
-              </DialogContent>
-            </Dialog>
-          );
         }
+        return (
+          <Dialog key={key} open={open} onOpenChange={(open) => !open && cancelDialog()}>
+            <DialogContent className={cn(_props.className && _props.className)} style={{ zIndex }}>
+              <Component {...props} onClose={closeDialog} onCancel={cancelDialog} />
+            </DialogContent>
+          </Dialog>
+        );
       })}
     </>
   );

@@ -1,11 +1,13 @@
-import { useState, useEffect, useRef } from "react";
-import { type Table } from "@tanstack/react-table";
+import { useEffect, useRef, useState } from "react";
+
+import type { Table } from "@tanstack/react-table";
 import { X } from "lucide-react";
-import { cn } from "@/lib/utils";
+
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 
 interface DataTableBulkActionsProps<TData> {
   table: Table<TData>;
@@ -58,7 +60,7 @@ export function DataTableBulkActions<TData>({
     if (!buttons) return;
 
     const currentIndex = Array.from(buttons).findIndex(
-      (button) => button === document.activeElement,
+      (button) => document.activeElement && document.activeElement === button,
     );
 
     switch (event.key) {
@@ -120,7 +122,7 @@ export function DataTableBulkActions<TData>({
   return (
     <>
       {/* Live region for screen reader announcements */}
-      <div aria-live="polite" aria-atomic="true" className="sr-only" role="status">
+      <div aria-live="polite" aria-atomic="true" className="sr-only">
         {announcement}
       </div>
 
@@ -134,7 +136,7 @@ export function DataTableBulkActions<TData>({
         className={cn(
           "fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-xl",
           "transition-all delay-100 duration-300 ease-out hover:scale-105",
-          "focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
         )}
       >
         <div
@@ -167,11 +169,7 @@ export function DataTableBulkActions<TData>({
           <Separator className="h-5" orientation="vertical" aria-hidden="true" />
 
           <div className="flex items-center gap-x-1 text-sm" id="bulk-actions-description">
-            <Badge
-              variant="default"
-              className="min-w-8 rounded-lg"
-              aria-label={`${selectedCount} selected`}
-            >
+            <Badge variant="default" className="min-w-8 rounded-lg" aria-label={`${selectedCount} selected`}>
               {selectedCount}
             </Badge>{" "}
             <span className="hidden sm:inline">

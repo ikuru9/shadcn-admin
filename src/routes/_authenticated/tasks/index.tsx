@@ -1,5 +1,6 @@
-import * as v from "valibot";
 import { createFileRoute } from "@tanstack/react-router";
+import * as v from "valibot";
+
 import { Tasks } from "@/features/tasks";
 import { priorities, statuses } from "@/features/tasks/data/data";
 

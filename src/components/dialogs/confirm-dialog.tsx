@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   AlertDialogAction,
   AlertDialogCancel,
@@ -7,6 +6,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
 
 export type ConfirmDialogProps = React.PropsWithChildren<{
   title: React.JSX.Element | string;

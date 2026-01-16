@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
+
 import { useNavigate } from "@tanstack/react-router";
 import {
-  type SortingState,
-  type VisibilityState,
   flexRender,
   getCoreRowModel,
   getFacetedRowModel,
@@ -10,20 +9,17 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  type SortingState,
   useReactTable,
+  type VisibilityState,
 } from "@tanstack/react-table";
-import { cn } from "@/lib/utils";
-import { type NavigateFn, useTableUrlState } from "@/hooks/use-table-url-state";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+
 import { DataTablePagination, DataTableToolbar } from "@/components/data-table";
-import { type Pet } from "../data/schema";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { type NavigateFn, useTableUrlState } from "@/hooks/use-table-url-state";
+import { cn } from "@/lib/utils";
+
+import type { Pet } from "../data/schema";
 import { DataTableBulkActions } from "./data-table-bulk-actions";
 import { petsColumns } from "./pets-columns";
 
@@ -46,13 +42,7 @@ export function PetsTable({ data, search, navigate }: DataTableProps) {
   // const [pagination, onPaginationChange] = useState<PaginationState>({ pageIndex: 0, pageSize: 10 })
 
   // Synced with URL states (keys/defaults mirror pet route search schema)
-  const {
-    columnFilters,
-    onColumnFiltersChange,
-    pagination,
-    onPaginationChange,
-    ensurePageInRange,
-  } = useTableUrlState({
+  const { columnFilters, onColumnFiltersChange, pagination, onPaginationChange, ensurePageInRange } = useTableUrlState({
     search,
     navigate,
     pagination: { defaultPage: 1, defaultPageSize: 10 },
@@ -135,9 +125,7 @@ export function PetsTable({ data, search, navigate }: DataTableProps) {
                       header.column.columnDef.meta?.thClassName,
                     )}
                   >
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(header.column.columnDef.header, header.getContext())}
+                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                   </TableHead>
                 ))}
               </TableRow>

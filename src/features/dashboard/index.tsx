@@ -1,6 +1,3 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ConfigDrawer } from "@/components/config-drawer";
 import { Header } from "@/components/layout/header";
 import { Main } from "@/components/layout/main";
@@ -8,6 +5,10 @@ import { TopNav } from "@/components/layout/top-nav";
 import { ProfileDropdown } from "@/components/profile-dropdown";
 import { Search } from "@/components/search";
 import { ThemeSwitch } from "@/components/theme-switch";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 import { Analytics } from "./components/analytics";
 import { Overview } from "./components/overview";
 import { RecentSales } from "./components/recent-sales";
@@ -29,7 +30,7 @@ export function Dashboard() {
       {/* ===== Main ===== */}
       <Main>
         <div className="mb-2 flex items-center justify-between space-y-2">
-          <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
+          <h1 className="font-bold text-2xl tracking-tight">Dashboard</h1>
           <div className="flex items-center space-x-2">
             <Button>Download</Button>
           </div>
@@ -51,8 +52,10 @@ export function Dashboard() {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
+                  <CardTitle className="font-medium text-sm">Total Revenue</CardTitle>
                   <svg
+                    role="img"
+                    aria-label="Total Revenue"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="none"
@@ -66,14 +69,16 @@ export function Dashboard() {
                   </svg>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">$45,231.89</div>
-                  <p className="text-xs text-muted-foreground">+20.1% from last month</p>
+                  <div className="font-bold text-2xl">$45,231.89</div>
+                  <p className="text-muted-foreground text-xs">+20.1% from last month</p>
                 </CardContent>
               </Card>
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Subscriptions</CardTitle>
+                  <CardTitle className="font-medium text-sm">Subscriptions</CardTitle>
                   <svg
+                    role="img"
+                    aria-label="Subscriptions"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="none"
@@ -89,14 +94,16 @@ export function Dashboard() {
                   </svg>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">+2350</div>
-                  <p className="text-xs text-muted-foreground">+180.1% from last month</p>
+                  <div className="font-bold text-2xl">+2350</div>
+                  <p className="text-muted-foreground text-xs">+180.1% from last month</p>
                 </CardContent>
               </Card>
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Sales</CardTitle>
+                  <CardTitle className="font-medium text-sm">Sales</CardTitle>
                   <svg
+                    role="img"
+                    aria-label="Sales"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="none"
@@ -111,14 +118,16 @@ export function Dashboard() {
                   </svg>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">+12,234</div>
-                  <p className="text-xs text-muted-foreground">+19% from last month</p>
+                  <div className="font-bold text-2xl">+12,234</div>
+                  <p className="text-muted-foreground text-xs">+19% from last month</p>
                 </CardContent>
               </Card>
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Active Now</CardTitle>
+                  <CardTitle className="font-medium text-sm">Active Now</CardTitle>
                   <svg
+                    role="img"
+                    aria-label="Active Now"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="none"
@@ -132,8 +141,8 @@ export function Dashboard() {
                   </svg>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">+573</div>
-                  <p className="text-xs text-muted-foreground">+201 since last hour</p>
+                  <div className="font-bold text-2xl">+573</div>
+                  <p className="text-muted-foreground text-xs">+201 since last hour</p>
                 </CardContent>
               </Card>
             </div>

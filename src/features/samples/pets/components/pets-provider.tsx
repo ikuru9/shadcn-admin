@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+
 import useDialogState from "@/hooks/use-dialog-state";
-import { type Pet } from "../data/schema";
+
+import type { Pet } from "../data/schema";
 
 type PetDialogType = "add" | "edit" | "delete";
 
@@ -20,8 +22,8 @@ export function PetsProvider({ children }: { children: React.ReactNode }) {
   return <PetContext value={{ open, setOpen, currentRow, setCurrentRow }}>{children}</PetContext>;
 }
 
-// oxlint-disable-next-line react-refresh/only-export-components
-export const usePets = () => {
+// biome-ignore lint/style/useComponentExportOnlyModules: usePets
+export function usePets() {
   const petContext = React.useContext(PetContext);
 
   if (!petContext) {
@@ -29,4 +31,4 @@ export const usePets = () => {
   }
 
   return petContext;
-};
+}

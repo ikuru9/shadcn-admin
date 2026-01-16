@@ -1,9 +1,11 @@
-import { type ColumnDef } from "@tanstack/react-table";
+import type { ColumnDef } from "@tanstack/react-table";
+
+import { DataTableColumnHeader } from "@/components/data-table";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
-import { DataTableColumnHeader } from "@/components/data-table";
+
 import { labels, priorities, statuses } from "../data/data";
-import { type Task } from "../data/schema";
+import type { Task } from "../data/schema";
 import { DataTableRowActions } from "./data-table-row-actions";
 
 export const tasksColumns: ColumnDef<Task>[] = [
@@ -11,9 +13,7 @@ export const tasksColumns: ColumnDef<Task>[] = [
     id: "select",
     header: ({ table }) => (
       <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
+        checked={table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")}
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
         className="translate-y-0.5"

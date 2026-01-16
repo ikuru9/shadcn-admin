@@ -1,6 +1,8 @@
 import * as React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+
+import { fireEvent, render, screen } from "@testing-library/react";
 import { vi } from "vitest";
+
 import { PasswordInput } from "@/components/custom-input/password-input";
 
 vi.mock("@/components/ui/button", () => ({

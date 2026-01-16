@@ -1,6 +1,8 @@
-import { type ReactNode } from "react";
+import type { ReactNode } from "react";
+
 import { Link, useLocation } from "@tanstack/react-router";
 import { ChevronRight } from "lucide-react";
+
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
   SidebarGroup,
@@ -13,6 +15,7 @@ import {
   SidebarMenuSubItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+
 import { Badge } from "../ui/badge";
 import {
   DropdownMenu,
@@ -22,12 +25,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import {
-  type NavCollapsible,
-  type NavItem,
-  type NavLink,
-  type NavGroup as NavGroupProps,
-} from "./types";
+import type { NavCollapsible, NavGroup as NavGroupProps, NavItem, NavLink } from "./types";
 
 export function NavGroup({ title, items }: NavGroupProps) {
   const { state, isMobile } = useSidebar();
@@ -73,11 +71,7 @@ function SidebarMenuLink({ item, href }: { item: NavLink; href: string }) {
 function SidebarMenuCollapsible({ item, href }: { item: NavCollapsible; href: string }) {
   const { setOpenMobile } = useSidebar();
   return (
-    <Collapsible
-      asChild
-      defaultOpen={checkIsActive(href, item, true)}
-      className="group/collapsible"
-    >
+    <Collapsible asChild defaultOpen={checkIsActive(href, item, true)} className="group/collapsible">
       <SidebarMenuItem>
         <CollapsibleTrigger asChild>
           <SidebarMenuButton tooltip={item.title}>

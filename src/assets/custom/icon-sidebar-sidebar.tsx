@@ -1,8 +1,10 @@
-import { type SVGProps } from "react";
+import type { SVGProps } from "react";
 
 export function IconSidebarSidebar(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
+      role="img"
+      aria-label="Sidebar Sidebar Icon"
       data-name="icon-sidebar-sidebar"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 79.86 51.14"

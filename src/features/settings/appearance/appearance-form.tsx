@@ -1,23 +1,16 @@
-import * as v from "valibot";
-import { useForm } from "react-hook-form";
-import { ChevronDown } from "lucide-react";
 import { valibotResolver } from "@hookform/resolvers/valibot";
+import { ChevronDown } from "lucide-react";
+import { useForm } from "react-hook-form";
+import * as v from "valibot";
+
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { fonts } from "@/config/fonts";
-import { showSubmittedData } from "@/lib/show-submitted-data";
-import { cn } from "@/lib/utils";
 import { useFont } from "@/context/font-provider";
 import { useTheme } from "@/context/theme-provider";
-import { Button, buttonVariants } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { showSubmittedData } from "@/lib/show-submitted-data";
+import { cn } from "@/lib/utils";
 
 const appearanceFormSchema = v.object({
   theme: v.picklist(["light", "dark"]),
@@ -76,9 +69,7 @@ export function AppearanceForm() {
                 </FormControl>
                 <ChevronDown className="absolute end-3 top-2.5 h-4 w-4 opacity-50" />
               </div>
-              <FormDescription className="font-manrope">
-                Set the font you want to use in the dashboard.
-              </FormDescription>
+              <FormDescription className="font-manrope">Set the font you want to use in the dashboard.</FormDescription>
               <FormMessage />
             </FormItem>
           )}

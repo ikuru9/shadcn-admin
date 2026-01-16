@@ -1,5 +1,7 @@
+import { useLocation, useNavigate } from "@tanstack/react-router";
+
 import { useAuthStore } from "@/stores/auth-store";
-import { useNavigate, useLocation } from "@tanstack/react-router";
+
 import { useDialog } from "./use-dialog";
 
 export function useSignOut(options?: { onConfirm?: () => Promise<void> }) {

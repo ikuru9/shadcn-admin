@@ -1,12 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+
 import { AuthLayout } from "../auth-layout";
 import { SignUpForm } from "./components/sign-up-form";
 
@@ -28,7 +23,7 @@ export function SignUp() {
           <SignUpForm />
         </CardContent>
         <CardFooter>
-          <p className="px-8 text-center text-sm text-muted-foreground">
+          <p className="px-8 text-center text-muted-foreground text-sm">
             By creating an account, you agree to our{" "}
             <a href="/terms" className="underline underline-offset-4 hover:text-primary">
               Terms of Service

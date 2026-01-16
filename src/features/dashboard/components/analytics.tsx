@@ -1,4 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+
 import { AnalyticsChart } from "./analytics-chart";
 
 export function Analytics() {
@@ -16,8 +17,10 @@ export function Analytics() {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Clicks</CardTitle>
+            <CardTitle className="font-medium text-sm">Total Clicks</CardTitle>
             <svg
+              role="img"
+              aria-label="Total Clicks"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="none"
@@ -32,14 +35,16 @@ export function Analytics() {
             </svg>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">1,248</div>
-            <p className="text-xs text-muted-foreground">+12.4% vs last week</p>
+            <div className="font-bold text-2xl">1,248</div>
+            <p className="text-muted-foreground text-xs">+12.4% vs last week</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Unique Visitors</CardTitle>
+            <CardTitle className="font-medium text-sm">Unique Visitors</CardTitle>
             <svg
+              role="img"
+              aria-label="Unique Visitors"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="none"
@@ -54,14 +59,16 @@ export function Analytics() {
             </svg>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">832</div>
-            <p className="text-xs text-muted-foreground">+5.8% vs last week</p>
+            <div className="font-bold text-2xl">832</div>
+            <p className="text-muted-foreground text-xs">+5.8% vs last week</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Bounce Rate</CardTitle>
+            <CardTitle className="font-medium text-sm">Bounce Rate</CardTitle>
             <svg
+              role="img"
+              aria-label="Bounce Rate Icon"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="none"
@@ -75,14 +82,16 @@ export function Analytics() {
             </svg>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">42%</div>
-            <p className="text-xs text-muted-foreground">-3.2% vs last week</p>
+            <div className="font-bold text-2xl">42%</div>
+            <p className="text-muted-foreground text-xs">-3.2% vs last week</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Avg. Session</CardTitle>
+            <CardTitle className="font-medium text-sm">Avg. Session</CardTitle>
             <svg
+              role="img"
+              aria-label="Avg. Session"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="none"
@@ -97,8 +106,8 @@ export function Analytics() {
             </svg>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">3m 24s</div>
-            <p className="text-xs text-muted-foreground">+18s vs last week</p>
+            <div className="font-bold text-2xl">3m 24s</div>
+            <p className="text-muted-foreground text-xs">+18s vs last week</p>
           </CardContent>
         </Card>
       </div>
@@ -160,12 +169,12 @@ function SimpleBarList({
         return (
           <li key={i.name} className="flex items-center justify-between gap-3">
             <div className="min-w-0 flex-1">
-              <div className="mb-1 truncate text-xs text-muted-foreground">{i.name}</div>
+              <div className="mb-1 truncate text-muted-foreground text-xs">{i.name}</div>
               <div className="h-2.5 w-full rounded-full bg-muted">
                 <div className={`h-2.5 rounded-full ${barClass}`} style={{ width }} />
               </div>
             </div>
-            <div className="ps-2 text-xs font-medium tabular-nums">{valueFormatter(i.value)}</div>
+            <div className="ps-2 font-medium text-xs tabular-nums">{valueFormatter(i.value)}</div>
           </li>
         );
       })}

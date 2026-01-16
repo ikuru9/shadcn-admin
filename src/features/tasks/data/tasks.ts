@@ -8,14 +8,12 @@ export const tasks = [
     createdAt: "2025-02-21T11:51:02.677Z",
     updatedAt: "2026-01-12T22:34:00.622Z",
     assignee: "Rodney Wintheiser",
-    description:
-      "Delibero comparo decerno suspendo vulgus spiculum textilis assumenda. Thesaurus venio acidus.",
+    description: "Delibero comparo decerno suspendo vulgus spiculum textilis assumenda. Thesaurus venio acidus.",
     dueDate: "2026-07-12T03:06:16.864Z",
   },
   {
     id: "TASK-5736",
-    title:
-      "Admoneo vehemens suscipit toties desidero tollo allatus blanditiis caute delibero degenero.",
+    title: "Admoneo vehemens suscipit toties desidero tollo allatus blanditiis caute delibero degenero.",
     status: "canceled",
     label: "bug",
     priority: "medium",
@@ -28,8 +26,7 @@ export const tasks = [
   },
   {
     id: "TASK-7918",
-    title:
-      "Ulterius vir amita verbum condico trepide velociter adicio autus claustrum quis aiunt aranea.",
+    title: "Ulterius vir amita verbum condico trepide velociter adicio autus claustrum quis aiunt aranea.",
     status: "done",
     label: "documentation",
     priority: "high",
@@ -68,8 +65,7 @@ export const tasks = [
   },
   {
     id: "TASK-4715",
-    title:
-      "Solutio cohaero baiulus brevis animadverto adfero adeo callide calco quibusdam vapulus tergum.",
+    title: "Solutio cohaero baiulus brevis animadverto adfero adeo callide calco quibusdam vapulus tergum.",
     status: "canceled",
     label: "bug",
     priority: "medium",
@@ -114,8 +110,7 @@ export const tasks = [
     createdAt: "2025-08-24T09:47:22.324Z",
     updatedAt: "2026-01-13T13:58:40.834Z",
     assignee: "Cora Ratke III",
-    description:
-      "Arto succedo sustineo vitium correptius. Vos amor tempora ars totam iste non video.",
+    description: "Arto succedo sustineo vitium correptius. Vos amor tempora ars totam iste non video.",
     dueDate: "2026-06-21T04:17:04.293Z",
   },
   {
@@ -159,8 +154,7 @@ export const tasks = [
   },
   {
     id: "TASK-3031",
-    title:
-      "Damno tribuo mollitia solio sustineo crinis crudelis unde tollo tubineus audeo contigo dens voco magnam.",
+    title: "Damno tribuo mollitia solio sustineo crinis crudelis unde tollo tubineus audeo contigo dens voco magnam.",
     status: "backlog",
     label: "bug",
     priority: "medium",
@@ -198,8 +192,7 @@ export const tasks = [
   },
   {
     id: "TASK-8329",
-    title:
-      "Vinco umbra vix delego deorsum occaecati vilitas corrigo patrocinor placeat laborum angustus.",
+    title: "Vinco umbra vix delego deorsum occaecati vilitas corrigo patrocinor placeat laborum angustus.",
     status: "done",
     label: "bug",
     priority: "high",
@@ -237,8 +230,7 @@ export const tasks = [
   },
   {
     id: "TASK-8515",
-    title:
-      "Claudeo sol curiositas aestas tactus numquam conitor causa claro tenus curriculum civitas celer.",
+    title: "Claudeo sol curiositas aestas tactus numquam conitor causa claro tenus curriculum civitas celer.",
     status: "in progress",
     label: "documentation",
     priority: "low",
@@ -271,8 +263,7 @@ export const tasks = [
     createdAt: "2025-12-29T14:46:10.341Z",
     updatedAt: "2026-01-13T11:31:38.222Z",
     assignee: "Lena Terry",
-    description:
-      "Reprehenderit uter ab. Ad inventore atque officia abscido. Temporibus uter despecto denuo adiuvo.",
+    description: "Reprehenderit uter ab. Ad inventore atque officia abscido. Temporibus uter despecto denuo adiuvo.",
     dueDate: "2026-10-14T16:26:57.075Z",
   },
   {
@@ -291,8 +282,7 @@ export const tasks = [
   },
   {
     id: "TASK-4142",
-    title:
-      "Adsidue velit enim cervus turpis decipio sortitus vulgivagus ulterius victoria unus aeger.",
+    title: "Adsidue velit enim cervus turpis decipio sortitus vulgivagus ulterius victoria unus aeger.",
     status: "in progress",
     label: "bug",
     priority: "medium",
@@ -304,8 +294,7 @@ export const tasks = [
   },
   {
     id: "TASK-8493",
-    title:
-      "Laudantium substantia beneficium studio quas sunt argumentum alius virgo culpo sed vitium.",
+    title: "Laudantium substantia beneficium studio quas sunt argumentum alius virgo culpo sed vitium.",
     status: "backlog",
     label: "bug",
     priority: "medium",
@@ -356,8 +345,7 @@ export const tasks = [
   },
   {
     id: "TASK-1921",
-    title:
-      "Cado condico conatus comminor uberrime cubicularis commodo aro synagoga cursim quam amaritudo odit aveho.",
+    title: "Cado condico conatus comminor uberrime cubicularis commodo aro synagoga cursim quam amaritudo odit aveho.",
     status: "canceled",
     label: "documentation",
     priority: "high",
@@ -418,8 +406,7 @@ export const tasks = [
   },
   {
     id: "TASK-7202",
-    title:
-      "Claudeo alius absum delectus vitiosus nesciunt coadunatio maxime soluta possimus depereo.",
+    title: "Claudeo alius absum delectus vitiosus nesciunt coadunatio maxime soluta possimus depereo.",
     status: "todo",
     label: "bug",
     priority: "high",
@@ -443,8 +430,7 @@ export const tasks = [
   },
   {
     id: "TASK-4416",
-    title:
-      "Vacuus benevolentia causa placeat denuo coruscus carmen combibo ustilo torrens defungo usus valeo.",
+    title: "Vacuus benevolentia causa placeat denuo coruscus carmen combibo ustilo torrens defungo usus valeo.",
     status: "canceled",
     label: "bug",
     priority: "medium",
@@ -518,8 +504,7 @@ export const tasks = [
   },
   {
     id: "TASK-1033",
-    title:
-      "Vir curis amaritudo calculus repudiandae verbera itaque coruscus tui suffoco absens optio tamquam.",
+    title: "Vir curis amaritudo calculus repudiandae verbera itaque coruscus tui suffoco absens optio tamquam.",
     status: "todo",
     label: "bug",
     priority: "high",
@@ -544,8 +529,7 @@ export const tasks = [
   },
   {
     id: "TASK-6568",
-    title:
-      "Quas bellicus subseco cumque sto suadeo despecto distinctio et vilitas tabgo coruscus nisi.",
+    title: "Quas bellicus subseco cumque sto suadeo despecto distinctio et vilitas tabgo coruscus nisi.",
     status: "done",
     label: "feature",
     priority: "medium",
@@ -603,8 +587,7 @@ export const tasks = [
     createdAt: "2025-12-21T00:08:43.597Z",
     updatedAt: "2026-01-13T13:03:24.658Z",
     assignee: "Timothy Wisozk",
-    description:
-      "Sordeo aeternus advoco victus creo absque. Cubicularis crudelis allatus. Aestas theologus stipes.",
+    description: "Sordeo aeternus advoco victus creo absque. Cubicularis crudelis allatus. Aestas theologus stipes.",
     dueDate: "2026-09-13T00:35:23.812Z",
   },
   {
@@ -634,8 +617,7 @@ export const tasks = [
   },
   {
     id: "TASK-8139",
-    title:
-      "Somnus adsidue umbra cunctatio a velociter verbum crustulum viriliter absum mollitia vitium solutio vergo.",
+    title: "Somnus adsidue umbra cunctatio a velociter verbum crustulum viriliter absum mollitia vitium solutio vergo.",
     status: "in progress",
     label: "documentation",
     priority: "medium",
@@ -648,8 +630,7 @@ export const tasks = [
   },
   {
     id: "TASK-3380",
-    title:
-      "Admiratio vesper spero tui suadeo arx thymbra deleniti cotidie solum tergum odio tripudio charisma ventus.",
+    title: "Admiratio vesper spero tui suadeo arx thymbra deleniti cotidie solum tergum odio tripudio charisma ventus.",
     status: "canceled",
     label: "feature",
     priority: "medium",
@@ -788,8 +769,7 @@ export const tasks = [
   },
   {
     id: "TASK-8772",
-    title:
-      "Terebro thymum angelus aliquid crur volubilis nemo caelestis caritas verus triumphus quam.",
+    title: "Terebro thymum angelus aliquid crur volubilis nemo caelestis caritas verus triumphus quam.",
     status: "in progress",
     label: "bug",
     priority: "low",
@@ -827,8 +807,7 @@ export const tasks = [
   },
   {
     id: "TASK-9397",
-    title:
-      "Curtus cubicularis termes nam claro amicitia volo sopor conitor admoveo conventus esse toties cenaculum.",
+    title: "Curtus cubicularis termes nam claro amicitia volo sopor conitor admoveo conventus esse toties cenaculum.",
     status: "todo",
     label: "bug",
     priority: "high",
@@ -841,8 +820,7 @@ export const tasks = [
   },
   {
     id: "TASK-9933",
-    title:
-      "Ubi clamo curriculum carcer terror sponte basium credo aduro tredecim creator apparatus utor.",
+    title: "Ubi clamo curriculum carcer terror sponte basium credo aduro tredecim creator apparatus utor.",
     status: "done",
     label: "bug",
     priority: "low",
@@ -905,8 +883,7 @@ export const tasks = [
   },
   {
     id: "TASK-2542",
-    title:
-      "Ager crebro vapulus defleo velociter illo atrocitas uberrime labore voluptatibus aetas.",
+    title: "Ager crebro vapulus defleo velociter illo atrocitas uberrime labore voluptatibus aetas.",
     status: "canceled",
     label: "feature",
     priority: "medium",
@@ -918,8 +895,7 @@ export const tasks = [
   },
   {
     id: "TASK-4998",
-    title:
-      "Demergo terga amissio dedico hic terga vesco pel occaecati contego cursim approbo tredecim.",
+    title: "Demergo terga amissio dedico hic terga vesco pel occaecati contego cursim approbo tredecim.",
     status: "done",
     label: "bug",
     priority: "low",
@@ -943,16 +919,14 @@ export const tasks = [
   },
   {
     id: "TASK-3524",
-    title:
-      "Adaugeo ullam patrocinor truculenter ratione colo alii cursus stultus defero abscido tubineus arto.",
+    title: "Adaugeo ullam patrocinor truculenter ratione colo alii cursus stultus defero abscido tubineus arto.",
     status: "in progress",
     label: "bug",
     priority: "low",
     createdAt: "2025-02-08T21:39:50.771Z",
     updatedAt: "2026-01-13T12:01:20.477Z",
     assignee: "Philip O'Connell",
-    description:
-      "Virga capio caveo stipes unde. Voluptas ascisco asporto. Benevolentia claustrum considero.",
+    description: "Virga capio caveo stipes unde. Voluptas ascisco asporto. Benevolentia claustrum considero.",
     dueDate: "2026-06-05T14:33:45.198Z",
   },
   {
@@ -995,8 +969,7 @@ export const tasks = [
   },
   {
     id: "TASK-9033",
-    title:
-      "Tepesco utor nulla aurum termes campana cupiditas audax culpo ventosus excepturi sed voco acsi.",
+    title: "Tepesco utor nulla aurum termes campana cupiditas audax culpo ventosus excepturi sed voco acsi.",
     status: "in progress",
     label: "feature",
     priority: "high",
@@ -1033,8 +1006,7 @@ export const tasks = [
   },
   {
     id: "TASK-2827",
-    title:
-      "Corroboro laboriosam aegrotatio vacuus debeo valde depraedor crebro damnatio ara socius auxilium utor.",
+    title: "Corroboro laboriosam aegrotatio vacuus debeo valde depraedor crebro damnatio ara socius auxilium utor.",
     status: "in progress",
     label: "bug",
     priority: "medium",
@@ -1072,8 +1044,7 @@ export const tasks = [
   },
   {
     id: "TASK-3437",
-    title:
-      "Delectus synagoga accusantium cicuta rerum curatio tutis ut damno deporto aestas temporibus.",
+    title: "Delectus synagoga accusantium cicuta rerum curatio tutis ut damno deporto aestas temporibus.",
     status: "in progress",
     label: "feature",
     priority: "high",
@@ -1100,8 +1071,7 @@ export const tasks = [
   },
   {
     id: "TASK-5899",
-    title:
-      "Ventosus volo demitto decimus inventore avaritia ab attollo carus reprehenderit spoliatio volva ter sub.",
+    title: "Ventosus volo demitto decimus inventore avaritia ab attollo carus reprehenderit spoliatio volva ter sub.",
     status: "todo",
     label: "bug",
     priority: "high",
@@ -1133,8 +1103,7 @@ export const tasks = [
     createdAt: "2025-01-26T22:42:12.282Z",
     updatedAt: "2026-01-13T00:13:54.128Z",
     assignee: "Dr. Kenny McCullough",
-    description:
-      "Bellum curto tripudio adficio trans. Tot adfectus debilito bos nostrum molestiae tergum.",
+    description: "Bellum curto tripudio adficio trans. Tot adfectus debilito bos nostrum molestiae tergum.",
     dueDate: "2026-10-26T09:16:57.411Z",
   },
   {
@@ -1146,8 +1115,7 @@ export const tasks = [
     createdAt: "2025-09-28T09:21:57.471Z",
     updatedAt: "2026-01-13T10:30:52.703Z",
     assignee: "Barbara Pagac I",
-    description:
-      "Tener ante thymbra eveniet ver aggero taceo complectus thema. Tergiversatio cotidie agnitio.",
+    description: "Tener ante thymbra eveniet ver aggero taceo complectus thema. Tergiversatio cotidie agnitio.",
     dueDate: "2026-01-17T01:54:16.743Z",
   },
   {
@@ -1203,8 +1171,7 @@ export const tasks = [
   },
   {
     id: "TASK-6328",
-    title:
-      "Subvenio tergo caries pecus depereo pauci aequus vallum ter antea ratione cubo aurum victus verto.",
+    title: "Subvenio tergo caries pecus depereo pauci aequus vallum ter antea ratione cubo aurum victus verto.",
     status: "backlog",
     label: "feature",
     priority: "medium",
@@ -1261,8 +1228,7 @@ export const tasks = [
     createdAt: "2026-01-09T11:12:12.001Z",
     updatedAt: "2026-01-12T21:34:03.386Z",
     assignee: "Lee Herzog",
-    description:
-      "Sponte aetas temperantia. Demo damno virga. Spiritus subiungo comptus suadeo pauci.",
+    description: "Sponte aetas temperantia. Demo damno virga. Spiritus subiungo comptus suadeo pauci.",
     dueDate: "2026-06-09T15:58:18.962Z",
   },
   {
@@ -1288,8 +1254,7 @@ export const tasks = [
     createdAt: "2025-01-26T23:54:07.749Z",
     updatedAt: "2026-01-13T07:08:50.490Z",
     assignee: "Nicole Leannon",
-    description:
-      "Vita suffoco aveho complectus uxor. Alias vereor claudeo cornu bonus validus tamisium acidus umbra.",
+    description: "Vita suffoco aveho complectus uxor. Alias vereor claudeo cornu bonus validus tamisium acidus umbra.",
     dueDate: "2026-11-19T07:04:19.088Z",
   },
 ];

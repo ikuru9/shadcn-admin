@@ -1,11 +1,13 @@
-import { type ColumnDef } from "@tanstack/react-table";
-import { cn } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
-import { Checkbox } from "@/components/ui/checkbox";
+import type { ColumnDef } from "@tanstack/react-table";
+
 import { DataTableColumnHeader } from "@/components/data-table";
 import { LongText } from "@/components/long-text";
+import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
 import { petsStatuses } from "@/constants/pets";
-import { type Pet } from "../data/schema";
+import { cn } from "@/lib/utils";
+
+import type { Pet } from "../data/schema";
 import { DataTableRowActions } from "./data-table-row-actions";
 
 export const petsColumns: ColumnDef<Pet>[] = [
@@ -13,9 +15,7 @@ export const petsColumns: ColumnDef<Pet>[] = [
     id: "select",
     header: ({ table }) => (
       <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
+        checked={table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")}
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
         className="translate-y-0.5"

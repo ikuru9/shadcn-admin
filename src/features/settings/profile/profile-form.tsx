@@ -1,28 +1,15 @@
-import * as v from "valibot";
-import { useFieldArray, useForm } from "react-hook-form";
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { Link } from "@tanstack/react-router";
+import { useFieldArray, useForm } from "react-hook-form";
+import * as v from "valibot";
+
+import { Button } from "@/components/ui/button";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { showSubmittedData } from "@/lib/show-submitted-data";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 
 const profileFormSchema = v.object({
   username: v.pipe(
@@ -32,9 +19,7 @@ const profileFormSchema = v.object({
   ),
   email: v.pipe(v.string(), v.email("Please select an email to display.")),
   bio: v.pipe(v.string(), v.maxLength(160), v.minLength(4)),
-  urls: v.optional(
-    v.array(v.object({ value: v.pipe(v.string(), v.url("Please enter a valid URL.")) })),
-  ),
+  urls: v.optional(v.array(v.object({ value: v.pipe(v.string(), v.url("Please enter a valid URL.")) }))),
 });
 
 type ProfileFormValues = v.InferOutput<typeof profileFormSchema>;
@@ -70,8 +55,8 @@ export function ProfileForm() {
                 <Input placeholder="shadcn" {...field} />
               </FormControl>
               <FormDescription>
-                This is your public display name. It can be your real name or a pseudonym. You can
-                only change this once every 30 days.
+                This is your public display name. It can be your real name or a pseudonym. You can only change this once
+                every 30 days.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -109,11 +94,7 @@ export function ProfileForm() {
             <FormItem>
               <FormLabel>Bio</FormLabel>
               <FormControl>
-                <Textarea
-                  placeholder="Tell us a little bit about yourself"
-                  className="resize-none"
-                  {...field}
-                />
+                <Textarea placeholder="Tell us a little bit about yourself" className="resize-none" {...field} />
               </FormControl>
               <FormDescription>
                 You can <span>@mention</span> other users and organizations to link to them.
@@ -142,13 +123,7 @@ export function ProfileForm() {
               )}
             />
           ))}
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            className="mt-2"
-            onClick={() => append({ value: "" })}
-          >
+          <Button type="button" variant="outline" size="sm" className="mt-2" onClick={() => append({ value: "" })}>
             Add URL
           </Button>
         </div>

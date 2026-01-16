@@ -11,7 +11,9 @@ function Fallback({ error, resetErrorBoundary }: FallbackProps) {
 
       <pre style={{ color: "red" }}>{error.message}</pre>
 
-      <button onClick={resetErrorBoundary}>Retry</button>
+      <button type="button" onClick={resetErrorBoundary}>
+        Retry
+      </button>
     </div>
   );
 }

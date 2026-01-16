@@ -1,13 +1,8 @@
 import { Loader } from "lucide-react";
-import { cn } from "@/lib/utils";
+
 import { FormControl } from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { cn } from "@/lib/utils";
 
 interface SelectDropdownProps {
   onValueChange?: (value: string) => void;
@@ -30,9 +25,7 @@ export function SelectDropdown({
   className = "",
   isControlled = false,
 }: SelectDropdownProps) {
-  const defaultState = isControlled
-    ? { value: defaultValue, onValueChange }
-    : { defaultValue, onValueChange };
+  const defaultState = isControlled ? { value: defaultValue, onValueChange } : { defaultValue, onValueChange };
   return (
     <Select {...defaultState}>
       <FormControl>

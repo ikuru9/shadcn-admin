@@ -17,7 +17,7 @@ This repository is a React 19 application built with Vite, TanStack Router, Vali
 - **Lucide React** for icons
 - **React Hook Form** for form handling
 - **Lefthook** for git hooks
-- **oxlint** + **oxfmt** for code quality
+- **biome** for code quality
 - **commitizen** + **commitlint** for conventional commits
 
 ## Essential Commands
@@ -54,8 +54,8 @@ pnpm test --run --reporter=verbose date-picker
 ### Code Quality & Formatting
 
 ```bash
-pnpm lint          # Lint entire repo (oxlint)
-pnpm fmt           # Format entire repo (oxfmt)
+pnpm lint          # Lint entire repo (biome)
+pnpm fmt           # Format entire repo (biome)
 pnpm lint:staged   # Lint/formatted staged files (pre-commit)
 pnpm fmt:staged    # Format staged files (pre-commit)
 ```

@@ -1,6 +1,8 @@
-import { type SVGProps } from "react";
-import { Root as Radio, Item } from "@radix-ui/react-radio-group";
+import type { SVGProps } from "react";
+
+import { Item, Root as Radio } from "@radix-ui/react-radio-group";
 import { CircleCheck, RotateCcw, Settings } from "lucide-react";
+
 import { IconDir } from "@/assets/custom/icon-dir";
 import { IconLayoutCompact } from "@/assets/custom/icon-layout-compact";
 import { IconLayoutDefault } from "@/assets/custom/icon-layout-default";
@@ -11,10 +13,6 @@ import { IconSidebarSidebar } from "@/assets/custom/icon-sidebar-sidebar";
 import { IconThemeDark } from "@/assets/custom/icon-theme-dark";
 import { IconThemeLight } from "@/assets/custom/icon-theme-light";
 import { IconThemeSystem } from "@/assets/custom/icon-theme-system";
-import { cn } from "@/lib/utils";
-import { useDirection } from "@/context/direction-provider";
-import { type Collapsible, useLayout } from "@/context/layout-provider";
-import { useTheme } from "@/context/theme-provider";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -25,6 +23,11 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useDirection } from "@/context/direction-provider";
+import { type Collapsible, useLayout } from "@/context/layout-provider";
+import { useTheme } from "@/context/theme-provider";
+import { cn } from "@/lib/utils";
+
 import { useSidebar } from "./ui/sidebar";
 
 export function ConfigDrawer() {
@@ -67,11 +70,7 @@ export function ConfigDrawer() {
           <DirConfig />
         </div>
         <SheetFooter className="gap-2">
-          <Button
-            variant="destructive"
-            onClick={handleReset}
-            aria-label="Reset all settings to default values"
-          >
+          <Button variant="destructive" onClick={handleReset} aria-label="Reset all settings to default values">
             Reset
           </Button>
         </SheetFooter>
@@ -92,12 +91,7 @@ function SectionTitle({
   className?: string;
 }) {
   return (
-    <div
-      className={cn(
-        "mb-2 flex items-center gap-2 text-sm font-semibold text-muted-foreground",
-        className,
-      )}
-    >
+    <div className={cn("mb-2 flex items-center gap-2 font-semibold text-muted-foreground text-sm", className)}>
       {title}
       {showReset && onReset && (
         <Button size="icon" variant="secondary" className="size-4 rounded-full" onClick={onReset}>
@@ -163,11 +157,7 @@ function ThemeConfig() {
   const { defaultTheme, theme, setTheme } = useTheme();
   return (
     <div>
-      <SectionTitle
-        title="Theme"
-        showReset={theme !== defaultTheme}
-        onReset={() => setTheme(defaultTheme)}
-      />
+      <SectionTitle title="Theme" showReset={theme !== defaultTheme} onReset={() => setTheme(defaultTheme)} />
       <Radio
         value={theme}
         onValueChange={setTheme}
@@ -206,11 +196,7 @@ function SidebarConfig() {
   const { defaultVariant, variant, setVariant } = useLayout();
   return (
     <div className="max-md:hidden">
-      <SectionTitle
-        title="Sidebar"
-        showReset={defaultVariant !== variant}
-        onReset={() => setVariant(defaultVariant)}
-      />
+      <SectionTitle title="Sidebar" showReset={defaultVariant !== variant} onReset={() => setVariant(defaultVariant)} />
       <Radio
         value={variant}
         onValueChange={setVariant}
@@ -306,11 +292,7 @@ function DirConfig() {
   const { defaultDir, dir, setDir } = useDirection();
   return (
     <div>
-      <SectionTitle
-        title="Direction"
-        showReset={defaultDir !== dir}
-        onReset={() => setDir(defaultDir)}
-      />
+      <SectionTitle title="Direction" showReset={defaultDir !== dir} onReset={() => setDir(defaultDir)} />
       <Radio
         value={dir}
         onValueChange={setDir}

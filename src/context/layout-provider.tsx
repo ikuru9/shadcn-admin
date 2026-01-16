@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+
 import { getCookie, setCookie } from "@/lib/cookies";
 
 export type Collapsible = "offcanvas" | "icon" | "none";
@@ -71,7 +72,7 @@ export function LayoutProvider({ children }: LayoutProviderProps) {
 }
 
 // Define the hook for the provider
-// oxlint-disable-next-line react-refresh/only-export-components
+// biome-ignore lint/style/useComponentExportOnlyModules: useLayout
 export function useLayout() {
   const context = useContext(LayoutContext);
   if (!context) {

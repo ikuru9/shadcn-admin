@@ -1,14 +1,15 @@
 "use client";
 
 import * as React from "react";
+
+import { isValid, toDate } from "date-fns";
 import { CalendarIcon, MinusIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { formatDate } from "@/lib/formatter";
-import { isValid, toDate } from "date-fns";
+import { cn } from "@/lib/utils";
 
 interface DateRangePickerProps {
   from?: Date | null;
@@ -88,12 +89,7 @@ function DateRangePicker({
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger>
-        <div
-          className={cn(
-            "relative w-full flex items-center gap-2",
-            disabled && "pointer-events-none opacity-50",
-          )}
-        >
+        <div className={cn("relative flex w-full items-center gap-2", disabled && "pointer-events-none opacity-50")}>
           <div className="relative flex-1">
             <Input
               type="text"
@@ -107,9 +103,9 @@ function DateRangePicker({
               aria-describedby={fromInput ? "selected-date" : undefined}
               className={cn("pr-10", !from && "text-muted-foreground")}
             />
-            <CalendarIcon className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground pointer-events-none" />
+            <CalendarIcon className="pointer-events-none absolute top-1/2 right-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           </div>
-          <MinusIcon className="h-4 w-4 text-muted-foreground shrink-0" />
+          <MinusIcon className="h-4 w-4 shrink-0 text-muted-foreground" />
           <div className="relative flex-1">
             <Input
               type="text"
@@ -123,7 +119,7 @@ function DateRangePicker({
               aria-describedby={toInput ? "selected-date" : undefined}
               className={cn("pr-10", !to && "text-muted-foreground")}
             />
-            <CalendarIcon className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground pointer-events-none" />
+            <CalendarIcon className="pointer-events-none absolute top-1/2 right-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           </div>
         </div>
       </PopoverTrigger>

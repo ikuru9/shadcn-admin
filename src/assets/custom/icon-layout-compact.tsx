@@ -1,23 +1,16 @@
-import { type SVGProps } from "react";
+import type { SVGProps } from "react";
 
 export function IconLayoutCompact(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
+      role="img"
+      aria-label="Layout Compact Icon"
       data-name="icon-layout-compact"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 79.86 51.14"
       {...props}
     >
-      <rect
-        x={5.84}
-        y={5.2}
-        width={4}
-        height={40}
-        rx={2}
-        ry={2}
-        strokeLinecap="round"
-        strokeMiterlimit={10}
-      />
+      <rect x={5.84} y={5.2} width={4} height={40} rx={2} ry={2} strokeLinecap="round" strokeMiterlimit={10} />
       <g stroke="#fff" strokeLinecap="round" strokeMiterlimit={10}>
         <path fill="none" opacity={0.66} strokeWidth="2px" d="M7.26 11.56L8.37 11.56" />
         <path fill="none" opacity={0.51} strokeWidth="2px" d="M7.26 14.49L8.37 14.49" />

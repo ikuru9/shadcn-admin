@@ -1,9 +1,4 @@
-import axios, {
-  type AxiosError,
-  type AxiosHeaders,
-  type AxiosRequestConfig,
-  type AxiosResponse,
-} from "axios";
+import axios, { type AxiosError, type AxiosHeaders, type AxiosRequestConfig, type AxiosResponse } from "axios";
 
 declare const AXIOS_BASE: string;
 declare const AXIOS_HEADERS: string;
@@ -34,8 +29,7 @@ export type ResponseErrorConfig<TError = unknown> = TError;
 
 export const axiosInstance = axios.create({
   baseURL: typeof AXIOS_BASE !== "undefined" ? AXIOS_BASE : undefined,
-  headers:
-    typeof AXIOS_HEADERS !== "undefined" ? (JSON.parse(AXIOS_HEADERS) as AxiosHeaders) : undefined,
+  headers: typeof AXIOS_HEADERS !== "undefined" ? (JSON.parse(AXIOS_HEADERS) as AxiosHeaders) : undefined,
 });
 
 export const client = async <TData, TError = unknown, TVariables = unknown>(

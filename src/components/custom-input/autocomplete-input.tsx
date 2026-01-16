@@ -1,11 +1,12 @@
-import { CommandGroup, CommandItem, CommandList, CommandInput } from "../ui/command";
+import { type KeyboardEvent, useCallback, useRef, useState } from "react";
+
 import { Command as CommandPrimitive } from "cmdk";
-import { useState, useRef, useCallback, type KeyboardEvent } from "react";
-
-import { Skeleton } from "../ui/skeleton";
-
 import { Check } from "lucide-react";
+
 import { cn } from "@/lib/utils";
+
+import { CommandGroup, CommandInput, CommandItem, CommandList } from "../ui/command";
+import { Skeleton } from "../ui/skeleton";
 
 export type Option = Record<"value" | "label", string> & Record<string, string>;
 
@@ -103,7 +104,7 @@ export const AutoComplete = ({
       <div className="relative mt-1">
         <div
           className={cn(
-            "animate-in fade-in-0 zoom-in-95 absolute top-0 z-10 w-full rounded-xl bg-white outline-none",
+            "fade-in-0 zoom-in-95 absolute top-0 z-10 w-full animate-in rounded-xl bg-white outline-none",
             isOpen ? "block" : "hidden",
           )}
         >

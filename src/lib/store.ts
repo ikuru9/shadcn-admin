@@ -11,13 +11,11 @@ export interface MantineStore<Value> {
   subscribe: (callback: MantineStoreSubscriber<Value>) => () => void;
 }
 
-// oxlint-disable-next-line typescript/no-explicit-any
+// biome-ignore lint/suspicious/noExplicitAny: 라이브러리 타입 정의가 불분명함
 export type MantineStoreValue<Store extends MantineStore<any>> = ReturnType<Store["getState"]>;
 
-// oxlint-disable-next-line typescript/no-explicit-any
-export function createStore<Value extends Record<string, any>>(
-  initialState: Value,
-): MantineStore<Value> {
+// biome-ignore lint/suspicious/noExplicitAny: 라이브러리 타입 정의가 불분명함
+export function createStore<Value extends Record<string, any>>(initialState: Value): MantineStore<Value> {
   let state = initialState;
   let initialized = false;
   const listeners = new Set<MantineStoreSubscriber<Value>>();
@@ -33,7 +31,9 @@ export function createStore<Value extends Record<string, any>>(
 
     setState(value) {
       this.updateState(value);
-      listeners.forEach((listener) => listener(state));
+      listeners.forEach((listener) => {
+        listener(state);
+      });
     },
 
     initialize(value) {
@@ -49,8 +49,7 @@ export function createStore<Value extends Record<string, any>>(
     },
   };
 }
-
-// oxlint-disable-next-line typescript/no-explicit-any
+// biome-ignore lint/suspicious/noExplicitAny: 라이브러리 타입 정의가 불분명함
 export function useStore<Store extends MantineStore<any>>(store: Store) {
   return useSyncExternalStore<MantineStoreValue<Store>>(
     store.subscribe,

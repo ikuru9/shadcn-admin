@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
+
 import {
-  type SortingState,
-  type VisibilityState,
   flexRender,
   getCoreRowModel,
   getFacetedRowModel,
@@ -9,21 +8,18 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  type SortingState,
   useReactTable,
+  type VisibilityState,
 } from "@tanstack/react-table";
-import { cn } from "@/lib/utils";
-import { type NavigateFn, useTableUrlState } from "@/hooks/use-table-url-state";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+
 import { DataTablePagination, DataTableToolbar } from "@/components/data-table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { type NavigateFn, useTableUrlState } from "@/hooks/use-table-url-state";
+import { cn } from "@/lib/utils";
+
 import { roles } from "../data/data";
-import { type User } from "../data/schema";
+import type { User } from "../data/schema";
 import { DataTableBulkActions } from "./data-table-bulk-actions";
 import { usersColumns as columns } from "./users-columns";
 
@@ -44,13 +40,7 @@ export function UsersTable({ data, search, navigate }: DataTableProps) {
   // const [pagination, onPaginationChange] = useState<PaginationState>({ pageIndex: 0, pageSize: 10 })
 
   // Synced with URL states (keys/defaults mirror users route search schema)
-  const {
-    columnFilters,
-    onColumnFiltersChange,
-    pagination,
-    onPaginationChange,
-    ensurePageInRange,
-  } = useTableUrlState({
+  const { columnFilters, onColumnFiltersChange, pagination, onPaginationChange, ensurePageInRange } = useTableUrlState({
     search,
     navigate,
     pagination: { defaultPage: 1, defaultPageSize: 10 },
@@ -135,9 +125,7 @@ export function UsersTable({ data, search, navigate }: DataTableProps) {
                       header.column.columnDef.meta?.thClassName,
                     )}
                   >
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(header.column.columnDef.header, header.getContext())}
+                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                   </TableHead>
                 ))}
               </TableRow>
@@ -146,11 +134,7 @@ export function UsersTable({ data, search, navigate }: DataTableProps) {
           <TableBody>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                  className="group/row"
-                >
+                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"} className="group/row">
                   {row.getVisibleCells().map((cell) => (
                     <TableCell
                       key={cell.id}

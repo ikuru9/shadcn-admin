@@ -1,8 +1,9 @@
-import * as v from "valibot";
-import { useForm } from "react-hook-form";
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { MailPlus, Send } from "lucide-react";
-import { showSubmittedData } from "@/lib/show-submitted-data";
+import { useForm } from "react-hook-form";
+import * as v from "valibot";
+
+import { SelectDropdown } from "@/components/select-dropdown";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -13,17 +14,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { SelectDropdown } from "@/components/select-dropdown";
+import { showSubmittedData } from "@/lib/show-submitted-data";
+
 import { roles } from "../data/data";
 
 const formSchema = v.object({
@@ -65,8 +60,8 @@ export function UsersInviteDialog({ open, onOpenChange }: UserInviteDialogProps)
             <MailPlus /> Invite User
           </DialogTitle>
           <DialogDescription>
-            Invite new user to join your team by sending them an email invitation. Assign a role to
-            define their access level.
+            Invite new user to join your team by sending them an email invitation. Assign a role to define their access
+            level.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>

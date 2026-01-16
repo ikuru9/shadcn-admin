@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
+
 import { fonts } from "@/config/fonts";
-import { getCookie, setCookie, removeCookie } from "@/lib/cookies";
+import { getCookie, removeCookie, setCookie } from "@/lib/cookies";
 
 type Font = (typeof fonts)[number];
 
@@ -46,11 +47,11 @@ export function FontProvider({ children }: { children: React.ReactNode }) {
   return <FontContext value={{ font, setFont, resetFont }}>{children}</FontContext>;
 }
 
-// oxlint-disable-next-line react-refresh/only-export-components
-export const useFont = () => {
+// biome-ignore lint/style/useComponentExportOnlyModules: useFont
+export function useFont() {
   const context = useContext(FontContext);
   if (!context) {
     throw new Error("useFont must be used within a FontProvider");
   }
   return context;
-};
+}

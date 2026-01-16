@@ -1,11 +1,13 @@
-import { type ColumnDef } from "@tanstack/react-table";
-import { cn } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
-import { Checkbox } from "@/components/ui/checkbox";
+import type { ColumnDef } from "@tanstack/react-table";
+
 import { DataTableColumnHeader } from "@/components/data-table";
 import { LongText } from "@/components/long-text";
+import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
+import { cn } from "@/lib/utils";
+
 import { callTypes, roles } from "../data/data";
-import { type User } from "../data/schema";
+import type { User } from "../data/schema";
 import { DataTableRowActions } from "./data-table-row-actions";
 
 export const usersColumns: ColumnDef<User>[] = [
@@ -13,9 +15,7 @@ export const usersColumns: ColumnDef<User>[] = [
     id: "select",
     header: ({ table }) => (
       <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
+        checked={table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")}
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
         className="translate-y-0.5"
@@ -60,7 +60,7 @@ export const usersColumns: ColumnDef<User>[] = [
   {
     accessorKey: "email",
     header: ({ column }) => <DataTableColumnHeader column={column} title="Email" />,
-    cell: ({ row }) => <div className="w-fit ps-2 text-nowrap">{row.getValue("email")}</div>,
+    cell: ({ row }) => <div className="w-fit text-nowrap ps-2">{row.getValue("email")}</div>,
   },
   {
     accessorKey: "phoneNumber",

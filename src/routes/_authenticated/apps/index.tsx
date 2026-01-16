@@ -1,5 +1,6 @@
-import * as v from "valibot";
 import { createFileRoute } from "@tanstack/react-router";
+import * as v from "valibot";
+
 import { Apps } from "@/features/apps";
 
 const appsSearchSchema = v.object({

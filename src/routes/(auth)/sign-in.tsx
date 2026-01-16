@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SignIn } from "@/features/auth/sign-in";
 import * as v from "valibot";
+
+import { SignIn } from "@/features/auth/sign-in";
 
 const searchSchema = v.object({
   redirect: v.optional(v.string()),

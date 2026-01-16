@@ -1,16 +1,17 @@
 import { Outlet } from "@tanstack/react-router";
-import { getCookie } from "@/lib/cookies";
-import { cn } from "@/lib/utils";
-import { LayoutProvider } from "@/context/layout-provider";
-import { SearchProvider } from "@/context/search-provider";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+
+import { ConfigDrawer } from "@/components/config-drawer";
 import { AppSidebar } from "@/components/layout/app-sidebar";
-import { SkipToMain } from "@/components/skip-to-main";
+import { Header } from "@/components/layout/header";
 import { ProfileDropdown } from "@/components/profile-dropdown";
 import { Search } from "@/components/search";
+import { SkipToMain } from "@/components/skip-to-main";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { ConfigDrawer } from "@/components/config-drawer";
-import { Header } from "@/components/layout/header";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { LayoutProvider } from "@/context/layout-provider";
+import { SearchProvider } from "@/context/search-provider";
+import { getCookie } from "@/lib/cookies";
+import { cn } from "@/lib/utils";
 
 interface AuthenticatedLayoutProps {
   children?: React.ReactNode;

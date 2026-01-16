@@ -1,21 +1,16 @@
 import { useState } from "react";
-import * as v from "valibot";
-import { useForm } from "react-hook-form";
+
+import { valibotResolver } from "@hookform/resolvers/valibot";
 import { useNavigate } from "@tanstack/react-router";
 import { ArrowRight, Loader2 } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { sleep, cn } from "@/lib/utils";
+import * as v from "valibot";
+
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { valibotResolver } from "@hookform/resolvers/valibot";
+import { cn, sleep } from "@/lib/utils";
 
 const formSchema = v.object({
   email: v.pipe(v.string(), v.email("Please enter your email")),
@@ -32,7 +27,7 @@ export function ForgotPasswordForm({ className, ...props }: React.HTMLAttributes
 
   function onSubmit(data: v.InferOutput<typeof formSchema>) {
     setIsLoading(true);
-    // oxlint-disable-next-line no-console
+
     console.log(data);
 
     toast.promise(sleep(2000), {
@@ -49,11 +44,7 @@ export function ForgotPasswordForm({ className, ...props }: React.HTMLAttributes
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className={cn("grid gap-2", className)}
-        {...props}
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className={cn("grid gap-2", className)} {...props}>
         <FormField
           control={form.control}
           name="email"

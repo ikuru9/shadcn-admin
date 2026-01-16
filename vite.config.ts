@@ -1,12 +1,12 @@
-import { defineConfig } from "vite";
-import { devtools } from "@tanstack/devtools-vite";
-import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
+import { devtools } from "@tanstack/devtools-vite";
+import { tanstackRouter } from "@tanstack/router-plugin/vite";
+import viteReact from "@vitejs/plugin-react";
+import { playwright } from "@vitest/browser-playwright";
+import { defineConfig } from "vite";
 import { compression } from "vite-plugin-compression2";
 
-import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import { fileURLToPath } from "node:url";
-import { playwright } from "@vitest/browser-playwright";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -91,7 +91,7 @@ export default defineConfig(({ mode }) => ({
         // { browser: "webkit" },
       ],
       // Optional: run in headed mode during development
-      headless: process.env.CI ? true : false,
+      headless: !!process.env.CI,
     },
     setupFiles: [`${fileURLToPath(new URL("./src", import.meta.url))}/vitest.setup.ts`],
   },

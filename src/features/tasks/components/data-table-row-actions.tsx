@@ -1,5 +1,7 @@
-import { type Row } from "@tanstack/react-table";
-import { Trash2, MoreHorizontal } from "lucide-react";
+import type { Row } from "@tanstack/react-table";
+import { MoreHorizontal, Trash2 } from "lucide-react";
+import * as v from "valibot";
+
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -14,10 +16,10 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
 import { labels } from "../data/data";
 import { taskSchema } from "../data/schema";
 import { useTasks } from "./tasks-provider";
-import * as v from "valibot";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;

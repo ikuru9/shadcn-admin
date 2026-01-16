@@ -1,6 +1,7 @@
+import React from "react";
+
 import { useQueryErrorResetBoundary } from "@tanstack/react-query";
 import { ErrorComponent, type ErrorComponentProps, useRouter } from "@tanstack/react-router";
-import React from "react";
 
 function TanstackErrorComponent({ error }: ErrorComponentProps) {
   const router = useRouter();
@@ -18,6 +19,7 @@ function TanstackErrorComponent({ error }: ErrorComponentProps) {
   return (
     <div>
       <button
+        type="button"
         onClick={() => {
           router.invalidate();
         }}

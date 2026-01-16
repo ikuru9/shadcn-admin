@@ -1,4 +1,6 @@
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { getRouteApi } from "@tanstack/react-router";
+
 import { ConfigDrawer } from "@/components/config-drawer";
 import { Header } from "@/components/layout/header";
 import { Main } from "@/components/layout/main";
@@ -8,14 +10,13 @@ import { ThemeSwitch } from "@/components/theme-switch";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { useSuspenseQuery } from "@tanstack/react-query";
 import { getPetByIdSuspenseQueryOptions } from "@/gen/hooks";
 
 const route = getRouteApi("/_authenticated/samples/pets/$id");
 
 export function PetsDetail() {
   const { id } = route.useParams();
-  const { data: pet } = useSuspenseQuery(getPetByIdSuspenseQueryOptions(parseInt(id)));
+  const { data: pet } = useSuspenseQuery(getPetByIdSuspenseQueryOptions(parseInt(id, 10)));
 
   return (
     <>
@@ -31,7 +32,7 @@ export function PetsDetail() {
       <Main className="flex flex-1 flex-col gap-4 sm:gap-6">
         <div className="flex flex-wrap items-end justify-between gap-2">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight">{pet.name}</h2>
+            <h2 className="font-bold text-2xl tracking-tight">{pet.name}</h2>
             <p className="text-muted-foreground">Pet details and information.</p>
           </div>
           <Button variant="outline">Edit Pet</Button>
@@ -46,19 +47,23 @@ export function PetsDetail() {
             <CardContent className="space-y-4">
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <label className="text-sm font-medium">ID</label>
-                  <p className="text-sm text-muted-foreground">{pet.id}</p>
+                  {/** biome-ignore lint/a11y/noLabelWithoutControl: label */}
+                  <label className="font-medium text-sm">ID</label>
+                  <p className="text-muted-foreground text-sm">{pet.id}</p>
                 </div>
                 <div>
-                  <label className="text-sm font-medium">Name</label>
-                  <p className="text-sm text-muted-foreground">{pet.name}</p>
+                  {/** biome-ignore lint/a11y/noLabelWithoutControl: label */}
+                  <label className="font-medium text-sm">Name</label>
+                  <p className="text-muted-foreground text-sm">{pet.name}</p>
                 </div>
                 <div>
-                  <label className="text-sm font-medium">Category</label>
-                  <p className="text-sm text-muted-foreground">{pet.category?.name || "N/A"}</p>
+                  {/** biome-ignore lint/a11y/noLabelWithoutControl: label */}
+                  <label className="font-medium text-sm">Category</label>
+                  <p className="text-muted-foreground text-sm">{pet.category?.name || "N/A"}</p>
                 </div>
                 <div>
-                  <label className="text-sm font-medium">Status</label>
+                  {/** biome-ignore lint/a11y/noLabelWithoutControl: label */}
+                  <label className="font-medium text-sm">Status</label>
                   <Badge variant="outline" className="capitalize">
                     {pet.status || "Unknown"}
                   </Badge>
@@ -74,13 +79,13 @@ export function PetsDetail() {
                 <CardDescription>Images of this pet</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="grid gap-2 grid-cols-2">
+                <div className="grid grid-cols-2 gap-2">
                   {pet.photoUrls.map((url, index) => (
                     <img
-                      key={index}
+                      key={url}
                       src={url}
-                      alt={`${pet.name} photo ${index + 1}`}
-                      className="w-full h-24 object-cover rounded-md"
+                      alt={`${pet.name}:photo ${index + 1}`}
+                      className="h-24 w-full rounded-md object-cover"
                     />
                   ))}
                 </div>

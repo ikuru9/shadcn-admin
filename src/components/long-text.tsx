@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
-import { cn } from "@/lib/utils";
+
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 
 interface LongTextProps {
   children: React.ReactNode;
@@ -63,8 +64,7 @@ export function LongText({ children, className = "", contentClassName = "" }: Lo
 const checkOverflow = (textContainer: HTMLDivElement | null) => {
   if (textContainer) {
     return (
-      textContainer.offsetHeight < textContainer.scrollHeight ||
-      textContainer.offsetWidth < textContainer.scrollWidth
+      textContainer.offsetHeight < textContainer.scrollHeight || textContainer.offsetWidth < textContainer.scrollWidth
     );
   }
   return false;

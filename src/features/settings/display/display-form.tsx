@@ -1,18 +1,11 @@
-import * as v from "valibot";
-import { useForm } from "react-hook-form";
 import { valibotResolver } from "@hookform/resolvers/valibot";
-import { showSubmittedData } from "@/lib/show-submitted-data";
+import { useForm } from "react-hook-form";
+import * as v from "valibot";
+
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { showSubmittedData } from "@/lib/show-submitted-data";
 
 const items = [
   {
@@ -74,9 +67,7 @@ export function DisplayForm() {
             <FormItem>
               <div className="mb-4">
                 <FormLabel className="text-base">Sidebar</FormLabel>
-                <FormDescription>
-                  Select the items you want to display in the sidebar.
-                </FormDescription>
+                <FormDescription>Select the items you want to display in the sidebar.</FormDescription>
               </div>
               {items.map((item) => (
                 <FormField

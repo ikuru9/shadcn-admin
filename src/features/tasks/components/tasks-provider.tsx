@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+
 import useDialogState from "@/hooks/use-dialog-state";
-import { type Task } from "../data/schema";
+
+import type { Task } from "../data/schema";
 
 type TasksDialogType = "create" | "update" | "delete" | "import";
 
@@ -17,13 +19,11 @@ export function TasksProvider({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useDialogState<TasksDialogType>(null);
   const [currentRow, setCurrentRow] = useState<Task | null>(null);
 
-  return (
-    <TasksContext value={{ open, setOpen, currentRow, setCurrentRow }}>{children}</TasksContext>
-  );
+  return <TasksContext value={{ open, setOpen, currentRow, setCurrentRow }}>{children}</TasksContext>;
 }
 
-// oxlint-disable-next-line react-refresh/only-export-components
-export const useTasks = () => {
+// biome-ignore lint/style/useComponentExportOnlyModules: useTasks
+export function useTasks() {
   const tasksContext = React.useContext(TasksContext);
 
   if (!tasksContext) {
@@ -31,4 +31,4 @@ export const useTasks = () => {
   }
 
   return tasksContext;
-};
+}

@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+
 import type { ColumnFiltersState, OnChangeFn, PaginationState } from "@tanstack/react-table";
 
 type SearchRecord = Record<string, unknown>;
@@ -153,7 +154,7 @@ export function useTableUrlState(params: UseTableUrlStateParams): UseTableUrlSta
         const value = typeof found?.value === "string" ? (found.value as string) : "";
         patch[cfg.searchKey] = value.trim() !== "" ? serialize(value) : undefined;
       } else {
-        const value = Array.isArray(found?.value) ? (found!.value as unknown[]) : [];
+        const value = Array.isArray(found?.value) ? (found.value as unknown[]) : [];
         patch[cfg.searchKey] = value.length > 0 ? serialize(value) : undefined;
       }
     }
@@ -167,10 +168,7 @@ export function useTableUrlState(params: UseTableUrlStateParams): UseTableUrlSta
     });
   };
 
-  const ensurePageInRange = (
-    pageCount: number,
-    opts: { resetTo?: "first" | "last" } = { resetTo: "first" },
-  ) => {
+  const ensurePageInRange = (pageCount: number, opts: { resetTo?: "first" | "last" } = { resetTo: "first" }) => {
     const currentPage = (search as SearchRecord)[pageKey];
     const pageNum = typeof currentPage === "number" ? currentPage : defaultPage;
     if (pageCount > 0 && pageNum > pageCount) {

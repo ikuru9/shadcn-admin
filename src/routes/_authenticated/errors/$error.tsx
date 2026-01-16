@@ -1,15 +1,17 @@
+import { createFileRoute } from "@tanstack/react-router";
+
 import { ForbiddenError } from "@/features/errors/forbidden";
 import { GeneralError } from "@/features/errors/general-error";
 import { MaintenanceError } from "@/features/errors/maintenance-error";
 import { NotFoundError } from "@/features/errors/not-found-error";
 import { UnauthorisedError } from "@/features/errors/unauthorized-error";
-import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_authenticated/errors/$error")({
   component: RouteComponent,
 });
 
-// oxlint-disable-next-line react-refresh/only-export-components
+//
+// biome-ignore lint/style/useComponentExportOnlyModules: RouteComponent
 function RouteComponent() {
   const { error } = Route.useParams();
 
@@ -23,10 +25,8 @@ function RouteComponent() {
   const ErrorComponent = errorMap[error] || NotFoundError;
 
   return (
-    <>
-      <div className="flex-1 [&>div]:h-full">
-        <ErrorComponent />
-      </div>
-    </>
+    <div className="flex-1 [&>div]:h-full">
+      <ErrorComponent />
+    </div>
   );
 }

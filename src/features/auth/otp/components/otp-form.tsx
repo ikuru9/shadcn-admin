@@ -1,25 +1,15 @@
 import { useState } from "react";
-import * as v from "valibot";
-import { useForm } from "react-hook-form";
+
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { useNavigate } from "@tanstack/react-router";
+import { useForm } from "react-hook-form";
+import * as v from "valibot";
+
+import { Button } from "@/components/ui/button";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "@/components/ui/input-otp";
 import { showSubmittedData } from "@/lib/show-submitted-data";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-  InputOTPSeparator,
-} from "@/components/ui/input-otp";
 
 const formSchema = v.object({
   otp: v.pipe(v.string(), v.length(6, "Please enter the 6-digit code.")),
@@ -36,7 +26,6 @@ export function OtpForm({ className, ...props }: OtpFormProps) {
     defaultValues: { otp: "" },
   });
 
-  // oxlint-disable-next-line react-hooks/incompatible-library
   const otp = form.watch("otp");
 
   function onSubmit(data: v.InferOutput<typeof formSchema>) {
@@ -51,11 +40,7 @@ export function OtpForm({ className, ...props }: OtpFormProps) {
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className={cn("grid gap-2", className)}
-        {...props}
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className={cn("grid gap-2", className)} {...props}>
         <FormField
           control={form.control}
           name="otp"

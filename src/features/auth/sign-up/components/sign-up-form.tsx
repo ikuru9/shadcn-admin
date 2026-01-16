@@ -1,20 +1,15 @@
 import { useState } from "react";
-import * as v from "valibot";
-import { useForm } from "react-hook-form";
+
 import { valibotResolver } from "@hookform/resolvers/valibot";
+import { useForm } from "react-hook-form";
+import * as v from "valibot";
+
 import { IconFacebook, IconGithub } from "@/assets/brand-icons";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/custom-input/password-input";
+import { Button } from "@/components/ui/button";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
 
 const formSchema = v.pipe(
   v.object({
@@ -46,7 +41,7 @@ export function SignUpForm({ className, ...props }: React.HTMLAttributes<HTMLFor
 
   function onSubmit(data: v.InferOutput<typeof formSchema>) {
     setIsLoading(true);
-    // oxlint-disable-next-line no-console
+
     console.log(data);
 
     setTimeout(() => {
@@ -56,11 +51,7 @@ export function SignUpForm({ className, ...props }: React.HTMLAttributes<HTMLFor
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className={cn("grid gap-3", className)}
-        {...props}
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className={cn("grid gap-3", className)} {...props}>
         <FormField
           control={form.control}
           name="email"

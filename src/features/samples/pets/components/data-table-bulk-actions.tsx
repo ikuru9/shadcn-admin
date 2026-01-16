@@ -1,11 +1,14 @@
 import { useState } from "react";
-import { type Table } from "@tanstack/react-table";
+
+import type { Table } from "@tanstack/react-table";
 import { Trash2 } from "lucide-react";
+
+import { DataTableBulkActions as BulkActionsToolbar } from "@/components/data-table";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { DataTableBulkActions as BulkActionsToolbar } from "@/components/data-table";
+
+import type { Pet } from "../data/schema";
 import { PetsMultiDeleteDialog } from "./pets-multi-delete-dialog";
-import { type Pet } from "../data/schema";
 
 interface DataTableBulkActionsProps {
   table: Table<Pet>;
@@ -37,11 +40,7 @@ export function DataTableBulkActions({ table }: DataTableBulkActionsProps) {
         </Tooltip>
       </BulkActionsToolbar>
 
-      <PetsMultiDeleteDialog
-        table={table}
-        open={showDeleteConfirm}
-        onOpenChange={setShowDeleteConfirm}
-      />
+      <PetsMultiDeleteDialog table={table} open={showDeleteConfirm} onOpenChange={setShowDeleteConfirm} />
     </>
   );
 }

@@ -1,13 +1,13 @@
 pre-commit:
   parallel: false
   commands:
-    oxlint:
+    lint:
       glob: "*.{js,jsx,ts,tsx}"
       run: |
         # Lint ONLY staged files
         pnpm -s lint:staged {staged_files}
 
-    oxfmt:
+    format:
       glob: "*.{js,jsx,ts,tsx,json}"
       run: |
         # Format ONLY staged files (writes changes)
@@ -27,7 +27,7 @@ commit-msg:
 pre-push:
   parallel: false
   commands:
-    oxlint_all:
+    lint_all:
       run: |
         # Option A) Lint entire repo (simple & reliable)
         # pnpm -s lint

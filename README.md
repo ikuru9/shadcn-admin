@@ -13,7 +13,7 @@ pnpm run dev
 # 프로덕션 미리보기
 pnpm run preview
 
-# 전체 프로젝트 린팅 (oxlint)
+# 전체 프로젝트 린팅 (biome)
 pnpm run lint
 
 # 전체 프로젝트 포맷팅 (oxfmt)
@@ -83,6 +83,6 @@ tests/                   # 테스트 파일
 - **스타일링**: Tailwind CSS
 - **HTTP 클라이언트**: Axios
 - **테스트 프레임워크**: Vitest + React Testing Library + MSW
-- **코드 품질**: oxlint + oxfmt
+- **코드 품질**: biome
 - **아이콘**: Lucide React
 - **패키지 관리자**: pnpm (필수)

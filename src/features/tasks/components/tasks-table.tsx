@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
+
 import { getRouteApi } from "@tanstack/react-router";
 import {
-  type SortingState,
-  type VisibilityState,
   flexRender,
   getCoreRowModel,
   getFacetedRowModel,
@@ -10,21 +9,18 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  type SortingState,
   useReactTable,
+  type VisibilityState,
 } from "@tanstack/react-table";
-import { cn } from "@/lib/utils";
-import { useTableUrlState } from "@/hooks/use-table-url-state";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+
 import { DataTablePagination, DataTableToolbar } from "@/components/data-table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { useTableUrlState } from "@/hooks/use-table-url-state";
+import { cn } from "@/lib/utils";
+
 import { priorities, statuses } from "../data/data";
-import { type Task } from "../data/schema";
+import type { Task } from "../data/schema";
 import { DataTableBulkActions } from "./data-table-bulk-actions";
 import { tasksColumns as columns } from "./tasks-columns";
 
@@ -65,7 +61,6 @@ export function TasksTable({ data }: DataTableProps) {
     ],
   });
 
-  // oxlint-disable-next-line react-hooks/incompatible-library
   const table = useReactTable({
     data,
     columns,
@@ -137,14 +132,9 @@ export function TasksTable({ data }: DataTableProps) {
                     <TableHead
                       key={header.id}
                       colSpan={header.colSpan}
-                      className={cn(
-                        header.column.columnDef.meta?.className,
-                        header.column.columnDef.meta?.thClassName,
-                      )}
+                      className={cn(header.column.columnDef.meta?.className, header.column.columnDef.meta?.thClassName)}
                     >
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(header.column.columnDef.header, header.getContext())}
+                      {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                     </TableHead>
                   );
                 })}
@@ -158,10 +148,7 @@ export function TasksTable({ data }: DataTableProps) {
                   {row.getVisibleCells().map((cell) => (
                     <TableCell
                       key={cell.id}
-                      className={cn(
-                        cell.column.columnDef.meta?.className,
-                        cell.column.columnDef.meta?.tdClassName,
-                      )}
+                      className={cn(cell.column.columnDef.meta?.className, cell.column.columnDef.meta?.tdClassName)}
                     >
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </TableCell>

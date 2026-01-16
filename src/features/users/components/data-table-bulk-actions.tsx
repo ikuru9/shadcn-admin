@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { type Table } from "@tanstack/react-table";
-import { Trash2, UserX, UserCheck, Mail } from "lucide-react";
+
+import type { Table } from "@tanstack/react-table";
+import { Mail, Trash2, UserCheck, UserX } from "lucide-react";
 import { toast } from "sonner";
-import { sleep } from "@/lib/utils";
+
+import { DataTableBulkActions as BulkActionsToolbar } from "@/components/data-table";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { DataTableBulkActions as BulkActionsToolbar } from "@/components/data-table";
-import { type User } from "../data/schema";
+import { sleep } from "@/lib/utils";
+
+import type { User } from "../data/schema";
 import { UsersMultiDeleteDialog } from "./users-multi-delete-dialog";
 
 interface DataTableBulkActionsProps<TData> {
@@ -123,11 +126,7 @@ export function DataTableBulkActions<TData>({ table }: DataTableBulkActionsProps
         </Tooltip>
       </BulkActionsToolbar>
 
-      <UsersMultiDeleteDialog
-        table={table}
-        open={showDeleteConfirm}
-        onOpenChange={setShowDeleteConfirm}
-      />
+      <UsersMultiDeleteDialog table={table} open={showDeleteConfirm} onOpenChange={setShowDeleteConfirm} />
     </>
   );
 }

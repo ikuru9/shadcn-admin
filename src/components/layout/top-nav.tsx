@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Menu } from "lucide-react";
-import { cn } from "@/lib/utils";
+
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -8,6 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { cn } from "@/lib/utils";
 
 type TopNavProps = React.HTMLAttributes<HTMLElement> & {
   links: {
@@ -31,11 +32,7 @@ export function TopNav({ className, links, ...props }: TopNavProps) {
           <DropdownMenuContent side="bottom" align="start">
             {links.map(({ title, href, isActive, disabled }) => (
               <DropdownMenuItem key={`${title}-${href}`} asChild>
-                <Link
-                  to={href}
-                  className={!isActive ? "text-muted-foreground" : ""}
-                  disabled={disabled}
-                >
+                <Link to={href} className={!isActive ? "text-muted-foreground" : ""} disabled={disabled}>
                   {title}
                 </Link>
               </DropdownMenuItem>
@@ -44,16 +41,13 @@ export function TopNav({ className, links, ...props }: TopNavProps) {
         </DropdownMenu>
       </div>
 
-      <nav
-        className={cn("hidden items-center space-x-4 lg:flex lg:space-x-4 xl:space-x-6", className)}
-        {...props}
-      >
+      <nav className={cn("hidden items-center space-x-4 lg:flex lg:space-x-4 xl:space-x-6", className)} {...props}>
         {links.map(({ title, href, isActive, disabled }) => (
           <Link
             key={`${title}-${href}`}
             to={href}
             disabled={disabled}
-            className={`text-sm font-medium transition-colors hover:text-primary ${isActive ? "" : "text-muted-foreground"}`}
+            className={`font-medium text-sm transition-colors hover:text-primary ${isActive ? "" : "text-muted-foreground"}`}
           >
             {title}
           </Link>

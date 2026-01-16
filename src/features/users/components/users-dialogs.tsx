@@ -9,11 +9,7 @@ export function UsersDialogs() {
     <>
       <UsersActionDialog key="user-add" open={open === "add"} onOpenChange={() => setOpen("add")} />
 
-      <UsersInviteDialog
-        key="user-invite"
-        open={open === "invite"}
-        onOpenChange={() => setOpen("invite")}
-      />
+      <UsersInviteDialog key="user-invite" open={open === "invite"} onOpenChange={() => setOpen("invite")} />
 
       {currentRow && (
         <>

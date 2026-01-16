@@ -26,6 +26,7 @@ export function getCookie(name: string): string | undefined {
 export function setCookie(name: string, value: string, maxAge: number = DEFAULT_MAX_AGE): void {
   if (typeof document === "undefined") return;
 
+  // biome-ignore lint/suspicious/noDocumentCookie: common cookie
   document.cookie = `${name}=${value}; path=/; max-age=${maxAge}`;
 }
 
@@ -35,5 +36,6 @@ export function setCookie(name: string, value: string, maxAge: number = DEFAULT_
 export function removeCookie(name: string): void {
   if (typeof document === "undefined") return;
 
+  // biome-ignore lint/suspicious/noDocumentCookie: common cookie
   document.cookie = `${name}=; path=/; max-age=0`;
 }

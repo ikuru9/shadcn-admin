@@ -1,7 +1,7 @@
-import * as v from "valibot";
-import { useForm } from "react-hook-form";
 import { valibotResolver } from "@hookform/resolvers/valibot";
-import { showSubmittedData } from "@/lib/show-submitted-data";
+import { useForm } from "react-hook-form";
+import * as v from "valibot";
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -12,15 +12,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { showSubmittedData } from "@/lib/show-submitted-data";
 
 const formSchema = v.object({
   file: v.pipe(
@@ -46,7 +40,7 @@ export function TasksImportDialog({ open, onOpenChange }: TaskImportDialogProps)
   const onSubmit = () => {
     const file = form.getValues("file");
 
-    if (file && file[0]) {
+    if (file?.[0]) {
       const fileDetails = {
         name: file[0].name,
         size: file[0].size,

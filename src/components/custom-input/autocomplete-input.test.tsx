@@ -1,22 +1,17 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { vi } from "vitest";
-import { type Option, AutoComplete } from "@/components/custom-input/autocomplete-input";
+
+import { AutoComplete, type Option } from "@/components/custom-input/autocomplete-input";
 
 vi.mock("@/components/ui/command", () => ({
-  CommandGroup: ({ children }: { children: React.ReactNode }) => (
-    <div data-testid="command-group">{children}</div>
-  ),
+  CommandGroup: ({ children }: { children: React.ReactNode }) => <div data-testid="command-group">{children}</div>,
   CommandItem: ({ children, onSelect, ...props }: any) => (
     <div data-testid="command-item" onClick={onSelect} {...props}>
       {children}
     </div>
   ),
-  CommandList: ({ children }: { children: React.ReactNode }) => (
-    <div data-testid="command-list">{children}</div>
-  ),
-  CommandInput: ({ ref, ...props }: any) => (
-    <input ref={ref} data-testid="command-input" {...props} />
-  ),
+  CommandList: ({ children }: { children: React.ReactNode }) => <div data-testid="command-list">{children}</div>,
+  CommandInput: ({ ref, ...props }: any) => <input ref={ref} data-testid="command-input" {...props} />,
 }));
 
 vi.mock("@/components/ui/skeleton", () => ({
@@ -79,9 +74,7 @@ describe("AutoComplete", () => {
 
   it("선택된 옵션에 체크 아이콘을 표시합니다", async () => {
     const mockOnValueChange = vi.fn();
-    render(
-      <AutoComplete {...defaultProps} value={mockOptions[0]} onValueChange={mockOnValueChange} />,
-    );
+    render(<AutoComplete {...defaultProps} value={mockOptions[0]} onValueChange={mockOnValueChange} />);
     const input = screen.getByTestId("command-input");
 
     fireEvent.focus(input);
@@ -113,9 +106,7 @@ describe("AutoComplete", () => {
 
   it("키보드 Enter로 정확히 일치하는 항목을 선택합니다", () => {
     const mockOnValueChange = vi.fn();
-    render(
-      <AutoComplete {...defaultProps} onValueChange={mockOnValueChange} value={mockOptions[0]} />,
-    );
+    render(<AutoComplete {...defaultProps} onValueChange={mockOnValueChange} value={mockOptions[0]} />);
     const commandPrimitive = screen.getByTestId("command-primitive");
 
     fireEvent.keyDown(commandPrimitive, { key: "Enter" });

@@ -1,16 +1,10 @@
-import * as v from "valibot";
-import { useForm } from "react-hook-form";
 import { valibotResolver } from "@hookform/resolvers/valibot";
-import { showSubmittedData } from "@/lib/show-submitted-data";
+import { useForm } from "react-hook-form";
+import * as v from "valibot";
+
+import { SelectDropdown } from "@/components/select-dropdown";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
@@ -22,8 +16,9 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { SelectDropdown } from "@/components/select-dropdown";
-import { type Task } from "../data/schema";
+import { showSubmittedData } from "@/lib/show-submitted-data";
+
+import type { Task } from "../data/schema";
 
 interface TaskMutateDrawerProps {
   open: boolean;
@@ -71,9 +66,7 @@ export function TasksMutateDrawer({ open, onOpenChange, currentRow }: TaskMutate
         <SheetHeader className="text-start">
           <SheetTitle>{isUpdate ? "Update" : "Create"} Task</SheetTitle>
           <SheetDescription>
-            {isUpdate
-              ? "Update the task by providing necessary info."
-              : "Add a new task by providing necessary info."}
+            {isUpdate ? "Update the task by providing necessary info." : "Add a new task by providing necessary info."}
             Click save when you&apos;re done.
           </SheetDescription>
         </SheetHeader>

@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+
 import { CommandMenu } from "@/components/command-menu";
 
 interface SearchContextType {
@@ -34,8 +35,8 @@ export function SearchProvider({ children }: SearchProviderProps) {
   );
 }
 
-// oxlint-disable-next-line react-refresh/only-export-components
-export const useSearch = () => {
+// biome-ignore lint/style/useComponentExportOnlyModules: useSearh
+export function useSearch() {
   const searchContext = useContext(SearchContext);
 
   if (!searchContext) {
@@ -43,4 +44,4 @@ export const useSearch = () => {
   }
 
   return searchContext;
-};
+}

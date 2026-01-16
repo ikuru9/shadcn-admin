@@ -1,5 +1,6 @@
-import { DATE_FORMAT } from "@/constants/format";
 import { format } from "date-fns";
+
+import { DATE_FORMAT } from "@/constants/format";
 
 export const formatDate = (date?: Date | null): string => {
   if (!date) {

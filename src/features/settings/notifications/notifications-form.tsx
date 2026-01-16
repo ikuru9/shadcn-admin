@@ -1,45 +1,35 @@
-import * as v from "valibot";
-import { useForm } from "react-hook-form";
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { Link } from "@tanstack/react-router";
-import { showSubmittedData } from "@/lib/show-submitted-data";
+import { useForm } from "react-hook-form";
+import * as v from "valibot";
+
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Switch } from "@/components/ui/switch";
+import { showSubmittedData } from "@/lib/show-submitted-data";
 
 const notificationsFormSchema = v.object({
   type: v.picklist(["all", "mentions", "none"], "Please select a notification type."),
-  mobile: v.optional(v.boolean(), false),
-  communication_emails: v.optional(v.boolean(), false),
-  social_emails: v.optional(v.boolean(), false),
-  marketing_emails: v.optional(v.boolean(), false),
-  security_emails: v.boolean(),
+  mobile: v.fallback(v.boolean(), false),
+  communication_emails: v.fallback(v.boolean(), false),
+  social_emails: v.fallback(v.boolean(), false),
+  marketing_emails: v.fallback(v.boolean(), false),
+  security_emails: v.fallback(v.boolean(), false),
 });
 
 type NotificationsFormValues = v.InferOutput<typeof notificationsFormSchema>;
 
-// This can come from your database or API.
-const defaultValues: Partial<NotificationsFormValues> = {
-  communication_emails: false,
-  marketing_emails: false,
-  social_emails: true,
-  security_emails: true,
-};
-
 export function NotificationsForm() {
   const form = useForm<NotificationsFormValues>({
     resolver: valibotResolver(notificationsFormSchema),
-    defaultValues,
+    defaultValues: {
+      communication_emails: false,
+      marketing_emails: false,
+      social_emails: true,
+      security_emails: true,
+    },
   });
 
   return (
@@ -52,11 +42,7 @@ export function NotificationsForm() {
             <FormItem className="relative space-y-3">
               <FormLabel>Notify me about...</FormLabel>
               <FormControl>
-                <RadioGroup
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                  className="flex flex-col gap-2"
-                >
+                <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-col gap-2">
                   <FormItem className="flex items-center">
                     <FormControl>
                       <RadioGroupItem value="all" />
@@ -82,7 +68,7 @@ export function NotificationsForm() {
           )}
         />
         <div className="relative">
-          <h3 className="mb-4 text-lg font-medium">Email Notifications</h3>
+          <h3 className="mb-4 font-medium text-lg">Email Notifications</h3>
           <div className="space-y-4">
             <FormField
               control={form.control}
@@ -106,9 +92,7 @@ export function NotificationsForm() {
                 <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                   <div className="space-y-0.5">
                     <FormLabel className="text-base">Marketing emails</FormLabel>
-                    <FormDescription>
-                      Receive emails about new products, features, and more.
-                    </FormDescription>
+                    <FormDescription>Receive emails about new products, features, and more.</FormDescription>
                   </div>
                   <FormControl>
                     <Switch checked={field.value} onCheckedChange={field.onChange} />
@@ -123,9 +107,7 @@ export function NotificationsForm() {
                 <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                   <div className="space-y-0.5">
                     <FormLabel className="text-base">Social emails</FormLabel>
-                    <FormDescription>
-                      Receive emails for friend requests, follows, and more.
-                    </FormDescription>
+                    <FormDescription>Receive emails for friend requests, follows, and more.</FormDescription>
                   </div>
                   <FormControl>
                     <Switch checked={field.value} onCheckedChange={field.onChange} />
@@ -140,17 +122,10 @@ export function NotificationsForm() {
                 <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                   <div className="space-y-0.5">
                     <FormLabel className="text-base">Security emails</FormLabel>
-                    <FormDescription>
-                      Receive emails about your account activity and security.
-                    </FormDescription>
+                    <FormDescription>Receive emails about your account activity and security.</FormDescription>
                   </div>
                   <FormControl>
-                    <Switch
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                      disabled
-                      aria-readonly
-                    />
+                    <Switch checked={field.value} onCheckedChange={field.onChange} disabled aria-readonly />
                   </FormControl>
                 </FormItem>
               )}

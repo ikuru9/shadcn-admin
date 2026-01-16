@@ -1,5 +1,6 @@
-import { showSubmittedData } from "@/lib/show-submitted-data";
 import { ConfirmDialog } from "@/components/confirm-dialog";
+import { showSubmittedData } from "@/lib/show-submitted-data";
+
 import { TasksImportDialog } from "./tasks-import-dialog";
 import { TasksMutateDrawer } from "./tasks-mutate-drawer";
 import { useTasks } from "./tasks-provider";
@@ -8,17 +9,9 @@ export function TasksDialogs() {
   const { open, setOpen, currentRow, setCurrentRow } = useTasks();
   return (
     <>
-      <TasksMutateDrawer
-        key="task-create"
-        open={open === "create"}
-        onOpenChange={() => setOpen("create")}
-      />
+      <TasksMutateDrawer key="task-create" open={open === "create"} onOpenChange={() => setOpen("create")} />
 
-      <TasksImportDialog
-        key="tasks-import"
-        open={open === "import"}
-        onOpenChange={() => setOpen("import")}
-      />
+      <TasksImportDialog key="tasks-import" open={open === "import"} onOpenChange={() => setOpen("import")} />
 
       {currentRow && (
         <>

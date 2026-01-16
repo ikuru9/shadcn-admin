@@ -1,14 +1,15 @@
 "use client";
 
 import * as React from "react";
+
+import { isValid, toDate } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { formatDate } from "@/lib/formatter";
-import { isValid, toDate } from "date-fns";
+import { cn } from "@/lib/utils";
 
 interface DatePickerProps {
   value?: Date | null;
@@ -70,7 +71,7 @@ function DatePicker({
             aria-describedby={value ? "selected-date" : undefined}
             className={cn("pr-10", !value && "text-muted-foreground", className)}
           />
-          <CalendarIcon className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground pointer-events-none" />
+          <CalendarIcon className="pointer-events-none absolute top-1/2 right-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
         </div>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">

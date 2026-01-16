@@ -1,5 +1,6 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { vi } from "vitest";
+
 import { DatePicker } from "@/components/custom-input/date-picker";
 
 vi.mock("@/components/ui/input", () => ({

@@ -14,9 +14,7 @@ const tagSchema = v.optional(
   }),
 );
 
-const petStatusSchema = v.optional(
-  v.union([v.literal("available"), v.literal("pending"), v.literal("sold")]),
-);
+const petStatusSchema = v.optional(v.union([v.literal("available"), v.literal("pending"), v.literal("sold")]));
 
 const petSchema = v.object({
   id: v.optional(v.number()),

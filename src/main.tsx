@@ -1,19 +1,22 @@
 import { StrictMode } from "react";
+
+import { createRouter, RouterProvider } from "@tanstack/react-router";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, createRouter } from "@tanstack/react-router";
+
 import { DirectionProvider } from "./context/direction-provider";
 import { FontProvider } from "./context/font-provider";
-import { ThemeProvider } from "./context/theme-provider";
 import * as TanStackQueryProvider from "./context/tanstack-query/root-provider.tsx";
+import { ThemeProvider } from "./context/theme-provider";
 // Generated Routes
 import { routeTree } from "./routeTree.gen";
 // Styles
 import "./styles/index.css";
-// Report
-import reportWebVitals from "@/reportWebVitals.ts";
 
 // valibot
 import * as v from "valibot";
+
+// Report
+import reportWebVitals from "@/reportWebVitals.ts";
 import "@valibot/i18n/kr";
 
 v.setGlobalConfig({ lang: "kr" });
@@ -45,8 +48,8 @@ declare module "@tanstack/react-router" {
 }
 
 // Render the app
-const rootElement = document.getElementById("root")!;
-if (!rootElement.innerHTML) {
+const rootElement = document.getElementById("root");
+if (rootElement && !rootElement?.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <StrictMode>
