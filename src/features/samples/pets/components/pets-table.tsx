@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 import { useNavigate } from "@tanstack/react-router";
 import {
-  flexRender,
   getCoreRowModel,
   getFacetedRowModel,
   getFacetedUniqueValues,
@@ -14,8 +13,7 @@ import {
   type VisibilityState,
 } from "@tanstack/react-table";
 
-import { DataTablePagination, DataTableToolbar } from "@/components/data-table";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { DataTable, DataTablePagination, DataTableToolbar } from "@/components/data-table";
 import { type NavigateFn, useTableUrlState } from "@/hooks/use-table-url-state";
 import { cn } from "@/lib/utils";
 
@@ -111,61 +109,17 @@ export function PetsTable({ data, search, navigate }: DataTableProps) {
         ]}
       />
       <div className="overflow-hidden rounded-md border">
-        <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} className="group/row">
-                {headerGroup.headers.map((header) => (
-                  <TableHead
-                    key={header.id}
-                    colSpan={header.colSpan}
-                    className={cn(
-                      "bg-background group-hover/row:bg-muted group-data-[state=selected]/row:bg-muted",
-                      header.column.columnDef.meta?.className,
-                      header.column.columnDef.meta?.thClassName,
-                    )}
-                  >
-                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                  </TableHead>
-                ))}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                  className="group/row cursor-pointer hover:bg-muted/50"
-                  onClick={(event) => {
-                    if ((event.target as HTMLElement).closest("[data-select-cell]")) return;
-                    routerNavigate({ to: `/samples/pets/${row.original.id}` });
-                  }}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell
-                      key={cell.id}
-                      className={cn(
-                        "bg-background group-hover/row:bg-muted group-data-[state=selected]/row:bg-muted",
-                        cell.column.columnDef.meta?.className,
-                        cell.column.columnDef.meta?.tdClassName,
-                      )}
-                    >
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+        <DataTable
+          table={table}
+          customProps={{
+            row: {
+              onClick(event, row) {
+                if ((event.target as HTMLElement).closest("[data-select-cell]")) return;
+                routerNavigate({ to: `/samples/pets/${row.original.id}` });
+              },
+            },
+          }}
+        />
       </div>
       <DataTablePagination table={table} className="mt-auto" />
       <DataTableBulkActions table={table} />

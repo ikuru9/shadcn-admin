@@ -40,7 +40,7 @@ export function CommandMenu() {
           {sidebarData.navGroups.map((group) => (
             <CommandGroup key={group.title} heading={group.title}>
               {group.items.map((navItem, i) => {
-                if (navItem.url)
+                if (navItem.url) {
                   return (
                     <CommandItem
                       key={`${navItem.url}-${i}`}
@@ -50,11 +50,12 @@ export function CommandMenu() {
                       }}
                     >
                       <div className="flex size-4 items-center justify-center">
-                        <ArrowRight className="size-2 text-muted-foreground/80" />
+                        {navItem.icon ? <navItem.icon /> : <ArrowRight className="size-2 text-muted-foreground/80" />}
                       </div>
                       {navItem.title}
                     </CommandItem>
                   );
+                }
 
                 return navItem.items?.map((subItem, i) => (
                   <CommandItem
@@ -65,7 +66,7 @@ export function CommandMenu() {
                     }}
                   >
                     <div className="flex size-4 items-center justify-center">
-                      <ArrowRight className="size-2 text-muted-foreground/80" />
+                      {navItem.icon ? <navItem.icon /> : <ArrowRight className="size-2 text-muted-foreground/80" />}
                     </div>
                     {navItem.title} <ChevronRight /> {subItem.title}
                   </CommandItem>

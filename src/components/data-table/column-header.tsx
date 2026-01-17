@@ -49,10 +49,6 @@ export function DataTableColumnHeader<TData, TValue>({
             <ArrowDown className="size-3.5 text-muted-foreground/70" />
             Desc
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => column.toggleSorting(true)}>
-            <ArrowDown className="size-3.5 text-muted-foreground/70" />
-            Desc
-          </DropdownMenuItem>
           {column.getCanHide() && (
             <>
               <DropdownMenuSeparator />

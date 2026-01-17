@@ -56,7 +56,7 @@ export function Chats() {
   const users = conversations.map(({ messages, ...user }) => user);
 
   return (
-    <Main fixed>
+    <Main fixed fluid>
       <section className="flex h-full gap-6">
         {/* Left Side */}
         <div className="flex w-full flex-col gap-2 sm:w-56 lg:w-72 2xl:w-80">
