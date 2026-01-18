@@ -5,6 +5,7 @@ import viteReact from "@vitejs/plugin-react";
 import { playwright } from "@vitest/browser-playwright";
 import { defineConfig } from "vite";
 import { compression } from "vite-plugin-compression2";
+import { VitePWA } from "vite-plugin-pwa";
 
 import { fileURLToPath } from "node:url";
 
@@ -23,6 +24,37 @@ export default defineConfig(({ mode }) => ({
       exclude: [/\.(br)$/, /\.(gz)$/, /\.(png|jpe?g|gif|webp|woff2?)$/],
       threshold: 1501, // 1.5KB 미만은 무시 (효율성)
       skipIfLargerOrEqual: true, // 압축본이 더 크면 무시
+    }),
+    VitePWA({
+      registerType: "autoUpdate",
+      includeAssets: ["images/*"],
+      manifest: {
+        name: "Shadcn Admin",
+        short_name: "Shadcn Admin",
+        description: "Admin Dashboard UI built with Shadcn and Vite.",
+        theme_color: "#ffffff",
+        display: "standalone",
+        icons: [
+          {
+            src: "/images/favicon.svg",
+            sizes: "any",
+            type: "image/svg+xml",
+          },
+          {
+            src: "/images/favicon.png",
+            sizes: "512x512",
+            type: "image/png",
+          },
+        ],
+      },
+      workbox: {
+        globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
+        navigateFallback: "/index.html",
+        navigateFallbackDenylist: [/^\/api\//],
+      },
+      devOptions: {
+        enabled: true,
+      },
     }),
   ],
   resolve: {

@@ -103,6 +103,7 @@
     "typescript": "^5",
     "vite": "^7.3.0",
     "vite-plugin-compression2": "^2",
+    "vite-plugin-pwa": "^1.2.0",
     "vitest": "^4",
     "web-vitals": "^5"
   },
@@ -118,6 +119,8 @@
     "yarn": "please-use-pnpm"
   },
   "msw": {
-    "workerDirectory": ["public"]
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
