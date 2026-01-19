@@ -5,14 +5,19 @@ import { pluginMsw } from "@kubb/plugin-msw";
 import { pluginOas } from "@kubb/plugin-oas";
 import { pluginReactQuery } from "@kubb/plugin-react-query";
 import { pluginTs } from "@kubb/plugin-ts";
+import { loadEnv } from "vite";
 
 import { fileURLToPath } from "node:url";
 
 const baseURL = "/api" as const;
 
+const rootDir = fileURLToPath(new URL(".", import.meta.url));
+const mode = process.env.NODE_ENV ?? "development";
+const env = loadEnv(mode, rootDir, "");
+
 export default defineConfig(() => ({
   input: {
-    path: "https://petstore3.swagger.io/api/v3/openapi.json",
+    path: `${env.API_SERVER_URL}/api/v3/openapi.json`,
   },
   output: {
     path: fileURLToPath(new URL("./src/gen", import.meta.url)),

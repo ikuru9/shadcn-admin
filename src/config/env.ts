@@ -3,7 +3,7 @@ import * as v from "valibot";
 
 export const env = createEnv({
   server: {
-    SERVER_URL: v.optional(v.string()),
+    API_SERVER_URL: v.optional(v.string()),
   },
 
   /**
@@ -13,7 +13,7 @@ export const env = createEnv({
   clientPrefix: "VITE_",
 
   client: {
-    VITE_APP_TITLE: v.optional(v.pipe(v.string(), v.minLength(1))),
+    VITE_APP_TITLE: v.optional(v.string()),
   },
 
   /**
