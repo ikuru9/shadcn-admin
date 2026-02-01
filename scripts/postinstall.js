@@ -37,7 +37,9 @@ lefthookChild.on("close", (code) => {
 });
 
 const vitestArgs =
-  process.platform === "win32" ? ["/c", "pnpm exec playwright install"] : ["-c", "pnpm exec playwright install"];
+  process.platform === "win32"
+    ? ["/c", "pnpm exec playwright install chromium"]
+    : ["-c", "pnpm exec playwright install chromium"];
 
 const vitestChild = spawn(cmd, vitestArgs, {
   stdio: "inherit", // 콘솔에 그대로 출력
