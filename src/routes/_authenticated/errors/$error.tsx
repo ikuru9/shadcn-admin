@@ -10,8 +10,6 @@ export const Route = createFileRoute("/_authenticated/errors/$error")({
   component: RouteComponent,
 });
 
-//
-// biome-ignore lint/style/useComponentExportOnlyModules: RouteComponent
 function RouteComponent() {
   const { error } = Route.useParams();
 

@@ -192,9 +192,9 @@ export function Chats() {
                     {currentMessage &&
                       Object.keys(currentMessage).map((key) => (
                         <Fragment key={key}>
-                          {currentMessage[key].map((msg, index) => (
+                          {currentMessage[key].map((msg) => (
                             <div
-                              key={`${msg.sender}-${msg.timestamp}-${index}`}
+                              key={`${msg.sender}-${msg.timestamp}-${msg.message}`}
                               className={cn(
                                 "chat-box wrap-break-word max-w-72 px-3 py-2 shadow-lg",
                                 msg.sender === "You"

@@ -14,7 +14,6 @@ import { getCookie, removeCookie, setCookie } from "@/lib/cookies";
 
 const waitForTick = () => new Promise((resolve) => setTimeout(resolve, 0));
 
-
 const createResponse = <TData>(config: AxiosRequestConfig, data: TData, status: number): AxiosResponse<TData> => ({
   data,
   status,

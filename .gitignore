@@ -43,3 +43,5 @@ mocks/modules
 .kubb
 src/gen
 mocks/faker
+
+.pi-lens

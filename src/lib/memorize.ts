@@ -26,7 +26,12 @@ export function memoize<A extends unknown[], R, T, H>(
   const { hash = defaultHash, cache = new Map<H, R>() } = opts;
   return function (this: T, ...args: A): R {
     const id = hash.apply(this, args);
-    if (cache.has(id)) return cache.get(id)!;
+    const cachedValue = cache.get(id);
+
+    if (cachedValue !== undefined || cache.has(id)) {
+      return cachedValue as R;
+    }
+
     let result = fn.apply(this, args);
     if (result instanceof Promise) {
       // eslint-disable-next-line github/no-then

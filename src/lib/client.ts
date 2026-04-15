@@ -116,5 +116,3 @@ export const client = async <TData, TError = unknown, TVariables = unknown>(
 
   return promise;
 };
-
-export default client;
