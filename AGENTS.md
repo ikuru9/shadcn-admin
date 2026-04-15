@@ -1,168 +1,50 @@
-# AGENTS.md - Agent Coding Guide
+# AGENTS.md
 
-This repository is a React 19 application built with Vite, TanStack Router, Valibot, and Shadcn UI. Follow these rules for all changes.
+이 파일은 인덱스입니다.
+현재 작업에 필요한 문서만 읽습니다.
 
-## Technology Stack
+## 읽기 원칙
 
-- **React 19** + **TypeScript** (strict mode)
-- **Vite 7** for build tooling
-- **TanStack Router** for routing
-- **TanStack Query** + **TanStack Table** for data fetching
-- **Zustand** for state management
-- **Valibot** for validation (replaces Zod)
-- **Shadcn UI** + **Radix UI** + **Tailwind CSS** for UI
-- **Vitest** + **Testing Library** + **MSW** for testing
-- **Axios** for HTTP client
-- **date-fns** for date manipulation
-- **Lucide React** for icons
-- **React Hook Form** for form handling
-- **Lefthook** for git hooks
-- **biome** for code quality
-- **commitizen** + **commitlint** for conventional commits
+- 한 번에 전체 문서를 읽지 않습니다.
+- 작업과 직접 관련된 문서만 선택합니다.
+- 추가 정보가 필요할 때만 다음 문서를 읽습니다.
+- 모든 응답은 한국어로 작성합니다.
 
-## Essential Commands
+## 문서 목록
 
-### Development Server
+### 기술 확인
+- `docs/agent-guides/technology-stack.md` — English guide for the project stack
 
-```bash
-pnpm dev    # Start Vite dev server
-```
+### 명령어 확인
+- `docs/agent-guides/essential-commands.md` — English guide for dev, build, test, and lint commands
 
-### Build & Test Commands
+### 코딩 규칙 확인
+- `docs/agent-guides/coding-guidelines.md` — English index for coding rules
 
-```bash
-pnpm run build     # Vite build + TypeScript check
-pnpm run preview   # Preview production build
-pnpm run test      # Run all Vitest tests (browser mode)
-pnpm run generate  # Generate API client with Kubb
-pnpm run commit    # Interactive conventional commit
-```
+### 작업 절차 확인
+- `docs/agent-guides/quick-start.md` — English quick checklist for common tasks
 
-### Running a Single Test File
+### 금지사항/위임 기준 확인
+- `docs/agent-guides/important-restrictions.md` — English index for restrictions
+- `docs/agent-guides/restrictions/prohibitions.md` — English list of hard restrictions
+- `docs/agent-guides/restrictions/delegation-guidelines.md` — English delegation guide
 
-```bash
-# Run specific test file
-pnpm test src/components/custom-input/date-picker.test.tsx
+## 작업별 추천
 
-# Run test in watch mode
-pnpm test src/components/custom-input/date-picker.test.tsx --watch
+- 구현/수정: `coding-guidelines.md` (English coding guide index)
+- 빌드/테스트: `essential-commands.md` (English command reference)
+- 기술 확인: `technology-stack.md` (English stack overview)
+- 절차 확인: `quick-start.md` (English task checklist)
+- 제한사항 확인: `important-restrictions.md` (English restrictions index)
 
-# Run tests matching pattern
-pnpm test --run --reporter=verbose date-picker
-```
+## 코딩 가이드 세부 문서
 
-### Code Quality & Formatting
-
-```bash
-pnpm lint          # Lint entire repo (biome)
-pnpm fmt           # Format entire repo (biome)
-pnpm lint:staged   # Lint/formatted staged files (pre-commit)
-pnpm fmt:staged    # Format staged files (pre-commit)
-```
-
-## Coding Guidelines
-
-### Import/Export Patterns
-
-- Use absolute path imports only: `@/*`
-- Grouped imports (external → internal → relative)
-- Clear exports (named exports preferred)
-- Barrel exports in index.ts files
-- "use client" directive for client components
-
-### Naming Conventions
-
-- Components: PascalCase(e.g., UserProfile)
-- Hooks: camelCase with 'use' prefix(e.g., useUserProfile)
-- Types: PascalCase(e.g., UserProfile)
-- Interfaces: PascalCase without 'I' prefix(e.g., UserProfileProps)
-- Constants: UPPER_SNAKE_CASE(e.g., MAX_RETRY_COUNT)
-- Functions: camelCase(e.g., getUserProfile)
-- Files: kebab-case(e.g., user-profile.tsx)
-- Test files: .test.tsx(e.g., user-profile.test.tsx)
-
-### TypeScript Patterns
-
-- Strict mode with noUnusedLocals/noUnusedParameters
-- Use type instead of interface
-- Use generics
-- Discriminated unions
-- Type guard functions
-- No any types - use unknown and narrow types (except in test files)
-- Prefer named exports over default exports
-
-### React Component Patterns
-
-- Function components + hooks
-- No forwardRef (React 19)
-- CVA (class-variance-authority) for variants
-- data-slot attributes for styling hooks
-- Slot pattern from Radix UI for composition
-- ref prop directly (not via forwardRef)
-- React.ComponentProps<HTMLElement> for prop typing
-
-### Styling Patterns
-
-- Use cn() utility for class merging (clsx + tailwind-merge)
-- Conditional styling with cn()
-- Tailwind theme variables (text-primary, bg-accent, etc.)
-- data-slot attributes for component styling
-- Use Lucide React icons
-
-### Error Handling Patterns
-
-- try-catch with proper error types
-- Valibot validation with error handling
-- Axios error handling with custom utilities
-- Error boundaries for React components
-
-### Test Writing Patterns
-
-- Vitest + Testing Library + MSW
-- Extensive mocking (vi.mock)
-- Test descriptions in Korean
-- data-testid attributes for testing
-- fireEvent and waitFor patterns
-
-## Quick Start for Agents
-
-### Project Setup
-
-1. **Install deps:** `pnpm install`
-2. **Run dev server:** `pnpm dev`
-3. **Make changes** following patterns above
-4. **Check linting:** `pnpm lint`
-5. **Run tests:** `pnpm test`
-
-## Important Restrictions
-
-### Absolute Prohibitions
-
-- **NO `npm` or `yarn`** - use `pnpm` only (enforced by engines)
-- **NO `@ts-ignore` or `as any`** in production code (except test files)
-- **NO bypassing git hooks** - they ensure code quality
-- **NO git commits** - Never commit changes without explicit user request
-- **NO direct style edits** to visual components - delegate to `frontend-ui-ux-engineer`
-- **ALWAYS** use path aliases instead of relative imports (`@/*`)
-- **ALWAYS** run `lsp_diagnostics` on changed files before completion
-
-### Agent Delegation Guidelines
-
-**Delegate to frontend-ui-ux-engineer (VISUAL CHANGES ONLY):**
-
-- Changes related to style, className, tailwind, color, background, border, shadow, margin, padding, width, height, flex, grid, animation, transition, hover, responsive, font-size, icon, svg
-
-**Handle directly (LOGIC CHANGES):**
-
-- API calls, data fetching logic
-- State management (Zustand/TanStack Query)
-- Event handlers, form validation
-- TypeScript type definitions
-- Utility functions
-
-**Delegate for special cases:**
-
-- Complex architecture decisions → `oracle` agent
-- External library issues → `librarian` agent
-- Codebase exploration → `explore` agent
-- Browser automation/testing → `playwright` skill
+- `docs/agent-guides/coding/import-export.md`
+- `docs/agent-guides/coding/naming-conventions.md`
+- `docs/agent-guides/coding/typescript-patterns.md`
+- `docs/agent-guides/coding/react-patterns.md`
+- `docs/agent-guides/coding/styling-patterns.md`
+- `docs/agent-guides/coding/error-handling.md`
+- `docs/agent-guides/coding/test-writing.md`
+- `docs/agent-guides/restrictions/prohibitions.md`
+- `docs/agent-guides/restrictions/delegation-guidelines.md`
