@@ -9,6 +9,7 @@
     "build": "vite build",
     "lint:staged": "biome lint",
     "fmt:staged": "biome format",
+    "commitlint": "commitlint",
     "lint": "biome lint --write",
     "fmt": "biome format --write",
     "commit": "git-cz",
@@ -121,8 +122,6 @@
     "yarn": "please-use-pnpm"
   },
   "msw": {
-    "workerDirectory": [
-      "public"
-    ]
+    "workerDirectory": ["public"]
   }
 }

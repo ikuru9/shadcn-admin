@@ -8,23 +8,27 @@
 - 한 번에 전체 문서를 읽지 않습니다.
 - 작업과 직접 관련된 문서만 선택합니다.
 - 추가 정보가 필요할 때만 다음 문서를 읽습니다.
-- 모든 응답은 한국어로 작성합니다.
 
 ## 문서 목록
 
 ### 기술 확인
+
 - `docs/agent-guides/technology-stack.md` — English guide for the project stack
 
 ### 명령어 확인
+
 - `docs/agent-guides/essential-commands.md` — English guide for dev, build, test, and lint commands
 
 ### 코딩 규칙 확인
+
 - `docs/agent-guides/coding-guidelines.md` — English index for coding rules
 
 ### 작업 절차 확인
+
 - `docs/agent-guides/quick-start.md` — English quick checklist for common tasks
 
 ### 금지사항/위임 기준 확인
+
 - `docs/agent-guides/important-restrictions.md` — English index for restrictions
 - `docs/agent-guides/restrictions/prohibitions.md` — English list of hard restrictions
 - `docs/agent-guides/restrictions/delegation-guidelines.md` — English delegation guide
