@@ -23,6 +23,7 @@ type ResolverOptions = {
   raw?: boolean;
 };
 
+// biome-ignore lint/suspicious/noExplicitAny: schema boundary is dynamic by design
 function isSuccess(result: any): result is { success: true; data: any } {
   return result.success === true;
 }
@@ -75,7 +76,7 @@ function parseIssues(issues: ZodMiniIssue[], validateAllFieldCriteria: boolean) 
 
     if (validateAllFieldCriteria) {
       const types = errors[path].types;
-      const messages = types && types[issue.code ?? "custom"];
+      const messages = types?.[issue.code ?? "custom"];
 
       errors[path] = appendErrors(
         path,
