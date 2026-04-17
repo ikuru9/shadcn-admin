@@ -5,9 +5,6 @@
 - When deciding whether to handle a task directly or delegate it
 - When distinguishing visual changes from logic changes
 
-## Delegate to `frontend-ui-ux-engineer`
-
-- style, className, tailwind, color, background, border, shadow
 - margin, padding, width, height, flex, grid
 - animation, transition, hover, responsive, font-size, icon, svg
 

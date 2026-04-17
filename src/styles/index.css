@@ -14,7 +14,7 @@
     @apply overflow-x-hidden;
   }
   body {
-    @apply min-h-svh w-full bg-background text-foreground has-[div[data-variant='inset']]:bg-sidebar;
+    @apply min-h-svh w-full has-[div[data-variant='inset']]:bg-sidebar bg-background text-foreground;
   }
 
   /* Override Radix scroll locking for sticky headers */
@@ -75,10 +75,12 @@
 .CollapsibleContent {
   overflow: hidden;
 }
-.CollapsibleContent[data-state="open"] {
+.CollapsibleContent[data-state="open"],
+.CollapsibleContent[data-open] {
   animation: slideDown 300ms ease-out;
 }
-.CollapsibleContent[data-state="closed"] {
+.CollapsibleContent[data-state="closed"],
+.CollapsibleContent[data-closed] {
   animation: slideUp 300ms ease-out;
 }
 
@@ -87,13 +89,13 @@
     height: 0;
   }
   to {
-    height: var(--radix-collapsible-content-height);
+    height: var(--collapsible-panel-height);
   }
 }
 
 @keyframes slideUp {
   from {
-    height: var(--radix-collapsible-content-height);
+    height: var(--collapsible-panel-height);
   }
   to {
     height: 0;

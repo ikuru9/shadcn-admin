@@ -2,33 +2,43 @@
 
 ## OVERVIEW
 
-Low-level, accessible UI primitives built with Radix UI and Tailwind CSS, following Shadcn patterns optimized for React 19.
+This folder should follow shadcn's Base UI style: low-level, accessible UI primitives composed from `@base-ui/react/*` and styled with Tailwind.
 
 ## WHERE TO LOOK
 
-- **Variant Definitions:** Located at the top of files using `class-variance-authority` (CVA). Look here to understand available `variant` and `size` options.
-- **Accessibility/Logic:** Primarily handled by `@radix-ui/react-*` primitives. These handle keyboard navigation, focus management, and ARIA roles.
-- **Styling Hooks:** Look for `data-slot` attributes on elements. These are used for targeted Tailwind styling from parent components or global styles.
-- **Composition:** `asChild` prop implementation using Radix `Slot`. This allows passing all component props to a child element (e.g., using a `Link` as a `Button`).
+- **Primitive source:** The accessibility and interaction model should come from `@base-ui/react/*` primitives.
+- **Variants:** Visual variants belong in `class-variance-authority` (`cva`) definitions near the top of the file.
+- **Styling hooks:** Use `data-slot` and Base UI state attributes such as `data-open`, `data-closed`, `data-side`, and `data-align` for styling.
+- **Composition:** Prefer official Base UI subcomponents, `render` composition, and documented parent/child structure.
 
 ## CONVENTIONS
 
-- **React 19 Ref Handling:** DO NOT use `forwardRef`. In React 19, `ref` is a standard prop. Simply destructure `ref` from props or pass it through via `...props`.
-- **Slot Pattern:** Every interactive element or major layout block should have a `data-slot="{component-name}"` attribute (e.g., `data-slot="button"`, `data-slot="card-content"`).
-- **Strict Prop Spreading:** Always spread `...props` to the innermost primitive element. This ensures that native HTML attributes (like `id`, `title`, `aria-label`) and event handlers are correctly inherited.
-- **Type Safety:** Use `React.ComponentProps<"tag">` for native HTML elements or `React.ComponentProps<typeof Primitive.Component>` for Radix-based components to ensure full type coverage.
-- **Consistent Exports:** Always export both the component (e.g., `Button`) and its variant generator (e.g., `buttonVariants`). This enables consumers to style other elements with the same visual language.
+- **Base UI first:** Public interactive components in this folder should be built on Base UI primitives.
+- **Primitive-typed props:** Prefer Base UI prop types such as `DialogPrimitive.Root.Props`, `MenuPrimitive.Item.Props`, or `SelectPrimitive.Trigger.Props`.
+- **Render, not `asChild`:** Follow Base UI composition patterns and prefer `render` where composition is needed.
+- **Strict prop spreading:** Pass `...props` through to the actual primitive/root element that owns accessibility and interaction behavior.
+- **Slot contract:** Keep `data-slot` attributes on public building blocks.
+- **Thin wrappers:** Keep wrappers minimal and focused on styling and small ergonomic improvements.
+- **Stable exports:** Preserve established component export names and variant exports.
+
+## BASE UI NOTES
+
+- **Respect provider trees:** Child parts must remain inside the required Base UI parent context.
+- **Use official structure:** If Base UI defines `Group`, `GroupLabel`, `Portal`, `Positioner`, `Popup`, or similar parts, compose them in the documented hierarchy.
+- **Use Base UI state selectors:** Prefer Base UI-emitted data attributes over custom state classes when styling interactive states.
+- **Prefer primitive behavior:** Do not reimplement keyboard, focus, dismissal, or ARIA behavior that the primitive already provides.
 
 ## CUSTOMIZATION TIPS
 
-- **Extending Variants:** When adding new visual states, modify the `cva` definition at the top of the file rather than adding conditional logic in the JSX.
-- **Overriding Styles:** Use the `cn()` utility to merge default component classes with custom classes passed via the `className` prop. The `tailwind-merge` logic inside `cn()` will handle conflicts correctly.
-- **Adding Icons:** Most components are designed to work with `lucide-react` icons. Use the `size-4` class for icons within buttons or inputs to match the established design language.
+- **Add variants in `cva`:** Extend visual states in variant definitions instead of branching JSX when possible.
+- **Merge classes with `cn()`:** Use `cn()` for caller overrides.
+- **Follow shadcn Base UI patterns:** When modifying a component, align with the current shadcn Base UI registry structure and naming.
+- **Keep icons incidental:** Icons should support the primitive, not define component behavior.
 
 ## ANTI-PATTERNS
 
-- **NO forwardRef:** Avoid legacy `forwardRef` wrappers; they add unnecessary complexity in this React 19 codebase.
-- **NO Business Logic:** These are pure design-system components. Do not perform API calls, manage complex domain state, or add side effects within these files.
-- **NO Hardcoded Colors:** Never use hex codes, RGB, or HSL literals. Always use Tailwind theme variables (e.g., `text-primary`, `bg-accent/50`, `border-input`) to ensure dark mode and theme compatibility.
-- **NO Breaking Composition:** Do not wrap the root element in a way that blocks `asChild` delegation or prevents `ref` from reaching the interactive element.
-- **NO Manual ARIA:** Avoid manually adding ARIA roles or keyboard listeners. If the component lacks functionality, check if there is a Radix primitive that should be used instead.
+- **NO non-Base-UI primitives for core interactive wrappers:** Do not introduce Radix or other primitive libraries into files that should follow shadcn Base UI.
+- **NO broken composition:** Do not render subcomponents like labels, indicators, popups, or triggers outside the primitive structure they require.
+- **NO business logic:** Keep feature logic, fetching, and domain state out of `src/components/ui`.
+- **NO hardcoded colors:** Use theme tokens and semantic utility classes.
+- **NO compatibility hacks:** If the primitive model differs from an older pattern, update the component to match Base UI rather than layering workarounds.

@@ -5,7 +5,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
 
 export type AlertDialogProps = React.PropsWithChildren<{
   title: React.JSX.Element | string;
@@ -36,21 +35,17 @@ export function AlertDialog({
       <AlertDialogHeader className="rounded-none">
         <AlertDialogHeader className="text-start">
           <AlertDialogTitle>{title}</AlertDialogTitle>
-          <AlertDialogDescription asChild>
-            <div>{description}</div>
-          </AlertDialogDescription>
+          <AlertDialogDescription>{description}</AlertDialogDescription>
         </AlertDialogHeader>
       </AlertDialogHeader>
       {children}
       <AlertDialogFooter>
-        <AlertDialogAction>
-          <Button
-            variant={destructive ? "destructive" : "default"}
-            disabled={disabled || isLoading}
-            onClick={() => onClose(true)}
-          >
-            {okText}
-          </Button>
+        <AlertDialogAction
+          variant={destructive ? "destructive" : "default"}
+          disabled={disabled || isLoading}
+          onClick={() => onClose(true)}
+        >
+          {okText}
         </AlertDialogAction>
       </AlertDialogFooter>
     </>

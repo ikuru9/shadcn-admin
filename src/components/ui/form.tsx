@@ -8,10 +8,9 @@ import {
   type FieldPath,
   type FieldValues,
 } from "react-hook-form";
-import type * as LabelPrimitive from "@radix-ui/react-label";
-import { Slot } from "@radix-ui/react-slot";
-import { cn } from "@/lib/utils";
+
 import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
 
 const Form = FormProvider;
 
@@ -76,7 +75,7 @@ function FormItem({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-function FormLabel({ className, ...props }: React.ComponentProps<typeof LabelPrimitive.Root>) {
+function FormLabel({ className, ...props }: React.ComponentProps<typeof Label>) {
   const { error, formItemId } = useFormField();
 
   return (
@@ -90,18 +89,32 @@ function FormLabel({ className, ...props }: React.ComponentProps<typeof LabelPri
   );
 }
 
-function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
+function FormControl({
+  children,
+  className,
+  ...props
+}: React.ComponentProps<"div"> & { children: React.ReactElement }) {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField();
 
-  return (
-    <Slot
-      data-slot="form-control"
-      id={formItemId}
-      aria-describedby={!error ? `${formDescriptionId}` : `${formDescriptionId} ${formMessageId}`}
-      aria-invalid={!!error}
-      {...props}
-    />
-  );
+  if (!React.isValidElement(children)) {
+    return null;
+  }
+
+  const child = children as React.ReactElement<Record<string, unknown>>;
+  const childProps = child.props;
+
+  const describedBy = [childProps["aria-describedby"], formDescriptionId, error ? formMessageId : undefined]
+    .filter(Boolean)
+    .join(" ");
+
+  return React.cloneElement(child, {
+    "data-slot": "form-control",
+    id: formItemId,
+    "aria-describedby": describedBy,
+    "aria-invalid": !!error,
+    className: cn(childProps.className as string | undefined, className),
+    ...props,
+  });
 }
 
 function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
@@ -111,7 +124,7 @@ function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="form-description"
       id={formDescriptionId}
-      className={cn("text-sm text-muted-foreground", className)}
+      className={cn("text-muted-foreground text-sm", className)}
       {...props}
     />
   );
@@ -126,24 +139,11 @@ function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
   }
 
   return (
-    <p
-      data-slot="form-message"
-      id={formMessageId}
-      className={cn("text-sm text-destructive", className)}
-      {...props}
-    >
+    <p data-slot="form-message" id={formMessageId} className={cn("text-destructive text-sm", className)} {...props}>
       {body}
     </p>
   );
 }
 
-export {
-  useFormField,
-  Form,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormDescription,
-  FormMessage,
-  FormField,
-};
+// biome-ignore lint/style/useComponentExportOnlyModules: form helpers are intentionally colocated
+export { useFormField, Form, FormItem, FormLabel, FormControl, FormDescription, FormMessage, FormField };

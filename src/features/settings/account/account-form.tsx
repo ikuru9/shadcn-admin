@@ -88,20 +88,22 @@ export function AccountForm() {
             <FormItem className="flex flex-col">
               <FormLabel>Language</FormLabel>
               <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant="outline"
-                      role="combobox"
-                      className={cn("w-50 justify-between", !field.value && "text-muted-foreground")}
-                    >
-                      {field.value
-                        ? languages.find((language) => language.value === field.value)?.label
-                        : "Select language"}
-                      <ArrowUpDown className="ms-2 h-4 w-4 shrink-0 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
+                <FormControl>
+                  <PopoverTrigger
+                    render={
+                      <Button
+                        variant="outline"
+                        role="combobox"
+                        className={cn("w-50 justify-between", !field.value && "text-muted-foreground")}
+                      />
+                    }
+                  >
+                    {field.value
+                      ? languages.find((language) => language.value === field.value)?.label
+                      : "Select language"}
+                    <ArrowUpDown className="ms-2 h-4 w-4 shrink-0 opacity-50" />
+                  </PopoverTrigger>
+                </FormControl>
                 <PopoverContent className="w-50 p-0">
                   <Command>
                     <CommandInput placeholder="Search language..." />

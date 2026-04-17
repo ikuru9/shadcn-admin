@@ -11,7 +11,7 @@ export function AppTitle() {
   return (
     <SidebarMenu>
       <SidebarMenuItem>
-        <SidebarMenuButton size="lg" className="gap-0 py-0 hover:bg-transparent active:bg-transparent" asChild>
+        <SidebarMenuButton size="lg" className="gap-0 py-0 hover:bg-transparent active:bg-transparent" render={<div />}>
           <div>
             <Link to="/" onClick={() => setOpenMobile(false)} className="grid flex-1 text-start text-sm leading-tight">
               <span className="truncate font-bold">Shadcn-Admin</span>

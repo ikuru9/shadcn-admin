@@ -3,8 +3,8 @@ import { ChevronDown } from "lucide-react";
 import { useForm } from "react-hook-form";
 import * as v from "valibot";
 
-import { Button, buttonVariants } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { fonts } from "@/config/fonts";
 import { useFont } from "@/context/font-provider";
@@ -88,7 +88,7 @@ export function AppearanceForm() {
                 className="grid max-w-md grid-cols-2 gap-8 pt-2"
               >
                 <FormItem>
-                  <FormLabel className="[&:has([data-state=checked])>div]:border-primary">
+                  <FormLabel className="[&:has([data-checked])>div]:border-primary">
                     <FormControl>
                       <RadioGroupItem value="light" className="sr-only" />
                     </FormControl>
@@ -112,7 +112,7 @@ export function AppearanceForm() {
                   </FormLabel>
                 </FormItem>
                 <FormItem>
-                  <FormLabel className="[&:has([data-state=checked])>div]:border-primary">
+                  <FormLabel className="[&:has([data-checked])>div]:border-primary">
                     <FormControl>
                       <RadioGroupItem value="dark" className="sr-only" />
                     </FormControl>

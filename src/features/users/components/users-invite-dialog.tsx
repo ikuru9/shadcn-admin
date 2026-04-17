@@ -118,9 +118,7 @@ export function UsersInviteDialog({ open, onOpenChange }: UserInviteDialogProps)
           </form>
         </Form>
         <DialogFooter className="gap-y-2">
-          <DialogClose asChild>
-            <Button variant="outline">Cancel</Button>
-          </DialogClose>
+          <DialogClose render={<Button variant="outline" />}>Cancel</DialogClose>
           <Button type="submit" form="user-invite-form">
             Invite <Send />
           </Button>

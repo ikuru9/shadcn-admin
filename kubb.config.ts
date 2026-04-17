@@ -31,7 +31,6 @@ export default defineConfig(() => ({
     pluginTs(),
     pluginClient({
       client: "axios",
-      importPath: "@/lib/client",
       baseURL,
       dataReturnType: "data",
       group: {
@@ -53,7 +52,7 @@ export default defineConfig(() => ({
       group: {
         type: "path",
       },
-      dateParser: "date-fns",
+      dateParser: "faker",
     }),
     pluginMsw({
       parser: "faker",

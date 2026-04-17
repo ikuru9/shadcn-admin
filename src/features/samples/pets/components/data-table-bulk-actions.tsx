@@ -21,18 +21,20 @@ export function DataTableBulkActions({ table }: DataTableBulkActionsProps) {
     <>
       <BulkActionsToolbar table={table} entityName="pet">
         <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              variant="destructive"
-              size="icon"
-              onClick={() => setShowDeleteConfirm(true)}
-              className="size-8"
-              aria-label="Delete selected pets"
-              title="Delete selected pets"
-            >
-              <Trash2 />
-              <span className="sr-only">Delete selected pets</span>
-            </Button>
+          <TooltipTrigger
+            render={
+              <Button
+                variant="destructive"
+                size="icon"
+                onClick={() => setShowDeleteConfirm(true)}
+                className="size-8"
+                aria-label="Delete selected pets"
+                title="Delete selected pets"
+              />
+            }
+          >
+            <Trash2 />
+            <span className="sr-only">Delete selected pets</span>
           </TooltipTrigger>
           <TooltipContent>
             <p>Delete selected pets</p>

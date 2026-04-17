@@ -36,8 +36,8 @@
       "!node_modules",
       "!dist",
       "!out",
-      "!src/components/ui",
       "!src/gen",
+      "!src/components/ui",
       "!src/routeTree.gen.ts"
     ]
   },

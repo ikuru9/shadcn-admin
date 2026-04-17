@@ -148,18 +148,20 @@ export function DataTableBulkActions<TData>({
           )}
         >
           <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={handleClearSelection}
-                className="size-6 rounded-full"
-                aria-label="Clear selection"
-                title="Clear selection (Escape)"
-              >
-                <X />
-                <span className="sr-only">Clear selection</span>
-              </Button>
+            <TooltipTrigger
+              render={
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={handleClearSelection}
+                  className="size-6 rounded-full"
+                  aria-label="Clear selection"
+                  title="Clear selection (Escape)"
+                />
+              }
+            >
+              <X />
+              <span className="sr-only">Clear selection</span>
             </TooltipTrigger>
             <TooltipContent>
               <p>Clear selection (Escape)</p>

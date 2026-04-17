@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 
-import { Item, Root as Radio } from "@radix-ui/react-radio-group";
+import { Radio as RadioPrimitive } from "@base-ui/react/radio";
 import { CircleCheck, RotateCcw, Settings } from "lucide-react";
 
 import { IconDir } from "@/assets/custom/icon-dir";
@@ -14,6 +14,7 @@ import { IconThemeDark } from "@/assets/custom/icon-theme-dark";
 import { IconThemeLight } from "@/assets/custom/icon-theme-light";
 import { IconThemeSystem } from "@/assets/custom/icon-theme-system";
 import { Button } from "@/components/ui/button";
+import { RadioGroup } from "@/components/ui/radio-group";
 import {
   Sheet,
   SheetContent,
@@ -45,16 +46,18 @@ export function ConfigDrawer() {
 
   return (
     <Sheet>
-      <SheetTrigger asChild>
-        <Button
-          size="icon"
-          variant="ghost"
-          aria-label="Open theme settings"
-          aria-describedby="config-drawer-description"
-          className="rounded-full"
-        >
-          <Settings aria-hidden="true" />
-        </Button>
+      <SheetTrigger
+        render={
+          <Button
+            size="icon"
+            variant="ghost"
+            aria-label="Open theme settings"
+            aria-describedby="config-drawer-description"
+            className="rounded-full"
+          />
+        }
+      >
+        <Settings aria-hidden="true" />
       </SheetTrigger>
       <SheetContent className="flex flex-col">
         <SheetHeader className="pb-0 text-start">
@@ -63,7 +66,7 @@ export function ConfigDrawer() {
             Adjust the appearance and layout to suit your preferences.
           </SheetDescription>
         </SheetHeader>
-        <div className="space-y-6 overflow-y-auto px-4">
+        <div className="flex-1 space-y-6 overflow-y-auto px-4 min-h-0">
           <ThemeConfig />
           <SidebarConfig />
           <LayoutConfig />
@@ -114,17 +117,22 @@ function RadioGroupItem({
   isTheme?: boolean;
 }) {
   return (
-    <Item
+    <RadioPrimitive.Root
       value={item.value}
-      className={cn("group outline-none", "transition duration-200 ease-in")}
+      className={cn(
+        "group flex w-full cursor-pointer flex-col items-start gap-1 outline-none select-none",
+        "transition duration-200 ease-in",
+      )}
       aria-label={`Select ${item.label.toLowerCase()}`}
       aria-describedby={`${item.value}-description`}
     >
       <div
         className={cn(
-          "relative rounded-[6px] ring-[1px] ring-border",
-          "group-data-[state=checked]:shadow-2xl group-data-[state=checked]:ring-primary",
-          "group-focus-visible:ring-2",
+          "relative aspect-[79.86/51.14] w-full rounded-[6px] bg-muted/20 ring-1 ring-border",
+          "transition-[box-shadow,transform,ring-color,background-color] duration-200 ease-in",
+          "group-hover:ring-primary/50 group-hover:bg-accent/20",
+          "group-data-checked:bg-accent/30 group-data-checked:shadow-2xl group-data-checked:ring-primary",
+          "group-focus-visible:ring-2 group-focus-visible:ring-ring/50",
         )}
         role="img"
         aria-hidden="false"
@@ -132,24 +140,30 @@ function RadioGroupItem({
       >
         <CircleCheck
           className={cn(
-            "size-6 fill-primary stroke-white",
-            "group-data-[state=unchecked]:hidden",
-            "absolute top-0 right-0 translate-x-1/2 -translate-y-1/2",
+            "absolute top-0 right-0 size-6 translate-x-1/2 -translate-y-1/2 rounded-full fill-primary stroke-background shadow-sm",
+            "group-data-unchecked:hidden",
           )}
           aria-hidden="true"
         />
-        <item.icon
-          className={cn(
-            !isTheme &&
-              "fill-primary stroke-primary group-data-[state=unchecked]:fill-muted-foreground group-data-[state=unchecked]:stroke-muted-foreground",
-          )}
-          aria-hidden="true"
-        />
+        <div className="size-full overflow-hidden rounded-[6px]">
+          <item.icon
+            className={cn(
+              "block size-full",
+              !isTheme &&
+                "fill-primary stroke-primary group-data-unchecked:fill-muted-foreground group-data-unchecked:stroke-muted-foreground",
+            )}
+            aria-hidden="true"
+          />
+        </div>
       </div>
-      <div className="mt-1 text-xs" id={`${item.value}-description`} aria-live="polite">
+      <div
+        className="mt-1 text-xs text-muted-foreground transition-colors group-hover:text-foreground group-data-checked:text-foreground"
+        id={`${item.value}-description`}
+        aria-live="polite"
+      >
         {item.label}
       </div>
-    </Item>
+    </RadioPrimitive.Root>
   );
 }
 
@@ -158,9 +172,9 @@ function ThemeConfig() {
   return (
     <div>
       <SectionTitle title="Theme" showReset={theme !== defaultTheme} onReset={() => setTheme(defaultTheme)} />
-      <Radio
+      <RadioGroup
         value={theme}
-        onValueChange={setTheme}
+        onValueChange={(value) => setTheme(value as typeof theme)}
         className="grid w-full max-w-md grid-cols-3 gap-4"
         aria-label="Select theme preference"
         aria-describedby="theme-description"
@@ -184,7 +198,7 @@ function ThemeConfig() {
         ].map((item) => (
           <RadioGroupItem key={item.value} item={item} isTheme />
         ))}
-      </Radio>
+      </RadioGroup>
       <div id="theme-description" className="sr-only">
         Choose between system preference, light mode, or dark mode
       </div>
@@ -197,9 +211,9 @@ function SidebarConfig() {
   return (
     <div className="max-md:hidden">
       <SectionTitle title="Sidebar" showReset={defaultVariant !== variant} onReset={() => setVariant(defaultVariant)} />
-      <Radio
+      <RadioGroup
         value={variant}
-        onValueChange={setVariant}
+        onValueChange={(value) => setVariant(value as typeof variant)}
         className="grid w-full max-w-md grid-cols-3 gap-4"
         aria-label="Select sidebar style"
         aria-describedby="sidebar-description"
@@ -223,7 +237,7 @@ function SidebarConfig() {
         ].map((item) => (
           <RadioGroupItem key={item.value} item={item} />
         ))}
-      </Radio>
+      </RadioGroup>
       <div id="sidebar-description" className="sr-only">
         Choose between inset, floating, or standard sidebar layout
       </div>
@@ -247,7 +261,7 @@ function LayoutConfig() {
           setCollapsible(defaultCollapsible);
         }}
       />
-      <Radio
+      <RadioGroup
         value={radioState}
         onValueChange={(v) => {
           if (v === "default") {
@@ -280,7 +294,7 @@ function LayoutConfig() {
         ].map((item) => (
           <RadioGroupItem key={item.value} item={item} />
         ))}
-      </Radio>
+      </RadioGroup>
       <div id="layout-description" className="sr-only">
         Choose between default expanded, compact icon-only, or full layout mode
       </div>
@@ -293,9 +307,9 @@ function DirConfig() {
   return (
     <div>
       <SectionTitle title="Direction" showReset={defaultDir !== dir} onReset={() => setDir(defaultDir)} />
-      <Radio
+      <RadioGroup
         value={dir}
-        onValueChange={setDir}
+        onValueChange={(value) => setDir(value as typeof dir)}
         className="grid w-full max-w-md grid-cols-3 gap-4"
         aria-label="Select site direction"
         aria-describedby="direction-description"
@@ -314,7 +328,7 @@ function DirConfig() {
         ].map((item) => (
           <RadioGroupItem key={item.value} item={item} />
         ))}
-      </Radio>
+      </RadioGroup>
       <div id="direction-description" className="sr-only">
         Choose between left-to-right or right-to-left site direction
       </div>

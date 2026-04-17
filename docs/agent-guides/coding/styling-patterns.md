@@ -11,7 +11,3 @@
 - Use Tailwind theme variables such as `text-primary` and `bg-accent`
 - Use `data-slot` attributes as styling hooks
 - Use Lucide React for icons
-
-## Notes
-
-- Do not make direct visual style changes yourself; delegate them to `frontend-ui-ux-engineer`
