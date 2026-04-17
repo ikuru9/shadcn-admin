@@ -1,31 +1,31 @@
 import { useState } from "react";
 
-import { valibotResolver } from "@hookform/resolvers/valibot";
 import { useNavigate } from "@tanstack/react-router";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import * as v from "valibot";
+import * as z from "zod/mini";
 
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 import { cn, sleep } from "@/lib/utils";
 
-const formSchema = v.object({
-  email: v.pipe(v.string(), v.email("Please enter your email")),
+const formSchema = z.object({
+  email: z.email("Please enter your email"),
 });
 
 export function ForgotPasswordForm({ className, ...props }: React.HTMLAttributes<HTMLFormElement>) {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
-  const form = useForm<v.InferOutput<typeof formSchema>>({
-    resolver: valibotResolver(formSchema),
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodMiniResolver(formSchema),
     defaultValues: { email: "" },
   });
 
-  function onSubmit(data: v.InferOutput<typeof formSchema>) {
+  function onSubmit(data: z.infer<typeof formSchema>) {
     setIsLoading(true);
 
     console.log(data);

@@ -1,7 +1,6 @@
-import { valibotResolver } from "@hookform/resolvers/valibot";
 import { MailPlus, Send } from "lucide-react";
 import { useForm } from "react-hook-form";
-import * as v from "valibot";
+import * as z from "zod/mini";
 
 import { SelectDropdown } from "@/components/select-dropdown";
 import { Button } from "@/components/ui/button";
@@ -18,16 +17,17 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { showSubmittedData } from "@/lib/show-submitted-data";
+import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 
 import { roles } from "../data/data";
 
-const formSchema = v.object({
-  email: v.pipe(v.string(), v.email("Please enter an email to invite.")),
-  role: v.pipe(v.string(), v.minLength(1, "Role is required.")),
-  desc: v.optional(v.string()),
+const formSchema = z.object({
+  email: z.email("Please enter an email to invite."),
+  role: z.string().check(z.minLength(1, "Role is required.")),
+  desc: z.optional(z.string()),
 });
 
-type UserInviteForm = v.InferOutput<typeof formSchema>;
+type UserInviteForm = z.infer<typeof formSchema>;
 
 interface UserInviteDialogProps {
   open: boolean;
@@ -36,7 +36,7 @@ interface UserInviteDialogProps {
 
 export function UsersInviteDialog({ open, onOpenChange }: UserInviteDialogProps) {
   const form = useForm<UserInviteForm>({
-    resolver: valibotResolver(formSchema),
+    resolver: zodMiniResolver(formSchema),
     defaultValues: { email: "", role: "", desc: "" },
   });
 

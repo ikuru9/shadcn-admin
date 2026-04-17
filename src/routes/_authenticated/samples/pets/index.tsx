@@ -1,16 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import * as v from "valibot";
+import * as z from "zod/mini";
 
 import { Pets } from "@/features/samples/pets";
 import { findPetsByStatusSuspenseQueryOptions } from "@/gen/hooks";
 
-const petSearchSchema = v.object({
-  page: v.optional(v.number(), 1),
-  pageSize: v.optional(v.number(), 10),
+const petSearchSchema = z.object({
+  page: z.prefault(z.number(), 1),
+  pageSize: z.prefault(z.number(), 10),
   // Facet filters
-  status: v.optional(v.picklist(["available", "pending", "sold"]), "available"),
+  status: z.prefault(z.enum(["available", "pending", "sold"]), "available"),
   // Per-column text filter
-  name: v.optional(v.string(), ""),
+  name: z.prefault(z.string(), ""),
 });
 
 export const Route = createFileRoute("/_authenticated/samples/pets/")({

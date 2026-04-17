@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import * as v from "valibot";
+import * as z from "zod/mini";
 
 import { SignIn } from "@/features/auth/sign-in";
 
-const searchSchema = v.object({
-  redirect: v.optional(v.string()),
+const searchSchema = z.object({
+  redirect: z.optional(z.string()),
 });
 
 export const Route = createFileRoute("/(auth)/sign-in")({

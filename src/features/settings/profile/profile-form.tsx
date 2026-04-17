@@ -1,28 +1,29 @@
-import { valibotResolver } from "@hookform/resolvers/valibot";
 import { Link } from "@tanstack/react-router";
 import { useFieldArray, useForm } from "react-hook-form";
-import * as v from "valibot";
+import * as z from "zod/mini";
 
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 import { showSubmittedData } from "@/lib/show-submitted-data";
 import { cn } from "@/lib/utils";
 
-const profileFormSchema = v.object({
-  username: v.pipe(
-    v.string("Please enter your username."),
-    v.minLength(2, "Username must be at least 2 characters."),
-    v.maxLength(30, "Username must not be longer than 30 characters."),
-  ),
-  email: v.pipe(v.string(), v.email("Please select an email to display.")),
-  bio: v.pipe(v.string(), v.maxLength(160), v.minLength(4)),
-  urls: v.optional(v.array(v.object({ value: v.pipe(v.string(), v.url("Please enter a valid URL.")) }))),
+const profileFormSchema = z.object({
+  username: z
+    .string()
+    .check(
+      z.minLength(2, "Username must be at least 2 characters."),
+      z.maxLength(30, "Username must not be longer than 30 characters."),
+    ),
+  email: z.email("Please select an email to display."),
+  bio: z.string().check(z.maxLength(160), z.minLength(4)),
+  urls: z.optional(z.array(z.object({ value: z.url("Please enter a valid URL.") }))),
 });
 
-type ProfileFormValues = v.InferOutput<typeof profileFormSchema>;
+type ProfileFormValues = z.infer<typeof profileFormSchema>;
 
 // This can come from your database or API.
 const defaultValues: Partial<ProfileFormValues> = {
@@ -32,7 +33,7 @@ const defaultValues: Partial<ProfileFormValues> = {
 
 export function ProfileForm() {
   const form = useForm<ProfileFormValues>({
-    resolver: valibotResolver(profileFormSchema),
+    resolver: zodMiniResolver(profileFormSchema),
     defaultValues,
     mode: "onChange",
   });

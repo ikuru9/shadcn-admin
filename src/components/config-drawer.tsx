@@ -66,7 +66,7 @@ export function ConfigDrawer() {
             Adjust the appearance and layout to suit your preferences.
           </SheetDescription>
         </SheetHeader>
-        <div className="flex-1 space-y-6 overflow-y-auto px-4 min-h-0">
+        <div className="min-h-0 flex-1 space-y-6 overflow-y-auto px-4">
           <ThemeConfig />
           <SidebarConfig />
           <LayoutConfig />
@@ -120,7 +120,7 @@ function RadioGroupItem({
     <RadioPrimitive.Root
       value={item.value}
       className={cn(
-        "group flex w-full cursor-pointer flex-col items-start gap-1 outline-none select-none",
+        "group flex w-full cursor-pointer select-none flex-col items-start gap-1 outline-none",
         "transition duration-200 ease-in",
       )}
       aria-label={`Select ${item.label.toLowerCase()}`}
@@ -130,7 +130,7 @@ function RadioGroupItem({
         className={cn(
           "relative aspect-[79.86/51.14] w-full rounded-[6px] bg-muted/20 ring-1 ring-border",
           "transition-[box-shadow,transform,ring-color,background-color] duration-200 ease-in",
-          "group-hover:ring-primary/50 group-hover:bg-accent/20",
+          "group-hover:bg-accent/20 group-hover:ring-primary/50",
           "group-data-checked:bg-accent/30 group-data-checked:shadow-2xl group-data-checked:ring-primary",
           "group-focus-visible:ring-2 group-focus-visible:ring-ring/50",
         )}
@@ -157,7 +157,7 @@ function RadioGroupItem({
         </div>
       </div>
       <div
-        className="mt-1 text-xs text-muted-foreground transition-colors group-hover:text-foreground group-data-checked:text-foreground"
+        className="mt-1 text-muted-foreground text-xs transition-colors group-hover:text-foreground group-data-checked:text-foreground"
         id={`${item.value}-description`}
         aria-live="polite"
       >

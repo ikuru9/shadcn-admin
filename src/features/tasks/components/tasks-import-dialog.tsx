@@ -1,6 +1,5 @@
-import { valibotResolver } from "@hookform/resolvers/valibot";
 import { useForm } from "react-hook-form";
-import * as v from "valibot";
+import * as z from "zod/mini";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -15,12 +14,12 @@ import {
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { showSubmittedData } from "@/lib/show-submitted-data";
+import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 
-const formSchema = v.object({
-  file: v.pipe(
-    v.instance(FileList),
-    v.check((files) => files.length > 0, "Please upload a file"),
-    v.check((files) => ["text/csv"].includes(files?.[0]?.type), "Please upload csv format."),
+const formSchema = z.object({
+  file: z.instanceof(FileList).check(
+    z.refine((files) => files.length > 0, "Please upload a file"),
+    z.refine((files) => ["text/csv"].includes(files?.[0]?.type), "Please upload csv format."),
   ),
 });
 
@@ -30,8 +29,8 @@ interface TaskImportDialogProps {
 }
 
 export function TasksImportDialog({ open, onOpenChange }: TaskImportDialogProps) {
-  const form = useForm<v.InferOutput<typeof formSchema>>({
-    resolver: valibotResolver(formSchema),
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodMiniResolver(formSchema),
     defaultValues: { file: undefined },
   });
 

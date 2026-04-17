@@ -1,7 +1,6 @@
-import { valibotResolver } from "@hookform/resolvers/valibot";
 import { ChevronDown } from "lucide-react";
 import { useForm } from "react-hook-form";
-import * as v from "valibot";
+import * as z from "zod/mini";
 
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -10,14 +9,15 @@ import { fonts } from "@/config/fonts";
 import { useFont } from "@/context/font-provider";
 import { useTheme } from "@/context/theme-provider";
 import { showSubmittedData } from "@/lib/show-submitted-data";
+import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 import { cn } from "@/lib/utils";
 
-const appearanceFormSchema = v.object({
-  theme: v.picklist(["light", "dark"]),
-  font: v.picklist(fonts),
+const appearanceFormSchema = z.object({
+  theme: z.enum(["light", "dark"]),
+  font: z.enum(fonts),
 });
 
-type AppearanceFormValues = v.InferOutput<typeof appearanceFormSchema>;
+type AppearanceFormValues = z.infer<typeof appearanceFormSchema>;
 
 export function AppearanceForm() {
   const { font, setFont } = useFont();
@@ -30,7 +30,7 @@ export function AppearanceForm() {
   };
 
   const form = useForm<AppearanceFormValues>({
-    resolver: valibotResolver(appearanceFormSchema),
+    resolver: zodMiniResolver(appearanceFormSchema),
     defaultValues,
   });
 

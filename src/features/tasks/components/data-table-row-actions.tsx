@@ -1,7 +1,5 @@
 import type { Row } from "@tanstack/react-table";
 import { MoreHorizontal, Trash2 } from "lucide-react";
-import * as v from "valibot";
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -26,7 +24,7 @@ interface DataTableRowActionsProps<TData> {
 }
 
 export function DataTableRowActions<TData>({ row }: DataTableRowActionsProps<TData>) {
-  const task = v.parse(taskSchema, row.original);
+  const task = taskSchema.parse(row.original);
 
   const { setOpen, setCurrentRow } = useTasks();
 

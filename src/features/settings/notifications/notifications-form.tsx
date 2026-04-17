@@ -1,29 +1,29 @@
-import { valibotResolver } from "@hookform/resolvers/valibot";
 import { Link } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
-import * as v from "valibot";
+import * as z from "zod/mini";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Switch } from "@/components/ui/switch";
+import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 import { showSubmittedData } from "@/lib/show-submitted-data";
 
-const notificationsFormSchema = v.object({
-  type: v.picklist(["all", "mentions", "none"], "Please select a notification type."),
-  mobile: v.fallback(v.boolean(), false),
-  communication_emails: v.fallback(v.boolean(), false),
-  social_emails: v.fallback(v.boolean(), false),
-  marketing_emails: v.fallback(v.boolean(), false),
-  security_emails: v.fallback(v.boolean(), false),
+const notificationsFormSchema = z.object({
+  type: z.enum(["all", "mentions", "none"], "Please select a notification type."),
+  mobile: z.boolean(),
+  communication_emails: z.boolean(),
+  social_emails: z.boolean(),
+  marketing_emails: z.boolean(),
+  security_emails: z.boolean(),
 });
 
-type NotificationsFormValues = v.InferOutput<typeof notificationsFormSchema>;
+type NotificationsFormValues = z.infer<typeof notificationsFormSchema>;
 
 export function NotificationsForm() {
   const form = useForm<NotificationsFormValues>({
-    resolver: valibotResolver(notificationsFormSchema),
+    resolver: zodMiniResolver(notificationsFormSchema),
     defaultValues: {
       communication_emails: false,
       marketing_emails: false,

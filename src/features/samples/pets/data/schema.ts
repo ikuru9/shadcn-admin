@@ -1,33 +1,33 @@
-import * as v from "valibot";
+import * as z from "zod/mini";
 
-const categorySchema = v.optional(
-  v.object({
-    id: v.optional(v.number()),
-    name: v.optional(v.string()),
+const categorySchema = z.optional(
+  z.object({
+    id: z.optional(z.number()),
+    name: z.optional(z.string()),
   }),
 );
 
-const tagSchema = v.optional(
-  v.object({
-    id: v.optional(v.number()),
-    name: v.optional(v.string()),
+const tagSchema = z.optional(
+  z.object({
+    id: z.optional(z.number()),
+    name: z.optional(z.string()),
   }),
 );
 
-const petStatusSchema = v.optional(v.union([v.literal("available"), v.literal("pending"), v.literal("sold")]));
+const petStatusSchema = z.optional(z.union([z.literal("available"), z.literal("pending"), z.literal("sold")]));
 
-const petSchema = v.object({
-  id: v.optional(v.number()),
-  name: v.string(),
+const petSchema = z.object({
+  id: z.optional(z.number()),
+  name: z.string(),
   category: categorySchema,
-  photoUrls: v.array(v.string()),
-  tags: v.optional(v.array(tagSchema)),
+  photoUrls: z.array(z.string()),
+  tags: z.optional(z.array(tagSchema)),
   status: petStatusSchema,
 });
 
-export type Pet = v.InferOutput<typeof petSchema>;
-export type Category = v.InferOutput<typeof categorySchema>;
-export type Tag = v.InferOutput<typeof tagSchema>;
-export type PetStatus = v.InferOutput<typeof petStatusSchema>;
+export type Pet = z.infer<typeof petSchema>;
+export type Category = z.infer<typeof categorySchema>;
+export type Tag = z.infer<typeof tagSchema>;
+export type PetStatus = z.infer<typeof petStatusSchema>;
 
-export const petListSchema = v.array(petSchema);
+export const petListSchema = z.array(petSchema);

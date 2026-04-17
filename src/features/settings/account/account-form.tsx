@@ -1,7 +1,6 @@
-import { valibotResolver } from "@hookform/resolvers/valibot";
 import { ArrowUpDown, Check } from "lucide-react";
 import { useForm } from "react-hook-form";
-import * as v from "valibot";
+import * as z from "zod/mini";
 
 import { DatePicker } from "@/components/custom-input/date-picker";
 import { Button } from "@/components/ui/button";
@@ -9,6 +8,7 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 import { showSubmittedData } from "@/lib/show-submitted-data";
 import { cn } from "@/lib/utils";
 
@@ -24,18 +24,24 @@ const languages = [
   { label: "Chinese", value: "zh" },
 ] as const;
 
-const accountFormSchema = v.object({
-  name: v.pipe(
-    v.string(),
-    v.minLength(1, "Please enter your name."),
-    v.minLength(2, "Name must be at least 2 characters."),
-    v.maxLength(30, "Name must not be longer than 30 characters."),
-  ),
-  dob: v.date("Please select your date of birth."),
-  language: v.string("Please select a language."),
+const languageValues = languages.map((language) => language.value) as [
+  (typeof languages)[number]["value"],
+  ...(typeof languages)[number]["value"][],
+];
+
+const accountFormSchema = z.object({
+  name: z
+    .string()
+    .check(
+      z.minLength(1, "Please enter your name."),
+      z.minLength(2, "Name must be at least 2 characters."),
+      z.maxLength(30, "Name must not be longer than 30 characters."),
+    ),
+  dob: z.date(),
+  language: z.enum(languageValues, "Please select a language."),
 });
 
-type AccountFormValues = v.InferOutput<typeof accountFormSchema>;
+type AccountFormValues = z.infer<typeof accountFormSchema>;
 
 // This can come from your database or API.
 const defaultValues: Partial<AccountFormValues> = {
@@ -44,7 +50,7 @@ const defaultValues: Partial<AccountFormValues> = {
 
 export function AccountForm() {
   const form = useForm<AccountFormValues>({
-    resolver: valibotResolver(accountFormSchema),
+    resolver: zodMiniResolver(accountFormSchema),
     defaultValues,
   });
 

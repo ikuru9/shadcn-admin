@@ -1,27 +1,25 @@
 import { useState } from "react";
 
-import { valibotResolver } from "@hookform/resolvers/valibot";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { Loader2, LogIn } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import * as v from "valibot";
+import * as z from "zod/mini";
 
 import { IconFacebook, IconGithub } from "@/assets/brand-icons";
 import { PasswordInput } from "@/components/custom-input/password-input";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 import { cn, sleep } from "@/lib/utils";
 import { useAuthStore } from "@/stores/auth-store";
 
-const formSchema = v.object({
-  email: v.pipe(v.string(), v.email("Please enter your email")),
-  password: v.pipe(
-    v.string(),
-    v.minLength(1, "Please enter your password"),
-    v.minLength(7, "Password must be at least 7 characters long"),
-  ),
+const formSchema = z.object({
+  email: z.email("Please enter your email"),
+  password: z
+    .string()
+    .check(z.minLength(1, "Please enter your password"), z.minLength(7, "Password must be at least 7 characters long")),
 });
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLFormElement> {
@@ -33,15 +31,15 @@ export function UserAuthForm({ className, redirectTo, ...props }: UserAuthFormPr
   const navigate = useNavigate();
   const { auth } = useAuthStore();
 
-  const form = useForm<v.InferOutput<typeof formSchema>>({
-    resolver: valibotResolver(formSchema),
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodMiniResolver(formSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
 
-  function onSubmit(data: v.InferOutput<typeof formSchema>) {
+  function onSubmit(data: z.infer<typeof formSchema>) {
     setIsLoading(true);
 
     toast.promise(sleep(2000), {

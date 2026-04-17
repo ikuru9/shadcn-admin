@@ -12,14 +12,11 @@ import { routeTree } from "./routeTree.gen";
 // Styles
 import "./styles/index.css";
 
-// valibot
-import * as v from "valibot";
-
 // Report
 import reportWebVitals from "@/reportWebVitals.ts";
-import "@valibot/i18n/kr";
+import * as z from "zod/mini";
 
-v.setGlobalConfig({ lang: "kr" });
+z.config(z.locales.ko());
 
 // MSW setup
 if (import.meta.env.DEV) {

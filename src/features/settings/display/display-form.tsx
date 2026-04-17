@@ -1,11 +1,11 @@
-import { valibotResolver } from "@hookform/resolvers/valibot";
 import { useForm } from "react-hook-form";
-import * as v from "valibot";
+import * as z from "zod/mini";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { showSubmittedData } from "@/lib/show-submitted-data";
+import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 
 const items = [
   {
@@ -34,17 +34,11 @@ const items = [
   },
 ] as const;
 
-const displayFormSchema = v.object({
-  items: v.pipe(
-    v.array(v.string()),
-    v.someItem(
-      (item) => !!item, // 최소 하나 이상의 아이템이 truthy(존재)해야 함
-      "You have to select at least one item.",
-    ),
-  ),
+const displayFormSchema = z.object({
+  items: z.array(z.string()).check(z.minLength(1, "You have to select at least one item.")),
 });
 
-type DisplayFormValues = v.InferOutput<typeof displayFormSchema>;
+type DisplayFormValues = z.infer<typeof displayFormSchema>;
 
 // This can come from your database or API.
 const defaultValues: Partial<DisplayFormValues> = {
@@ -53,7 +47,7 @@ const defaultValues: Partial<DisplayFormValues> = {
 
 export function DisplayForm() {
   const form = useForm<DisplayFormValues>({
-    resolver: valibotResolver(displayFormSchema),
+    resolver: zodMiniResolver(displayFormSchema),
     defaultValues,
   });
 

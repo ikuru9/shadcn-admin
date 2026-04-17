@@ -64,7 +64,13 @@
         "useExhaustiveDependencies": "warn"
       },
       "nursery": {
-        "useSortedClasses": "on"
+        "useSortedClasses": {
+          "level": "error",
+          "fix": "safe",
+          "options": {
+            "functions": ["clsx", "cva", "tw", "tw.*"]
+          }
+        }
       },
       "style": {
         "noCommonJs": "error",

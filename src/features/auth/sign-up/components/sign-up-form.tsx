@@ -1,37 +1,44 @@
 import { useState } from "react";
 
-import { valibotResolver } from "@hookform/resolvers/valibot";
 import { useForm } from "react-hook-form";
-import * as v from "valibot";
+import * as z from "zod/mini";
 
 import { IconFacebook, IconGithub } from "@/assets/brand-icons";
 import { PasswordInput } from "@/components/custom-input/password-input";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 import { cn } from "@/lib/utils";
 
-const formSchema = v.pipe(
-  v.object({
-    email: v.pipe(v.string(), v.email("Please enter your email")),
-    password: v.pipe(
-      v.string(),
-      v.minLength(1, "Please enter your password"),
-      v.minLength(7, "Password must be at least 7 characters long"),
-    ),
-    confirmPassword: v.pipe(v.string(), v.minLength(1, "Please confirm your password")),
-  }),
-  v.forward(
-    v.check((input) => input.password === input.confirmPassword, "Passwords don't match."),
-    ["confirmPassword"],
-  ),
-);
+const formSchema = z
+  .object({
+    email: z.email("Please enter your email"),
+    password: z
+      .string()
+      .check(
+        z.minLength(1, "Please enter your password"),
+        z.minLength(7, "Password must be at least 7 characters long"),
+      ),
+    confirmPassword: z.string().check(z.minLength(1, "Please confirm your password")),
+  })
+  .check(
+    z.superRefine((input, ctx) => {
+      if (input.password !== input.confirmPassword) {
+        ctx.addIssue({
+          code: "custom",
+          message: "Passwords don't match.",
+          path: ["confirmPassword"],
+        });
+      }
+    }),
+  );
 
 export function SignUpForm({ className, ...props }: React.HTMLAttributes<HTMLFormElement>) {
   const [isLoading, setIsLoading] = useState(false);
 
-  const form = useForm<v.InferOutput<typeof formSchema>>({
-    resolver: valibotResolver(formSchema),
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodMiniResolver(formSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -39,7 +46,7 @@ export function SignUpForm({ className, ...props }: React.HTMLAttributes<HTMLFor
     },
   });
 
-  function onSubmit(data: v.InferOutput<typeof formSchema>) {
+  function onSubmit(data: z.infer<typeof formSchema>) {
     setIsLoading(true);
 
     console.log(data);

@@ -1,8 +1,7 @@
 "use client";
 
-import { valibotResolver } from "@hookform/resolvers/valibot";
 import { useForm } from "react-hook-form";
-import * as v from "valibot";
+import * as z from "zod/mini";
 
 import { PasswordInput } from "@/components/custom-input/password-input";
 import { SelectDropdown } from "@/components/select-dropdown";
@@ -18,44 +17,47 @@ import {
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { showSubmittedData } from "@/lib/show-submitted-data";
+import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 
 import { roles } from "../data/data";
 import type { User } from "../data/schema";
 
-const formSchema = v.pipe(
-  v.object({
-    firstName: v.pipe(v.string(), v.minLength(1, "First Name is required.")),
-    lastName: v.pipe(v.string(), v.minLength(1, "Last Name is required.")),
-    username: v.pipe(v.string(), v.minLength(1, "Username is required.")),
-    phoneNumber: v.pipe(v.string(), v.minLength(1, "Phone number is required.")),
-    email: v.pipe(v.string(), v.email("Email is required.")),
-    password: v.pipe(
-      v.string(),
-      v.transform((pwd) => pwd.trim()),
-    ),
-    role: v.pipe(v.string(), v.minLength(1, "Role is required.")),
-    confirmPassword: v.pipe(
-      v.string(),
-      v.transform((pwd) => pwd.trim()),
-    ),
-    isEdit: v.boolean(),
-  }),
-  v.check((data) => {
-    if (data.isEdit && !data.password) return true;
-    if (data.isEdit && data.password && data.password.length < 7) return false;
-    if (!data.isEdit && data.password.length < 7) return false;
-    return true;
-  }, "Password must be at least 7 characters long"),
-  v.forward(
-    v.check((data) => {
-      if (data.isEdit && !data.confirmPassword) return true;
-      if (!data.isEdit && data.password !== data.confirmPassword) return false;
-      return true;
-    }, "Passwords do not match"),
-    ["confirmPassword"],
-  ),
-);
-type UserForm = v.InferOutput<typeof formSchema>;
+const formSchema = z
+  .object({
+    firstName: z.string().check(z.minLength(1, "First Name is required.")),
+    lastName: z.string().check(z.minLength(1, "Last Name is required.")),
+    username: z.string().check(z.minLength(1, "Username is required.")),
+    phoneNumber: z.string().check(z.minLength(1, "Phone number is required.")),
+    email: z.email("Email is required."),
+    password: z.string().check(z.trim()),
+    role: z.string().check(z.minLength(1, "Role is required.")),
+    confirmPassword: z.string().check(z.trim()),
+    isEdit: z.boolean(),
+  })
+  .check(
+    z.superRefine((data, ctx) => {
+      if (data.isEdit) {
+        if (data.password && data.password.length < 7) {
+          ctx.addIssue({ code: "custom", message: "Password must be at least 7 characters long", path: ["password"] });
+        }
+
+        if (!data.confirmPassword) return;
+        if (data.password !== data.confirmPassword) {
+          ctx.addIssue({ code: "custom", message: "Passwords do not match", path: ["confirmPassword"] });
+        }
+        return;
+      }
+
+      if (data.password.length < 7) {
+        ctx.addIssue({ code: "custom", message: "Password must be at least 7 characters long", path: ["password"] });
+      }
+
+      if (data.password !== data.confirmPassword) {
+        ctx.addIssue({ code: "custom", message: "Passwords do not match", path: ["confirmPassword"] });
+      }
+    }),
+  );
+type UserForm = z.infer<typeof formSchema>;
 
 interface UserActionDialogProps {
   currentRow?: User;
@@ -66,7 +68,7 @@ interface UserActionDialogProps {
 export function UsersActionDialog({ currentRow, open, onOpenChange }: UserActionDialogProps) {
   const isEdit = !!currentRow;
   const form = useForm<UserForm>({
-    resolver: valibotResolver(formSchema),
+    resolver: zodMiniResolver(formSchema),
     defaultValues: isEdit
       ? {
           ...currentRow,

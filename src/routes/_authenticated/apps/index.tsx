@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import * as v from "valibot";
+import * as z from "zod/mini";
 
 import { Apps } from "@/features/apps";
 
-const appsSearchSchema = v.object({
-  type: v.optional(v.picklist(["all", "connected", "notConnected"])),
-  filter: v.optional(v.string(), ""),
-  sort: v.optional(v.picklist(["asc", "desc"])),
+const appsSearchSchema = z.object({
+  type: z.optional(z.enum(["all", "connected", "notConnected"])),
+  filter: z.prefault(z.string(), ""),
+  sort: z.optional(z.enum(["asc", "desc"])),
 });
 
 export const Route = createFileRoute("/_authenticated/apps/")({

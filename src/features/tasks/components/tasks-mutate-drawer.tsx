@@ -1,6 +1,5 @@
-import { valibotResolver } from "@hookform/resolvers/valibot";
 import { useForm } from "react-hook-form";
-import * as v from "valibot";
+import * as z from "zod/mini";
 
 import { SelectDropdown } from "@/components/select-dropdown";
 import { Button } from "@/components/ui/button";
@@ -17,6 +16,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { showSubmittedData } from "@/lib/show-submitted-data";
+import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 
 import type { Task } from "../data/schema";
 
@@ -26,19 +26,19 @@ interface TaskMutateDrawerProps {
   currentRow?: Task;
 }
 
-const formSchema = v.object({
-  title: v.pipe(v.string(), v.minLength(1, "Title is required.")),
-  status: v.pipe(v.string(), v.minLength(1, "Please select a status.")),
-  label: v.pipe(v.string(), v.minLength(1, "Please select a label.")),
-  priority: v.pipe(v.string(), v.minLength(1, "Please choose a priority.")),
+const formSchema = z.object({
+  title: z.string().check(z.minLength(1, "Title is required.")),
+  status: z.string().check(z.minLength(1, "Please select a status.")),
+  label: z.string().check(z.minLength(1, "Please select a label.")),
+  priority: z.string().check(z.minLength(1, "Please choose a priority.")),
 });
-type TaskForm = v.InferOutput<typeof formSchema>;
+type TaskForm = z.infer<typeof formSchema>;
 
 export function TasksMutateDrawer({ open, onOpenChange, currentRow }: TaskMutateDrawerProps) {
   const isUpdate = !!currentRow;
 
   const form = useForm<TaskForm>({
-    resolver: valibotResolver(formSchema),
+    resolver: zodMiniResolver(formSchema),
     defaultValues: currentRow ?? {
       title: "",
       status: "",
