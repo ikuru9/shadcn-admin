@@ -4,6 +4,15 @@ Admin Dashboard UI crafted with Shadcn and Vite. Built with responsiveness and a
 
 ## 빌드/린트/테스트 명령어
 
+### graphify
+
+- https://github.com/safishamsi/graphify
+
+```bash
+pip install graphifyy && graphify install
+graphify opencode install
+```
+
 ### 개발 및 빌드
 
 ```bash

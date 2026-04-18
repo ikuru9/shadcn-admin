@@ -43,3 +43,13 @@ mocks/modules
 .kubb
 src/gen
 mocks/faker
+
+# graphify generated state
+graphify-out/cache/
+graphify-out/memory/
+graphify-out/cost.json
+graphify-out/manifest.json
+graphify-out/.graphify_detect.json
+graphify-out/.graphify_detect_docs.json
+graphify-out/.graphify_python
+.opencode/plugins/graphify.js
