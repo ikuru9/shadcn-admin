@@ -1,4 +1,4 @@
-import axios, { type AxiosError, type AxiosHeaders, type AxiosRequestConfig, type AxiosResponse } from "axios";
+import axios, { type AxiosError, type AxiosHeaders, type AxiosRequestConfig } from "axios";
 
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "@/constants/cookie";
 import { getCookie, setCookie } from "@/lib/cookies";
@@ -7,19 +7,21 @@ import { memoize } from "@/lib/memorize";
 declare const AXIOS_BASE: string;
 declare const AXIOS_HEADERS: string;
 
-/**
- * Subset of AxiosRequestConfig
- */
-export interface RequestConfig<TData = unknown> extends AxiosRequestConfig<TData> {}
-/**
- * Subset of AxiosResponse
- */
-export interface ResponseConfig<TData = unknown> {
+export type RequestConfig<TData = unknown> = {
+  url?: string;
+  method: "GET" | "PUT" | "PATCH" | "POST" | "DELETE";
+  params?: object;
+  data?: TData | FormData;
+  responseType?: "arraybuffer" | "blob" | "document" | "json" | "text" | "stream";
+  signal?: AbortSignal;
+  headers?: HeadersInit;
+};
+
+export type ResponseConfig<TData = unknown> = {
   data: TData;
   status: number;
   statusText: string;
-  headers?: AxiosResponse["headers"];
-}
+};
 
 export type ResponseErrorConfig<TError = unknown> = TError;
 
@@ -96,20 +98,23 @@ axiosInstance.interceptors.response.use(
   },
 );
 
-export const client = async <TData, TError = unknown, TVariables = unknown>(
+// The Client type alias is required when using query plugins
+export type Client = <TData, _TError = unknown, TVariables = unknown>(
+  config: RequestConfig<TVariables>,
+) => Promise<ResponseConfig<TData>>;
+
+export const client: Client = async <TData, TError = unknown, TVariables = unknown>(
   config: RequestConfig<TVariables>,
 ): Promise<ResponseConfig<TData>> => {
+  const headers: HeadersInit = {};
   const token = getCookie(ACCESS_TOKEN_KEY);
 
   if (token) {
-    config.headers = {
-      ...config.headers,
-      Authorization: `Bearer ${token}`,
-    };
+    headers.Authorization = `Bearer ${token}`;
   }
 
   const promise = axiosInstance
-    .request<TVariables, ResponseConfig<TData>>({ ...config })
+    .request<TVariables, ResponseConfig<TData>>({ ...config, headers })
     .catch((e: AxiosError<TError>) => {
       throw e;
     });
