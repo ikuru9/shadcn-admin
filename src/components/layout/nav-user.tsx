@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Sparkles } from "lucide-react";
 
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/layout/sidebar";
+import { useSidebar } from "@/components/layout/sidebar-context";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -10,7 +12,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar";
 import { useSignOut } from "@/hooks/use-sign-out";
 
 interface NavUserProps {

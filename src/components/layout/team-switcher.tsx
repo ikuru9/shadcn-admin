@@ -2,6 +2,8 @@ import * as React from "react";
 
 import { ChevronsUpDown, Plus } from "lucide-react";
 
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/layout/sidebar";
+import { useSidebar } from "@/components/layout/sidebar-context";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,7 +14,6 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar";
 
 interface TeamSwitcherProps {
   teams: {

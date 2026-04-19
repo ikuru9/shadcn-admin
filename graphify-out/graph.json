@@ -9,7 +9,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/kubb.config.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_kubb_config_ts",
-      "community": 118,
+      "community": 122,
       "norm_label": "kubb.config.ts"
     },
     {
@@ -18,7 +18,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/commitlint.config.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_commitlint_config_ts",
-      "community": 119,
+      "community": 123,
       "norm_label": "commitlint.config.ts"
     },
     {
@@ -27,7 +27,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/knip.config.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_knip_config_ts",
-      "community": 120,
+      "community": 124,
       "norm_label": "knip.config.ts"
     },
     {
@@ -72,7 +72,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/mocks/browser.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_mocks_browser_ts",
-      "community": 121,
+      "community": 125,
       "norm_label": "browser.ts"
     },
     {
@@ -81,7 +81,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/mocks/handlers.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_mocks_handlers_ts",
-      "community": 122,
+      "community": 126,
       "norm_label": "handlers.ts"
     },
     {
@@ -90,7 +90,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/mocks/server.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_mocks_server_ts",
-      "community": 123,
+      "community": 127,
       "norm_label": "server.ts"
     },
     {
@@ -99,7 +99,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/scripts/postinstall.js",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_scripts_postinstall_js",
-      "community": 34,
+      "community": 33,
       "norm_label": "postinstall.js"
     },
     {
@@ -108,7 +108,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/scripts/postinstall.js",
       "source_location": "L28",
       "id": "postinstall_runprocess",
-      "community": 34,
+      "community": 33,
       "norm_label": "runprocess()"
     },
     {
@@ -117,7 +117,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/main.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_main_tsx",
-      "community": 124,
+      "community": 128,
       "norm_label": "main.tsx"
     },
     {
@@ -126,7 +126,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/reportWebVitals.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_reportwebvitals_ts",
-      "community": 35,
+      "community": 34,
       "norm_label": "reportwebvitals.ts"
     },
     {
@@ -135,7 +135,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/reportWebVitals.ts",
       "source_location": "L1",
       "id": "reportwebvitals_reportwebvitals",
-      "community": 35,
+      "community": 34,
       "norm_label": "reportwebvitals()"
     },
     {
@@ -144,7 +144,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routeTree.gen.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routetree_gen_ts",
-      "community": 125,
+      "community": 129,
       "norm_label": "routetree.gen.ts"
     },
     {
@@ -153,7 +153,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/vitest.setup.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_vitest_setup_ts",
-      "community": 126,
+      "community": 130,
       "norm_label": "vitest.setup.ts"
     },
     {
@@ -162,7 +162,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/types/tanstack-query.d.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_types_tanstack_query_d_ts",
-      "community": 127,
+      "community": 131,
       "norm_label": "tanstack-query.d.ts"
     },
     {
@@ -171,7 +171,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/types/vite-env.d.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_types_vite_env_d_ts",
-      "community": 128,
+      "community": 132,
       "norm_label": "vite-env.d.ts"
     },
     {
@@ -180,7 +180,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/types/vitest-env.d.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_types_vitest_env_d_ts",
-      "community": 129,
+      "community": 133,
       "norm_label": "vitest-env.d.ts"
     },
     {
@@ -189,7 +189,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/types/tanstack-table.d.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_types_tanstack_table_d_ts",
-      "community": 130,
+      "community": 134,
       "norm_label": "tanstack-table.d.ts"
     },
     {
@@ -225,7 +225,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/context/font-provider.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_context_font_provider_tsx",
-      "community": 23,
+      "community": 22,
       "norm_label": "font-provider.tsx"
     },
     {
@@ -234,7 +234,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/context/font-provider.tsx",
       "source_location": "L19",
       "id": "font_provider_fontprovider",
-      "community": 23,
+      "community": 22,
       "norm_label": "fontprovider()"
     },
     {
@@ -243,7 +243,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/context/font-provider.tsx",
       "source_location": "L51",
       "id": "font_provider_usefont",
-      "community": 23,
+      "community": 22,
       "norm_label": "usefont()"
     },
     {
@@ -333,7 +333,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/context/tanstack-query/devtools.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_context_tanstack_query_devtools_tsx",
-      "community": 131,
+      "community": 135,
       "norm_label": "devtools.tsx"
     },
     {
@@ -342,7 +342,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/context/tanstack-query/root-provider.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_context_tanstack_query_root_provider_tsx",
-      "community": 24,
+      "community": 23,
       "norm_label": "root-provider.tsx"
     },
     {
@@ -351,7 +351,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/context/tanstack-query/root-provider.tsx",
       "source_location": "L11",
       "id": "root_provider_getcontext",
-      "community": 24,
+      "community": 23,
       "norm_label": "getcontext()"
     },
     {
@@ -360,7 +360,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/context/tanstack-query/root-provider.tsx",
       "source_location": "L71",
       "id": "root_provider_provider",
-      "community": 24,
+      "community": 23,
       "norm_label": "provider()"
     },
     {
@@ -369,7 +369,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/config/fonts.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_config_fonts_ts",
-      "community": 132,
+      "community": 136,
       "norm_label": "fonts.ts"
     },
     {
@@ -378,7 +378,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/config/env.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_config_env_ts",
-      "community": 133,
+      "community": 137,
       "norm_label": "env.ts"
     },
     {
@@ -387,7 +387,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/constants/pets.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_constants_pets_ts",
-      "community": 134,
+      "community": 138,
       "norm_label": "pets.ts"
     },
     {
@@ -396,7 +396,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/constants/cookie.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_constants_cookie_ts",
-      "community": 135,
+      "community": 139,
       "norm_label": "cookie.ts"
     },
     {
@@ -405,7 +405,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/constants/format.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_constants_format_ts",
-      "community": 136,
+      "community": 140,
       "norm_label": "format.ts"
     },
     {
@@ -414,7 +414,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/stores/auth-store.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_stores_auth_store_ts",
-      "community": 137,
+      "community": 141,
       "norm_label": "auth-store.ts"
     },
     {
@@ -423,7 +423,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/sign-out-dialog.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_sign_out_dialog_tsx",
-      "community": 36,
+      "community": 35,
       "norm_label": "sign-out-dialog.tsx"
     },
     {
@@ -432,7 +432,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/sign-out-dialog.tsx",
       "source_location": "L11",
       "id": "sign_out_dialog_signoutdialog",
-      "community": 36,
+      "community": 35,
       "norm_label": "signoutdialog()"
     },
     {
@@ -441,7 +441,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/confirm-dialog.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_confirm_dialog_tsx",
-      "community": 25,
+      "community": 24,
       "norm_label": "confirm-dialog.tsx"
     },
     {
@@ -450,7 +450,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/dialogs/confirm-dialog.tsx",
       "source_location": "L23",
       "id": "confirm_dialog_confirmdialog",
-      "community": 25,
+      "community": 24,
       "norm_label": "confirmdialog()"
     },
     {
@@ -477,7 +477,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/select-dropdown.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_select_dropdown_tsx",
-      "community": 37,
+      "community": 36,
       "norm_label": "select-dropdown.tsx"
     },
     {
@@ -486,7 +486,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/select-dropdown.tsx",
       "source_location": "L28",
       "id": "select_dropdown_handlevaluechange",
-      "community": 37,
+      "community": 36,
       "norm_label": "handlevaluechange()"
     },
     {
@@ -495,7 +495,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/coming-soon.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_coming_soon_tsx",
-      "community": 38,
+      "community": 37,
       "norm_label": "coming-soon.tsx"
     },
     {
@@ -504,7 +504,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/coming-soon.tsx",
       "source_location": "L3",
       "id": "coming_soon_comingsoon",
-      "community": 38,
+      "community": 37,
       "norm_label": "comingsoon()"
     },
     {
@@ -513,7 +513,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/navigation-progress.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_navigation_progress_tsx",
-      "community": 39,
+      "community": 38,
       "norm_label": "navigation-progress.tsx"
     },
     {
@@ -522,7 +522,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/navigation-progress.tsx",
       "source_location": "L6",
       "id": "navigation_progress_navigationprogress",
-      "community": 39,
+      "community": 38,
       "norm_label": "navigationprogress()"
     },
     {
@@ -531,7 +531,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/content-section.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_content_section_tsx",
-      "community": 40,
+      "community": 39,
       "norm_label": "content-section.tsx"
     },
     {
@@ -540,7 +540,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/content-section.tsx",
       "source_location": "L9",
       "id": "content_section_contentsection",
-      "community": 40,
+      "community": 39,
       "norm_label": "contentsection()"
     },
     {
@@ -567,7 +567,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/theme-switch.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_theme_switch_tsx",
-      "community": 138,
+      "community": 142,
       "norm_label": "theme-switch.tsx"
     },
     {
@@ -576,7 +576,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/profile-dropdown.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_profile_dropdown_tsx",
-      "community": 139,
+      "community": 143,
       "norm_label": "profile-dropdown.tsx"
     },
     {
@@ -585,7 +585,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/learn-more.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_learn_more_tsx",
-      "community": 41,
+      "community": 40,
       "norm_label": "learn-more.tsx"
     },
     {
@@ -594,7 +594,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/learn-more.tsx",
       "source_location": "L18",
       "id": "learn_more_cn",
-      "community": 41,
+      "community": 40,
       "norm_label": "cn()"
     },
     {
@@ -603,7 +603,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/command-menu.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_command_menu_tsx",
-      "community": 140,
+      "community": 144,
       "norm_label": "command-menu.tsx"
     },
     {
@@ -612,7 +612,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/long-text.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_long_text_tsx",
-      "community": 26,
+      "community": 25,
       "norm_label": "long-text.tsx"
     },
     {
@@ -621,7 +621,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/long-text.tsx",
       "source_location": "L13",
       "id": "long_text_longtext",
-      "community": 26,
+      "community": 25,
       "norm_label": "longtext()"
     },
     {
@@ -630,7 +630,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/long-text.tsx",
       "source_location": "L60",
       "id": "long_text_checkoverflow",
-      "community": 26,
+      "community": 25,
       "norm_label": "checkoverflow()"
     },
     {
@@ -639,7 +639,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/skip-to-main.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_skip_to_main_tsx",
-      "community": 42,
+      "community": 41,
       "norm_label": "skip-to-main.tsx"
     },
     {
@@ -648,7 +648,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/skip-to-main.tsx",
       "source_location": "L1",
       "id": "skip_to_main_skiptomain",
-      "community": 42,
+      "community": 41,
       "norm_label": "skiptomain()"
     },
     {
@@ -657,7 +657,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/alert-dialog.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_alert_dialog_tsx",
-      "community": 27,
+      "community": 26,
       "norm_label": "alert-dialog.tsx"
     },
     {
@@ -666,7 +666,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/alert-dialog.tsx",
       "source_location": "L46",
       "id": "alert_dialog_cn",
-      "community": 27,
+      "community": 26,
       "norm_label": "cn()"
     },
     {
@@ -675,7 +675,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/alert-dialog.tsx",
       "source_location": "L128",
       "id": "alert_dialog_alertdialogcancel",
-      "community": 27,
+      "community": 26,
       "norm_label": "alertdialogcancel()"
     },
     {
@@ -783,7 +783,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/input-group.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_input_group_tsx",
-      "community": 43,
+      "community": 42,
       "norm_label": "input-group.tsx"
     },
     {
@@ -792,7 +792,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/input-group.tsx",
       "source_location": "L17",
       "id": "input_group_cn",
-      "community": 43,
+      "community": 42,
       "norm_label": "cn()"
     },
     {
@@ -801,7 +801,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/popover.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_popover_tsx",
-      "community": 44,
+      "community": 43,
       "norm_label": "popover.tsx"
     },
     {
@@ -810,7 +810,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/popover.tsx",
       "source_location": "L34",
       "id": "popover_cn",
-      "community": 44,
+      "community": 43,
       "norm_label": "cn()"
     },
     {
@@ -819,7 +819,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/input-otp.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_input_otp_tsx",
-      "community": 45,
+      "community": 44,
       "norm_label": "input-otp.tsx"
     },
     {
@@ -828,7 +828,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/input-otp.tsx",
       "source_location": "L17",
       "id": "input_otp_cn",
-      "community": 45,
+      "community": 44,
       "norm_label": "cn()"
     },
     {
@@ -837,7 +837,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sheet.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_sheet_tsx",
-      "community": 46,
+      "community": 45,
       "norm_label": "sheet.tsx"
     },
     {
@@ -846,7 +846,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sheet.tsx",
       "source_location": "L55",
       "id": "sheet_cn",
-      "community": 46,
+      "community": 45,
       "norm_label": "cn()"
     },
     {
@@ -855,7 +855,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/scroll-area.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_scroll_area_tsx",
-      "community": 28,
+      "community": 27,
       "norm_label": "scroll-area.tsx"
     },
     {
@@ -864,7 +864,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/scroll-area.tsx",
       "source_location": "L9",
       "id": "scroll_area_scrollarea",
-      "community": 28,
+      "community": 27,
       "norm_label": "scrollarea()"
     },
     {
@@ -873,7 +873,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/scroll-area.tsx",
       "source_location": "L24",
       "id": "scroll_area_scrollbar",
-      "community": 28,
+      "community": 27,
       "norm_label": "scrollbar()"
     },
     {
@@ -882,7 +882,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/label.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_label_tsx",
-      "community": 47,
+      "community": 46,
       "norm_label": "label.tsx"
     },
     {
@@ -891,7 +891,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/label.tsx",
       "source_location": "L11",
       "id": "label_cn",
-      "community": 47,
+      "community": 46,
       "norm_label": "cn()"
     },
     {
@@ -900,7 +900,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sonner.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_sonner_tsx",
-      "community": 141,
+      "community": 145,
       "norm_label": "sonner.tsx"
     },
     {
@@ -909,7 +909,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/tooltip.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_tooltip_tsx",
-      "community": 48,
+      "community": 47,
       "norm_label": "tooltip.tsx"
     },
     {
@@ -918,7 +918,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/tooltip.tsx",
       "source_location": "L19",
       "id": "tooltip_tooltipcontent",
-      "community": 48,
+      "community": 47,
       "norm_label": "tooltipcontent()"
     },
     {
@@ -927,7 +927,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/alert.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_alert_tsx",
-      "community": 29,
+      "community": 28,
       "norm_label": "alert.tsx"
     },
     {
@@ -936,7 +936,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/alert.tsx",
       "source_location": "L22",
       "id": "alert_alert",
-      "community": 29,
+      "community": 28,
       "norm_label": "alert()"
     },
     {
@@ -945,7 +945,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/alert.tsx",
       "source_location": "L30",
       "id": "alert_cn",
-      "community": 29,
+      "community": 28,
       "norm_label": "cn()"
     },
     {
@@ -954,7 +954,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/switch.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_switch_tsx",
-      "community": 49,
+      "community": 48,
       "norm_label": "switch.tsx"
     },
     {
@@ -963,7 +963,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/switch.tsx",
       "source_location": "L5",
       "id": "switch_switch",
-      "community": 49,
+      "community": 48,
       "norm_label": "switch()"
     },
     {
@@ -972,7 +972,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/calendar.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_calendar_tsx",
-      "community": 50,
+      "community": 49,
       "norm_label": "calendar.tsx"
     },
     {
@@ -981,7 +981,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/calendar.tsx",
       "source_location": "L161",
       "id": "calendar_cn",
-      "community": 50,
+      "community": 49,
       "norm_label": "cn()"
     },
     {
@@ -990,7 +990,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/radio-group.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_radio_group_tsx",
-      "community": 30,
+      "community": 29,
       "norm_label": "radio-group.tsx"
     },
     {
@@ -999,7 +999,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/radio-group.tsx",
       "source_location": "L8",
       "id": "radio_group_radiogroup",
-      "community": 30,
+      "community": 29,
       "norm_label": "radiogroup()"
     },
     {
@@ -1008,7 +1008,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/radio-group.tsx",
       "source_location": "L12",
       "id": "radio_group_radiogroupitem",
-      "community": 30,
+      "community": 29,
       "norm_label": "radiogroupitem()"
     },
     {
@@ -1053,7 +1053,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/avatar.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_avatar_tsx",
-      "community": 31,
+      "community": 30,
       "norm_label": "avatar.tsx"
     },
     {
@@ -1062,7 +1062,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/avatar.tsx",
       "source_location": "L6",
       "id": "avatar_avatar",
-      "community": 31,
+      "community": 30,
       "norm_label": "avatar()"
     },
     {
@@ -1071,7 +1071,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/avatar.tsx",
       "source_location": "L53",
       "id": "avatar_cn",
-      "community": 31,
+      "community": 30,
       "norm_label": "cn()"
     },
     {
@@ -1080,7 +1080,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/dialog.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_dialog_tsx",
-      "community": 51,
+      "community": 50,
       "norm_label": "dialog.tsx"
     },
     {
@@ -1089,7 +1089,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/dialog.tsx",
       "source_location": "L50",
       "id": "dialog_cn",
-      "community": 51,
+      "community": 50,
       "norm_label": "cn()"
     },
     {
@@ -1109,123 +1109,6 @@
       "id": "badge_badge",
       "community": 5,
       "norm_label": "badge()"
-    },
-    {
-      "label": "sidebar.tsx",
-      "file_type": "code",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L1",
-      "id": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "community": 1,
-      "norm_label": "sidebar.tsx"
-    },
-    {
-      "label": "useSidebar()",
-      "file_type": "code",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L37",
-      "id": "sidebar_usesidebar",
-      "community": 1,
-      "norm_label": "usesidebar()"
-    },
-    {
-      "label": "SidebarProvider()",
-      "file_type": "code",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L46",
-      "id": "sidebar_sidebarprovider",
-      "community": 1,
-      "norm_label": "sidebarprovider()"
-    },
-    {
-      "label": "SidebarSeparator()",
-      "file_type": "code",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L328",
-      "id": "sidebar_sidebarseparator",
-      "community": 1,
-      "norm_label": "sidebarseparator()"
-    },
-    {
-      "label": "cn()",
-      "file_type": "code",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L344",
-      "id": "sidebar_cn",
-      "community": 1,
-      "norm_label": "cn()"
-    },
-    {
-      "label": "SidebarGroupLabel()",
-      "file_type": "code",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L364",
-      "id": "sidebar_sidebargrouplabel",
-      "community": 1,
-      "norm_label": "sidebargrouplabel()"
-    },
-    {
-      "label": "SidebarGroupAction()",
-      "file_type": "code",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L388",
-      "id": "sidebar_sidebargroupaction",
-      "community": 1,
-      "norm_label": "sidebargroupaction()"
-    },
-    {
-      "label": "SidebarGroupContent()",
-      "file_type": "code",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L412",
-      "id": "sidebar_sidebargroupcontent",
-      "community": 1,
-      "norm_label": "sidebargroupcontent()"
-    },
-    {
-      "label": "SidebarMenu()",
-      "file_type": "code",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L423",
-      "id": "sidebar_sidebarmenu",
-      "community": 1,
-      "norm_label": "sidebarmenu()"
-    },
-    {
-      "label": "SidebarMenuItem()",
-      "file_type": "code",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L434",
-      "id": "sidebar_sidebarmenuitem",
-      "community": 1,
-      "norm_label": "sidebarmenuitem()"
-    },
-    {
-      "label": "SidebarMenuButton()",
-      "file_type": "code",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L467",
-      "id": "sidebar_sidebarmenubutton",
-      "community": 1,
-      "norm_label": "sidebarmenubutton()"
-    },
-    {
-      "label": "SidebarMenuAction()",
-      "file_type": "code",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L516",
-      "id": "sidebar_sidebarmenuaction",
-      "community": 1,
-      "norm_label": "sidebarmenuaction()"
-    },
-    {
-      "label": "SidebarMenuSubButton()",
-      "file_type": "code",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L618",
-      "id": "sidebar_sidebarmenusubbutton",
-      "community": 1,
-      "norm_label": "sidebarmenusubbutton()"
     },
     {
       "label": "table.tsx",
@@ -1296,7 +1179,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/separator.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_separator_tsx",
-      "community": 52,
+      "community": 51,
       "norm_label": "separator.tsx"
     },
     {
@@ -1305,7 +1188,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/separator.tsx",
       "source_location": "L10",
       "id": "separator_cn",
-      "community": 52,
+      "community": 51,
       "norm_label": "cn()"
     },
     {
@@ -1314,7 +1197,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/button.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_button_tsx",
-      "community": 142,
+      "community": 146,
       "norm_label": "button.tsx"
     },
     {
@@ -1323,7 +1206,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/checkbox.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_checkbox_tsx",
-      "community": 53,
+      "community": 52,
       "norm_label": "checkbox.tsx"
     },
     {
@@ -1332,7 +1215,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/checkbox.tsx",
       "source_location": "L8",
       "id": "checkbox_checkbox",
-      "community": 53,
+      "community": 52,
       "norm_label": "checkbox()"
     },
     {
@@ -1341,7 +1224,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/collapsible.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_collapsible_tsx",
-      "community": 143,
+      "community": 147,
       "norm_label": "collapsible.tsx"
     },
     {
@@ -1350,7 +1233,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/dropdown-menu.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_dropdown_menu_tsx",
-      "community": 54,
+      "community": 53,
       "norm_label": "dropdown-menu.tsx"
     },
     {
@@ -1359,7 +1242,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/dropdown-menu.tsx",
       "source_location": "L13",
       "id": "dropdown_menu_dropdownmenuportal",
-      "community": 54,
+      "community": 53,
       "norm_label": "dropdownmenuportal()"
     },
     {
@@ -1440,7 +1323,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/textarea.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_textarea_tsx",
-      "community": 55,
+      "community": 54,
       "norm_label": "textarea.tsx"
     },
     {
@@ -1449,7 +1332,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/textarea.tsx",
       "source_location": "L9",
       "id": "textarea_cn",
-      "community": 55,
+      "community": 54,
       "norm_label": "cn()"
     },
     {
@@ -1458,7 +1341,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/input.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_input_tsx",
-      "community": 56,
+      "community": 55,
       "norm_label": "input.tsx"
     },
     {
@@ -1467,7 +1350,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/input.tsx",
       "source_location": "L15",
       "id": "input_cn",
-      "community": 56,
+      "community": 55,
       "norm_label": "cn()"
     },
     {
@@ -1476,7 +1359,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/skeleton.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_ui_skeleton_tsx",
-      "community": 57,
+      "community": 56,
       "norm_label": "skeleton.tsx"
     },
     {
@@ -1485,7 +1368,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/skeleton.tsx",
       "source_location": "L3",
       "id": "skeleton_skeleton",
-      "community": 57,
+      "community": 56,
       "norm_label": "skeleton()"
     },
     {
@@ -1548,7 +1431,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/main.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_layout_main_tsx",
-      "community": 58,
+      "community": 57,
       "norm_label": "main.tsx"
     },
     {
@@ -1557,7 +1440,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/main.tsx",
       "source_location": "L13",
       "id": "main_cn",
-      "community": 58,
+      "community": 57,
       "norm_label": "cn()"
     },
     {
@@ -1566,8 +1449,26 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/top-nav.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_layout_top_nav_tsx",
-      "community": 144,
+      "community": 148,
       "norm_label": "top-nav.tsx"
+    },
+    {
+      "label": "sidebar-context.ts",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar-context.ts",
+      "source_location": "L1",
+      "id": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_context_ts",
+      "community": 1,
+      "norm_label": "sidebar-context.ts"
+    },
+    {
+      "label": "useSidebar()",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar-context.ts",
+      "source_location": "L15",
+      "id": "sidebar_context_usesidebar",
+      "community": 1,
+      "norm_label": "usesidebar()"
     },
     {
       "label": "team-switcher.tsx",
@@ -1582,7 +1483,7 @@
       "label": "TeamSwitcher()",
       "file_type": "code",
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/team-switcher.tsx",
-      "source_location": "L25",
+      "source_location": "L26",
       "id": "team_switcher_teamswitcher",
       "community": 1,
       "norm_label": "teamswitcher()"
@@ -1593,7 +1494,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/types.d.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_layout_types_d_ts",
-      "community": 145,
+      "community": 149,
       "norm_label": "types.d.ts"
     },
     {
@@ -1609,7 +1510,7 @@
       "label": "NavUser()",
       "file_type": "code",
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/nav-user.tsx",
-      "source_location": "L24",
+      "source_location": "L25",
       "id": "nav_user_navuser",
       "community": 3,
       "norm_label": "navuser()"
@@ -1638,7 +1539,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/auth-layout.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_layout_auth_layout_tsx",
-      "community": 59,
+      "community": 58,
       "norm_label": "auth-layout.tsx"
     },
     {
@@ -1647,7 +1548,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/auth-layout.tsx",
       "source_location": "L7",
       "id": "auth_layout_authlayout",
-      "community": 59,
+      "community": 58,
       "norm_label": "authlayout()"
     },
     {
@@ -1656,7 +1557,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/authenticated-layout.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_layout_authenticated_layout_tsx",
-      "community": 146,
+      "community": 150,
       "norm_label": "authenticated-layout.tsx"
     },
     {
@@ -1665,7 +1566,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/header.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_layout_header_tsx",
-      "community": 60,
+      "community": 59,
       "norm_label": "header.tsx"
     },
     {
@@ -1674,8 +1575,116 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/header.tsx",
       "source_location": "L16",
       "id": "header_onscroll",
-      "community": 60,
+      "community": 59,
       "norm_label": "onscroll()"
+    },
+    {
+      "label": "sidebar.tsx",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L1",
+      "id": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "community": 1,
+      "norm_label": "sidebar.tsx"
+    },
+    {
+      "label": "SidebarProvider()",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L29",
+      "id": "sidebar_sidebarprovider",
+      "community": 1,
+      "norm_label": "sidebarprovider()"
+    },
+    {
+      "label": "SidebarSeparator()",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L311",
+      "id": "sidebar_sidebarseparator",
+      "community": 1,
+      "norm_label": "sidebarseparator()"
+    },
+    {
+      "label": "cn()",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L327",
+      "id": "sidebar_cn",
+      "community": 1,
+      "norm_label": "cn()"
+    },
+    {
+      "label": "SidebarGroupLabel()",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L347",
+      "id": "sidebar_sidebargrouplabel",
+      "community": 1,
+      "norm_label": "sidebargrouplabel()"
+    },
+    {
+      "label": "SidebarGroupAction()",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L371",
+      "id": "sidebar_sidebargroupaction",
+      "community": 1,
+      "norm_label": "sidebargroupaction()"
+    },
+    {
+      "label": "SidebarGroupContent()",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L395",
+      "id": "sidebar_sidebargroupcontent",
+      "community": 1,
+      "norm_label": "sidebargroupcontent()"
+    },
+    {
+      "label": "SidebarMenu()",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L406",
+      "id": "sidebar_sidebarmenu",
+      "community": 1,
+      "norm_label": "sidebarmenu()"
+    },
+    {
+      "label": "SidebarMenuItem()",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L417",
+      "id": "sidebar_sidebarmenuitem",
+      "community": 1,
+      "norm_label": "sidebarmenuitem()"
+    },
+    {
+      "label": "SidebarMenuButton()",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L450",
+      "id": "sidebar_sidebarmenubutton",
+      "community": 1,
+      "norm_label": "sidebarmenubutton()"
+    },
+    {
+      "label": "SidebarMenuAction()",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L499",
+      "id": "sidebar_sidebarmenuaction",
+      "community": 1,
+      "norm_label": "sidebarmenuaction()"
+    },
+    {
+      "label": "SidebarMenuSubButton()",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L601",
+      "id": "sidebar_sidebarmenusubbutton",
+      "community": 1,
+      "norm_label": "sidebarmenusubbutton()"
     },
     {
       "label": "nav-group.tsx",
@@ -1683,7 +1692,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/nav-group.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_layout_nav_group_tsx",
-      "community": 147,
+      "community": 151,
       "norm_label": "nav-group.tsx"
     },
     {
@@ -1699,7 +1708,7 @@
       "label": "AppTitle()",
       "file_type": "code",
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/app-title.tsx",
-      "source_location": "L8",
+      "source_location": "L9",
       "id": "app_title_apptitle",
       "community": 1,
       "norm_label": "apptitle()"
@@ -1710,7 +1719,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/data/sidebar-data.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_layout_data_sidebar_data_ts",
-      "community": 148,
+      "community": 152,
       "norm_label": "sidebar-data.ts"
     },
     {
@@ -1800,7 +1809,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/custom-input/autocomplete-input.test.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_custom_input_autocomplete_input_test_tsx",
-      "community": 61,
+      "community": 60,
       "norm_label": "autocomplete-input.test.tsx"
     },
     {
@@ -1809,7 +1818,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/custom-input/autocomplete-input.test.tsx",
       "source_location": "L26",
       "id": "autocomplete_input_test_command",
-      "community": 61,
+      "community": 60,
       "norm_label": "command()"
     },
     {
@@ -1818,7 +1827,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/custom-input/date-picker.test.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_custom_input_date_picker_test_tsx",
-      "community": 149,
+      "community": 153,
       "norm_label": "date-picker.test.tsx"
     },
     {
@@ -1827,7 +1836,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/custom-input/autocomplete-input.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_custom_input_autocomplete_input_tsx",
-      "community": 150,
+      "community": 154,
       "norm_label": "autocomplete-input.tsx"
     },
     {
@@ -1836,7 +1845,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/custom-input/date-range-picker.test.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_custom_input_date_range_picker_test_tsx",
-      "community": 151,
+      "community": 155,
       "norm_label": "date-range-picker.test.tsx"
     },
     {
@@ -1845,7 +1854,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/dialogs/alert-dialog.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_dialogs_alert_dialog_tsx",
-      "community": 62,
+      "community": 61,
       "norm_label": "alert-dialog.tsx"
     },
     {
@@ -1854,7 +1863,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/dialogs/alert-dialog.tsx",
       "source_location": "L21",
       "id": "alert_dialog_alertdialog",
-      "community": 62,
+      "community": 61,
       "norm_label": "alertdialog()"
     },
     {
@@ -1863,7 +1872,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/dialogs/confirm-dialog.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_dialogs_confirm_dialog_tsx",
-      "community": 25,
+      "community": 24,
       "norm_label": "confirm-dialog.tsx"
     },
     {
@@ -1872,7 +1881,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/dialogs/dialoger.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_dialogs_dialoger_tsx",
-      "community": 152,
+      "community": 156,
       "norm_label": "dialoger.tsx"
     },
     {
@@ -1881,7 +1890,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/data-table/pagination.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_data_table_pagination_tsx",
-      "community": 153,
+      "community": 157,
       "norm_label": "pagination.tsx"
     },
     {
@@ -1935,7 +1944,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/data-table/view-options.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_data_table_view_options_tsx",
-      "community": 63,
+      "community": 62,
       "norm_label": "view-options.tsx"
     },
     {
@@ -1944,7 +1953,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/data-table/view-options.tsx",
       "source_location": "L19",
       "id": "view_options_datatableviewoptions",
-      "community": 63,
+      "community": 62,
       "norm_label": "datatableviewoptions()"
     },
     {
@@ -1953,7 +1962,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/data-table/toolbar.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_data_table_toolbar_tsx",
-      "community": 154,
+      "community": 158,
       "norm_label": "toolbar.tsx"
     },
     {
@@ -1962,7 +1971,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/data-table/faceted-filter.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_data_table_faceted_filter_tsx",
-      "community": 155,
+      "community": 159,
       "norm_label": "faceted-filter.tsx"
     },
     {
@@ -1971,7 +1980,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/data-table/index.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_data_table_index_ts",
-      "community": 156,
+      "community": 160,
       "norm_label": "index.ts"
     },
     {
@@ -1980,7 +1989,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/data-table/bulk-actions.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_data_table_bulk_actions_tsx",
-      "community": 64,
+      "community": 63,
       "norm_label": "bulk-actions.tsx"
     },
     {
@@ -1989,7 +1998,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/data-table/bulk-actions.tsx",
       "source_location": "L28",
       "id": "bulk_actions_datatablebulkactions",
-      "community": 64,
+      "community": 63,
       "norm_label": "datatablebulkactions()"
     },
     {
@@ -1998,7 +2007,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/data-table/column-header.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_components_data_table_column_header_tsx",
-      "community": 65,
+      "community": 64,
       "norm_label": "column-header.tsx"
     },
     {
@@ -2007,7 +2016,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/data-table/column-header.tsx",
       "source_location": "L19",
       "id": "column_header_datatablecolumnheader",
-      "community": 65,
+      "community": 64,
       "norm_label": "datatablecolumnheader()"
     },
     {
@@ -2115,7 +2124,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/hooks/use-offline.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_hooks_use_offline_tsx",
-      "community": 66,
+      "community": 65,
       "norm_label": "use-offline.tsx"
     },
     {
@@ -2124,7 +2133,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/hooks/use-offline.tsx",
       "source_location": "L3",
       "id": "use_offline_useoffline",
-      "community": 66,
+      "community": 65,
       "norm_label": "useoffline()"
     },
     {
@@ -2160,7 +2169,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/hooks/use-table-url-state.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_hooks_use_table_url_state_ts",
-      "community": 67,
+      "community": 66,
       "norm_label": "use-table-url-state.ts"
     },
     {
@@ -2169,7 +2178,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/hooks/use-table-url-state.ts",
       "source_location": "L60",
       "id": "use_table_url_state_usetableurlstate",
-      "community": 67,
+      "community": 66,
       "norm_label": "usetableurlstate()"
     },
     {
@@ -2268,7 +2277,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/lib/handle-server-error.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_lib_handle_server_error_ts",
-      "community": 68,
+      "community": 67,
       "norm_label": "handle-server-error.ts"
     },
     {
@@ -2277,7 +2286,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/lib/handle-server-error.ts",
       "source_location": "L4",
       "id": "handle_server_error_handleservererror",
-      "community": 68,
+      "community": 67,
       "norm_label": "handleservererror()"
     },
     {
@@ -2313,7 +2322,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/lib/memorize.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_lib_memorize_ts",
-      "community": 32,
+      "community": 31,
       "norm_label": "memorize.ts"
     },
     {
@@ -2322,7 +2331,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/lib/memorize.ts",
       "source_location": "L17",
       "id": "memorize_defaulthash",
-      "community": 32,
+      "community": 31,
       "norm_label": "defaulthash()"
     },
     {
@@ -2331,7 +2340,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/lib/memorize.ts",
       "source_location": "L22",
       "id": "memorize_memoize",
-      "community": 32,
+      "community": 31,
       "norm_label": "memoize()"
     },
     {
@@ -2403,7 +2412,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/lib/formatter.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_lib_formatter_ts",
-      "community": 69,
+      "community": 68,
       "norm_label": "formatter.ts"
     },
     {
@@ -2412,7 +2421,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/lib/formatter.ts",
       "source_location": "L5",
       "id": "formatter_formatdate",
-      "community": 69,
+      "community": 68,
       "norm_label": "formatdate()"
     },
     {
@@ -2484,7 +2493,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/logo.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_logo_tsx",
-      "community": 70,
+      "community": 69,
       "norm_label": "logo.tsx"
     },
     {
@@ -2493,7 +2502,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/logo.tsx",
       "source_location": "L5",
       "id": "logo_logo",
-      "community": 70,
+      "community": 69,
       "norm_label": "logo()"
     },
     {
@@ -2502,7 +2511,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-medium.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_brand_icons_icon_medium_tsx",
-      "community": 71,
+      "community": 70,
       "norm_label": "icon-medium.tsx"
     },
     {
@@ -2511,7 +2520,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-medium.tsx",
       "source_location": "L5",
       "id": "icon_medium_iconmedium",
-      "community": 71,
+      "community": 70,
       "norm_label": "iconmedium()"
     },
     {
@@ -2520,7 +2529,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-facebook.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_brand_icons_icon_facebook_tsx",
-      "community": 72,
+      "community": 71,
       "norm_label": "icon-facebook.tsx"
     },
     {
@@ -2529,7 +2538,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-facebook.tsx",
       "source_location": "L5",
       "id": "icon_facebook_iconfacebook",
-      "community": 72,
+      "community": 71,
       "norm_label": "iconfacebook()"
     },
     {
@@ -2538,7 +2547,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-whatsapp.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_brand_icons_icon_whatsapp_tsx",
-      "community": 73,
+      "community": 72,
       "norm_label": "icon-whatsapp.tsx"
     },
     {
@@ -2547,7 +2556,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-whatsapp.tsx",
       "source_location": "L5",
       "id": "icon_whatsapp_iconwhatsapp",
-      "community": 73,
+      "community": 72,
       "norm_label": "iconwhatsapp()"
     },
     {
@@ -2556,7 +2565,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-gitlab.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_brand_icons_icon_gitlab_tsx",
-      "community": 74,
+      "community": 73,
       "norm_label": "icon-gitlab.tsx"
     },
     {
@@ -2565,7 +2574,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-gitlab.tsx",
       "source_location": "L5",
       "id": "icon_gitlab_icongitlab",
-      "community": 74,
+      "community": 73,
       "norm_label": "icongitlab()"
     },
     {
@@ -2574,7 +2583,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-github.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_brand_icons_icon_github_tsx",
-      "community": 75,
+      "community": 74,
       "norm_label": "icon-github.tsx"
     },
     {
@@ -2583,7 +2592,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-github.tsx",
       "source_location": "L5",
       "id": "icon_github_icongithub",
-      "community": 75,
+      "community": 74,
       "norm_label": "icongithub()"
     },
     {
@@ -2592,7 +2601,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-zoom.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_brand_icons_icon_zoom_tsx",
-      "community": 76,
+      "community": 75,
       "norm_label": "icon-zoom.tsx"
     },
     {
@@ -2601,7 +2610,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-zoom.tsx",
       "source_location": "L5",
       "id": "icon_zoom_iconzoom",
-      "community": 76,
+      "community": 75,
       "norm_label": "iconzoom()"
     },
     {
@@ -2610,7 +2619,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-slack.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_brand_icons_icon_slack_tsx",
-      "community": 77,
+      "community": 76,
       "norm_label": "icon-slack.tsx"
     },
     {
@@ -2619,7 +2628,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-slack.tsx",
       "source_location": "L5",
       "id": "icon_slack_iconslack",
-      "community": 77,
+      "community": 76,
       "norm_label": "iconslack()"
     },
     {
@@ -2628,7 +2637,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-docker.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_brand_icons_icon_docker_tsx",
-      "community": 78,
+      "community": 77,
       "norm_label": "icon-docker.tsx"
     },
     {
@@ -2637,7 +2646,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-docker.tsx",
       "source_location": "L5",
       "id": "icon_docker_icondocker",
-      "community": 78,
+      "community": 77,
       "norm_label": "icondocker()"
     },
     {
@@ -2646,7 +2655,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-notion.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_brand_icons_icon_notion_tsx",
-      "community": 79,
+      "community": 78,
       "norm_label": "icon-notion.tsx"
     },
     {
@@ -2655,7 +2664,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-notion.tsx",
       "source_location": "L5",
       "id": "icon_notion_iconnotion",
-      "community": 79,
+      "community": 78,
       "norm_label": "iconnotion()"
     },
     {
@@ -2664,7 +2673,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-skype.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_brand_icons_icon_skype_tsx",
-      "community": 80,
+      "community": 79,
       "norm_label": "icon-skype.tsx"
     },
     {
@@ -2673,7 +2682,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-skype.tsx",
       "source_location": "L5",
       "id": "icon_skype_iconskype",
-      "community": 80,
+      "community": 79,
       "norm_label": "iconskype()"
     },
     {
@@ -2682,7 +2691,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-gmail.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_brand_icons_icon_gmail_tsx",
-      "community": 81,
+      "community": 80,
       "norm_label": "icon-gmail.tsx"
     },
     {
@@ -2691,7 +2700,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-gmail.tsx",
       "source_location": "L5",
       "id": "icon_gmail_icongmail",
-      "community": 81,
+      "community": 80,
       "norm_label": "icongmail()"
     },
     {
@@ -2700,7 +2709,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-figma.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_brand_icons_icon_figma_tsx",
-      "community": 82,
+      "community": 81,
       "norm_label": "icon-figma.tsx"
     },
     {
@@ -2709,7 +2718,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-figma.tsx",
       "source_location": "L5",
       "id": "icon_figma_iconfigma",
-      "community": 82,
+      "community": 81,
       "norm_label": "iconfigma()"
     },
     {
@@ -2718,7 +2727,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-stripe.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_brand_icons_icon_stripe_tsx",
-      "community": 83,
+      "community": 82,
       "norm_label": "icon-stripe.tsx"
     },
     {
@@ -2727,7 +2736,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-stripe.tsx",
       "source_location": "L5",
       "id": "icon_stripe_iconstripe",
-      "community": 83,
+      "community": 82,
       "norm_label": "iconstripe()"
     },
     {
@@ -2736,7 +2745,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/index.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_brand_icons_index_ts",
-      "community": 157,
+      "community": 161,
       "norm_label": "index.ts"
     },
     {
@@ -2745,7 +2754,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-trello.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_brand_icons_icon_trello_tsx",
-      "community": 84,
+      "community": 83,
       "norm_label": "icon-trello.tsx"
     },
     {
@@ -2754,7 +2763,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-trello.tsx",
       "source_location": "L5",
       "id": "icon_trello_icontrello",
-      "community": 84,
+      "community": 83,
       "norm_label": "icontrello()"
     },
     {
@@ -2763,7 +2772,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-discord.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_brand_icons_icon_discord_tsx",
-      "community": 85,
+      "community": 84,
       "norm_label": "icon-discord.tsx"
     },
     {
@@ -2772,7 +2781,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-discord.tsx",
       "source_location": "L5",
       "id": "icon_discord_icondiscord",
-      "community": 85,
+      "community": 84,
       "norm_label": "icondiscord()"
     },
     {
@@ -2781,7 +2790,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-telegram.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_brand_icons_icon_telegram_tsx",
-      "community": 86,
+      "community": 85,
       "norm_label": "icon-telegram.tsx"
     },
     {
@@ -2790,7 +2799,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/brand-icons/icon-telegram.tsx",
       "source_location": "L5",
       "id": "icon_telegram_icontelegram",
-      "community": 86,
+      "community": 85,
       "norm_label": "icontelegram()"
     },
     {
@@ -2799,7 +2808,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/custom/icon-sidebar-inset.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_custom_icon_sidebar_inset_tsx",
-      "community": 87,
+      "community": 86,
       "norm_label": "icon-sidebar-inset.tsx"
     },
     {
@@ -2808,7 +2817,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/custom/icon-sidebar-inset.tsx",
       "source_location": "L3",
       "id": "icon_sidebar_inset_iconsidebarinset",
-      "community": 87,
+      "community": 86,
       "norm_label": "iconsidebarinset()"
     },
     {
@@ -2817,7 +2826,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/custom/icon-theme-system.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_custom_icon_theme_system_tsx",
-      "community": 88,
+      "community": 87,
       "norm_label": "icon-theme-system.tsx"
     },
     {
@@ -2826,7 +2835,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/custom/icon-theme-system.tsx",
       "source_location": "L5",
       "id": "icon_theme_system_iconthemesystem",
-      "community": 88,
+      "community": 87,
       "norm_label": "iconthemesystem()"
     },
     {
@@ -2835,7 +2844,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/custom/icon-sidebar-sidebar.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_custom_icon_sidebar_sidebar_tsx",
-      "community": 158,
+      "community": 162,
       "norm_label": "icon-sidebar-sidebar.tsx"
     },
     {
@@ -2844,7 +2853,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/custom/icon-layout-default.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_custom_icon_layout_default_tsx",
-      "community": 89,
+      "community": 88,
       "norm_label": "icon-layout-default.tsx"
     },
     {
@@ -2853,7 +2862,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/custom/icon-layout-default.tsx",
       "source_location": "L3",
       "id": "icon_layout_default_iconlayoutdefault",
-      "community": 89,
+      "community": 88,
       "norm_label": "iconlayoutdefault()"
     },
     {
@@ -2862,7 +2871,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/custom/icon-theme-light.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_custom_icon_theme_light_tsx",
-      "community": 90,
+      "community": 89,
       "norm_label": "icon-theme-light.tsx"
     },
     {
@@ -2871,7 +2880,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/custom/icon-theme-light.tsx",
       "source_location": "L3",
       "id": "icon_theme_light_iconthemelight",
-      "community": 90,
+      "community": 89,
       "norm_label": "iconthemelight()"
     },
     {
@@ -2880,7 +2889,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/custom/icon-layout-full.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_custom_icon_layout_full_tsx",
-      "community": 159,
+      "community": 163,
       "norm_label": "icon-layout-full.tsx"
     },
     {
@@ -2889,7 +2898,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/custom/icon-theme-dark.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_custom_icon_theme_dark_tsx",
-      "community": 91,
+      "community": 90,
       "norm_label": "icon-theme-dark.tsx"
     },
     {
@@ -2898,7 +2907,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/custom/icon-theme-dark.tsx",
       "source_location": "L3",
       "id": "icon_theme_dark_iconthemedark",
-      "community": 91,
+      "community": 90,
       "norm_label": "iconthemedark()"
     },
     {
@@ -2907,7 +2916,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/custom/icon-dir.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_custom_icon_dir_tsx",
-      "community": 92,
+      "community": 91,
       "norm_label": "icon-dir.tsx"
     },
     {
@@ -2916,7 +2925,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/custom/icon-dir.tsx",
       "source_location": "L10",
       "id": "icon_dir_icondir",
-      "community": 92,
+      "community": 91,
       "norm_label": "icondir()"
     },
     {
@@ -2925,7 +2934,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/custom/icon-sidebar-floating.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_custom_icon_sidebar_floating_tsx",
-      "community": 93,
+      "community": 92,
       "norm_label": "icon-sidebar-floating.tsx"
     },
     {
@@ -2934,7 +2943,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/custom/icon-sidebar-floating.tsx",
       "source_location": "L3",
       "id": "icon_sidebar_floating_iconsidebarfloating",
-      "community": 93,
+      "community": 92,
       "norm_label": "iconsidebarfloating()"
     },
     {
@@ -2943,7 +2952,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/custom/icon-layout-compact.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_assets_custom_icon_layout_compact_tsx",
-      "community": 94,
+      "community": 93,
       "norm_label": "icon-layout-compact.tsx"
     },
     {
@@ -2952,7 +2961,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/assets/custom/icon-layout-compact.tsx",
       "source_location": "L3",
       "id": "icon_layout_compact_iconlayoutcompact",
-      "community": 94,
+      "community": 93,
       "norm_label": "iconlayoutcompact()"
     },
     {
@@ -2961,7 +2970,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/__root.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_root_tsx",
-      "community": 160,
+      "community": 164,
       "norm_label": "__root.tsx"
     },
     {
@@ -2970,7 +2979,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/offline.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_offline_tsx",
-      "community": 161,
+      "community": 165,
       "norm_label": "offline.tsx"
     },
     {
@@ -2979,7 +2988,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/index.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_index_tsx",
-      "community": 95,
+      "community": 94,
       "norm_label": "index.tsx"
     },
     {
@@ -2988,7 +2997,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/index.tsx",
       "source_location": "L11",
       "id": "index_dashboard",
-      "community": 95,
+      "community": 94,
       "norm_label": "dashboard()"
     },
     {
@@ -2997,7 +3006,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/route.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_route_tsx",
-      "community": 162,
+      "community": 166,
       "norm_label": "route.tsx"
     },
     {
@@ -3006,7 +3015,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/settings/index.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_settings_index_tsx",
-      "community": 96,
+      "community": 95,
       "norm_label": "index.tsx"
     },
     {
@@ -3015,7 +3024,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/settings/index.tsx",
       "source_location": "L5",
       "id": "index_settingsprofile",
-      "community": 96,
+      "community": 95,
       "norm_label": "settingsprofile()"
     },
     {
@@ -3024,7 +3033,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/settings/account.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_settings_account_tsx",
-      "community": 97,
+      "community": 96,
       "norm_label": "account.tsx"
     },
     {
@@ -3033,7 +3042,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/settings/account.tsx",
       "source_location": "L5",
       "id": "account_settingsaccount",
-      "community": 97,
+      "community": 96,
       "norm_label": "settingsaccount()"
     },
     {
@@ -3042,7 +3051,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/settings/display.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_settings_display_tsx",
-      "community": 98,
+      "community": 97,
       "norm_label": "display.tsx"
     },
     {
@@ -3051,7 +3060,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/settings/display.tsx",
       "source_location": "L5",
       "id": "display_settingsdisplay",
-      "community": 98,
+      "community": 97,
       "norm_label": "settingsdisplay()"
     },
     {
@@ -3060,7 +3069,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/settings/route.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_settings_route_tsx",
-      "community": 163,
+      "community": 167,
       "norm_label": "route.tsx"
     },
     {
@@ -3069,7 +3078,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/settings/notifications.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_settings_notifications_tsx",
-      "community": 99,
+      "community": 98,
       "norm_label": "notifications.tsx"
     },
     {
@@ -3078,7 +3087,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/settings/notifications.tsx",
       "source_location": "L5",
       "id": "notifications_settingsnotifications",
-      "community": 99,
+      "community": 98,
       "norm_label": "settingsnotifications()"
     },
     {
@@ -3087,16 +3096,16 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/settings/appearance.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_settings_appearance_tsx",
-      "community": 100,
+      "community": 99,
       "norm_label": "appearance.tsx"
     },
     {
       "label": "SettingsAppearance()",
       "file_type": "code",
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/settings/appearance.tsx",
-      "source_location": "L5",
+      "source_location": "L7",
       "id": "appearance_settingsappearance",
-      "community": 100,
+      "community": 99,
       "norm_label": "settingsappearance()"
     },
     {
@@ -3123,7 +3132,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/settings/components/profile-form.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_settings_components_profile_form_tsx",
-      "community": 164,
+      "community": 168,
       "norm_label": "profile-form.tsx"
     },
     {
@@ -3132,7 +3141,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/settings/components/notifications-form.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_settings_components_notifications_form_tsx",
-      "community": 165,
+      "community": 169,
       "norm_label": "notifications-form.tsx"
     },
     {
@@ -3141,7 +3150,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/settings/components/display-form.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_settings_components_display_form_tsx",
-      "community": 166,
+      "community": 170,
       "norm_label": "display-form.tsx"
     },
     {
@@ -3168,7 +3177,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/settings/components/sidebar-nav.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_settings_components_sidebar_nav_tsx",
-      "community": 101,
+      "community": 100,
       "norm_label": "sidebar-nav.tsx"
     },
     {
@@ -3177,7 +3186,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/settings/components/sidebar-nav.tsx",
       "source_location": "L23",
       "id": "sidebar_nav_handleselect",
-      "community": 101,
+      "community": 100,
       "norm_label": "handleselect()"
     },
     {
@@ -3186,7 +3195,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/tasks/index.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_tasks_index_tsx",
-      "community": 102,
+      "community": 101,
       "norm_label": "index.tsx"
     },
     {
@@ -3195,7 +3204,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/tasks/index.tsx",
       "source_location": "L29",
       "id": "index_tasks",
-      "community": 102,
+      "community": 101,
       "norm_label": "tasks()"
     },
     {
@@ -3339,7 +3348,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/tasks/components/tasks-table.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_tasks_components_tasks_table_tsx",
-      "community": 167,
+      "community": 171,
       "norm_label": "tasks-table.tsx"
     },
     {
@@ -3366,7 +3375,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/tasks/components/tasks-multi-delete-dialog.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_tasks_components_tasks_multi_delete_dialog_tsx",
-      "community": 103,
+      "community": 102,
       "norm_label": "tasks-multi-delete-dialog.tsx"
     },
     {
@@ -3375,7 +3384,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/tasks/components/tasks-multi-delete-dialog.tsx",
       "source_location": "L23",
       "id": "tasks_multi_delete_dialog_tasksmultideletedialog",
-      "community": 103,
+      "community": 102,
       "norm_label": "tasksmultideletedialog()"
     },
     {
@@ -3384,7 +3393,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/tasks/components/tasks-columns.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_tasks_components_tasks_columns_tsx",
-      "community": 168,
+      "community": 172,
       "norm_label": "tasks-columns.tsx"
     },
     {
@@ -3393,7 +3402,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/tasks/components/data/schema.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_tasks_components_data_schema_ts",
-      "community": 169,
+      "community": 173,
       "norm_label": "schema.ts"
     },
     {
@@ -3402,7 +3411,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/tasks/components/data/data.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_tasks_components_data_data_tsx",
-      "community": 170,
+      "community": 174,
       "norm_label": "data.tsx"
     },
     {
@@ -3411,7 +3420,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/tasks/components/data/tasks.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_tasks_components_data_tasks_ts",
-      "community": 171,
+      "community": 175,
       "norm_label": "tasks.ts"
     },
     {
@@ -3420,7 +3429,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/help-center/index.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_help_center_index_tsx",
-      "community": 172,
+      "community": 176,
       "norm_label": "index.tsx"
     },
     {
@@ -3447,7 +3456,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/samples/pets/$id.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_samples_pets_id_tsx",
-      "community": 173,
+      "community": 177,
       "norm_label": "$id.tsx"
     },
     {
@@ -3456,7 +3465,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/samples/pets/components/pets-multi-delete-dialog.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_samples_pets_components_pets_multi_delete_dialog_tsx",
-      "community": 104,
+      "community": 103,
       "norm_label": "pets-multi-delete-dialog.tsx"
     },
     {
@@ -3465,7 +3474,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/samples/pets/components/pets-multi-delete-dialog.tsx",
       "source_location": "L25",
       "id": "pets_multi_delete_dialog_petsmultideletedialog",
-      "community": 104,
+      "community": 103,
       "norm_label": "petsmultideletedialog()"
     },
     {
@@ -3519,7 +3528,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/samples/pets/components/pets-columns.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_samples_pets_components_pets_columns_tsx",
-      "community": 174,
+      "community": 178,
       "norm_label": "pets-columns.tsx"
     },
     {
@@ -3528,7 +3537,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/samples/pets/components/data-table-bulk-actions.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_samples_pets_components_data_table_bulk_actions_tsx",
-      "community": 105,
+      "community": 104,
       "norm_label": "data-table-bulk-actions.tsx"
     },
     {
@@ -3537,7 +3546,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/samples/pets/components/data-table-bulk-actions.tsx",
       "source_location": "L17",
       "id": "data_table_bulk_actions_datatablebulkactions",
-      "community": 105,
+      "community": 104,
       "norm_label": "datatablebulkactions()"
     },
     {
@@ -3546,7 +3555,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/samples/pets/components/pets-table.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_samples_pets_components_pets_table_tsx",
-      "community": 175,
+      "community": 179,
       "norm_label": "pets-table.tsx"
     },
     {
@@ -3555,7 +3564,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/samples/pets/components/data/schema.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_samples_pets_components_data_schema_ts",
-      "community": 176,
+      "community": 180,
       "norm_label": "schema.ts"
     },
     {
@@ -3564,7 +3573,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/components/dashboard/analytics-chart.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_components_dashboard_analytics_chart_tsx",
-      "community": 106,
+      "community": 105,
       "norm_label": "analytics-chart.tsx"
     },
     {
@@ -3573,7 +3582,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/components/dashboard/analytics-chart.tsx",
       "source_location": "L41",
       "id": "analytics_chart_analyticschart",
-      "community": 106,
+      "community": 105,
       "norm_label": "analyticschart()"
     },
     {
@@ -3582,7 +3591,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/components/dashboard/recent-sales.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_components_dashboard_recent_sales_tsx",
-      "community": 107,
+      "community": 106,
       "norm_label": "recent-sales.tsx"
     },
     {
@@ -3591,7 +3600,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/components/dashboard/recent-sales.tsx",
       "source_location": "L3",
       "id": "recent_sales_recentsales",
-      "community": 107,
+      "community": 106,
       "norm_label": "recentsales()"
     },
     {
@@ -3600,7 +3609,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/components/dashboard/overview.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_components_dashboard_overview_tsx",
-      "community": 108,
+      "community": 107,
       "norm_label": "overview.tsx"
     },
     {
@@ -3609,7 +3618,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/components/dashboard/overview.tsx",
       "source_location": "L54",
       "id": "overview_overview",
-      "community": 108,
+      "community": 107,
       "norm_label": "overview()"
     },
     {
@@ -3618,7 +3627,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/components/dashboard/analytics.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_components_dashboard_analytics_tsx",
-      "community": 33,
+      "community": 32,
       "norm_label": "analytics.tsx"
     },
     {
@@ -3627,7 +3636,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/components/dashboard/analytics.tsx",
       "source_location": "L5",
       "id": "analytics_analytics",
-      "community": 33,
+      "community": 32,
       "norm_label": "analytics()"
     },
     {
@@ -3636,7 +3645,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/components/dashboard/analytics.tsx",
       "source_location": "L155",
       "id": "analytics_simplebarlist",
-      "community": 33,
+      "community": 32,
       "norm_label": "simplebarlist()"
     },
     {
@@ -3699,7 +3708,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/users/components/users-table.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_users_components_users_table_tsx",
-      "community": 177,
+      "community": 181,
       "norm_label": "users-table.tsx"
     },
     {
@@ -3708,7 +3717,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/users/components/users-columns.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_users_components_users_columns_tsx",
-      "community": 178,
+      "community": 182,
       "norm_label": "users-columns.tsx"
     },
     {
@@ -3717,7 +3726,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/users/components/users-multi-delete-dialog.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_users_components_users_multi_delete_dialog_tsx",
-      "community": 109,
+      "community": 108,
       "norm_label": "users-multi-delete-dialog.tsx"
     },
     {
@@ -3726,7 +3735,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/users/components/users-multi-delete-dialog.tsx",
       "source_location": "L23",
       "id": "users_multi_delete_dialog_usersmultideletedialog",
-      "community": 109,
+      "community": 108,
       "norm_label": "usersmultideletedialog()"
     },
     {
@@ -3735,7 +3744,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/users/components/users-delete-dialog.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_users_components_users_delete_dialog_tsx",
-      "community": 110,
+      "community": 109,
       "norm_label": "users-delete-dialog.tsx"
     },
     {
@@ -3744,7 +3753,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/users/components/users-delete-dialog.tsx",
       "source_location": "L21",
       "id": "users_delete_dialog_usersdeletedialog",
-      "community": 110,
+      "community": 109,
       "norm_label": "usersdeletedialog()"
     },
     {
@@ -3789,7 +3798,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/users/components/users-data-table-bulk-actions.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_users_components_users_data_table_bulk_actions_tsx",
-      "community": 111,
+      "community": 110,
       "norm_label": "users-data-table-bulk-actions.tsx"
     },
     {
@@ -3798,7 +3807,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/users/components/users-data-table-bulk-actions.tsx",
       "source_location": "L19",
       "id": "users_data_table_bulk_actions_datatablebulkactions",
-      "community": 111,
+      "community": 110,
       "norm_label": "datatablebulkactions()"
     },
     {
@@ -3852,7 +3861,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/users/components/data/schema.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_users_components_data_schema_ts",
-      "community": 179,
+      "community": 183,
       "norm_label": "schema.ts"
     },
     {
@@ -3861,7 +3870,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/users/components/data/data.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_users_components_data_data_ts",
-      "community": 180,
+      "community": 184,
       "norm_label": "data.ts"
     },
     {
@@ -3870,7 +3879,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/users/components/data/users.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_users_components_data_users_ts",
-      "community": 181,
+      "community": 185,
       "norm_label": "users.ts"
     },
     {
@@ -3879,7 +3888,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/chats/index.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_chats_index_tsx",
-      "community": 182,
+      "community": 186,
       "norm_label": "index.tsx"
     },
     {
@@ -3924,7 +3933,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/chats/components/data/chat-types.ts",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_chats_components_data_chat_types_ts",
-      "community": 183,
+      "community": 187,
       "norm_label": "chat-types.ts"
     },
     {
@@ -3933,35 +3942,98 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/$error.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_error_tsx",
-      "community": 21,
+      "community": 111,
       "norm_label": "$error.tsx"
     },
     {
-      "label": "UnauthorisedError()",
+      "label": "RouteComponent()",
       "file_type": "code",
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/$error.tsx",
-      "source_location": "L11",
-      "id": "error_unauthorisederror",
-      "community": 21,
-      "norm_label": "unauthorisederror()"
+      "source_location": "L13",
+      "id": "error_routecomponent",
+      "community": 111,
+      "norm_label": "routecomponent()"
     },
     {
-      "label": "ForbiddenError()",
+      "label": "general-error.tsx",
       "file_type": "code",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/$error.tsx",
-      "source_location": "L34",
-      "id": "error_forbiddenerror",
-      "community": 21,
-      "norm_label": "forbiddenerror()"
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/components/general-error.tsx",
+      "source_location": "L1",
+      "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_components_general_error_tsx",
+      "community": 188,
+      "norm_label": "general-error.tsx"
+    },
+    {
+      "label": "not-found-error.tsx",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/components/not-found-error.tsx",
+      "source_location": "L1",
+      "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_components_not_found_error_tsx",
+      "community": 112,
+      "norm_label": "not-found-error.tsx"
     },
     {
       "label": "NotFoundError()",
       "file_type": "code",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/$error.tsx",
-      "source_location": "L58",
-      "id": "error_notfounderror",
-      "community": 21,
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/components/not-found-error.tsx",
+      "source_location": "L5",
+      "id": "not_found_error_notfounderror",
+      "community": 112,
       "norm_label": "notfounderror()"
+    },
+    {
+      "label": "forbidden-error.tsx",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/components/forbidden-error.tsx",
+      "source_location": "L1",
+      "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_components_forbidden_error_tsx",
+      "community": 113,
+      "norm_label": "forbidden-error.tsx"
+    },
+    {
+      "label": "ForbiddenError()",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/components/forbidden-error.tsx",
+      "source_location": "L5",
+      "id": "forbidden_error_forbiddenerror",
+      "community": 113,
+      "norm_label": "forbiddenerror()"
+    },
+    {
+      "label": "maintenance-error.tsx",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/components/maintenance-error.tsx",
+      "source_location": "L1",
+      "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_components_maintenance_error_tsx",
+      "community": 114,
+      "norm_label": "maintenance-error.tsx"
+    },
+    {
+      "label": "MaintenanceError()",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/components/maintenance-error.tsx",
+      "source_location": "L3",
+      "id": "maintenance_error_maintenanceerror",
+      "community": 114,
+      "norm_label": "maintenanceerror()"
+    },
+    {
+      "label": "unauthorized-error.tsx",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/components/unauthorized-error.tsx",
+      "source_location": "L1",
+      "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_components_unauthorized_error_tsx",
+      "community": 115,
+      "norm_label": "unauthorized-error.tsx"
+    },
+    {
+      "label": "UnauthorizedError()",
+      "file_type": "code",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/components/unauthorized-error.tsx",
+      "source_location": "L5",
+      "id": "unauthorized_error_unauthorizederror",
+      "community": 115,
+      "norm_label": "unauthorizederror()"
     },
     {
       "label": "index.tsx",
@@ -3969,34 +4041,34 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/apps/index.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_apps_index_tsx",
-      "community": 22,
+      "community": 21,
       "norm_label": "index.tsx"
     },
     {
       "label": "handleSearch()",
       "file_type": "code",
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/apps/index.tsx",
-      "source_location": "L45",
+      "source_location": "L44",
       "id": "index_handlesearch",
-      "community": 22,
+      "community": 21,
       "norm_label": "handlesearch()"
     },
     {
       "label": "handleTypeChange()",
       "file_type": "code",
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/apps/index.tsx",
-      "source_location": "L55",
+      "source_location": "L54",
       "id": "index_handletypechange",
-      "community": 22,
+      "community": 21,
       "norm_label": "handletypechange()"
     },
     {
       "label": "handleSortChange()",
       "file_type": "code",
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/apps/index.tsx",
-      "source_location": "L69",
+      "source_location": "L68",
       "id": "index_handlesortchange",
-      "community": 22,
+      "community": 21,
       "norm_label": "handlesortchange()"
     },
     {
@@ -4005,7 +4077,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/apps/components/data/apps.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_authenticated_apps_components_data_apps_tsx",
-      "community": 184,
+      "community": 189,
       "norm_label": "apps.tsx"
     },
     {
@@ -4014,7 +4086,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/(errors)/401.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_errors_401_tsx",
-      "community": 112,
+      "community": 116,
       "norm_label": "401.tsx"
     },
     {
@@ -4023,7 +4095,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/(errors)/401.tsx",
       "source_location": "L6",
       "id": "401_unauthorisederror",
-      "community": 112,
+      "community": 116,
       "norm_label": "unauthorisederror()"
     },
     {
@@ -4032,7 +4104,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/(errors)/403.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_errors_403_tsx",
-      "community": 113,
+      "community": 117,
       "norm_label": "403.tsx"
     },
     {
@@ -4041,7 +4113,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/(errors)/403.tsx",
       "source_location": "L6",
       "id": "403_forbiddenerror",
-      "community": 113,
+      "community": 117,
       "norm_label": "forbiddenerror()"
     },
     {
@@ -4050,7 +4122,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/(errors)/404.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_errors_404_tsx",
-      "community": 114,
+      "community": 118,
       "norm_label": "404.tsx"
     },
     {
@@ -4059,7 +4131,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/(errors)/404.tsx",
       "source_location": "L6",
       "id": "404_notfounderror",
-      "community": 114,
+      "community": 118,
       "norm_label": "notfounderror()"
     },
     {
@@ -4068,7 +4140,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/(errors)/503.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_errors_503_tsx",
-      "community": 115,
+      "community": 119,
       "norm_label": "503.tsx"
     },
     {
@@ -4077,7 +4149,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/(errors)/503.tsx",
       "source_location": "L4",
       "id": "503_maintenanceerror",
-      "community": 115,
+      "community": 119,
       "norm_label": "maintenanceerror()"
     },
     {
@@ -4086,7 +4158,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/(errors)/500.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_errors_500_tsx",
-      "community": 185,
+      "community": 190,
       "norm_label": "500.tsx"
     },
     {
@@ -4095,7 +4167,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/(auth)/otp.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_auth_otp_tsx",
-      "community": 116,
+      "community": 120,
       "norm_label": "otp.tsx"
     },
     {
@@ -4104,7 +4176,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/(auth)/otp.tsx",
       "source_location": "L8",
       "id": "otp_otp",
-      "community": 116,
+      "community": 120,
       "norm_label": "otp()"
     },
     {
@@ -4113,7 +4185,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/(auth)/sign-in.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_auth_sign_in_tsx",
-      "community": 186,
+      "community": 191,
       "norm_label": "sign-in.tsx"
     },
     {
@@ -4122,7 +4194,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/(auth)/sign-in-2.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_auth_sign_in_2_tsx",
-      "community": 187,
+      "community": 192,
       "norm_label": "sign-in-2.tsx"
     },
     {
@@ -4131,7 +4203,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/(auth)/sign-up.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_auth_sign_up_tsx",
-      "community": 188,
+      "community": 193,
       "norm_label": "sign-up.tsx"
     },
     {
@@ -4158,7 +4230,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/(auth)/components/sign-up-form.tsx",
       "source_location": "L1",
       "id": "users_mareem_git_shadcn_admin_src_routes_auth_components_sign_up_form_tsx",
-      "community": 117,
+      "community": 121,
       "norm_label": "sign-up-form.tsx"
     },
     {
@@ -4167,7 +4239,7 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/(auth)/components/sign-up-form.tsx",
       "source_location": "L49",
       "id": "sign_up_form_onsubmit",
-      "community": 117,
+      "community": 121,
       "norm_label": "onsubmit()"
     },
     {
@@ -4594,9 +4666,9 @@
       "source_location": "L35",
       "weight": 1.0,
       "_src": "config_drawer_configdrawer",
-      "_tgt": "sidebar_usesidebar",
+      "_tgt": "sidebar_context_usesidebar",
       "source": "config_drawer_configdrawer",
-      "target": "sidebar_usesidebar"
+      "target": "sidebar_context_usesidebar"
     },
     {
       "relation": "contains",
@@ -5045,282 +5117,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L37",
-      "weight": 1.0,
-      "_src": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "_tgt": "sidebar_usesidebar",
-      "source": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "target": "sidebar_usesidebar",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L46",
-      "weight": 1.0,
-      "_src": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "_tgt": "sidebar_sidebarprovider",
-      "source": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "target": "sidebar_sidebarprovider",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L328",
-      "weight": 1.0,
-      "_src": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "_tgt": "sidebar_sidebarseparator",
-      "source": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "target": "sidebar_sidebarseparator",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L598",
-      "weight": 1.0,
-      "_src": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "_tgt": "sidebar_cn",
-      "source": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "target": "sidebar_cn",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L364",
-      "weight": 1.0,
-      "_src": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "_tgt": "sidebar_sidebargrouplabel",
-      "source": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "target": "sidebar_sidebargrouplabel",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L388",
-      "weight": 1.0,
-      "_src": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "_tgt": "sidebar_sidebargroupaction",
-      "source": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "target": "sidebar_sidebargroupaction",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L412",
-      "weight": 1.0,
-      "_src": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "_tgt": "sidebar_sidebargroupcontent",
-      "source": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "target": "sidebar_sidebargroupcontent",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L423",
-      "weight": 1.0,
-      "_src": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "_tgt": "sidebar_sidebarmenu",
-      "source": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "target": "sidebar_sidebarmenu",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L434",
-      "weight": 1.0,
-      "_src": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "_tgt": "sidebar_sidebarmenuitem",
-      "source": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "target": "sidebar_sidebarmenuitem",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L467",
-      "weight": 1.0,
-      "_src": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "_tgt": "sidebar_sidebarmenubutton",
-      "source": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "target": "sidebar_sidebarmenubutton",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L516",
-      "weight": 1.0,
-      "_src": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "_tgt": "sidebar_sidebarmenuaction",
-      "source": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "target": "sidebar_sidebarmenuaction",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L618",
-      "weight": 1.0,
-      "_src": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "_tgt": "sidebar_sidebarmenusubbutton",
-      "source": "users_mareem_git_shadcn_admin_src_components_ui_sidebar_tsx",
-      "target": "sidebar_sidebarmenusubbutton",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L149",
-      "weight": 1.0,
-      "_src": "sidebar_sidebarprovider",
-      "_tgt": "sidebar_usesidebar",
-      "source": "sidebar_usesidebar",
-      "target": "sidebar_sidebarprovider",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L480",
-      "weight": 1.0,
-      "_src": "sidebar_sidebarmenubutton",
-      "_tgt": "sidebar_usesidebar",
-      "source": "sidebar_usesidebar",
-      "target": "sidebar_sidebarmenubutton",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/team-switcher.tsx",
-      "source_location": "L26",
-      "weight": 1.0,
-      "_src": "sidebar_usesidebar",
-      "_tgt": "team_switcher_teamswitcher",
-      "source": "sidebar_usesidebar",
-      "target": "team_switcher_teamswitcher"
-    },
-    {
-      "relation": "calls",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/nav-user.tsx",
-      "source_location": "L25",
-      "weight": 1.0,
-      "_src": "sidebar_usesidebar",
-      "_tgt": "nav_user_navuser",
-      "source": "sidebar_usesidebar",
-      "target": "nav_user_navuser"
-    },
-    {
-      "relation": "calls",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/app-title.tsx",
-      "source_location": "L10",
-      "weight": 1.0,
-      "_src": "sidebar_usesidebar",
-      "_tgt": "app_title_apptitle",
-      "source": "sidebar_usesidebar",
-      "target": "app_title_apptitle"
-    },
-    {
-      "relation": "calls",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L59",
-      "weight": 1.0,
-      "_src": "sidebar_sidebarprovider",
-      "_tgt": "use_mobile_useismobile",
-      "source": "sidebar_sidebarprovider",
-      "target": "use_mobile_useismobile"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L373",
-      "weight": 1.0,
-      "_src": "sidebar_sidebargrouplabel",
-      "_tgt": "sidebar_cn",
-      "source": "sidebar_cn",
-      "target": "sidebar_sidebargrouplabel",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L397",
-      "weight": 1.0,
-      "_src": "sidebar_sidebargroupaction",
-      "_tgt": "sidebar_cn",
-      "source": "sidebar_cn",
-      "target": "sidebar_sidebargroupaction",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L485",
-      "weight": 1.0,
-      "_src": "sidebar_sidebarmenubutton",
-      "_tgt": "sidebar_cn",
-      "source": "sidebar_cn",
-      "target": "sidebar_sidebarmenubutton",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L529",
-      "weight": 1.0,
-      "_src": "sidebar_sidebarmenuaction",
-      "_tgt": "sidebar_cn",
-      "source": "sidebar_cn",
-      "target": "sidebar_sidebarmenuaction",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
-      "source_location": "L633",
-      "weight": 1.0,
-      "_src": "sidebar_sidebarmenusubbutton",
-      "_tgt": "sidebar_cn",
-      "source": "sidebar_cn",
-      "target": "sidebar_sidebarmenusubbutton",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/table.tsx",
       "source_location": "L7",
       "weight": 1.0,
@@ -5669,8 +5465,80 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar-context.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_context_ts",
+      "_tgt": "sidebar_context_usesidebar",
+      "source": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_context_ts",
+      "target": "sidebar_context_usesidebar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/team-switcher.tsx",
-      "source_location": "L25",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_src": "sidebar_context_usesidebar",
+      "_tgt": "team_switcher_teamswitcher",
+      "source": "sidebar_context_usesidebar",
+      "target": "team_switcher_teamswitcher"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/nav-user.tsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_src": "sidebar_context_usesidebar",
+      "_tgt": "nav_user_navuser",
+      "source": "sidebar_context_usesidebar",
+      "target": "nav_user_navuser"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L132",
+      "weight": 1.0,
+      "_src": "sidebar_context_usesidebar",
+      "_tgt": "sidebar_sidebarprovider",
+      "source": "sidebar_context_usesidebar",
+      "target": "sidebar_sidebarprovider"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L463",
+      "weight": 1.0,
+      "_src": "sidebar_context_usesidebar",
+      "_tgt": "sidebar_sidebarmenubutton",
+      "source": "sidebar_context_usesidebar",
+      "target": "sidebar_sidebarmenubutton"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/app-title.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "sidebar_context_usesidebar",
+      "_tgt": "app_title_apptitle",
+      "source": "sidebar_context_usesidebar",
+      "target": "app_title_apptitle"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/team-switcher.tsx",
+      "source_location": "L26",
       "weight": 1.0,
       "_src": "users_mareem_git_shadcn_admin_src_components_layout_team_switcher_tsx",
       "_tgt": "team_switcher_teamswitcher",
@@ -5682,7 +5550,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/nav-user.tsx",
-      "source_location": "L24",
+      "source_location": "L25",
       "weight": 1.0,
       "_src": "users_mareem_git_shadcn_admin_src_components_layout_nav_user_tsx",
       "_tgt": "nav_user_navuser",
@@ -5741,8 +5609,212 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_src": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "_tgt": "sidebar_sidebarprovider",
+      "source": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "target": "sidebar_sidebarprovider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L311",
+      "weight": 1.0,
+      "_src": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "_tgt": "sidebar_sidebarseparator",
+      "source": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "target": "sidebar_sidebarseparator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L581",
+      "weight": 1.0,
+      "_src": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "_tgt": "sidebar_cn",
+      "source": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "target": "sidebar_cn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L347",
+      "weight": 1.0,
+      "_src": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "_tgt": "sidebar_sidebargrouplabel",
+      "source": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "target": "sidebar_sidebargrouplabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L371",
+      "weight": 1.0,
+      "_src": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "_tgt": "sidebar_sidebargroupaction",
+      "source": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "target": "sidebar_sidebargroupaction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L395",
+      "weight": 1.0,
+      "_src": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "_tgt": "sidebar_sidebargroupcontent",
+      "source": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "target": "sidebar_sidebargroupcontent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L406",
+      "weight": 1.0,
+      "_src": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "_tgt": "sidebar_sidebarmenu",
+      "source": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "target": "sidebar_sidebarmenu",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L417",
+      "weight": 1.0,
+      "_src": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "_tgt": "sidebar_sidebarmenuitem",
+      "source": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "target": "sidebar_sidebarmenuitem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L450",
+      "weight": 1.0,
+      "_src": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "_tgt": "sidebar_sidebarmenubutton",
+      "source": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "target": "sidebar_sidebarmenubutton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L499",
+      "weight": 1.0,
+      "_src": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "_tgt": "sidebar_sidebarmenuaction",
+      "source": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "target": "sidebar_sidebarmenuaction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L601",
+      "weight": 1.0,
+      "_src": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "_tgt": "sidebar_sidebarmenusubbutton",
+      "source": "users_mareem_git_shadcn_admin_src_components_layout_sidebar_tsx",
+      "target": "sidebar_sidebarmenusubbutton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/ui/sidebar.tsx",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_src": "sidebar_sidebarprovider",
+      "_tgt": "use_mobile_useismobile",
+      "source": "sidebar_sidebarprovider",
+      "target": "use_mobile_useismobile"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L356",
+      "weight": 1.0,
+      "_src": "sidebar_sidebargrouplabel",
+      "_tgt": "sidebar_cn",
+      "source": "sidebar_cn",
+      "target": "sidebar_sidebargrouplabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L380",
+      "weight": 1.0,
+      "_src": "sidebar_sidebargroupaction",
+      "_tgt": "sidebar_cn",
+      "source": "sidebar_cn",
+      "target": "sidebar_sidebargroupaction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L468",
+      "weight": 1.0,
+      "_src": "sidebar_sidebarmenubutton",
+      "_tgt": "sidebar_cn",
+      "source": "sidebar_cn",
+      "target": "sidebar_sidebarmenubutton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L512",
+      "weight": 1.0,
+      "_src": "sidebar_sidebarmenuaction",
+      "_tgt": "sidebar_cn",
+      "source": "sidebar_cn",
+      "target": "sidebar_sidebarmenuaction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/sidebar.tsx",
+      "source_location": "L616",
+      "weight": 1.0,
+      "_src": "sidebar_sidebarmenusubbutton",
+      "_tgt": "sidebar_cn",
+      "source": "sidebar_cn",
+      "target": "sidebar_sidebarmenusubbutton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/app-title.tsx",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0,
       "_src": "users_mareem_git_shadcn_admin_src_components_layout_app_title_tsx",
       "_tgt": "app_title_apptitle",
@@ -7074,7 +7146,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/settings/appearance.tsx",
-      "source_location": "L5",
+      "source_location": "L7",
       "weight": 1.0,
       "_src": "users_mareem_git_shadcn_admin_src_routes_authenticated_settings_appearance_tsx",
       "_tgt": "appearance_settingsappearance",
@@ -7686,43 +7758,67 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/$error.tsx",
-      "source_location": "L11",
+      "source_location": "L13",
       "weight": 1.0,
       "_src": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_error_tsx",
-      "_tgt": "error_unauthorisederror",
+      "_tgt": "error_routecomponent",
       "source": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_error_tsx",
-      "target": "error_unauthorisederror",
+      "target": "error_routecomponent",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/$error.tsx",
-      "source_location": "L34",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/components/not-found-error.tsx",
+      "source_location": "L5",
       "weight": 1.0,
-      "_src": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_error_tsx",
-      "_tgt": "error_forbiddenerror",
-      "source": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_error_tsx",
-      "target": "error_forbiddenerror",
+      "_src": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_components_not_found_error_tsx",
+      "_tgt": "not_found_error_notfounderror",
+      "source": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_components_not_found_error_tsx",
+      "target": "not_found_error_notfounderror",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/$error.tsx",
-      "source_location": "L58",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/components/forbidden-error.tsx",
+      "source_location": "L5",
       "weight": 1.0,
-      "_src": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_error_tsx",
-      "_tgt": "error_notfounderror",
-      "source": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_error_tsx",
-      "target": "error_notfounderror",
+      "_src": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_components_forbidden_error_tsx",
+      "_tgt": "forbidden_error_forbiddenerror",
+      "source": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_components_forbidden_error_tsx",
+      "target": "forbidden_error_forbiddenerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/components/maintenance-error.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_components_maintenance_error_tsx",
+      "_tgt": "maintenance_error_maintenanceerror",
+      "source": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_components_maintenance_error_tsx",
+      "target": "maintenance_error_maintenanceerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/errors/components/unauthorized-error.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_components_unauthorized_error_tsx",
+      "_tgt": "unauthorized_error_unauthorizederror",
+      "source": "users_mareem_git_shadcn_admin_src_routes_authenticated_errors_components_unauthorized_error_tsx",
+      "target": "unauthorized_error_unauthorizederror",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/apps/index.tsx",
-      "source_location": "L45",
+      "source_location": "L44",
       "weight": 1.0,
       "_src": "users_mareem_git_shadcn_admin_src_routes_authenticated_apps_index_tsx",
       "_tgt": "index_handlesearch",
@@ -7734,7 +7830,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/apps/index.tsx",
-      "source_location": "L55",
+      "source_location": "L54",
       "weight": 1.0,
       "_src": "users_mareem_git_shadcn_admin_src_routes_authenticated_apps_index_tsx",
       "_tgt": "index_handletypechange",
@@ -7746,7 +7842,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/Users/mareem/Git/shadcn-admin/src/routes/_authenticated/apps/index.tsx",
-      "source_location": "L69",
+      "source_location": "L68",
       "weight": 1.0,
       "_src": "users_mareem_git_shadcn_admin_src_routes_authenticated_apps_index_tsx",
       "_tgt": "index_handlesortchange",

@@ -1,44 +1,11 @@
 # Essential Commands
 
-## When to read
+- `pnpm dev` - start the app
+- `pnpm build` - typecheck and production build
+- `pnpm typecheck` - run TypeScript only
+- `pnpm test` - run browser Vitest
+- `pnpm lint` - write-safe Biome lint
+- `pnpm fmt` - write-safe Biome format
+- `pnpm run generate` - regenerate API clients and schemas
 
-- When you need to start the dev server
-- When you need build, test, format, or lint commands
-
-## Dev Server
-
-```bash
-pnpm dev
-```
-
-## Build and Test
-
-```bash
-pnpm run build
-pnpm run preview
-pnpm run test
-pnpm run generate
-pnpm run commit
-```
-
-## Run a Single Test
-
-```bash
-pnpm test src/components/custom-input/date-picker.test.tsx
-pnpm test src/components/custom-input/date-picker.test.tsx --watch
-pnpm test --run --reporter=verbose date-picker
-```
-
-## Code Quality
-
-```bash
-pnpm lint
-pnpm fmt
-pnpm lint:staged
-pnpm fmt:staged
-```
-
-## Notes
-
-- Do not use `npm` or `yarn`
-- Use `pnpm` as the only package manager
+Prefer `typecheck` before `build` when diagnosing type issues.

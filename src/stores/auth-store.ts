@@ -11,47 +11,38 @@ interface AuthUser {
 }
 
 interface AuthState {
-  auth: {
-    user: AuthUser | null;
-    setUser: (user: AuthUser | null) => void;
-    accessToken: string;
-    setAccessToken: (accessToken: string) => void;
-    resetAccessToken: () => void;
-    reset: () => void;
-  };
+  user: AuthUser | null;
+  setUser: (user: AuthUser | null) => void;
+  accessToken: string | null;
+  setAccessToken: (accessToken: string) => void;
+  resetAccessToken: () => void;
+  reset: () => void;
 }
 
 export const useAuthStore = create<AuthState>()((set) => {
   const cookieState = getCookie(ACCESS_TOKEN_KEY);
-  const initToken = cookieState ? JSON.parse(cookieState) : "";
+  const initToken = cookieState ? JSON.parse(cookieState) : null;
+
+  const clearTokens = () => {
+    removeCookie(ACCESS_TOKEN_KEY);
+    removeCookie(REFRESH_TOKEN_KEY);
+  };
 
   return {
-    auth: {
-      user: null,
-      setUser: (user) => set((state) => ({ ...state, auth: { ...state.auth, user } })),
-      accessToken: initToken,
-      setAccessToken: (accessToken) =>
-        set((state) => {
-          setCookie(ACCESS_TOKEN_KEY, JSON.stringify(accessToken));
-
-          return { ...state, auth: { ...state.auth, accessToken } };
-        }),
-      resetAccessToken: () =>
-        set((state) => {
-          removeCookie(ACCESS_TOKEN_KEY);
-          removeCookie(REFRESH_TOKEN_KEY);
-
-          return { ...state, auth: { ...state.auth, accessToken: "" } };
-        }),
-      reset: () =>
-        set((state) => {
-          state.auth.resetAccessToken();
-
-          return {
-            ...state,
-            auth: { ...state.auth, user: null, accessToken: "" },
-          };
-        }),
+    user: null,
+    setUser: (user) => set({ user }),
+    accessToken: initToken,
+    setAccessToken: (accessToken) => {
+      setCookie(ACCESS_TOKEN_KEY, JSON.stringify(accessToken));
+      set({ accessToken });
+    },
+    resetAccessToken: () => {
+      clearTokens();
+      set({ accessToken: null });
+    },
+    reset: () => {
+      clearTokens();
+      set({ user: null, accessToken: null });
     },
   };
 });

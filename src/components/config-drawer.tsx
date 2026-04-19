@@ -29,7 +29,7 @@ import { type Collapsible, useLayout } from "@/context/layout-provider";
 import { useTheme } from "@/context/theme-provider";
 import { cn } from "@/lib/utils";
 
-import { useSidebar } from "./ui/sidebar";
+import { useSidebar } from "./layout/sidebar-context";
 
 export function ConfigDrawer() {
   const { setOpen } = useSidebar();

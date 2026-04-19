@@ -44,7 +44,7 @@ export function getContext() {
         if (error instanceof AxiosError) {
           if (error.response?.status === 401) {
             toast.error("Session expired!");
-            useAuthStore.getState().auth.reset();
+            useAuthStore.getState().reset();
             const redirect = router.history.location.href ? `${router.history.location.href}` : undefined;
             router.navigate({ to: "/sign-in", search: { redirect } });
           }

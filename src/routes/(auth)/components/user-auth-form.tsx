@@ -29,7 +29,7 @@ interface UserAuthFormProps extends React.HTMLAttributes<HTMLFormElement> {
 export function UserAuthForm({ className, redirectTo, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const { auth } = useAuthStore();
+  const { setUser, setAccessToken } = useAuthStore();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodMiniResolver(formSchema),
@@ -56,8 +56,8 @@ export function UserAuthForm({ className, redirectTo, ...props }: UserAuthFormPr
         };
 
         // Set user and access token
-        auth.setUser(mockUser);
-        auth.setAccessToken("mock-access-token");
+        setUser(mockUser);
+        setAccessToken("mock-access-token");
 
         // Redirect to the stored location or default to dashboard
         const targetPath = redirectTo || "/";

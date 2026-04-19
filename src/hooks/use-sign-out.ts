@@ -8,10 +8,10 @@ export function useSignOut(options?: { onConfirm?: () => Promise<void> }) {
   const { confirm } = useDialog();
   const navigate = useNavigate();
   const location = useLocation();
-  const { auth } = useAuthStore();
+  const { reset } = useAuthStore();
 
   const runSignOut = async () => {
-    auth.reset();
+    reset();
     // Preserve current location for redirect after sign-in
     const currentPath = location.href;
 
