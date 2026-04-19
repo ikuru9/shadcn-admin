@@ -49,7 +49,7 @@ export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
         </Select>
       </div>
 
-      <ScrollArea orientation="horizontal" className="hidden w-full min-w-40 bg-background px-1 py-2 md:block">
+      <ScrollArea className="hidden w-full min-w-40 bg-background px-1 py-2 md:block">
         <nav className={cn("flex space-x-2 py-1 lg:flex-col lg:space-x-0 lg:space-y-1", className)} {...props}>
           {items.map((item) => (
             <Link

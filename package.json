@@ -18,7 +18,7 @@
     "generate": "kubb generate",
     "stats": "pnpx vite-bundle-visualizer",
     "postinstall": "node scripts/postinstall.js",
-    "typecheck": "tsc -noEmit",
+    "typecheck": "tsc -b -noEmit",
     "knip": "knip"
   },
   "dependencies": {
@@ -105,9 +105,9 @@
     }
   },
   "engines": {
-    "node": ">=24.12.0",
+    "node": ">=24.14.0",
     "npm": "please-use-pnpm",
-    "pnpm": ">=10.26.2",
+    "pnpm": ">=10.33.0",
     "yarn": "please-use-pnpm"
   },
   "msw": {

@@ -13,7 +13,7 @@ export const env = createEnv({
 
   // Vite exposes build-in vars like DEV and MODE
   shared: {
-    NODE_ENV: z.enum(["development", "production", "test"]),
+    NODE_ENV: z.optional(z.enum(["development", "production", "test"])),
     DEV: z.boolean(),
     PROD: z.boolean(),
   },

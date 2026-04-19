@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { sleep } from "@/lib/utils";
+import { sleep } from "@/lib/sleep";
 
 import { priorities, statuses } from "./data/data";
 import type { Task } from "./data/schema";

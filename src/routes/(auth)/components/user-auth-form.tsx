@@ -11,7 +11,8 @@ import { PasswordInput } from "@/components/custom-input/password-input";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { cn, sleep } from "@/lib/utils";
+import { sleep } from "@/lib/sleep";
+import { cn } from "@/lib/utils";
 import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 import { useAuthStore } from "@/stores/auth-store";
 

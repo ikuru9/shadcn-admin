@@ -3,7 +3,8 @@ import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-r
 
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { cn, getPageNumbers } from "@/lib/utils";
+import { getPageNumbers } from "@/lib/get-page-numbers";
+import { cn } from "@/lib/utils";
 
 interface DataTablePaginationProps<TData> {
   table: Table<TData>;

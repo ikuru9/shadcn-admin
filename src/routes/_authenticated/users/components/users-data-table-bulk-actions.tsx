@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { DataTableBulkActions as BulkActionsToolbar } from "@/components/data-table";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { sleep } from "@/lib/utils";
+import { sleep } from "@/lib/sleep";
 
 import type { User } from "./data/schema";
 import { UsersMultiDeleteDialog } from "./users-multi-delete-dialog";
