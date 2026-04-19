@@ -37,9 +37,15 @@ export default defineConfig(() => ({
       group: {
         type: "path",
       },
+      paramsType: "object",
     }),
     pluginZod({
+      group: {
+        type: "path",
+      },
+      version: "4",
       mini: true,
+      unknownType: "unknown",
     }),
     pluginReactQuery({
       client: {
@@ -48,6 +54,7 @@ export default defineConfig(() => ({
       group: {
         type: "path",
       },
+      paramsType: "object",
     }),
     pluginFaker({
       output: {

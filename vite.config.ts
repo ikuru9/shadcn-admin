@@ -7,6 +7,8 @@ import { defineConfig } from "vite";
 import { compression } from "vite-plugin-compression2";
 import { VitePWA } from "vite-plugin-pwa";
 
+import fs from "node:fs/promises";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const serverUrl = process.env.API_SERVER_URL || "";
@@ -18,6 +20,7 @@ export default defineConfig(({ mode }) => ({
     tanstackRouter({
       target: "react",
       autoCodeSplitting: true,
+      routeFileIgnorePattern: "^(components|data)$",
     }),
     viteReact(),
     tailwindcss(),
@@ -27,6 +30,31 @@ export default defineConfig(({ mode }) => ({
       threshold: 1501, // 1.5KB 미만은 무시 (효율성)
       skipIfLargerOrEqual: true, // 압축본이 더 크면 무시
     }),
+    (() => {
+      let outDir = "dist";
+
+      return {
+        name: "exclude-mock-service-worker",
+        apply: "build",
+        configResolved(config) {
+          outDir = config.build.outDir;
+        },
+        generateBundle(_options, bundle) {
+          for (const fileName of Object.keys(bundle)) {
+            if (/^mockServiceWorker\.js(?:\.(?:gz|br))?$/.test(path.basename(fileName))) {
+              delete bundle[fileName];
+            }
+          }
+        },
+        async writeBundle() {
+          await Promise.all([
+            fs.rm(path.join(outDir, "mockServiceWorker.js"), { force: true }),
+            fs.rm(path.join(outDir, "mockServiceWorker.js.gz"), { force: true }),
+            fs.rm(path.join(outDir, "mockServiceWorker.js.br"), { force: true }),
+          ]);
+        },
+      };
+    })(),
     VitePWA({
       registerType: "autoUpdate",
       includeAssets: ["images/*"],
@@ -51,6 +79,7 @@ export default defineConfig(({ mode }) => ({
       },
       workbox: {
         globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
+        globIgnores: ["**/mockServiceWorker.js"],
         navigateFallback: "/index.html",
         navigateFallbackDenylist: [/^\/api\//],
       },
@@ -65,15 +94,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   optimizeDeps: {
-    include: [
-      "axios",
-      "date-fns",
-      "clsx",
-      "class-variance-authority",
-      "@radix-ui/react-alert-dialog",
-      "@radix-ui/react-dialog",
-      "@radix-ui/react-popover",
-    ],
+    include: ["axios", "date-fns", "clsx", "class-variance-authority"],
   },
   esbuild: {
     pure:

@@ -12,5 +12,11 @@
 
 ## Quick Selection Guide
 
-- For hard restrictions: `prohibitions.md`
-- For handle-vs-delegate decisions: `delegation-guidelines.md`
+- For hard restrictions: `docs/agent-guides/restrictions/prohibitions.md`
+- For handle-vs-delegate decisions: `docs/agent-guides/restrictions/delegation-guidelines.md`
+
+## Required Follow-up
+
+- If the task includes code changes, review the relevant coding guide first, then come back here for restriction checks.
+- If the task involves UI or styling requests, read `delegation-guidelines.md` before deciding whether to handle the change directly.
+- Before finishing, re-check `prohibitions.md` for any rule that may block the intended action.

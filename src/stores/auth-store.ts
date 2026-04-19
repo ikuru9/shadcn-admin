@@ -1,8 +1,7 @@
 import { create } from "zustand";
 
+import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "@/constants/cookie";
 import { getCookie, removeCookie, setCookie } from "@/lib/cookies";
-
-const ACCESS_TOKEN = "accessToken";
 
 interface AuthUser {
   accountNo: string;
@@ -23,8 +22,9 @@ interface AuthState {
 }
 
 export const useAuthStore = create<AuthState>()((set) => {
-  const cookieState = getCookie(ACCESS_TOKEN);
+  const cookieState = getCookie(ACCESS_TOKEN_KEY);
   const initToken = cookieState ? JSON.parse(cookieState) : "";
+
   return {
     auth: {
       user: null,
@@ -32,17 +32,21 @@ export const useAuthStore = create<AuthState>()((set) => {
       accessToken: initToken,
       setAccessToken: (accessToken) =>
         set((state) => {
-          setCookie(ACCESS_TOKEN, JSON.stringify(accessToken));
+          setCookie(ACCESS_TOKEN_KEY, JSON.stringify(accessToken));
+
           return { ...state, auth: { ...state.auth, accessToken } };
         }),
       resetAccessToken: () =>
         set((state) => {
-          removeCookie(ACCESS_TOKEN);
+          removeCookie(ACCESS_TOKEN_KEY);
+          removeCookie(REFRESH_TOKEN_KEY);
+
           return { ...state, auth: { ...state.auth, accessToken: "" } };
         }),
       reset: () =>
         set((state) => {
-          removeCookie(ACCESS_TOKEN);
+          state.auth.resetAccessToken();
+
           return {
             ...state,
             auth: { ...state.auth, user: null, accessToken: "" },

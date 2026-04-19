@@ -5,7 +5,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { cn } from "@/lib/utils";
 
 interface SelectDropdownProps {
-  onValueChange?: (value: string) => void;
+  onValueChange?: (value: string | null) => void;
   defaultValue: string | undefined;
   placeholder?: string;
   isPending?: boolean;
@@ -25,7 +25,13 @@ export function SelectDropdown({
   className = "",
   isControlled = false,
 }: SelectDropdownProps) {
-  const defaultState = isControlled ? { value: defaultValue, onValueChange } : { defaultValue, onValueChange };
+  const handleValueChange = (value: string | null | undefined) => {
+    onValueChange?.(value ?? null);
+  };
+
+  const defaultState = isControlled
+    ? { value: defaultValue, onValueChange: handleValueChange }
+    : { defaultValue, onValueChange: handleValueChange };
   return (
     <Select {...defaultState}>
       <FormControl>

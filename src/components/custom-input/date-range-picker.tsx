@@ -2,8 +2,8 @@
 
 import * as React from "react";
 
-import { isValid, toDate } from "date-fns";
 import { CalendarIcon, MinusIcon } from "lucide-react";
+import { withMask } from "use-mask-input";
 
 import { Calendar } from "@/components/ui/calendar";
 import { Input } from "@/components/ui/input";
@@ -23,6 +23,31 @@ interface DateRangePickerProps {
   placeholder?: { from?: string; to?: string };
 }
 
+function parseInputDate(value: string) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+
+  if (!match) {
+    return null;
+  }
+
+  const [, yearString, monthString, dayString] = match;
+  const year = Number(yearString);
+  const month = Number(monthString);
+  const day = Number(dayString);
+  const parsedDate = new Date(`${value}T00:00:00.000Z`);
+
+  if (
+    Number.isNaN(parsedDate.getTime()) ||
+    parsedDate.getUTCFullYear() !== year ||
+    parsedDate.getUTCMonth() + 1 !== month ||
+    parsedDate.getUTCDate() !== day
+  ) {
+    return null;
+  }
+
+  return parsedDate;
+}
+
 function DateRangePicker({
   from,
   to,
@@ -37,6 +62,8 @@ function DateRangePicker({
   const [open, setOpen] = React.useState(false);
   const [fromInput, setFromInput] = React.useState(formatDate(from));
   const [toInput, setToInput] = React.useState(formatDate(to));
+  const fromMaskRef = React.useMemo(() => withMask("datetime", { inputFormat: "yyyy-mm-dd" }), []);
+  const toMaskRef = React.useMemo(() => withMask("datetime", { inputFormat: "yyyy-mm-dd" }), []);
 
   React.useEffect(() => {
     setFromInput(formatDate(from));
@@ -58,8 +85,9 @@ function DateRangePicker({
     const newValue = e.target.value;
     setFromInput(newValue);
 
-    if (isValid(newValue)) {
-      const dateObj = toDate(newValue);
+    const dateObj = parseInputDate(newValue);
+
+    if (dateObj) {
       if ((!min || dateObj >= min) && (!max || dateObj <= max) && (!to || dateObj <= to)) {
         onChangeFrom?.(dateObj);
         onChange?.({ from: dateObj, to });
@@ -74,8 +102,9 @@ function DateRangePicker({
     const newValue = e.target.value;
     setToInput(newValue);
 
-    if (isValid(newValue)) {
-      const dateObj = toDate(newValue);
+    const dateObj = parseInputDate(newValue);
+
+    if (dateObj) {
       if ((!min || dateObj >= min) && (!max || dateObj <= max) && (!from || dateObj >= from)) {
         onChangeTo?.(dateObj);
         onChange?.({ from, to: dateObj });
@@ -92,13 +121,12 @@ function DateRangePicker({
         <div className={cn("relative flex w-full items-center gap-2", disabled && "pointer-events-none opacity-50")}>
           <div className="relative flex-1">
             <Input
+              ref={fromMaskRef}
               type="text"
               value={fromInput}
               onChange={handleFromInputChange}
               placeholder={placeholder?.from}
               disabled={disabled}
-              mask="datetime"
-              maskOptions={{ inputFormat: "yyyy-mm-dd" }}
               aria-label="From Date picker"
               aria-describedby={fromInput ? "selected-date" : undefined}
               className={cn("pr-10", !from && "text-muted-foreground")}
@@ -108,13 +136,12 @@ function DateRangePicker({
           <MinusIcon className="h-4 w-4 shrink-0 text-muted-foreground" />
           <div className="relative flex-1">
             <Input
+              ref={toMaskRef}
               type="text"
               value={toInput}
               onChange={handleToInputChange}
               placeholder={placeholder?.to}
               disabled={disabled}
-              mask="datetime"
-              maskOptions={{ inputFormat: "yyyy-mm-dd" }}
               aria-label="To Date picker"
               aria-describedby={toInput ? "selected-date" : undefined}
               className={cn("pr-10", !to && "text-muted-foreground")}

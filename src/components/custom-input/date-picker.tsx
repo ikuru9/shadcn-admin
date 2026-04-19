@@ -2,8 +2,8 @@
 
 import * as React from "react";
 
-import { isValid, toDate } from "date-fns";
 import { CalendarIcon } from "lucide-react";
+import { withMask } from "use-mask-input";
 
 import { Calendar } from "@/components/ui/calendar";
 import { Input } from "@/components/ui/input";
@@ -21,6 +21,31 @@ interface DatePickerProps {
   className?: string;
 }
 
+function parseInputDate(value: string) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+
+  if (!match) {
+    return null;
+  }
+
+  const [, yearString, monthString, dayString] = match;
+  const year = Number(yearString);
+  const month = Number(monthString);
+  const day = Number(dayString);
+  const parsedDate = new Date(`${value}T00:00:00.000Z`);
+
+  if (
+    Number.isNaN(parsedDate.getTime()) ||
+    parsedDate.getUTCFullYear() !== year ||
+    parsedDate.getUTCMonth() + 1 !== month ||
+    parsedDate.getUTCDate() !== day
+  ) {
+    return null;
+  }
+
+  return parsedDate;
+}
+
 function DatePicker({
   value,
   onChange,
@@ -32,6 +57,7 @@ function DatePicker({
 }: DatePickerProps) {
   const [open, setOpen] = React.useState(false);
   const [inputValue, setInputValue] = React.useState(formatDate(value));
+  const maskRef = React.useMemo(() => withMask("datetime", { inputFormat: "yyyy-mm-dd" }), []);
 
   React.useEffect(() => {
     setInputValue(formatDate(value));
@@ -46,8 +72,9 @@ function DatePicker({
     const newValue = e.target.value;
     setInputValue(newValue);
 
-    if (isValid(newValue)) {
-      const dateObj = toDate(newValue);
+    const dateObj = parseInputDate(newValue);
+
+    if (dateObj) {
       if ((!min || dateObj >= min) && (!max || dateObj <= max)) {
         onChange?.(dateObj);
       }
@@ -61,12 +88,11 @@ function DatePicker({
       <PopoverTrigger>
         <div className="relative w-full">
           <Input
+            ref={maskRef}
             value={inputValue}
             onChange={handleInputChange}
             placeholder={placeholder}
             disabled={disabled}
-            mask="datetime"
-            maskOptions={{ inputFormat: "yyyy-mm-dd" }}
             aria-label="Date picker"
             aria-describedby={value ? "selected-date" : undefined}
             className={cn("pr-10", !value && "text-muted-foreground", className)}

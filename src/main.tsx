@@ -2,24 +2,24 @@ import { StrictMode } from "react";
 
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 import ReactDOM from "react-dom/client";
+import * as z from "zod/mini";
 
-import { DirectionProvider } from "./context/direction-provider";
-import { FontProvider } from "./context/font-provider";
-import * as TanStackQueryProvider from "./context/tanstack-query/root-provider.tsx";
-import { ThemeProvider } from "./context/theme-provider";
-// Generated Routes
-import { routeTree } from "./routeTree.gen";
-// Styles
-import "./styles/index.css";
-
+import { env } from "@/config/env.ts";
+import { DirectionProvider } from "@/context/direction-provider";
+import { FontProvider } from "@/context/font-provider";
+import * as TanStackQueryProvider from "@/context/tanstack-query/root-provider.tsx";
+import { ThemeProvider } from "@/context/theme-provider";
 // Report
 import reportWebVitals from "@/reportWebVitals.ts";
-import * as z from "zod/mini";
+// Generated Routes
+import { routeTree } from "@/routeTree.gen";
+// Styles
+import "@/styles/index.css";
 
 z.config(z.locales.ko());
 
 // MSW setup
-if (import.meta.env.DEV) {
+if (env.DEV) {
   const { worker } = await import("../mocks/browser");
   await worker.start();
 }
@@ -70,7 +70,7 @@ reportWebVitals();
 
 // Register Service Worker
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register(import.meta.env.MODE === "production" ? "/sw.js" : "/dev-sw.js?dev-sw", {
-    type: import.meta.env.MODE === "production" ? "classic" : "module",
+  navigator.serviceWorker.register(env.NODE_ENV === "production" ? "/sw.js" : "/dev-sw.js?dev-sw", {
+    type: env.NODE_ENV === "production" ? "classic" : "module",
   });
 }

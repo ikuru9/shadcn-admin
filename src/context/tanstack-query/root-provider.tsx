@@ -2,8 +2,10 @@ import { QueryCache, QueryClient, QueryClientProvider } from "@tanstack/react-qu
 import { AxiosError } from "axios";
 import { toast } from "sonner";
 
+import { env } from "@/config/env";
 import { handleServerError } from "@/lib/handle-server-error";
 import { router } from "@/main";
+import { useAuthStore } from "@/stores/auth-store";
 
 // biome-ignore lint/style/useComponentExportOnlyModules: getContext
 export function getContext() {
@@ -11,20 +13,18 @@ export function getContext() {
     defaultOptions: {
       queries: {
         retry: (failureCount, error) => {
-          if (import.meta.env.DEV) {
+          if (env.DEV) {
             console.log({ failureCount, error });
-          }
-
-          if (failureCount >= 0 && import.meta.env.DEV) {
-            return false;
-          }
-          if (failureCount > 3 && import.meta.env.PROD) {
+            if (failureCount >= 0) {
+              return false;
+            }
+          } else if (failureCount > 3 && env.PROD) {
             return false;
           }
 
           return !(error instanceof AxiosError && [401, 403].includes(error.response?.status ?? 0));
         },
-        refetchOnWindowFocus: import.meta.env.PROD,
+        refetchOnWindowFocus: env.PROD,
         staleTime: 10 * 1000, // 10s
       },
       mutations: {
@@ -44,20 +44,19 @@ export function getContext() {
         if (error instanceof AxiosError) {
           if (error.response?.status === 401) {
             toast.error("Session expired!");
-            // TODO: 사용자 정보 리셋
-            // // useAuthStore.getState().auth.reset();
-            const redirect = `${router.history.location.href}`;
+            useAuthStore.getState().auth.reset();
+            const redirect = router.history.location.href ? `${router.history.location.href}` : undefined;
             router.navigate({ to: "/sign-in", search: { redirect } });
           }
           if (error.response?.status === 500) {
             toast.error("Internal Server Error!");
             // Only navigate to error page in production to avoid disrupting HMR in development
-            if (import.meta.env.PROD) {
+            if (env.PROD) {
               router.navigate({ to: "/500" });
             }
           }
           if (error.response?.status === 403) {
-            router.navigate("/forbidden", { replace: true });
+            router.navigate({ to: "/403", replace: true });
           }
         }
       },

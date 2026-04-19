@@ -22,10 +22,10 @@
 
 ## Quick Selection Guide
 
-- For import cleanup: `import-export.md`
-- For naming decisions: `naming-conventions.md`
-- For type design: `typescript-patterns.md`
-- For component structure: `react-patterns.md`
-- For styling rules: `styling-patterns.md`
-- For error handling: `error-handling.md`
-- For test additions: `test-writing.md`
+- For import cleanup: `docs/agent-guides/coding/import-export.md`
+- For naming decisions: `docs/agent-guides/coding/naming-conventions.md`
+- For type design: `docs/agent-guides/coding/typescript-patterns.md`
+- For component structure: `docs/agent-guides/coding/react-patterns.md`
+- For styling rules: `docs/agent-guides/coding/styling-patterns.md`
+- For error handling: `docs/agent-guides/coding/error-handling.md`
+- For test additions: `docs/agent-guides/coding/test-writing.md`

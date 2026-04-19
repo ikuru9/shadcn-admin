@@ -68,9 +68,9 @@ src/
 │   ├── ui/              # Shadcn UI 컴포넌트
 │   └── dialogs/         # 다이얼로그 컴포넌트
 ├── routes/              # TanStack Router 페이지
+│   ├── **/components/   # Feature-specific logic and components (could be feature folders)
 ├── hooks/               # 커스텀 React 훅
 ├── store/               # Zustand 스토어
-├── features/            # Feature-specific logic and components (could be feature folders)
 ├── lib/                 # 유틸리티 함수
 ├── types/               # TypeScript 타입 정의
 ├── config/              # 애플리케이션 설정

@@ -1,9 +1,8 @@
 import { SearchIcon } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
 import { useSearch } from "@/context/search-provider";
 import { cn } from "@/lib/utils";
-
-import { Button } from "./ui/button";
 
 interface SearchProps {
   className?: string;
@@ -22,9 +21,9 @@ export function Search({ className = "", placeholder = "Search" }: SearchProps) 
       )}
       onClick={() => setOpen(true)}
     >
-      <SearchIcon aria-hidden="true" className="absolute start-1.5 top-1/2 -translate-y-1/2" size={16} />
+      <SearchIcon aria-hidden="true" className="absolute inset-s-1.5 top-1/2 -translate-y-1/2" size={16} />
       <span className="ms-4">{placeholder}</span>
-      <kbd className="pointer-events-none absolute end-[0.3rem] top-[0.3rem] hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-medium font-mono text-[10px] opacity-100 group-hover:bg-accent sm:flex">
+      <kbd className="pointer-events-none absolute inset-e-[0.3rem] top-[0.3rem] hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-medium font-mono text-[10px] opacity-100 group-hover:bg-accent sm:flex">
         <span className="text-xs">⌘</span>J
       </kbd>
     </Button>

@@ -48,6 +48,10 @@ vi.mock("@/lib/formatter", () => ({
   formatDate: (date: Date | null) => (date ? "2023-01-01" : ""),
 }));
 
+vi.mock("use-mask-input", () => ({
+  withMask: () => () => {},
+}));
+
 vi.mock("date-fns", () => ({
   isValid: (date: any) => date === "2023-01-01",
   toDate: (date: string) => new Date(date),

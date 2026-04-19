@@ -18,39 +18,38 @@ const cmd = process.platform === "win32" ? "cmd" : "bash";
 const mswArgs =
   process.platform === "win32" ? ["/c", "pnpx msw init ./public --save"] : ["-c", "pnpx msw init ./public --save"];
 
-const mswChild = spawn(cmd, mswArgs, {
-  stdio: "inherit", // 콘솔에 그대로 출력
-});
-
-mswChild.on("close", (code) => {
-  console.log(`- process exited with code ${code}`);
-});
-
 const lefthookArgs = process.platform === "win32" ? ["/c", "pnpx lefthook install"] : ["-c", "pnpx lefthook install"];
-
-const lefthookChild = spawn(cmd, lefthookArgs, {
-  stdio: "inherit", // 콘솔에 그대로 출력
-});
-
-lefthookChild.on("close", (code) => {
-  console.log(`- process exited with code ${code}`);
-});
 
 const vitestArgs =
   process.platform === "win32"
     ? ["/c", "pnpm exec playwright install chromium"]
     : ["-c", "pnpm exec playwright install chromium"];
 
-const vitestChild = spawn(cmd, vitestArgs, {
-  stdio: "inherit", // 콘솔에 그대로 출력
-});
+function runProcess(args) {
+  return new Promise((resolve, reject) => {
+    const child = spawn(cmd, args, {
+      stdio: "inherit",
+    });
 
-vitestChild.on("close", (code) => {
-  console.log(`- process exited with code ${code}`);
-});
+    child.on("error", reject);
+    child.on("close", (code) => {
+      console.log(`- process exited with code ${code}`);
 
-console.log("🚀 필수 설치 완료");
+      if (code === 0) {
+        resolve();
+        return;
+      }
 
-// 실제 실행할 작업
-// ex) 설정 파일 생성, 바이너리 다운로드 등
-fs.writeFileSync(marker, new Date().toISOString());
+      reject(new Error(`postinstall command failed with exit code ${code}`));
+    });
+  });
+}
+
+try {
+  await Promise.all([runProcess(mswArgs), runProcess(lefthookArgs), runProcess(vitestArgs)]);
+  fs.writeFileSync(marker, new Date().toISOString());
+  console.log("🚀 필수 설치 완료");
+} catch (error) {
+  console.error(error);
+  process.exit(1);
+}

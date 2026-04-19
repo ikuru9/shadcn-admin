@@ -36,6 +36,7 @@
       "!node_modules",
       "!dist",
       "!out",
+      "!graphify-out",
       "!src/gen",
       "!src/components/ui",
       "!src/routeTree.gen.ts"

@@ -1,6 +1,37 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 
-import { ForgotPassword } from "@/features/auth/forgot-password";
+import { AuthLayout } from "@/components/layout/auth-layout";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+
+import { ForgotPasswordForm } from "./components/forgot-password-form";
+
+function ForgotPassword() {
+  return (
+    <AuthLayout>
+      <Card className="gap-4">
+        <CardHeader>
+          <CardTitle className="text-lg tracking-tight">Forgot Password</CardTitle>
+          <CardDescription>
+            Enter your registered email and <br /> we will send you a link to reset your password.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ForgotPasswordForm />
+        </CardContent>
+        <CardFooter>
+          <p className="mx-auto text-balance px-8 text-center text-muted-foreground text-sm">
+            Don&apos;t have an account?{" "}
+            <Link to="/sign-up" className="underline underline-offset-4 hover:text-primary">
+              Sign up
+            </Link>
+            .
+          </p>
+        </CardFooter>
+      </Card>
+    </AuthLayout>
+  );
+}
 
 export const Route = createFileRoute("/(auth)/forgot-password")({
   component: ForgotPassword,

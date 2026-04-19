@@ -2,20 +2,21 @@ import { createEnv } from "@t3-oss/env-core";
 import * as z from "zod/mini";
 
 export const env = createEnv({
-  server: {
-    API_SERVER_URL: z.optional(z.string()),
-  },
-
-  /**
-   * The prefix that client-side variables must have. This is enforced both at
-   * a type-level and at runtime.
-   */
   clientPrefix: "VITE_",
-
   client: {
     VITE_APP_TITLE: z.optional(z.string()),
   },
 
+  server: {
+    API_SERVER_URL: z.optional(z.string()),
+  },
+
+  // Vite exposes build-in vars like DEV and MODE
+  shared: {
+    NODE_ENV: z.enum(["development", "production", "test"]),
+    DEV: z.boolean(),
+    PROD: z.boolean(),
+  },
   /**
    * What object holds the environment variables at runtime. This is usually
    * `process.env` or `import.meta.env`.
