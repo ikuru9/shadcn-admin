@@ -18,23 +18,22 @@ import { Route as errors404RouteImport } from './routes/(errors)/404'
 import { Route as errors403RouteImport } from './routes/(errors)/403'
 import { Route as errors401RouteImport } from './routes/(errors)/401'
 import { Route as authSignUpRouteImport } from './routes/(auth)/sign-up'
-import { Route as authSignIn2RouteImport } from './routes/(auth)/sign-in-2'
 import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
 import { Route as authOtpRouteImport } from './routes/(auth)/otp'
 import { Route as authForgotPasswordRouteImport } from './routes/(auth)/forgot-password'
 import { Route as AuthenticatedSettingsRouteRouteImport } from './routes/_authenticated/settings/route'
-import { Route as AuthenticatedUsersIndexRouteImport } from './routes/_authenticated/users/index'
-import { Route as AuthenticatedTasksIndexRouteImport } from './routes/_authenticated/tasks/index'
 import { Route as AuthenticatedSettingsIndexRouteImport } from './routes/_authenticated/settings/index'
 import { Route as AuthenticatedHelpCenterIndexRouteImport } from './routes/_authenticated/help-center/index'
-import { Route as AuthenticatedChatsIndexRouteImport } from './routes/_authenticated/chats/index'
-import { Route as AuthenticatedAppsIndexRouteImport } from './routes/_authenticated/apps/index'
 import { Route as AuthenticatedSettingsNotificationsRouteImport } from './routes/_authenticated/settings/notifications'
 import { Route as AuthenticatedSettingsDisplayRouteImport } from './routes/_authenticated/settings/display'
 import { Route as AuthenticatedSettingsAppearanceRouteImport } from './routes/_authenticated/settings/appearance'
 import { Route as AuthenticatedSettingsAccountRouteImport } from './routes/_authenticated/settings/account'
 import { Route as AuthenticatedErrorsErrorRouteImport } from './routes/_authenticated/errors/$error'
+import { Route as AuthenticatedSamplesUsersIndexRouteImport } from './routes/_authenticated/samples/users/index'
+import { Route as AuthenticatedSamplesTasksIndexRouteImport } from './routes/_authenticated/samples/tasks/index'
 import { Route as AuthenticatedSamplesPetsIndexRouteImport } from './routes/_authenticated/samples/pets/index'
+import { Route as AuthenticatedSamplesChatsIndexRouteImport } from './routes/_authenticated/samples/chats/index'
+import { Route as AuthenticatedSamplesAppsIndexRouteImport } from './routes/_authenticated/samples/apps/index'
 import { Route as AuthenticatedSamplesPetsIdRouteImport } from './routes/_authenticated/samples/pets/$id'
 
 const OfflineRoute = OfflineRouteImport.update({
@@ -81,11 +80,6 @@ const authSignUpRoute = authSignUpRouteImport.update({
   path: '/sign-up',
   getParentRoute: () => rootRouteImport,
 } as any)
-const authSignIn2Route = authSignIn2RouteImport.update({
-  id: '/(auth)/sign-in-2',
-  path: '/sign-in-2',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const authSignInRoute = authSignInRouteImport.update({
   id: '/(auth)/sign-in',
   path: '/sign-in',
@@ -107,16 +101,6 @@ const AuthenticatedSettingsRouteRoute =
     path: '/settings',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
-const AuthenticatedUsersIndexRoute = AuthenticatedUsersIndexRouteImport.update({
-  id: '/users/',
-  path: '/users/',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedTasksIndexRoute = AuthenticatedTasksIndexRouteImport.update({
-  id: '/tasks/',
-  path: '/tasks/',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
 const AuthenticatedSettingsIndexRoute =
   AuthenticatedSettingsIndexRouteImport.update({
     id: '/',
@@ -129,16 +113,6 @@ const AuthenticatedHelpCenterIndexRoute =
     path: '/help-center/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
-const AuthenticatedChatsIndexRoute = AuthenticatedChatsIndexRouteImport.update({
-  id: '/chats/',
-  path: '/chats/',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedAppsIndexRoute = AuthenticatedAppsIndexRouteImport.update({
-  id: '/apps/',
-  path: '/apps/',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
 const AuthenticatedSettingsNotificationsRoute =
   AuthenticatedSettingsNotificationsRouteImport.update({
     id: '/notifications',
@@ -169,10 +143,34 @@ const AuthenticatedErrorsErrorRoute =
     path: '/errors/$error',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedSamplesUsersIndexRoute =
+  AuthenticatedSamplesUsersIndexRouteImport.update({
+    id: '/samples/users/',
+    path: '/samples/users/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedSamplesTasksIndexRoute =
+  AuthenticatedSamplesTasksIndexRouteImport.update({
+    id: '/samples/tasks/',
+    path: '/samples/tasks/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedSamplesPetsIndexRoute =
   AuthenticatedSamplesPetsIndexRouteImport.update({
     id: '/samples/pets/',
     path: '/samples/pets/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedSamplesChatsIndexRoute =
+  AuthenticatedSamplesChatsIndexRouteImport.update({
+    id: '/samples/chats/',
+    path: '/samples/chats/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedSamplesAppsIndexRoute =
+  AuthenticatedSamplesAppsIndexRouteImport.update({
+    id: '/samples/apps/',
+    path: '/samples/apps/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedSamplesPetsIdRoute =
@@ -189,7 +187,6 @@ export interface FileRoutesByFullPath {
   '/forgot-password': typeof authForgotPasswordRoute
   '/otp': typeof authOtpRoute
   '/sign-in': typeof authSignInRoute
-  '/sign-in-2': typeof authSignIn2Route
   '/sign-up': typeof authSignUpRoute
   '/401': typeof errors401Route
   '/403': typeof errors403Route
@@ -201,21 +198,20 @@ export interface FileRoutesByFullPath {
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
-  '/apps/': typeof AuthenticatedAppsIndexRoute
-  '/chats/': typeof AuthenticatedChatsIndexRoute
   '/help-center/': typeof AuthenticatedHelpCenterIndexRoute
   '/settings/': typeof AuthenticatedSettingsIndexRoute
-  '/tasks/': typeof AuthenticatedTasksIndexRoute
-  '/users/': typeof AuthenticatedUsersIndexRoute
   '/samples/pets/$id': typeof AuthenticatedSamplesPetsIdRoute
+  '/samples/apps/': typeof AuthenticatedSamplesAppsIndexRoute
+  '/samples/chats/': typeof AuthenticatedSamplesChatsIndexRoute
   '/samples/pets/': typeof AuthenticatedSamplesPetsIndexRoute
+  '/samples/tasks/': typeof AuthenticatedSamplesTasksIndexRoute
+  '/samples/users/': typeof AuthenticatedSamplesUsersIndexRoute
 }
 export interface FileRoutesByTo {
   '/offline': typeof OfflineRoute
   '/forgot-password': typeof authForgotPasswordRoute
   '/otp': typeof authOtpRoute
   '/sign-in': typeof authSignInRoute
-  '/sign-in-2': typeof authSignIn2Route
   '/sign-up': typeof authSignUpRoute
   '/401': typeof errors401Route
   '/403': typeof errors403Route
@@ -228,14 +224,14 @@ export interface FileRoutesByTo {
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
-  '/apps': typeof AuthenticatedAppsIndexRoute
-  '/chats': typeof AuthenticatedChatsIndexRoute
   '/help-center': typeof AuthenticatedHelpCenterIndexRoute
   '/settings': typeof AuthenticatedSettingsIndexRoute
-  '/tasks': typeof AuthenticatedTasksIndexRoute
-  '/users': typeof AuthenticatedUsersIndexRoute
   '/samples/pets/$id': typeof AuthenticatedSamplesPetsIdRoute
+  '/samples/apps': typeof AuthenticatedSamplesAppsIndexRoute
+  '/samples/chats': typeof AuthenticatedSamplesChatsIndexRoute
   '/samples/pets': typeof AuthenticatedSamplesPetsIndexRoute
+  '/samples/tasks': typeof AuthenticatedSamplesTasksIndexRoute
+  '/samples/users': typeof AuthenticatedSamplesUsersIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -245,7 +241,6 @@ export interface FileRoutesById {
   '/(auth)/forgot-password': typeof authForgotPasswordRoute
   '/(auth)/otp': typeof authOtpRoute
   '/(auth)/sign-in': typeof authSignInRoute
-  '/(auth)/sign-in-2': typeof authSignIn2Route
   '/(auth)/sign-up': typeof authSignUpRoute
   '/(errors)/401': typeof errors401Route
   '/(errors)/403': typeof errors403Route
@@ -258,14 +253,14 @@ export interface FileRoutesById {
   '/_authenticated/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/_authenticated/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/_authenticated/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
-  '/_authenticated/apps/': typeof AuthenticatedAppsIndexRoute
-  '/_authenticated/chats/': typeof AuthenticatedChatsIndexRoute
   '/_authenticated/help-center/': typeof AuthenticatedHelpCenterIndexRoute
   '/_authenticated/settings/': typeof AuthenticatedSettingsIndexRoute
-  '/_authenticated/tasks/': typeof AuthenticatedTasksIndexRoute
-  '/_authenticated/users/': typeof AuthenticatedUsersIndexRoute
   '/_authenticated/samples/pets/$id': typeof AuthenticatedSamplesPetsIdRoute
+  '/_authenticated/samples/apps/': typeof AuthenticatedSamplesAppsIndexRoute
+  '/_authenticated/samples/chats/': typeof AuthenticatedSamplesChatsIndexRoute
   '/_authenticated/samples/pets/': typeof AuthenticatedSamplesPetsIndexRoute
+  '/_authenticated/samples/tasks/': typeof AuthenticatedSamplesTasksIndexRoute
+  '/_authenticated/samples/users/': typeof AuthenticatedSamplesUsersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -276,7 +271,6 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/otp'
     | '/sign-in'
-    | '/sign-in-2'
     | '/sign-up'
     | '/401'
     | '/403'
@@ -288,21 +282,20 @@ export interface FileRouteTypes {
     | '/settings/appearance'
     | '/settings/display'
     | '/settings/notifications'
-    | '/apps/'
-    | '/chats/'
     | '/help-center/'
     | '/settings/'
-    | '/tasks/'
-    | '/users/'
     | '/samples/pets/$id'
+    | '/samples/apps/'
+    | '/samples/chats/'
     | '/samples/pets/'
+    | '/samples/tasks/'
+    | '/samples/users/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/offline'
     | '/forgot-password'
     | '/otp'
     | '/sign-in'
-    | '/sign-in-2'
     | '/sign-up'
     | '/401'
     | '/403'
@@ -315,14 +308,14 @@ export interface FileRouteTypes {
     | '/settings/appearance'
     | '/settings/display'
     | '/settings/notifications'
-    | '/apps'
-    | '/chats'
     | '/help-center'
     | '/settings'
-    | '/tasks'
-    | '/users'
     | '/samples/pets/$id'
+    | '/samples/apps'
+    | '/samples/chats'
     | '/samples/pets'
+    | '/samples/tasks'
+    | '/samples/users'
   id:
     | '__root__'
     | '/_authenticated'
@@ -331,7 +324,6 @@ export interface FileRouteTypes {
     | '/(auth)/forgot-password'
     | '/(auth)/otp'
     | '/(auth)/sign-in'
-    | '/(auth)/sign-in-2'
     | '/(auth)/sign-up'
     | '/(errors)/401'
     | '/(errors)/403'
@@ -344,14 +336,14 @@ export interface FileRouteTypes {
     | '/_authenticated/settings/appearance'
     | '/_authenticated/settings/display'
     | '/_authenticated/settings/notifications'
-    | '/_authenticated/apps/'
-    | '/_authenticated/chats/'
     | '/_authenticated/help-center/'
     | '/_authenticated/settings/'
-    | '/_authenticated/tasks/'
-    | '/_authenticated/users/'
     | '/_authenticated/samples/pets/$id'
+    | '/_authenticated/samples/apps/'
+    | '/_authenticated/samples/chats/'
     | '/_authenticated/samples/pets/'
+    | '/_authenticated/samples/tasks/'
+    | '/_authenticated/samples/users/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -360,7 +352,6 @@ export interface RootRouteChildren {
   authForgotPasswordRoute: typeof authForgotPasswordRoute
   authOtpRoute: typeof authOtpRoute
   authSignInRoute: typeof authSignInRoute
-  authSignIn2Route: typeof authSignIn2Route
   authSignUpRoute: typeof authSignUpRoute
   errors401Route: typeof errors401Route
   errors403Route: typeof errors403Route
@@ -434,13 +425,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authSignUpRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/(auth)/sign-in-2': {
-      id: '/(auth)/sign-in-2'
-      path: '/sign-in-2'
-      fullPath: '/sign-in-2'
-      preLoaderRoute: typeof authSignIn2RouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/(auth)/sign-in': {
       id: '/(auth)/sign-in'
       path: '/sign-in'
@@ -469,20 +453,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSettingsRouteRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/_authenticated/users/': {
-      id: '/_authenticated/users/'
-      path: '/users'
-      fullPath: '/users/'
-      preLoaderRoute: typeof AuthenticatedUsersIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/tasks/': {
-      id: '/_authenticated/tasks/'
-      path: '/tasks'
-      fullPath: '/tasks/'
-      preLoaderRoute: typeof AuthenticatedTasksIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
     '/_authenticated/settings/': {
       id: '/_authenticated/settings/'
       path: '/'
@@ -495,20 +465,6 @@ declare module '@tanstack/react-router' {
       path: '/help-center'
       fullPath: '/help-center/'
       preLoaderRoute: typeof AuthenticatedHelpCenterIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/chats/': {
-      id: '/_authenticated/chats/'
-      path: '/chats'
-      fullPath: '/chats/'
-      preLoaderRoute: typeof AuthenticatedChatsIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/apps/': {
-      id: '/_authenticated/apps/'
-      path: '/apps'
-      fullPath: '/apps/'
-      preLoaderRoute: typeof AuthenticatedAppsIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/settings/notifications': {
@@ -546,11 +502,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedErrorsErrorRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/samples/users/': {
+      id: '/_authenticated/samples/users/'
+      path: '/samples/users'
+      fullPath: '/samples/users/'
+      preLoaderRoute: typeof AuthenticatedSamplesUsersIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/samples/tasks/': {
+      id: '/_authenticated/samples/tasks/'
+      path: '/samples/tasks'
+      fullPath: '/samples/tasks/'
+      preLoaderRoute: typeof AuthenticatedSamplesTasksIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/samples/pets/': {
       id: '/_authenticated/samples/pets/'
       path: '/samples/pets'
       fullPath: '/samples/pets/'
       preLoaderRoute: typeof AuthenticatedSamplesPetsIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/samples/chats/': {
+      id: '/_authenticated/samples/chats/'
+      path: '/samples/chats'
+      fullPath: '/samples/chats/'
+      preLoaderRoute: typeof AuthenticatedSamplesChatsIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/samples/apps/': {
+      id: '/_authenticated/samples/apps/'
+      path: '/samples/apps'
+      fullPath: '/samples/apps/'
+      preLoaderRoute: typeof AuthenticatedSamplesAppsIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/samples/pets/$id': {
@@ -590,26 +574,26 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
   AuthenticatedErrorsErrorRoute: typeof AuthenticatedErrorsErrorRoute
-  AuthenticatedAppsIndexRoute: typeof AuthenticatedAppsIndexRoute
-  AuthenticatedChatsIndexRoute: typeof AuthenticatedChatsIndexRoute
   AuthenticatedHelpCenterIndexRoute: typeof AuthenticatedHelpCenterIndexRoute
-  AuthenticatedTasksIndexRoute: typeof AuthenticatedTasksIndexRoute
-  AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute
   AuthenticatedSamplesPetsIdRoute: typeof AuthenticatedSamplesPetsIdRoute
+  AuthenticatedSamplesAppsIndexRoute: typeof AuthenticatedSamplesAppsIndexRoute
+  AuthenticatedSamplesChatsIndexRoute: typeof AuthenticatedSamplesChatsIndexRoute
   AuthenticatedSamplesPetsIndexRoute: typeof AuthenticatedSamplesPetsIndexRoute
+  AuthenticatedSamplesTasksIndexRoute: typeof AuthenticatedSamplesTasksIndexRoute
+  AuthenticatedSamplesUsersIndexRoute: typeof AuthenticatedSamplesUsersIndexRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRouteWithChildren,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
   AuthenticatedErrorsErrorRoute: AuthenticatedErrorsErrorRoute,
-  AuthenticatedAppsIndexRoute: AuthenticatedAppsIndexRoute,
-  AuthenticatedChatsIndexRoute: AuthenticatedChatsIndexRoute,
   AuthenticatedHelpCenterIndexRoute: AuthenticatedHelpCenterIndexRoute,
-  AuthenticatedTasksIndexRoute: AuthenticatedTasksIndexRoute,
-  AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,
   AuthenticatedSamplesPetsIdRoute: AuthenticatedSamplesPetsIdRoute,
+  AuthenticatedSamplesAppsIndexRoute: AuthenticatedSamplesAppsIndexRoute,
+  AuthenticatedSamplesChatsIndexRoute: AuthenticatedSamplesChatsIndexRoute,
   AuthenticatedSamplesPetsIndexRoute: AuthenticatedSamplesPetsIndexRoute,
+  AuthenticatedSamplesTasksIndexRoute: AuthenticatedSamplesTasksIndexRoute,
+  AuthenticatedSamplesUsersIndexRoute: AuthenticatedSamplesUsersIndexRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
@@ -621,7 +605,6 @@ const rootRouteChildren: RootRouteChildren = {
   authForgotPasswordRoute: authForgotPasswordRoute,
   authOtpRoute: authOtpRoute,
   authSignInRoute: authSignInRoute,
-  authSignIn2Route: authSignIn2Route,
   authSignUpRoute: authSignUpRoute,
   errors401Route: errors401Route,
   errors403Route: errors403Route,

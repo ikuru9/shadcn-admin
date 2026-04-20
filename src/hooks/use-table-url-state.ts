@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import type { ColumnFiltersState, OnChangeFn, PaginationState } from "@tanstack/react-table";
 
@@ -99,6 +99,20 @@ export function useTableUrlState(params: UseTableUrlStateParams): UseTableUrlSta
 
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(initialColumnFilters);
 
+  useEffect(() => {
+    setColumnFilters((prev) => {
+      const sameLength = prev.length === initialColumnFilters.length;
+      const sameValues = sameLength
+        ? prev.every((filter, index) => {
+            const next = initialColumnFilters[index];
+            return filter.id === next.id && JSON.stringify(filter.value) === JSON.stringify(next.value);
+          })
+        : false;
+
+      return sameValues ? prev : initialColumnFilters;
+    });
+  }, [initialColumnFilters]);
+
   const pagination: PaginationState = useMemo(() => {
     const rawPage = (search as SearchRecord)[pageKey];
     const rawPageSize = (search as SearchRecord)[pageSizeKey];
@@ -125,6 +139,15 @@ export function useTableUrlState(params: UseTableUrlStateParams): UseTableUrlSta
     const raw = (search as SearchRecord)[globalFilterKey];
     return typeof raw === "string" ? raw : "";
   });
+
+  useEffect(() => {
+    if (!globalFilterEnabled) return;
+
+    const raw = (search as SearchRecord)[globalFilterKey];
+    const nextGlobalFilter = typeof raw === "string" ? raw : "";
+
+    setGlobalFilter((prev) => (prev === nextGlobalFilter ? prev : nextGlobalFilter));
+  }, [globalFilterEnabled, globalFilterKey, search]);
 
   const onGlobalFilterChange: OnChangeFn<string> | undefined = globalFilterEnabled
     ? (updater) => {
