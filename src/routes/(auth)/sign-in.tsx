@@ -1,6 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useSearch } from "@tanstack/react-router";
 import * as z from "zod/mini";
-import { useSearch } from "@tanstack/react-router";
 
 import { AuthLayout } from "@/components/layout/auth-layout";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";

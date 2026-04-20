@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import { useQueryClient } from "@tanstack/react-query";
 import type { Table } from "@tanstack/react-table";
 import { AlertTriangle } from "lucide-react";
 import { toast } from "sonner";
@@ -11,8 +12,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useDeletePet } from "@/gen/hooks";
-
-import type { Pet } from "./data/schema";
+import type { Pet } from "@/gen/types/Pet";
 
 interface PetsMultiDeleteDialogProps {
   open: boolean;
@@ -21,9 +21,12 @@ interface PetsMultiDeleteDialogProps {
 }
 
 const CONFIRM_WORD = "DELETE";
+const petQueryKey = [{ url: "/pet/findByStatus" }];
+const petDetailQueryKey = [{ url: "/pet/:petId" }];
 
 export function PetsMultiDeleteDialog({ open, onOpenChange, table }: PetsMultiDeleteDialogProps) {
   const [value, setValue] = useState("");
+  const queryClient = useQueryClient();
 
   const selectedRows = table.getFilteredSelectedRowModel().rows;
 
@@ -35,19 +38,29 @@ export function PetsMultiDeleteDialog({ open, onOpenChange, table }: PetsMultiDe
       return;
     }
 
-    onOpenChange(false);
+    try {
+      await Promise.all(
+        selectedRows.map((row) => {
+          if (row.original.id == null) {
+            throw new Error("Missing pet ID.");
+          }
 
-    const promises = selectedRows.map((row) => row.original.id && mutateAsync({ petId: row.original.id }));
+          return mutateAsync({ petId: row.original.id });
+        }),
+      );
 
-    toast.promise(Promise.all(promises), {
-      loading: "Deleting pets...",
-      success: () => {
-        setValue("");
-        table.resetRowSelection();
-        return `Deleted ${selectedRows.length} ${selectedRows.length > 1 ? "pets" : "pet"}`;
-      },
-      error: "Error",
-    });
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: petQueryKey }),
+        queryClient.invalidateQueries({ queryKey: petDetailQueryKey }),
+      ]);
+
+      setValue("");
+      table.resetRowSelection();
+      onOpenChange(false);
+      toast.success(`Deleted ${selectedRows.length} ${selectedRows.length > 1 ? "pets" : "pet"}`);
+    } catch {
+      toast.error("Error");
+    }
   };
 
   return (

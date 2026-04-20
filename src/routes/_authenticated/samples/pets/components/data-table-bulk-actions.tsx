@@ -6,8 +6,8 @@ import { Trash2 } from "lucide-react";
 import { DataTableBulkActions as BulkActionsToolbar } from "@/components/data-table";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import type { Pet } from "@/gen/types/Pet";
 
-import type { Pet } from "./data/schema";
 import { PetsMultiDeleteDialog } from "./pets-multi-delete-dialog";
 
 interface DataTableBulkActionsProps {

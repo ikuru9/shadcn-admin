@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import { Analytics } from "./components/dashboard/analytics";
-import { Overview } from "./components/dashboard/overview";
-import { RecentSales } from "./components/dashboard/recent-sales";
+import { Analytics } from "./components/analytics";
+import { Overview } from "./components/overview";
+import { RecentSales } from "./components/recent-sales";
 
 const Dashboard = () => {
   return (

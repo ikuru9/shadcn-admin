@@ -85,13 +85,14 @@ function wrapRowHandler<TData>(
 
 interface DataTableProps<TData> {
   table: TanStackTable<TData>;
+  className?: string;
   customProps?: {
     row?: Omit<React.ComponentProps<typeof TableRow>, `on${string}`> & RowEventHandlers<TData>;
     cell?: Record<string, Omit<React.ComponentProps<typeof TableCell>, `on${string}`> & CellEventHandlers<TData>>;
   };
 }
 
-function DataTable<TData>({ table, customProps }: DataTableProps<TData>) {
+function DataTable<TData>({ table, className, customProps }: DataTableProps<TData>) {
   const headerGroups = table.getHeaderGroups();
   const columns = table.getAllColumns();
   const rows = table.getRowModel().rows;
@@ -147,7 +148,7 @@ function DataTable<TData>({ table, customProps }: DataTableProps<TData>) {
   };
 
   return (
-    <Table>
+    <Table className={className}>
       <TableHeader>
         {headerGroups.map((headerGroup) => (
           <TableRow key={headerGroup.id} className="group/row">

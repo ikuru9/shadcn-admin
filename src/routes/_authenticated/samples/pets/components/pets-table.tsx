@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { useNavigate } from "@tanstack/react-router";
 import {
   getCoreRowModel,
   getFacetedRowModel,
@@ -14,10 +13,10 @@ import {
 } from "@tanstack/react-table";
 
 import { DataTable, DataTablePagination, DataTableToolbar } from "@/components/data-table";
+import type { Pet } from "@/gen/types/Pet";
 import { type NavigateFn, useTableUrlState } from "@/hooks/use-table-url-state";
 import { cn } from "@/lib/utils";
 
-import type { Pet } from "./data/schema";
 import { DataTableBulkActions } from "./data-table-bulk-actions";
 import { petsColumns } from "./pets-columns";
 
@@ -28,8 +27,6 @@ interface DataTableProps {
 }
 
 export function PetsTable({ data, search, navigate }: DataTableProps) {
-  const routerNavigate = useNavigate();
-
   // Local UI-only states
   const [rowSelection, setRowSelection] = useState({});
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
@@ -48,7 +45,6 @@ export function PetsTable({ data, search, navigate }: DataTableProps) {
     columnFilters: [
       // name per-column text filter
       { columnId: "name", searchKey: "name", type: "string" },
-      { columnId: "status", searchKey: "status", type: "array" },
     ],
   });
 
@@ -92,34 +88,9 @@ export function PetsTable({ data, search, navigate }: DataTableProps) {
         "flex flex-1 flex-col gap-4",
       )}
     >
-      <DataTableToolbar
-        table={table}
-        searchPlaceholder="Filter pets..."
-        searchKey="name"
-        filters={[
-          {
-            columnId: "status",
-            title: "Status",
-            options: [
-              { label: "Available", value: "available" },
-              { label: "Pending", value: "pending" },
-              { label: "Sold", value: "sold" },
-            ],
-          },
-        ]}
-      />
+      <DataTableToolbar table={table} searchPlaceholder="Filter pets..." searchKey="name" />
       <div className="overflow-hidden rounded-md border">
-        <DataTable
-          table={table}
-          customProps={{
-            row: {
-              onClick(event, row) {
-                if ((event.target as HTMLElement).closest("[data-select-cell]")) return;
-                routerNavigate({ to: `/samples/pets/${row.original.id}` });
-              },
-            },
-          }}
-        />
+        <DataTable table={table} className="min-w-xl" />
       </div>
       <DataTablePagination table={table} className="mt-auto" />
       <DataTableBulkActions table={table} />
