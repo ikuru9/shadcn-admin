@@ -5919,8 +5919,8 @@
       "source_file": "/Users/mareem/Git/shadcn-admin/src/components/layout/nav-group.tsx",
       "source_location": "L96",
       "weight": 1.0,
-      "_src": "nav_group_sidebarmenucollapsible",
-      "_tgt": "sidebar_context_usesidebar",
+      "_src": "sidebar_context_usesidebar",
+      "_tgt": "nav_group_sidebarmenucollapsible",
       "source": "sidebar_context_usesidebar",
       "target": "nav_group_sidebarmenucollapsible"
     },
