@@ -31,19 +31,13 @@ import type { NavCollapsible, NavGroup as NavGroupProps, NavItem, NavLink } from
 export function NavGroup({ title, items }: NavGroupProps) {
   const { state, isMobile } = useSidebar();
   const href = useLocation({ select: (location) => location.href });
+  const isCollapsed = state === "collapsed" && !isMobile;
   return (
     <SidebarGroup>
       <SidebarGroupLabel>{title}</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => {
-          const key = `${item.title}-${item.url}`;
-
-          if (!item.items) return <SidebarMenuLink key={key} item={item} href={href} />;
-
-          if (state === "collapsed" && !isMobile)
-            return <SidebarMenuCollapsedDropdown key={key} item={item} href={href} />;
-
-          return <SidebarMenuCollapsible key={key} item={item} href={href} />;
+          return <NavTreeItem key={getNavItemKey(item)} item={item} href={href} isCollapsed={isCollapsed} />;
         })}
       </SidebarMenu>
     </SidebarGroup>
@@ -54,13 +48,40 @@ function NavBadge({ children }: { children: ReactNode }) {
   return <Badge className="rounded-full px-1 py-0 text-xs">{children}</Badge>;
 }
 
+function NavTreeItem({ item, href, isCollapsed }: { item: NavItem; href: string; isCollapsed: boolean }) {
+  if (!item.items) return <SidebarMenuLink item={item} href={href} />;
+
+  if (isCollapsed) return <SidebarMenuCollapsedDropdown item={item} href={href} />;
+
+  return <SidebarMenuCollapsible item={item} href={href} />;
+}
+
+function getNavItemKey(item: NavItem) {
+  return `${item.title}-${isNavLink(item) ? item.url : item.items.map((sub) => sub.title).join("-")}`;
+}
+
+function getNavLeafItems(items: NavItem[]): NavLink[] {
+  const leaves: NavLink[] = [];
+
+  for (const item of items) {
+    if (isNavLink(item)) {
+      leaves.push(item);
+      continue;
+    }
+
+    leaves.push(...getNavLeafItems(item.items));
+  }
+
+  return leaves;
+}
+
 function SidebarMenuLink({ item, href }: { item: NavLink; href: string }) {
   const { setOpenMobile } = useSidebar();
   return (
     <SidebarMenuItem>
       <SidebarMenuButton
         render={<Link to={item.url} onClick={() => setOpenMobile(false)} />}
-        isActive={checkIsActive(href, item)}
+        isActive={isNavItemActive(href, item)}
         tooltip={item.title}
       >
         {item.icon && <item.icon />}
@@ -76,7 +97,7 @@ function SidebarMenuCollapsible({ item, href }: { item: NavCollapsible; href: st
   return (
     <Collapsible
       render={<SidebarMenuItem />}
-      defaultOpen={checkIsActive(href, item, true)}
+      defaultOpen={isNavItemActive(href, item)}
       className="group/collapsible"
     >
       <CollapsibleTrigger render={<SidebarMenuButton tooltip={item.title} />}>
@@ -88,16 +109,49 @@ function SidebarMenuCollapsible({ item, href }: { item: NavCollapsible; href: st
       <CollapsibleContent className="CollapsibleContent">
         <SidebarMenuSub>
           {item.items.map((subItem) => (
-            <SidebarMenuSubItem key={subItem.title}>
-              <SidebarMenuSubButton
-                render={<Link to={subItem.url} onClick={() => setOpenMobile(false)} />}
-                isActive={checkIsActive(href, subItem)}
-              >
-                {subItem.icon && <subItem.icon />}
-                <span>{subItem.title}</span>
-                {subItem.badge && <NavBadge>{subItem.badge}</NavBadge>}
-              </SidebarMenuSubButton>
-            </SidebarMenuSubItem>
+            <NavSubTreeItem key={getNavItemKey(subItem)} item={subItem} href={href} setOpenMobile={setOpenMobile} />
+          ))}
+        </SidebarMenuSub>
+      </CollapsibleContent>
+    </Collapsible>
+  );
+}
+
+function NavSubTreeItem({
+  item,
+  href,
+  setOpenMobile,
+}: {
+  item: NavItem;
+  href: string;
+  setOpenMobile: (open: boolean) => void;
+}) {
+  if (!item.items)
+    return (
+      <SidebarMenuSubItem>
+        <SidebarMenuSubButton
+          render={<Link to={item.url} onClick={() => setOpenMobile(false)} />}
+          isActive={isNavItemActive(href, item)}
+        >
+          {item.icon && <item.icon />}
+          <span>{item.title}</span>
+          {item.badge && <NavBadge>{item.badge}</NavBadge>}
+        </SidebarMenuSubButton>
+      </SidebarMenuSubItem>
+    );
+
+  return (
+    <Collapsible render={<SidebarMenuSubItem />} defaultOpen={isNavItemActive(href, item)} className="group/collapsible">
+      <CollapsibleTrigger render={<SidebarMenuSubButton isActive={isNavItemActive(href, item)} />}>
+        {item.icon && <item.icon />}
+        <span>{item.title}</span>
+        {item.badge && <NavBadge>{item.badge}</NavBadge>}
+        <ChevronRight className="ms-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 rtl:rotate-180" />
+      </CollapsibleTrigger>
+      <CollapsibleContent className="CollapsibleContent">
+        <SidebarMenuSub>
+          {item.items.map((subItem) => (
+            <NavSubTreeItem key={getNavItemKey(subItem)} item={subItem} href={href} setOpenMobile={setOpenMobile} />
           ))}
         </SidebarMenuSub>
       </CollapsibleContent>
@@ -109,7 +163,7 @@ function SidebarMenuCollapsedDropdown({ item, href }: { item: NavCollapsible; hr
   return (
     <SidebarMenuItem>
       <DropdownMenu>
-        <DropdownMenuTrigger render={<SidebarMenuButton tooltip={item.title} isActive={checkIsActive(href, item)} />}>
+        <DropdownMenuTrigger render={<SidebarMenuButton tooltip={item.title} isActive={isNavItemActive(href, item)} />}>
           {item.icon && <item.icon />}
           <span>{item.title}</span>
           {item.badge && <NavBadge>{item.badge}</NavBadge>}
@@ -122,10 +176,10 @@ function SidebarMenuCollapsedDropdown({ item, href }: { item: NavCollapsible; hr
             </DropdownMenuLabel>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          {item.items.map((sub) => (
+          {getNavLeafItems(item.items).map((sub) => (
             <DropdownMenuItem
               key={`${sub.title}-${sub.url}`}
-              render={<Link to={sub.url} className={`${checkIsActive(href, sub) ? "bg-secondary" : ""}`} />}
+              render={<Link to={sub.url} className={`${isNavItemActive(href, sub) ? "bg-secondary" : ""}`} />}
             >
               {sub.icon && <sub.icon />}
               <span className="max-w-52 text-wrap">{sub.title}</span>
@@ -138,11 +192,21 @@ function SidebarMenuCollapsedDropdown({ item, href }: { item: NavCollapsible; hr
   );
 }
 
-function checkIsActive(href: string, item: NavItem, mainNav = false) {
-  return (
-    href === item.url || // /endpint?search=param
-    href.split("?")[0] === item.url || // endpoint
-    !!item?.items?.filter((i) => i.url === href).length || // if child nav is active
-    (mainNav && href.split("/")[1] !== "" && href.split("/")[1] === item?.url?.split("/")[1])
-  );
+function isNavItemActive(href: string, item: NavItem): boolean {
+  const pathname = href.split("?")[0];
+
+  if (isNavLink(item)) {
+    const itemUrl = (item.url ?? "").split("?")[0];
+
+    return (
+      pathname === itemUrl ||
+      (itemUrl !== "/" && pathname.startsWith(`${itemUrl}/`))
+    );
+  }
+
+  return item.items.some((child) => isNavItemActive(href, child));
+}
+
+function isNavLink(item: NavItem): item is NavLink {
+  return !("items" in item);
 }

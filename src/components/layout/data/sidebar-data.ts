@@ -2,6 +2,7 @@ import {
   AudioWaveform,
   Bell,
   Bug,
+  BugIcon,
   Command,
   Construction,
   FileX,
@@ -57,27 +58,6 @@ export const sidebarData: SidebarData = {
           url: "/",
           icon: LayoutDashboard,
         },
-        {
-          title: "Tasks",
-          url: "/tasks",
-          icon: ListTodo,
-        },
-        {
-          title: "Apps",
-          url: "/apps",
-          icon: Package,
-        },
-        {
-          title: "Chats",
-          url: "/chats",
-          badge: "3",
-          icon: MessagesSquare,
-        },
-        {
-          title: "Users",
-          url: "/users",
-          icon: Users,
-        },
       ],
     },
     {
@@ -91,10 +71,7 @@ export const sidebarData: SidebarData = {
               title: "Sign In",
               url: "/sign-in",
             },
-            {
-              title: "Sign In (2 Col)",
-              url: "/sign-in-2",
-            },
+
             {
               title: "Sign Up",
               url: "/sign-up",
@@ -137,6 +114,34 @@ export const sidebarData: SidebarData = {
               title: "Maintenance Error",
               url: "/errors/maintenance-error",
               icon: Construction,
+            },
+          ],
+        },
+
+        {
+          title: "Samples",
+          icon: BugIcon,
+          items: [
+            {
+              title: "Tasks",
+              url: "/samples/tasks",
+              icon: ListTodo,
+            },
+            {
+              title: "Apps",
+              url: "/apps",
+              icon: Package,
+            },
+            {
+              title: "Chats",
+              url: "/chats",
+              badge: "3",
+              icon: MessagesSquare,
+            },
+            {
+              title: "Users",
+              url: "/samples/users",
+              icon: Users,
             },
           ],
         },
