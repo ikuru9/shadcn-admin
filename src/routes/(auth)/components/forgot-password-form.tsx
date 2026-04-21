@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import * as z from "zod/mini";
 
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { FormControl, FormField, FormItem, FormLabel, FormMessage, FormProvider } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { sleep } from "@/lib/sleep";
 import { cn } from "@/lib/utils";
@@ -44,7 +44,7 @@ export function ForgotPasswordForm({ className, ...props }: React.HTMLAttributes
   }
 
   return (
-    <Form {...form}>
+    <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className={cn("grid gap-2", className)} {...props}>
         <FormField
           control={form.control}
@@ -64,6 +64,6 @@ export function ForgotPasswordForm({ className, ...props }: React.HTMLAttributes
           {isLoading ? <Loader2 className="animate-spin" /> : <ArrowRight />}
         </Button>
       </form>
-    </Form>
+    </FormProvider>
   );
 }

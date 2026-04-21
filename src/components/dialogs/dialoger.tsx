@@ -9,7 +9,7 @@ export function Dialoger() {
   return (
     <>
       {Array.from(dialogs.entries()).map(([key, dialog], index) => {
-        const { component: Component, props: _props, open, isAlertDialog } = dialog;
+        const { component: Component, props: _props, open, surface } = dialog;
         if (!Component || !open) return null;
 
         const props = (() => {
@@ -19,11 +19,11 @@ export function Dialoger() {
 
         const zIndex = 50 + index; // Base z-index for dialogs
 
-        if (isAlertDialog) {
+        if (surface === "alert") {
           return (
             <AlertDialog key={key} open={open} onOpenChange={(open) => !open && cancelDialog()}>
               <AlertDialogContent className={cn(_props.className && _props.className)} style={{ zIndex }}>
-                <Component {...props} onClose={closeDialog} onCancel={cancelDialog} />
+                <Component {...props} onConfirm={closeDialog} onCancel={cancelDialog} />
               </AlertDialogContent>
             </AlertDialog>
           );
@@ -31,7 +31,7 @@ export function Dialoger() {
         return (
           <Dialog key={key} open={open} onOpenChange={(open) => !open && cancelDialog()}>
             <DialogContent className={cn(_props.className && _props.className)} style={{ zIndex }}>
-              <Component {...props} onClose={closeDialog} onCancel={cancelDialog} />
+              <Component {...props} onConfirm={closeDialog} onCancel={cancelDialog} />
             </DialogContent>
           </Dialog>
         );

@@ -10,7 +10,7 @@ export type AlertDialogProps = React.PropsWithChildren<{
   title: React.JSX.Element | string;
   description: React.JSX.Element | string;
   okText?: string;
-  onClose: (result: boolean) => void;
+  onConfirm: () => void;
   onCancel?: () => void;
 
   destructive: boolean;
@@ -24,7 +24,7 @@ export function AlertDialog({
   children,
 
   okText = "확인",
-  onClose,
+  onConfirm,
 
   destructive,
   disabled = false,
@@ -43,7 +43,7 @@ export function AlertDialog({
         <AlertDialogAction
           variant={destructive ? "destructive" : "default"}
           disabled={disabled || isLoading}
-          onClick={() => onClose(true)}
+          onClick={() => onConfirm()}
         >
           {okText}
         </AlertDialogAction>

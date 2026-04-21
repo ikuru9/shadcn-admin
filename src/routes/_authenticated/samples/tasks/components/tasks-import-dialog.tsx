@@ -11,9 +11,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { FormControl, FormField, FormItem, FormLabel, FormMessage, FormProvider } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { showSubmittedData } from "@/lib/show-submitted-data";
+import { useSubmissionToast } from "@/hooks/use-submission-toast";
 import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 
 const formSchema = z.object({
@@ -29,6 +29,7 @@ interface TaskImportDialogProps {
 }
 
 export function TasksImportDialog({ open, onOpenChange }: TaskImportDialogProps) {
+  const showSubmittedData = useSubmissionToast();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodMiniResolver(formSchema),
     defaultValues: { file: undefined },
@@ -63,7 +64,7 @@ export function TasksImportDialog({ open, onOpenChange }: TaskImportDialogProps)
           <DialogTitle>Import Tasks</DialogTitle>
           <DialogDescription>Import tasks quickly from a CSV file.</DialogDescription>
         </DialogHeader>
-        <Form {...form}>
+        <FormProvider {...form}>
           <form id="task-import-form" onSubmit={form.handleSubmit(onSubmit)}>
             <FormField
               control={form.control}
@@ -79,7 +80,7 @@ export function TasksImportDialog({ open, onOpenChange }: TaskImportDialogProps)
               )}
             />
           </form>
-        </Form>
+        </FormProvider>
         <DialogFooter className="gap-2">
           <DialogClose render={<Button variant="outline" />}>Close</DialogClose>
           <Button type="submit" form="task-import-form">

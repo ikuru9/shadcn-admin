@@ -1,5 +1,6 @@
 import type { Row } from "@tanstack/react-table";
 import { MoreHorizontal, Trash2 } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -14,6 +15,8 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useDialog } from "@/hooks/use-dialog";
+import { useSubmissionToast } from "@/hooks/use-submission-toast";
 
 import { labels } from "./data/data";
 import { taskSchema } from "./data/schema";
@@ -27,6 +30,28 @@ export function DataTableRowActions<TData>({ row }: DataTableRowActionsProps<TDa
   const task = taskSchema.parse(row.original);
 
   const { setOpen, setCurrentRow } = useTasks();
+  const { confirm } = useDialog();
+  const showSubmittedData = useSubmissionToast();
+
+  const handleDelete = async () => {
+    const confirmed = await confirm({
+      title: `Delete this task: ${task.id} ?`,
+      description: (
+        <>
+          You are about to delete a task with the ID <strong>{task.id}</strong>. <br />
+          This action cannot be undone.
+        </>
+      ),
+      destructive: true,
+      confirmText: "Delete",
+      cancelText: "Cancel",
+      className: "max-w-md",
+    });
+
+    if (!confirmed) return;
+
+    showSubmittedData(task, "The following task has been deleted:");
+  };
 
   return (
     <DropdownMenu modal={false}>
@@ -61,8 +86,7 @@ export function DataTableRowActions<TData>({ row }: DataTableRowActionsProps<TDa
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={() => {
-            setCurrentRow(task);
-            setOpen("delete");
+            void handleDelete();
           }}
         >
           Delete

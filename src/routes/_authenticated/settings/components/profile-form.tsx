@@ -3,13 +3,21 @@ import { useFieldArray, useForm } from "react-hook-form";
 import * as z from "zod/mini";
 
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  FormProvider,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { zodMiniResolver } from "@/lib/zod-mini-resolver";
-import { showSubmittedData } from "@/lib/show-submitted-data";
+import { useSubmissionToast } from "@/hooks/use-submission-toast";
 import { cn } from "@/lib/utils";
+import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 
 const profileFormSchema = z.object({
   username: z
@@ -32,6 +40,7 @@ const defaultValues: Partial<ProfileFormValues> = {
 };
 
 export function ProfileForm() {
+  const showSubmittedData = useSubmissionToast();
   const form = useForm<ProfileFormValues>({
     resolver: zodMiniResolver(profileFormSchema),
     defaultValues,
@@ -44,7 +53,7 @@ export function ProfileForm() {
   });
 
   return (
-    <Form {...form}>
+    <FormProvider {...form}>
       <form onSubmit={form.handleSubmit((data) => showSubmittedData(data))} className="space-y-8">
         <FormField
           control={form.control}
@@ -130,6 +139,6 @@ export function ProfileForm() {
         </div>
         <Button type="submit">Update profile</Button>
       </form>
-    </Form>
+    </FormProvider>
   );
 }

@@ -1,5 +1,6 @@
 import type { Row } from "@tanstack/react-table";
 import { MoreHorizontal, Trash2, UserPen } from "lucide-react";
+import * as z from "zod/mini";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -10,16 +11,39 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useDialog } from "@/hooks/use-dialog";
+import { useSubmissionToast } from "@/hooks/use-submission-toast";
 
 import type { User } from "./data/schema";
-import { useUsers } from "./users-provider";
+import { UsersActionDialog } from "./users-action-dialog";
 
 interface DataTableRowActionsProps {
   row: Row<User>;
 }
 
 export function DataTableRowActions({ row }: DataTableRowActionsProps) {
-  const { setOpen, setCurrentRow } = useUsers();
+  const { openDialog, prompt } = useDialog();
+  const showSubmittedData = useSubmissionToast();
+
+  const handleDelete = async () => {
+    const username = await prompt({
+      title: "Delete User",
+      description: `Type ${row.original.username} to confirm deletion.`,
+      promptLabel: "Username",
+      promptPlaceholder: row.original.username,
+      confirmText: "Delete",
+      cancelText: "Cancel",
+      destructive: true,
+      validationSchema: z
+        .string()
+        .check(z.refine((value) => value.trim() === row.original.username, "Username does not match.")),
+      className: "sm:max-w-sm",
+    });
+
+    if (username == null) return;
+
+    showSubmittedData(row.original, "The following user has been deleted:");
+  };
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger render={<Button variant="ghost" className="flex h-8 w-8 p-0 data-[state=open]:bg-muted" />}>
@@ -29,8 +53,10 @@ export function DataTableRowActions({ row }: DataTableRowActionsProps) {
       <DropdownMenuContent align="end" className="w-40">
         <DropdownMenuItem
           onClick={() => {
-            setCurrentRow(row.original);
-            setOpen("edit");
+            void openDialog(UsersActionDialog, {
+              currentRow: row.original,
+              className: "sm:max-w-lg",
+            });
           }}
         >
           Edit
@@ -41,8 +67,7 @@ export function DataTableRowActions({ row }: DataTableRowActionsProps) {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={() => {
-            setCurrentRow(row.original);
-            setOpen("delete");
+            void handleDelete();
           }}
           className="text-red-500!"
         >

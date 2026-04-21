@@ -4,7 +4,7 @@ import useDialogState from "@/hooks/use-dialog-state";
 
 import type { Task } from "./data/schema";
 
-type TasksDialogType = "create" | "update" | "delete" | "import";
+type TasksDialogType = "create" | "update" | "import";
 
 interface TasksContextType {
   open: TasksDialogType | null;

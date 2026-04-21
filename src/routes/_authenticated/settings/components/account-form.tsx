@@ -5,12 +5,20 @@ import * as z from "zod/mini";
 import { DatePicker } from "@/components/custom-input/date-picker";
 import { Button } from "@/components/ui/button";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  FormProvider,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { zodMiniResolver } from "@/lib/zod-mini-resolver";
-import { showSubmittedData } from "@/lib/show-submitted-data";
+import { useSubmissionToast } from "@/hooks/use-submission-toast";
 import { cn } from "@/lib/utils";
+import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 
 const languages = [
   { label: "English", value: "en" },
@@ -49,6 +57,7 @@ const defaultValues: Partial<AccountFormValues> = {
 };
 
 export function AccountForm() {
+  const showSubmittedData = useSubmissionToast();
   const form = useForm<AccountFormValues>({
     resolver: zodMiniResolver(accountFormSchema),
     defaultValues,
@@ -59,7 +68,7 @@ export function AccountForm() {
   }
 
   return (
-    <Form {...form}>
+    <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
@@ -142,6 +151,6 @@ export function AccountForm() {
         />
         <Button type="submit">Update account</Button>
       </form>
-    </Form>
+    </FormProvider>
   );
 }

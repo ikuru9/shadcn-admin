@@ -1,18 +1,18 @@
 import {
   AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
 
 export type ConfirmDialogProps = React.PropsWithChildren<{
   title: React.JSX.Element | string;
   description: React.JSX.Element | string;
   confirmText?: string;
   cancelText?: string;
-  onClose: (result: boolean) => void;
+  onConfirm: (result: boolean) => void;
   onCancel?: () => void;
 
   destructive?: boolean;
@@ -26,7 +26,7 @@ export function ConfirmDialog({
   children,
   confirmText = "확인",
   cancelText = "취소",
-  onClose,
+  onConfirm,
   onCancel,
 
   destructive,
@@ -43,20 +43,19 @@ export function ConfirmDialog({
       </AlertDialogHeader>
       {children}
       <AlertDialogFooter>
-        <AlertDialogCancel
+        <Button
           variant="outline"
           disabled={isPending}
           onClick={() => {
             onCancel?.();
-            onClose(false);
           }}
         >
           {cancelText}
-        </AlertDialogCancel>
+        </Button>
         <AlertDialogAction
           variant={destructive ? "destructive" : "default"}
           disabled={disabled || isPending}
-          onClick={() => onClose(true)}
+          onClick={() => onConfirm(true)}
         >
           {confirmText}
         </AlertDialogAction>

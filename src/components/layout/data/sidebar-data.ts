@@ -5,6 +5,7 @@ import {
   BugIcon,
   Command,
   Construction,
+  DogIcon,
   FileX,
   GalleryVerticalEnd,
   HelpCircle,
@@ -122,6 +123,11 @@ export const sidebarData: SidebarData = {
           title: "Samples",
           icon: BugIcon,
           items: [
+            {
+              title: "Pets",
+              url: "/samples/pets",
+              icon: DogIcon,
+            },
             {
               title: "Tasks",
               url: "/samples/tasks",

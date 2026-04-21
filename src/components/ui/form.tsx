@@ -12,8 +12,6 @@ import {
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 
-const Form = FormProvider;
-
 interface FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
@@ -146,4 +144,4 @@ function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
 }
 
 // biome-ignore lint/style/useComponentExportOnlyModules: form helpers are intentionally colocated
-export { useFormField, Form, FormItem, FormLabel, FormControl, FormDescription, FormMessage, FormField };
+export { FormProvider, useFormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage, FormField };

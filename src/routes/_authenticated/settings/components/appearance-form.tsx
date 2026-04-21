@@ -2,15 +2,23 @@ import { ChevronDown } from "lucide-react";
 import { useForm } from "react-hook-form";
 import * as z from "zod/mini";
 
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Button, buttonVariants } from "@/components/ui/button";
+import {
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  FormProvider,
+} from "@/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { fonts } from "@/config/fonts";
 import { useFont } from "@/context/font-provider";
 import { useTheme } from "@/context/theme-provider";
-import { showSubmittedData } from "@/lib/show-submitted-data";
-import { zodMiniResolver } from "@/lib/zod-mini-resolver";
+import { useSubmissionToast } from "@/hooks/use-submission-toast";
 import { cn } from "@/lib/utils";
+import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 
 const appearanceFormSchema = z.object({
   theme: z.enum(["light", "dark"]),
@@ -22,6 +30,7 @@ type AppearanceFormValues = z.infer<typeof appearanceFormSchema>;
 export function AppearanceForm() {
   const { font, setFont } = useFont();
   const { theme, setTheme } = useTheme();
+  const showSubmittedData = useSubmissionToast();
 
   // This can come from your database or API.
   const defaultValues: Partial<AppearanceFormValues> = {
@@ -42,7 +51,7 @@ export function AppearanceForm() {
   }
 
   return (
-    <Form {...form}>
+    <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
@@ -142,6 +151,6 @@ export function AppearanceForm() {
 
         <Button type="submit">Update preferences</Button>
       </form>
-    </Form>
+    </FormProvider>
   );
 }

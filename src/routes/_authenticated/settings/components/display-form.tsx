@@ -3,8 +3,16 @@ import * as z from "zod/mini";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { showSubmittedData } from "@/lib/show-submitted-data";
+import {
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  FormProvider,
+} from "@/components/ui/form";
+import { useSubmissionToast } from "@/hooks/use-submission-toast";
 import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 
 const items = [
@@ -46,13 +54,14 @@ const defaultValues: Partial<DisplayFormValues> = {
 };
 
 export function DisplayForm() {
+  const showSubmittedData = useSubmissionToast();
   const form = useForm<DisplayFormValues>({
     resolver: zodMiniResolver(displayFormSchema),
     defaultValues,
   });
 
   return (
-    <Form {...form}>
+    <FormProvider {...form}>
       <form onSubmit={form.handleSubmit((data) => showSubmittedData(data))} className="space-y-8">
         <FormField
           control={form.control}
@@ -93,6 +102,6 @@ export function DisplayForm() {
         />
         <Button type="submit">Update display</Button>
       </form>
-    </Form>
+    </FormProvider>
   );
 }

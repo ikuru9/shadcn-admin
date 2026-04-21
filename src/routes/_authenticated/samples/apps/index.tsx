@@ -18,7 +18,7 @@ const appsSearchSchema = z.object({
   sort: z.optional(z.enum(["asc", "desc"])),
 });
 
-const route = getRouteApi("/_authenticated/apps/");
+const route = getRouteApi("/_authenticated/samples/apps/");
 
 type AppType = "all" | "connected" | "notConnected";
 

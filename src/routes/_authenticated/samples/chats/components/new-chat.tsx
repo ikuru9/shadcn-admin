@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { showSubmittedData } from "@/lib/show-submitted-data";
+import { useSubmissionToast } from "@/hooks/use-submission-toast";
 
 import type { ChatUser } from "./data/chat-types";
 
@@ -19,6 +19,7 @@ interface NewChatProps {
 }
 export function NewChat({ users, onOpenChange, open }: NewChatProps) {
   const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
+  const showSubmittedData = useSubmissionToast();
 
   const handleSelectUser = (user: User) => {
     if (!selectedUsers.find((u) => u.id === user.id)) {

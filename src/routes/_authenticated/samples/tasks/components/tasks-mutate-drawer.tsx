@@ -3,7 +3,7 @@ import * as z from "zod/mini";
 
 import { SelectDropdown } from "@/components/select-dropdown";
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { FormControl, FormField, FormItem, FormLabel, FormMessage, FormProvider } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
@@ -15,7 +15,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { showSubmittedData } from "@/lib/show-submitted-data";
+import { useSubmissionToast } from "@/hooks/use-submission-toast";
 import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 
 import type { Task } from "./data/schema";
@@ -36,6 +36,7 @@ type TaskForm = z.infer<typeof formSchema>;
 
 export function TasksMutateDrawer({ open, onOpenChange, currentRow }: TaskMutateDrawerProps) {
   const isUpdate = !!currentRow;
+  const showSubmittedData = useSubmissionToast();
 
   const form = useForm<TaskForm>({
     resolver: zodMiniResolver(formSchema),
@@ -70,7 +71,7 @@ export function TasksMutateDrawer({ open, onOpenChange, currentRow }: TaskMutate
             Click save when you&apos;re done.
           </SheetDescription>
         </SheetHeader>
-        <Form {...form}>
+        <FormProvider {...form}>
           <form
             id="tasks-form"
             onSubmit={form.handleSubmit(onSubmit)}
@@ -184,7 +185,7 @@ export function TasksMutateDrawer({ open, onOpenChange, currentRow }: TaskMutate
               )}
             />
           </form>
-        </Form>
+        </FormProvider>
         <SheetFooter className="gap-2">
           <SheetClose render={<Button variant="outline" />}>Close</SheetClose>
           <Button form="tasks-form" type="submit">

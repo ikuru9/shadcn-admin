@@ -9,7 +9,7 @@ import * as z from "zod/mini";
 import { IconFacebook, IconGithub } from "@/assets/brand-icons";
 import { PasswordInput } from "@/components/custom-input/password-input";
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { FormControl, FormField, FormItem, FormLabel, FormMessage, FormProvider } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { sleep } from "@/lib/sleep";
 import { cn } from "@/lib/utils";
@@ -71,7 +71,7 @@ export function UserAuthForm({ className, redirectTo, ...props }: UserAuthFormPr
   }
 
   return (
-    <Form {...form}>
+    <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className={cn("grid gap-3", className)} {...props}>
         <FormField
           control={form.control}
@@ -128,6 +128,6 @@ export function UserAuthForm({ className, redirectTo, ...props }: UserAuthFormPr
           </Button>
         </div>
       </form>
-    </Form>
+    </FormProvider>
   );
 }

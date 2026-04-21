@@ -4,11 +4,19 @@ import * as z from "zod/mini";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  FormProvider,
+} from "@/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Switch } from "@/components/ui/switch";
+import { useSubmissionToast } from "@/hooks/use-submission-toast";
 import { zodMiniResolver } from "@/lib/zod-mini-resolver";
-import { showSubmittedData } from "@/lib/show-submitted-data";
 
 const notificationsFormSchema = z.object({
   type: z.enum(["all", "mentions", "none"], "Please select a notification type."),
@@ -22,6 +30,7 @@ const notificationsFormSchema = z.object({
 type NotificationsFormValues = z.infer<typeof notificationsFormSchema>;
 
 export function NotificationsForm() {
+  const showSubmittedData = useSubmissionToast();
   const form = useForm<NotificationsFormValues>({
     resolver: zodMiniResolver(notificationsFormSchema),
     defaultValues: {
@@ -33,7 +42,7 @@ export function NotificationsForm() {
   });
 
   return (
-    <Form {...form}>
+    <FormProvider {...form}>
       <form onSubmit={form.handleSubmit((data) => showSubmittedData(data))} className="space-y-8">
         <FormField
           control={form.control}
@@ -158,6 +167,6 @@ export function NotificationsForm() {
         />
         <Button type="submit">Update notifications</Button>
       </form>
-    </Form>
+    </FormProvider>
   );
 }
