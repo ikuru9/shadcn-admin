@@ -19,7 +19,7 @@ description: 구현 전에 사용 - 의도와 설계를 먼저 정리한다
 2. 질문을 한 번에 하나씩 던져 요구사항을 좁힌다.
 3. 장단점과 추천안을 포함해 2~3개 접근 방식을 제안한다.
 4. 설계를 섹션별로 제시하고 각 섹션마다 승인을 받는다.
-5. 설계 문서를 `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`에 작성한다.
+5. 설계 문서를 `docs/report/specs/YYYY-MM-DD-<topic>-design.md`에 작성한다.
 6. 자리표시자, 모순, 모호성, 범위를 직접 점검한다.
 7. 작성한 명세를 사용자가 검토하도록 요청한다.
 8. `writing-plans`를 호출해 구현 계획 단계로 넘어간다.
