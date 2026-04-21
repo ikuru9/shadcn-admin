@@ -25,7 +25,7 @@ description: 현재 세션에서 독립 작업으로 계획을 실행할 때 사
 
 ## 연계
 
-- 계획 작성에는 `writing-plans`를 사용한다.
+- 계획 작성에는 `writing-plans`를 사용하고, 구현 전에는 `plan-review`를 거친다.
 - 구현 작업 안에서는 `test-driven-development`를 사용한다.
 - 검토 템플릿에는 `requesting-code-review`를 사용한다.
 - 격리가 필요하면 `using-git-worktrees`를 사용한다.

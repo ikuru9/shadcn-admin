@@ -1,7 +1,7 @@
 # Graph Report - /Users/mareem/Git/shadcn-admin  (2026-04-21)
 
 ## Corpus Check
-- 233 files · ~57,670 words
+- 233 files · ~57,962 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
