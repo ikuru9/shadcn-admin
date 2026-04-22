@@ -3,6 +3,7 @@
 When: Read before starting work to understand project structure, constraints, and fixed boundaries.
 
 - 이 저장소는 React 19, Vite, TanStack Router, TanStack Query, TanStack Table, TypeScript, Zod, Zustand, MSW를 중심으로 구성된다.
+- 신규 or 수정 개발 시 항상 테스트 파일을 작성한다.
 - 라우트는 `src/routes/**`에 있다.
 - 전역 provider는 `src/context/**`에 있다.
 - 생성된 API 코드는 `src/gen/` 아래에 있다.
