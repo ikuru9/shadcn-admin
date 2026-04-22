@@ -1,51 +1,47 @@
 ---
 name: writing-plans
-description: 다단계 작업의 요구사항이 있을 때 사용 - 코딩 전에 계획을 만든다
+description: Use when a task has multiple steps and you need a concrete implementation plan before coding.
 ---
 
-# 구현 계획 작성하기
+# Writing Plans
 
-맥락이 거의 없는 엔지니어를 가정하고 포괄적인 구현 계획을 작성한다.
+## Overview
 
-어떤 파일을 건드릴지, 각 작업이 무엇을 하는지, 어떻게 검증할지, 어떤 명령을 실행할지 적는다. 작은 단위의 작업, TDD, 잦은 커밋을 우선한다.
+다음 엔지니어가 거의 맥락이 없다고 가정하고 계획을 작성한다.
 
-## 계획 저장
+건드릴 파일, 각 작업의 역할, 검증 방법, 실행할 명령을 모두 적는다.
 
-계획은 `docs/report/plans/YYYY-MM-DD-<feature-name>.md`에 저장한다.
-
-## 계획 헤더
-
-모든 계획은 다음 헤더로 시작해야 한다.
+## Plan Header
 
 ```markdown
 # [Feature Name] Implementation Plan
 
-> **에이전트 작업자용:** 필수 하위 skill: 이 계획은 작업별로 `subagent-driven-development`(권장) 또는 `executing-plans`를 사용해 구현한다.
+> **REQUIRED SUB-SKILL:** Implement this plan task by task with `subagent-driven-development` (recommended) or `executing-plans`.
 
-**목표:** [한 문장]
+**Goal:** [one sentence]
 
-**구조:** [2~3문장]
+**Structure:** [2-3 sentences]
 
-**기술 스택:** [핵심 기술]
+**Tech Stack:** [core technologies]
 
 ---
 ```
 
-## 작업 규칙
+## Task Rules
 
-- 각 작업은 2~5분짜리 단위로 나눈다.
+- 작업은 2~5분 단위로 나눈다.
 - 코드를 바꾸는 단계마다 실제 코드를 보여준다.
 - 정확한 파일 경로를 사용한다.
 - 정확한 명령과 기대 결과를 적는다.
-- 신규와 수정 작업에는 대응하는 단위 테스트 파일 경로를 기본으로 포함한다.
-- 단, `src/routes/**`는 사용자가 명시적으로 요구한 경우에만 테스트 파일 경로를 포함한다.
-- 버그 수정은 재현 테스트 파일부터 적는다.
-- TBD, TODO 같은 자리표시자는 쓰지 않는다.
+- 새 작업과 수정 작업에는 대응하는 단위 테스트 경로를 기본으로 포함한다.
+- `src/routes/**`는 사용자가 명시적으로 요구한 경우에만 테스트 파일을 넣는다.
+- 버그 수정 계획은 재현 테스트부터 시작한다.
+- `TBD`, `TODO` 같은 자리표시자를 남기지 않는다.
 
-## 자기 검토
+## Self-Review
 
-인수 전에 커버리지, 자리표시자, 타입 일관성을 점검한다.
+인계 전에 커버리지, 자리표시자, 타입 일관성을 점검한다.
 
-## 인계
+## Handoff
 
-계획을 저장한 뒤 반드시 `plan-review`로 계획을 검토하고 정리한 다음, `subagent-driven-development`로 실행할지 `executing-plans`로 실행할지 묻는다.
+계획을 저장한 뒤, 구현 전에 반드시 `plan-review`로 검토하고 정리한다.

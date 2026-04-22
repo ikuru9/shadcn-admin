@@ -1,32 +1,35 @@
 ---
 name: subagent-driven-development
-description: 현재 세션에서 독립 작업으로 계획을 실행할 때 사용
+description: Use when executing a plan as independent tasks in the current session, especially when subagents and review checkpoints are needed.
 ---
 
-# 서브에이전트 기반 개발
+# Subagent-Driven Development
 
-작업마다 새 서브에이전트를 보내 계획을 실행하고, 각 작업 뒤에는 사양 적합성 검토와 코드 품질 검토를 순서대로 수행한다.
+## Overview
 
-## 핵심 원칙
+작업마다 새 서브에이전트를 사용하고, 결과는 두 단계로 검토한다.
 
-작업마다 새 서브에이전트 + 2단계 검토 = 높은 품질과 빠른 반복.
+## The Process
 
-## 절차
-
-1. 계획을 읽고 모든 작업을 추출한다.
+1. 계획을 읽고 작업을 추출한다.
 2. 작업 목록을 만든다.
-3. 한 작업에 대해 구현 서브에이전트를 보낸다.
-4. 서브에이전트가 질문하면 작업을 계속하기 전에 답한다.
-5. 구현 후 사양 적합성 검토자를 보낸다.
-6. 적합하면 코드 품질 검토자를 보낸다.
-7. 문제가 있으면 수정하고 승인될 때까지 다시 검토한다.
-8. 작업을 완료로 표시하고 다음 작업으로 넘어간다.
-9. 모든 작업이 끝나면 `requesting-code-review`를 거쳐 `finishing-a-development-branch`로 마무리한다.
+3. 한 작업에 대해 서브에이전트를 보낸다.
+4. 계속하기 전에 확인 질문에 답한다.
+5. 결과를 사양 적합성 기준으로 검토한다.
+6. 결과를 코드 품질 기준으로 검토한다.
+7. 승인될 때까지 문제를 수정한다.
+8. 작업을 완료로 표시하고 다음 작업으로 간다.
+9. 모든 작업이 끝나면 `requesting-code-review`, 그다음 `finishing-a-development-branch`로 넘긴다.
 
-## 연계
+## Review Gates
 
-- 계획 작성에는 `writing-plans`를 사용하고, 구현 전에는 `plan-review`를 거친다.
-- 구현 작업 안에서는 `test-driven-development`를 사용한다.
-- 검토 템플릿에는 `requesting-code-review`를 사용한다.
+- 사양 적합성이 승인되기 전에는 다음으로 넘어가지 않는다.
+- 코드 품질이 승인되기 전에는 다음으로 넘어가지 않는다.
+- 현재 작업의 문제를 다음 작업 전에 고친다.
+
+## Integration
+
+- 계획 작성에는 `writing-plans`를 사용한다.
+- 구현 전에는 `plan-review`를 사용한다.
+- 각 작업 안에서는 `test-driven-development`를 사용한다.
 - 격리가 필요하면 `using-git-worktrees`를 사용한다.
-- 마무리에는 `finishing-a-development-branch`를 사용한다.

@@ -1,20 +1,30 @@
 ---
 name: using-git-worktrees
-description: 현재 작업공간과 분리된 기능 작업이 필요할 때 사용
+description: Use when you need an isolated workspace for feature work, especially before implementation starts.
 ---
 
-# Git worktree 사용하기
+# Using Git Worktrees
 
-계획을 구현하기 전에 안전 검증을 거쳐 격리된 worktree를 만든다.
+## Overview
 
-## 핵심 규칙
+디렉터리 선택이 안전한지 확인한 뒤 격리된 worktree를 만든다.
 
-체계적인 디렉터리 선택과 안전 검증이 안정적인 격리를 만든다.
+## The Process
 
-## 단계
-
-1. 기존 `.worktrees/` 또는 `worktrees/`가 있는지 확인한다.
-2. 해당 디렉터리가 무시되는지 검증한다.
-3. 기능 브랜치에 새 worktree를 만든다.
+1. `.worktrees/` 또는 `worktrees/`가 이미 있는지 확인한다.
+2. 해당 디렉터리가 무시되는지 확인한다.
+3. 기능 브랜치용 새 worktree를 만든다.
 4. 프로젝트 설정과 기준 테스트를 실행한다.
 5. worktree 경로와 테스트 상태를 보고한다.
+
+## Safety Checks
+
+- ignore 규칙을 확인하지 않고 worktree 디렉터리가 안전하다고 가정하지 않는다.
+- 기준 검증을 건너뛰지 않는다.
+- 보고할 때 worktree 경로를 명시한다.
+
+## Reporting
+
+- 생성한 worktree 경로를 공유한다.
+- 기준 테스트 결과를 공유한다.
+- 계속하기 전에 설정 문제를 기록한다.

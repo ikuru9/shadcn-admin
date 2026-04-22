@@ -1,33 +1,35 @@
 ---
 name: brainstorming
-description: 구현 전에 사용 - 의도와 설계를 먼저 정리한다
+description: Use when exploring an idea before implementation, especially when requirements, scope, or design choices are still unclear.
 ---
 
-# 아이디어를 설계로 정리하기
+# Brainstorming Ideas Into Designs
 
-대화로 아이디어를 구체적인 설계와 명세로 정리한다.
+## Overview
 
-먼저 현재 프로젝트 맥락을 이해하고, 질문은 한 번에 하나씩만 던져 범위를 좁힌다. 무엇을 만들지 이해했다면 설계를 제시하고 사용자 승인을 받는다.
+아이디어를 구조화된 대화로 구체적인 설계와 명세로 바꾼다.
+
+먼저 현재 프로젝트 맥락을 이해하고, 한 번에 하나씩 질문하면서 범위를 좁힌다. 목표가 분명해지면 설계를 제시하고 승인을 기다린다.
 
 <HARD-GATE>
-설계를 제시하고 사용자가 승인하기 전까지는 어떤 구현 skill도 실행하지 말고, 코드 작성이나 프로젝트 생성 같은 구현 행동도 하지 않는다.
+Do not invoke any implementation skill, write code, or scaffold anything before the design is presented and approved.
 </HARD-GATE>
 
 ## Checklist
 
-1. 프로젝트 맥락을 탐색한다. 파일, 문서, 최근 커밋을 확인한다.
-2. 질문을 한 번에 하나씩 던져 요구사항을 좁힌다.
+1. 파일, 문서, 최근 커밋을 확인해 프로젝트 맥락을 탐색한다.
+2. 확인 질문은 한 번에 하나씩만 한다.
 3. 장단점과 추천안을 포함해 2~3개 접근 방식을 제안한다.
-4. 설계를 섹션별로 제시하고 각 섹션마다 승인을 받는다.
-5. 설계 문서를 `docs/report/specs/YYYY-MM-DD-<topic>-design.md`에 작성한다.
-6. 자리표시자, 모순, 모호성, 범위를 직접 점검한다.
+4. 설계를 섹션별로 제시하고 승인을 받는다.
+5. 명세를 `docs/report/specs/YYYY-MM-DD-<topic>-design.md`에 작성한다.
+6. 자리표시자, 모순, 모호성, 범위 초과를 점검한다.
 7. 작성한 명세를 사용자가 검토하도록 요청한다.
 8. `writing-plans`를 호출해 구현 계획 단계로 넘어간다.
 
-## 원칙
+## Key Principles
 
 - 질문은 한 번에 하나씩만 한다.
-- 가능하면 객관식으로 묻는다.
+- 가능하면 객관식 질문을 우선한다.
 - YAGNI를 엄격히 지킨다.
 - 결정 전에 대안을 탐색한다.
 - 설계 승인 전에는 구현을 시작하지 않는다.
