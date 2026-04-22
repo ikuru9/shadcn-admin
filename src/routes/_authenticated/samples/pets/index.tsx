@@ -1,20 +1,19 @@
 import { createFileRoute, getRouteApi } from "@tanstack/react-router";
+import { Plus } from "lucide-react";
 import * as z from "zod/mini";
 
 import { Main } from "@/components/layout/main";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 import { findPetsByStatusSuspenseQueryOptions, useFindPetsByStatusSuspense } from "@/gen/hooks";
 
+import { QueryError } from "@/components/query-error";
 import { PetsTable } from "./components/pets-table";
 
 const petSearchSchema = z.object({
   page: z.prefault(z.number(), 1),
   pageSize: z.prefault(z.number(), 10),
-  // Server-side filter
   status: z.prefault(z.enum(["available", "pending", "sold"]), "available"),
-  // Per-column text filter
-  name: z.prefault(z.string(), ""),
+  filter: z.prefault(z.string(), ""),
 });
 
 const route = getRouteApi("/_authenticated/samples/pets/");
@@ -31,11 +30,14 @@ function Pets() {
 
   return (
     <Main fluid className="flex flex-1 flex-col gap-4 sm:gap-6">
-      <div className="flex flex-wrap items-end justify-between gap-4">
+      <div className="flex flex-wrap items-end justify-between gap-2">
         <div>
           <h2 className="font-bold text-2xl tracking-tight">Pets List</h2>
           <p className="text-muted-foreground">Manage your pets and their information here.</p>
         </div>
+        <Button className="space-x-1" onClick={() => navigate({ to: "/samples/pets/new" })}>
+          <span>Add Pet</span> <Plus size={18} />
+        </Button>
       </div>
       <PetsTable data={pets || []} search={search} navigate={navigate} />
     </Main>
@@ -59,4 +61,5 @@ export const Route = createFileRoute("/_authenticated/samples/pets/")({
     });
   },
   component: Pets,
+  errorComponent: QueryError,
 });

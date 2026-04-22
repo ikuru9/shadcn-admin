@@ -4,7 +4,6 @@ import { toast } from "sonner";
 
 import { env } from "@/config/env";
 import { handleServerError } from "@/lib/handle-server-error";
-import { router } from "@/main";
 import { useAuthStore } from "@/stores/auth-store";
 
 // biome-ignore lint/style/useComponentExportOnlyModules: getContext
@@ -45,18 +44,6 @@ export function getContext() {
           if (error.response?.status === 401) {
             toast.error("Session expired!");
             useAuthStore.getState().reset();
-            const redirect = router.history.location.href ? `${router.history.location.href}` : undefined;
-            router.navigate({ to: "/sign-in", search: { redirect } });
-          }
-          if (error.response?.status === 500) {
-            toast.error("Internal Server Error!");
-            // Only navigate to error page in production to avoid disrupting HMR in development
-            if (env.PROD) {
-              router.navigate({ to: "/500" });
-            }
-          }
-          if (error.response?.status === 403) {
-            router.navigate({ to: "/403", replace: true });
           }
         }
       },

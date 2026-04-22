@@ -2,6 +2,7 @@ import { createFileRoute, getRouteApi } from "@tanstack/react-router";
 import * as z from "zod/mini";
 
 import { Main } from "@/components/layout/main";
+import { QueryError } from "@/components/query-error";
 
 import { priorities, statuses } from "./components/data/data";
 import { tasks } from "./components/data/tasks";
@@ -54,4 +55,5 @@ function Tasks() {
 export const Route = createFileRoute("/_authenticated/samples/tasks/")({
   validateSearch: taskSearchSchema,
   component: Tasks,
+  errorComponent: QueryError,
 });

@@ -2,6 +2,7 @@ import { createFileRoute, getRouteApi } from "@tanstack/react-router";
 import * as z from "zod/mini";
 
 import { Main } from "@/components/layout/main";
+import { QueryError } from "@/components/query-error";
 
 import { roles } from "./components/data/data";
 import { users } from "./components/data/users";
@@ -13,16 +14,14 @@ const roleValues = roles.map((r) => r.value) as [(typeof roles)[number]["value"]
 const usersSearchSchema = z.object({
   page: z.prefault(z.number(), 1),
   pageSize: z.prefault(z.number(), 10),
-  // Facet filters
   status: z.prefault(z.array(z.enum(["active", "inactive", "invited", "suspended"])), []),
   role: z.prefault(z.array(z.enum(roleValues)), []),
-  // Per-column text filter (example for username)
   username: z.prefault(z.string(), ""),
 });
 
 const route = getRouteApi("/_authenticated/samples/users/");
 
-const Users = () => {
+function Users() {
   const search = route.useSearch();
   const navigate = route.useNavigate();
 
@@ -38,9 +37,10 @@ const Users = () => {
       <UsersTable data={users ?? []} search={search} navigate={navigate} />
     </Main>
   );
-};
+}
 
 export const Route = createFileRoute("/_authenticated/samples/users/")({
   validateSearch: usersSearchSchema,
   component: Users,
+  errorComponent: QueryError,
 });
