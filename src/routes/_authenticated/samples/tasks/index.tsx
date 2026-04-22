@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, getRouteApi } from "@tanstack/react-router";
 import * as z from "zod/mini";
 
 import { Main } from "@/components/layout/main";
@@ -27,7 +27,12 @@ const taskSearchSchema = z.object({
   filter: z.prefault(z.string(), ""),
 });
 
-const Tasks = () => {
+const route = getRouteApi("/_authenticated/samples/tasks/");
+
+function Tasks() {
+  const search = route.useSearch();
+  const navigate = route.useNavigate();
+
   return (
     <TasksProvider>
       <Main fluid className="flex flex-1 flex-col gap-4 sm:gap-6">
@@ -38,13 +43,13 @@ const Tasks = () => {
           </div>
           <TasksPrimaryButtons />
         </div>
-        <TasksTable data={tasks} />
+        <TasksTable data={tasks} search={search} navigate={navigate} />
       </Main>
 
       <TasksDialogs />
     </TasksProvider>
   );
-};
+}
 
 export const Route = createFileRoute("/_authenticated/samples/tasks/")({
   validateSearch: taskSearchSchema,

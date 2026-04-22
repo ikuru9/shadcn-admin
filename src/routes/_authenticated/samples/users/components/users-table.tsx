@@ -7,6 +7,7 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  type RowSelectionState,
   type SortingState,
   useReactTable,
   type VisibilityState,
@@ -28,7 +29,7 @@ interface DataTableProps {
 
 export function UsersTable({ data, search, navigate }: DataTableProps) {
   // Local UI-only states
-  const [rowSelection, setRowSelection] = useState({});
+  const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [sorting, setSorting] = useState<SortingState>([]);
 
@@ -55,10 +56,10 @@ export function UsersTable({ data, search, navigate }: DataTableProps) {
     columns,
     state: {
       sorting,
-      pagination,
+      columnVisibility,
       rowSelection,
       columnFilters,
-      columnVisibility,
+      pagination,
     },
     enableRowSelection: true,
     onPaginationChange,

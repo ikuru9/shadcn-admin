@@ -8,28 +8,29 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  type RowSelectionState,
   type SortingState,
   useReactTable,
   type VisibilityState,
 } from "@tanstack/react-table";
 
 import { DataTable, DataTablePagination, DataTableToolbar } from "@/components/data-table";
-import { useTableUrlState } from "@/hooks/use-table-url-state";
+import { type NavigateFn, useTableUrlState } from "@/hooks/use-table-url-state";
 
 import { priorities, statuses } from "./data/data";
 import type { Task } from "./data/schema";
 import { tasksColumns as columns } from "./tasks-columns";
 import { DataTableBulkActions } from "./tasks-data-table-bulk-actions";
 
-const route = getRouteApi("/_authenticated/samples/tasks/");
-
 interface DataTableProps {
   data: Task[];
+  search: Record<string, unknown>;
+  navigate: NavigateFn;
 }
 
-export function TasksTable({ data }: DataTableProps) {
+export function TasksTable({ data, search, navigate }: DataTableProps) {
   // Local UI-only states
-  const [rowSelection, setRowSelection] = useState({});
+  const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
@@ -48,8 +49,8 @@ export function TasksTable({ data }: DataTableProps) {
     onPaginationChange,
     ensurePageInRange,
   } = useTableUrlState({
-    search: route.useSearch(),
-    navigate: route.useNavigate(),
+    search,
+    navigate,
     pagination: { defaultPage: 1, defaultPageSize: 10 },
     globalFilter: { enabled: true, key: "filter" },
     columnFilters: [
@@ -73,12 +74,15 @@ export function TasksTable({ data }: DataTableProps) {
     onRowSelectionChange: setRowSelection,
     onSortingChange: setSorting,
     onColumnVisibilityChange: setColumnVisibility,
+    onPaginationChange,
+    onGlobalFilterChange,
+    onColumnFiltersChange,
     globalFilterFn: (row, _columnId, filterValue) => {
       const id = String(row.getValue("id")).toLowerCase();
       const title = String(row.getValue("title")).toLowerCase();
       const searchValue = String(filterValue).toLowerCase();
 
-      return id.includes(searchValue) || title.includes(searchValue);
+      return `${id},${title}`.includes(searchValue);
     },
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -86,9 +90,6 @@ export function TasksTable({ data }: DataTableProps) {
     getSortedRowModel: getSortedRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
-    onPaginationChange,
-    onGlobalFilterChange,
-    onColumnFiltersChange,
   });
 
   const pageCount = table.getPageCount();

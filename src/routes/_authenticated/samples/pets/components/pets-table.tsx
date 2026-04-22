@@ -7,13 +7,15 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  type RowSelectionState,
   type SortingState,
   useReactTable,
   type VisibilityState,
 } from "@tanstack/react-table";
+import { pascalCase } from "es-toolkit";
 
 import { DataTable, DataTablePagination, DataTableToolbar } from "@/components/data-table";
-import type { Pet } from "@/gen/types/Pet";
+import { type Pet, petStatusEnum } from "@/gen/types/Pet";
 import { type NavigateFn, useTableUrlState } from "@/hooks/use-table-url-state";
 import { cn } from "@/lib/utils";
 
@@ -28,7 +30,7 @@ interface DataTableProps {
 
 export function PetsTable({ data, search, navigate }: DataTableProps) {
   // Local UI-only states
-  const [rowSelection, setRowSelection] = useState({});
+  const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [sorting, setSorting] = useState<SortingState>([]);
 
@@ -37,15 +39,21 @@ export function PetsTable({ data, search, navigate }: DataTableProps) {
   // const [pagination, onPaginationChange] = useState<PaginationState>({ pageIndex: 0, pageSize: 10 })
 
   // Synced with URL states (keys/defaults mirror pet route search schema)
-  const { columnFilters, onColumnFiltersChange, pagination, onPaginationChange, ensurePageInRange } = useTableUrlState({
+  // Synced with URL states (updated to match route search schema defaults)
+  const {
+    globalFilter,
+    onGlobalFilterChange,
+    columnFilters,
+    onColumnFiltersChange,
+    pagination,
+    onPaginationChange,
+    ensurePageInRange,
+  } = useTableUrlState({
     search,
     navigate,
     pagination: { defaultPage: 1, defaultPageSize: 10 },
-    globalFilter: { enabled: false },
-    columnFilters: [
-      // name per-column text filter
-      { columnId: "name", searchKey: "name", type: "string" },
-    ],
+    globalFilter: { enabled: true, key: "filter" },
+    columnFilters: [{ columnId: "status", searchKey: "status", type: "array" }],
   });
 
   const columns = petsColumns;
@@ -53,22 +61,28 @@ export function PetsTable({ data, search, navigate }: DataTableProps) {
   const table = useReactTable({
     data,
     columns,
-    meta: {
-      navigate,
-    },
     state: {
       sorting,
-      pagination,
+      columnVisibility,
       rowSelection,
       columnFilters,
-      columnVisibility,
+      globalFilter,
+      pagination,
     },
     enableRowSelection: true,
-    onPaginationChange,
-    onColumnFiltersChange,
     onRowSelectionChange: setRowSelection,
     onSortingChange: setSorting,
     onColumnVisibilityChange: setColumnVisibility,
+    onPaginationChange,
+    onGlobalFilterChange,
+    onColumnFiltersChange,
+    globalFilterFn: (row, _columnId, filterValue) => {
+      const id = String(row.getValue("id")).toLowerCase();
+      const name = String(row.getValue("name")).toLowerCase();
+      const searchValue = String(filterValue).toLowerCase();
+
+      return `${id},${name}`.includes(searchValue);
+    },
     getPaginationRowModel: getPaginationRowModel(),
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -77,9 +91,10 @@ export function PetsTable({ data, search, navigate }: DataTableProps) {
     getFacetedUniqueValues: getFacetedUniqueValues(),
   });
 
+  const pageCount = table.getPageCount();
   useEffect(() => {
-    ensurePageInRange(table.getPageCount());
-  }, [table, ensurePageInRange]);
+    ensurePageInRange(pageCount);
+  }, [pageCount, ensurePageInRange]);
 
   return (
     <div
@@ -88,11 +103,22 @@ export function PetsTable({ data, search, navigate }: DataTableProps) {
         "flex flex-1 flex-col gap-4",
       )}
     >
-      <DataTableToolbar table={table} searchPlaceholder="Filter pets..." searchKey="name" />
+      <DataTableToolbar
+        table={table}
+        searchPlaceholder="Filter pets ID or Name..."
+        searchKey="name"
+        filters={[
+          {
+            columnId: "status",
+            title: "Status",
+            options: Object.entries(petStatusEnum).map(([value, label]) => ({ value, label: pascalCase(label) })),
+          },
+        ]}
+      />
       <div className="overflow-hidden rounded-md border">
         <DataTable table={table} className="min-w-xl" />
       </div>
-      <DataTablePagination table={table} className="mt-auto" />
+      <DataTablePagination table={table} />
       <DataTableBulkActions table={table} />
     </div>
   );

@@ -19,12 +19,6 @@ const petSearchSchema = z.object({
 
 const route = getRouteApi("/_authenticated/samples/pets/");
 
-const petStatuses = [
-  { label: "Available", value: "available" },
-  { label: "Pending", value: "pending" },
-  { label: "Sold", value: "sold" },
-] as const;
-
 function Pets() {
   const search = route.useSearch();
   const navigate = route.useNavigate();
@@ -41,38 +35,6 @@ function Pets() {
         <div>
           <h2 className="font-bold text-2xl tracking-tight">Pets List</h2>
           <p className="text-muted-foreground">Manage your pets and their information here.</p>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <Label htmlFor="pet-status-filter" className="text-muted-foreground text-sm">
-            Status
-          </Label>
-          <Select
-            value={search.status}
-            onValueChange={(value) => {
-              const nextStatus = value ?? search.status;
-
-              navigate({
-                replace: true,
-                search: (prev) => ({
-                  ...prev,
-                  page: undefined,
-                  status: nextStatus,
-                }),
-              });
-            }}
-          >
-            <SelectTrigger id="pet-status-filter" className="w-40">
-              <SelectValue placeholder="Select status" />
-            </SelectTrigger>
-            <SelectContent>
-              {petStatuses.map((status) => (
-                <SelectItem key={status.value} value={status.value}>
-                  {status.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
         </div>
       </div>
       <PetsTable data={pets || []} search={search} navigate={navigate} />
