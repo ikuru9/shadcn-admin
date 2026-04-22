@@ -2,7 +2,13 @@
 
 ## Project Workflow
 
-이 저장소의 작업 흐름은 다음과 같다. 1. `AGENTS.md`를 확인한다. 2. 작업 영역별 guide를 확인한다. 3. 필요하면 `docs/report`에 설계 또는 계획을 작성한다. 4. 구현한다. 5. 검토하고 검증한다.
+이 저장소의 작업 흐름은 다음과 같다.
+
+1. `AGENTS.md`를 확인한다.
+2. 작업 영역별 guide를 확인한다.
+3. 필요하면 `docs/report`에 설계 또는 계획을 작성한다.
+4. 구현한다.
+5. 검토하고 검증한다.
 
 ## Guides
 
@@ -11,7 +17,6 @@
 - `docs/agent-guides/api-data-guide.md`: API contracts, generated clients, and data boundaries
 - `docs/agent-guides/testing-guide.md`: test scope, exceptions, and validation commands
 - `docs/agent-guides/planning-review-guide.md`: specs, plans, and review criteria
-- `docs/agent-guides/workflow-guide.md`: document order, planning, implementation, and review
 - `docs/agent-guides/hotspots-guide.md`: high-coupling or globally sensitive areas
 
 ## Report Storage
