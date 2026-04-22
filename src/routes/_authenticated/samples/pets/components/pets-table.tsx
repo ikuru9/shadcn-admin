@@ -17,10 +17,9 @@ import { pascalCase } from "es-toolkit";
 import { DataTable, DataTablePagination, DataTableToolbar } from "@/components/data-table";
 import { type Pet, petStatusEnum } from "@/gen/types/Pet";
 import { type NavigateFn, useTableUrlState } from "@/hooks/use-table-url-state";
-import { cn } from "@/lib/utils";
 
 import { DataTableBulkActions } from "./data-table-bulk-actions";
-import { petsColumns } from "./pets-columns";
+import { petsColumns as columns } from "./pets-columns";
 
 interface DataTableProps {
   data: Pet[];
@@ -29,17 +28,10 @@ interface DataTableProps {
 }
 
 export function PetsTable({ data, search, navigate }: DataTableProps) {
-  // Local UI-only states
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
-  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [sorting, setSorting] = useState<SortingState>([]);
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
-  // Local state management for table (uncomment to use local-only state, not synced with URL)
-  // const [columnFilters, onColumnFiltersChange] = useState<ColumnFiltersState>([])
-  // const [pagination, onPaginationChange] = useState<PaginationState>({ pageIndex: 0, pageSize: 10 })
-
-  // Synced with URL states (keys/defaults mirror pet route search schema)
-  // Synced with URL states (updated to match route search schema defaults)
   const {
     globalFilter,
     onGlobalFilterChange,
@@ -55,8 +47,6 @@ export function PetsTable({ data, search, navigate }: DataTableProps) {
     globalFilter: { enabled: true, key: "filter" },
     columnFilters: [{ columnId: "status", searchKey: "status", type: "array" }],
   });
-
-  const columns = petsColumns;
 
   const table = useReactTable({
     data,
@@ -97,16 +87,10 @@ export function PetsTable({ data, search, navigate }: DataTableProps) {
   }, [pageCount, ensurePageInRange]);
 
   return (
-    <div
-      className={cn(
-        'max-sm:has-[div[role="toolbar"]]:mb-16', // Add margin bottom to the table on mobile when the toolbar is visible
-        "flex flex-1 flex-col gap-4",
-      )}
-    >
+    <div className={'flex flex-1 flex-col gap-4 max-sm:has-[div[role="toolbar"]]:mb-16'}>
       <DataTableToolbar
         table={table}
-        searchPlaceholder="Filter pets ID or Name..."
-        searchKey="name"
+        searchPlaceholder="Filter pets ID or name..."
         filters={[
           {
             columnId: "status",

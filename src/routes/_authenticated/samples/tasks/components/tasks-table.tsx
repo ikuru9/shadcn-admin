@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { getRouteApi } from "@tanstack/react-router";
 import {
   getCoreRowModel,
   getFacetedRowModel,
@@ -33,11 +32,6 @@ export function TasksTable({ data, search, navigate }: DataTableProps) {
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
-
-  // Local state management for table (uncomment to use local-only state, not synced with URL)
-  // const [globalFilter, onGlobalFilterChange] = useState('')
-  // const [columnFilters, onColumnFiltersChange] = useState<ColumnFiltersState>([])
-  // const [pagination, onPaginationChange] = useState<PaginationState>({ pageIndex: 0, pageSize: 10 })
 
   // Synced with URL states (updated to match route search schema defaults)
   const {

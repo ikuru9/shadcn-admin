@@ -1,12 +1,12 @@
 # Graph Report - /Users/mareem/Git/shadcn-admin  (2026-04-22)
 
 ## Corpus Check
-- 233 files · ~58,017 words
+- 237 files · ~60,213 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 549 nodes · 399 edges · 203 communities detected
-- Extraction: 84% EXTRACTED · 16% INFERRED · 0% AMBIGUOUS · INFERRED: 64 edges (avg confidence: 0.81)
+- 560 nodes · 410 edges · 204 communities detected
+- Extraction: 84% EXTRACTED · 16% INFERRED · 0% AMBIGUOUS · INFERRED: 66 edges (avg confidence: 0.81)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -213,30 +213,31 @@
 - [[_COMMUNITY_Community 200|Community 200]]
 - [[_COMMUNITY_Community 201|Community 201]]
 - [[_COMMUNITY_Community 202|Community 202]]
+- [[_COMMUNITY_Community 203|Community 203]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Repository Workflow` - 11 edges
 2. `useSidebar()` - 9 edges
 3. `useDialog()` - 7 edges
 4. `cn()` - 6 edges
-5. `Validation Command Hierarchy` - 6 edges
-6. `useSearch()` - 5 edges
-7. `ConfigDrawer()` - 5 edges
-8. `sleep()` - 5 edges
-9. `Project Guide` - 5 edges
-10. `Route, Provider, and Generated API Boundaries` - 5 edges
+5. `useSubmissionToast()` - 6 edges
+6. `Validation Command Hierarchy` - 6 edges
+7. `useSearch()` - 5 edges
+8. `ConfigDrawer()` - 5 edges
+9. `sleep()` - 5 edges
+10. `Project Guide` - 5 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Repository Workflow` --semantically_similar_to--> `Document, Plan, Implement, Review Order`  [INFERRED] [semantically similar]
   AGENTS.md → docs/agent-guides/workflow-guide.md
 - `Technology Stack` --semantically_similar_to--> `Framework and Tooling Stack`  [INFERRED] [semantically similar]
   README.md → docs/agent-guides/project-guide.md
-- `Repository Workflow` --references--> `Workflow Guide`  [EXTRACTED]
-  AGENTS.md → docs/agent-guides/workflow-guide.md
-- `Generated Code and Validation Constraints` --conceptually_related_to--> `src/gen Derived Artifact`  [INFERRED]
-  AGENTS.md → docs/agent-guides/hotspots-guide.md
-- `Graphify Update Requirement` --references--> `Project Guide`  [EXTRACTED]
-  AGENTS.md → docs/agent-guides/project-guide.md
+- `useSearch()` --calls--> `Tasks()`  [INFERRED]
+  src/context/search-provider.tsx → /Users/mareem/Git/shadcn-admin/src/routes/_authenticated/samples/tasks/index.tsx
+- `useSearch()` --calls--> `Pets()`  [INFERRED]
+  src/context/search-provider.tsx → /Users/mareem/Git/shadcn-admin/src/routes/_authenticated/samples/pets/index.tsx
+- `useSearch()` --calls--> `Users()`  [INFERRED]
+  src/context/search-provider.tsx → /Users/mareem/Git/shadcn-admin/src/routes/_authenticated/samples/users/index.tsx
 
 ## Hyperedges (group relationships)
 - **Workflow Documentation Chain** — agents_root_workflow, workflow_guide, planning_review_guide [INFERRED 0.86]
@@ -250,28 +251,28 @@ Cohesion: 0.08
 Nodes (36): Graphify Update Requirement, Generated Code and Validation Constraints, Report Storage Directives, Repository Workflow, Generated Client to Screen Model Flow, API Data Guide, State Boundary Model, src/gen Derived Artifact (+28 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.1
-Nodes (13): AppTitle(), SidebarMenuCollapsible(), SidebarMenuLink(), cn(), useSidebar(), SidebarGroupAction(), SidebarGroupLabel(), SidebarMenuAction() (+5 more)
+Cohesion: 0.06
+Nodes (14): DataTableRowActions(), PetsEdit(), PetsCreate(), useStore(), DataTableRowActions(), TasksDialogs(), TasksPrimaryButtons(), TasksProvider() (+6 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.08
-Nodes (9): DataTableRowActions(), NavUser(), useStore(), DataTableRowActions(), useDialog(), useSignOut(), useSubmissionToast(), DataTableRowActions() (+1 more)
+Nodes (15): AppTitle(), SidebarMenuCollapsible(), SidebarMenuLink(), NavUser(), cn(), useSidebar(), SidebarGroupAction(), SidebarGroupLabel() (+7 more)
 
 ### Community 3 - "Community 3"
 Cohesion: 0.15
 Nodes (5): AppSidebar(), ConfigDrawer(), useDirection(), useLayout(), useTheme()
 
 ### Community 4 - "Community 4"
+Cohesion: 0.19
+Nodes (8): addTag(), handleSubmit(), normalizeTag(), sleep(), handleBulkExport(), handleBulkPriorityChange(), handleBulkStatusChange(), onSubmit()
+
+### Community 5 - "Community 5"
 Cohesion: 0.18
 Nodes (5): Pets(), Tasks(), Users(), useSearch(), Search()
 
-### Community 5 - "Community 5"
+### Community 6 - "Community 6"
 Cohesion: 0.2
 Nodes (0): 
-
-### Community 6 - "Community 6"
-Cohesion: 0.22
-Nodes (5): TasksDialogs(), TasksPrimaryButtons(), TasksProvider(), useTasks(), useDialogState()
 
 ### Community 7 - "Community 7"
 Cohesion: 0.25
@@ -282,12 +283,12 @@ Cohesion: 0.29
 Nodes (4): UsersActionDialog(), flattenIssues(), parseIssues(), zodMiniResolver()
 
 ### Community 9 - "Community 9"
-Cohesion: 0.32
-Nodes (5): sleep(), handleBulkExport(), handleBulkPriorityChange(), handleBulkStatusChange(), onSubmit()
-
-### Community 10 - "Community 10"
 Cohesion: 0.38
 Nodes (4): client(), refreshAccessToken(), getCookie(), setCookie()
+
+### Community 10 - "Community 10"
+Cohesion: 0.33
+Nodes (0): 
 
 ### Community 11 - "Community 11"
 Cohesion: 0.33
@@ -298,80 +299,80 @@ Cohesion: 0.33
 Nodes (0): 
 
 ### Community 13 - "Community 13"
-Cohesion: 0.33
-Nodes (0): 
-
-### Community 14 - "Community 14"
 Cohesion: 0.6
 Nodes (5): cn(), FormControl(), FormDescription(), FormMessage(), useFormField()
 
-### Community 15 - "Community 15"
-Cohesion: 0.33
-Nodes (3): PetsTable(), TasksTable(), useTableUrlState()
-
-### Community 16 - "Community 16"
+### Community 14 - "Community 14"
 Cohesion: 0.33
 Nodes (6): Framework and Tooling Stack, Development and Test Commands, Graphify Setup and Citation, Shadcn Admin Dashboard Overview, Project Structure Tree, Technology Stack
 
-### Community 17 - "Community 17"
+### Community 15 - "Community 15"
 Cohesion: 0.4
 Nodes (1): AlertDialog()
 
-### Community 18 - "Community 18"
+### Community 16 - "Community 16"
 Cohesion: 0.4
 Nodes (0): 
 
-### Community 19 - "Community 19"
+### Community 17 - "Community 17"
 Cohesion: 0.6
 Nodes (3): handleFromInputChange(), handleToInputChange(), parseInputDate()
 
-### Community 20 - "Community 20"
+### Community 18 - "Community 18"
 Cohesion: 0.6
 Nodes (4): getCellProps(), getRowProps(), wrapCellHandler(), wrapRowHandler()
 
-### Community 21 - "Community 21"
+### Community 19 - "Community 19"
 Cohesion: 0.7
 Nodes (4): adapter(), createError(), createResponse(), waitForTick()
 
-### Community 22 - "Community 22"
+### Community 20 - "Community 20"
 Cohesion: 0.6
 Nodes (5): @path File Attachment Behavior, Harness Skill Selection Checklist, Skill Selection Timing Rationale, requesting-code-review Skill, writing-plans Skill
 
+### Community 21 - "Community 21"
+Cohesion: 0.5
+Nodes (0): 
+
+### Community 22 - "Community 22"
+Cohesion: 0.5
+Nodes (0): 
+
 ### Community 23 - "Community 23"
-Cohesion: 0.5
-Nodes (0): 
-
-### Community 24 - "Community 24"
-Cohesion: 0.5
-Nodes (0): 
-
-### Community 25 - "Community 25"
 Cohesion: 0.67
 Nodes (2): handleInputChange(), parseInputDate()
 
-### Community 26 - "Community 26"
+### Community 24 - "Community 24"
 Cohesion: 0.5
 Nodes (2): Badge(), cn()
 
-### Community 27 - "Community 27"
+### Community 25 - "Community 25"
+Cohesion: 0.5
+Nodes (2): TasksTable(), useTableUrlState()
+
+### Community 26 - "Community 26"
 Cohesion: 0.67
 Nodes (2): handleRemoveUser(), handleSelectUser()
 
-### Community 28 - "Community 28"
+### Community 27 - "Community 27"
 Cohesion: 0.5
 Nodes (0): 
 
-### Community 29 - "Community 29"
+### Community 28 - "Community 28"
 Cohesion: 0.67
 Nodes (4): Light PNG Favicon Variant, Light SVG Favicon Variant, PNG Favicon Variant, SVG Favicon Variant
+
+### Community 29 - "Community 29"
+Cohesion: 0.67
+Nodes (0): 
 
 ### Community 30 - "Community 30"
 Cohesion: 0.67
 Nodes (0): 
 
 ### Community 31 - "Community 31"
-Cohesion: 0.67
-Nodes (0): 
+Cohesion: 1.0
+Nodes (2): getQueryErrorKind(), QueryError()
 
 ### Community 32 - "Community 32"
 Cohesion: 0.67
@@ -1057,6 +1058,10 @@ Nodes (0):
 Cohesion: 1.0
 Nodes (0): 
 
+### Community 203 - "Community 203"
+Cohesion: 1.0
+Nodes (0): 
+
 ## Knowledge Gaps
 - **8 isolated node(s):** `Report Storage Directives`, `Graphify Setup and Citation`, `Development and Test Commands`, `Project Structure Tree`, `High-Coupling Points` (+3 more)
   These have ≤1 connection - possible missing edges or undocumented components.
@@ -1356,45 +1361,47 @@ Nodes (0):
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 190`** (1 nodes): `pets-columns.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 191`** (1 nodes): `users-table.tsx`
+- **Thin community `Community 191`** (1 nodes): `pets-table.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 192`** (1 nodes): `users-columns.tsx`
+- **Thin community `Community 192`** (1 nodes): `users-table.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 193`** (1 nodes): `schema.ts`
+- **Thin community `Community 193`** (1 nodes): `users-columns.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 194`** (1 nodes): `data.ts`
+- **Thin community `Community 194`** (1 nodes): `schema.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 195`** (1 nodes): `users.ts`
+- **Thin community `Community 195`** (1 nodes): `data.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 196`** (1 nodes): `index.tsx`
+- **Thin community `Community 196`** (1 nodes): `users.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 197`** (1 nodes): `chat-types.ts`
+- **Thin community `Community 197`** (1 nodes): `index.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 198`** (1 nodes): `apps.tsx`
+- **Thin community `Community 198`** (1 nodes): `chat-types.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 199`** (1 nodes): `general-error.tsx`
+- **Thin community `Community 199`** (1 nodes): `apps.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 200`** (1 nodes): `500.tsx`
+- **Thin community `Community 200`** (1 nodes): `general-error.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 201`** (1 nodes): `sign-in.tsx`
+- **Thin community `Community 201`** (1 nodes): `500.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 202`** (1 nodes): `sign-up.tsx`
+- **Thin community `Community 202`** (1 nodes): `sign-in.tsx`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 203`** (1 nodes): `sign-up.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `useSidebar()` connect `Community 1` to `Community 2`, `Community 3`?**
-  _High betweenness centrality (0.014) - this node is a cross-community bridge._
-- **Why does `NavUser()` connect `Community 2` to `Community 1`?**
-  _High betweenness centrality (0.011) - this node is a cross-community bridge._
+- **Why does `useSidebar()` connect `Community 2` to `Community 3`?**
+  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+- **Why does `useDialog()` connect `Community 1` to `Community 2`?**
+  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+- **Why does `useSignOut()` connect `Community 2` to `Community 1`?**
+  _High betweenness centrality (0.012) - this node is a cross-community bridge._
 - **Are the 8 inferred relationships involving `useSidebar()` (e.g. with `ConfigDrawer()` and `TeamSwitcher()`) actually correct?**
   _`useSidebar()` has 8 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 6 inferred relationships involving `useDialog()` (e.g. with `useStore()` and `useSignOut()`) actually correct?**
   _`useDialog()` has 6 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 4 inferred relationships involving `Validation Command Hierarchy` (e.g. with `Route, Provider, and Generated API Boundaries` and `Generated Client to Screen Model Flow`) actually correct?**
-  _`Validation Command Hierarchy` has 4 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 5 inferred relationships involving `useSubmissionToast()` (e.g. with `DataTableRowActions()` and `PetsEdit()`) actually correct?**
+  _`useSubmissionToast()` has 5 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `Report Storage Directives`, `Graphify Setup and Citation`, `Development and Test Commands` to the rest of the system?**
   _8 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.08 - nodes in this community are weakly interconnected._

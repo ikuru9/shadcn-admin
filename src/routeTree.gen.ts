@@ -34,7 +34,9 @@ import { Route as AuthenticatedSamplesTasksIndexRouteImport } from './routes/_au
 import { Route as AuthenticatedSamplesPetsIndexRouteImport } from './routes/_authenticated/samples/pets/index'
 import { Route as AuthenticatedSamplesChatsIndexRouteImport } from './routes/_authenticated/samples/chats/index'
 import { Route as AuthenticatedSamplesAppsIndexRouteImport } from './routes/_authenticated/samples/apps/index'
+import { Route as AuthenticatedSamplesPetsNewRouteImport } from './routes/_authenticated/samples/pets/new'
 import { Route as AuthenticatedSamplesPetsIdRouteImport } from './routes/_authenticated/samples/pets/$id'
+import { Route as AuthenticatedSamplesPetsIdEditRouteImport } from './routes/_authenticated/samples/pets/$id.edit'
 
 const OfflineRoute = OfflineRouteImport.update({
   id: '/offline',
@@ -173,11 +175,23 @@ const AuthenticatedSamplesAppsIndexRoute =
     path: '/samples/apps/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedSamplesPetsNewRoute =
+  AuthenticatedSamplesPetsNewRouteImport.update({
+    id: '/samples/pets/new',
+    path: '/samples/pets/new',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedSamplesPetsIdRoute =
   AuthenticatedSamplesPetsIdRouteImport.update({
     id: '/samples/pets/$id',
     path: '/samples/pets/$id',
     getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedSamplesPetsIdEditRoute =
+  AuthenticatedSamplesPetsIdEditRouteImport.update({
+    id: '/edit',
+    path: '/edit',
+    getParentRoute: () => AuthenticatedSamplesPetsIdRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -200,12 +214,14 @@ export interface FileRoutesByFullPath {
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
   '/help-center/': typeof AuthenticatedHelpCenterIndexRoute
   '/settings/': typeof AuthenticatedSettingsIndexRoute
-  '/samples/pets/$id': typeof AuthenticatedSamplesPetsIdRoute
+  '/samples/pets/$id': typeof AuthenticatedSamplesPetsIdRouteWithChildren
+  '/samples/pets/new': typeof AuthenticatedSamplesPetsNewRoute
   '/samples/apps/': typeof AuthenticatedSamplesAppsIndexRoute
   '/samples/chats/': typeof AuthenticatedSamplesChatsIndexRoute
   '/samples/pets/': typeof AuthenticatedSamplesPetsIndexRoute
   '/samples/tasks/': typeof AuthenticatedSamplesTasksIndexRoute
   '/samples/users/': typeof AuthenticatedSamplesUsersIndexRoute
+  '/samples/pets/$id/edit': typeof AuthenticatedSamplesPetsIdEditRoute
 }
 export interface FileRoutesByTo {
   '/offline': typeof OfflineRoute
@@ -226,12 +242,14 @@ export interface FileRoutesByTo {
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
   '/help-center': typeof AuthenticatedHelpCenterIndexRoute
   '/settings': typeof AuthenticatedSettingsIndexRoute
-  '/samples/pets/$id': typeof AuthenticatedSamplesPetsIdRoute
+  '/samples/pets/$id': typeof AuthenticatedSamplesPetsIdRouteWithChildren
+  '/samples/pets/new': typeof AuthenticatedSamplesPetsNewRoute
   '/samples/apps': typeof AuthenticatedSamplesAppsIndexRoute
   '/samples/chats': typeof AuthenticatedSamplesChatsIndexRoute
   '/samples/pets': typeof AuthenticatedSamplesPetsIndexRoute
   '/samples/tasks': typeof AuthenticatedSamplesTasksIndexRoute
   '/samples/users': typeof AuthenticatedSamplesUsersIndexRoute
+  '/samples/pets/$id/edit': typeof AuthenticatedSamplesPetsIdEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -255,12 +273,14 @@ export interface FileRoutesById {
   '/_authenticated/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
   '/_authenticated/help-center/': typeof AuthenticatedHelpCenterIndexRoute
   '/_authenticated/settings/': typeof AuthenticatedSettingsIndexRoute
-  '/_authenticated/samples/pets/$id': typeof AuthenticatedSamplesPetsIdRoute
+  '/_authenticated/samples/pets/$id': typeof AuthenticatedSamplesPetsIdRouteWithChildren
+  '/_authenticated/samples/pets/new': typeof AuthenticatedSamplesPetsNewRoute
   '/_authenticated/samples/apps/': typeof AuthenticatedSamplesAppsIndexRoute
   '/_authenticated/samples/chats/': typeof AuthenticatedSamplesChatsIndexRoute
   '/_authenticated/samples/pets/': typeof AuthenticatedSamplesPetsIndexRoute
   '/_authenticated/samples/tasks/': typeof AuthenticatedSamplesTasksIndexRoute
   '/_authenticated/samples/users/': typeof AuthenticatedSamplesUsersIndexRoute
+  '/_authenticated/samples/pets/$id/edit': typeof AuthenticatedSamplesPetsIdEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -285,11 +305,13 @@ export interface FileRouteTypes {
     | '/help-center/'
     | '/settings/'
     | '/samples/pets/$id'
+    | '/samples/pets/new'
     | '/samples/apps/'
     | '/samples/chats/'
     | '/samples/pets/'
     | '/samples/tasks/'
     | '/samples/users/'
+    | '/samples/pets/$id/edit'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/offline'
@@ -311,11 +333,13 @@ export interface FileRouteTypes {
     | '/help-center'
     | '/settings'
     | '/samples/pets/$id'
+    | '/samples/pets/new'
     | '/samples/apps'
     | '/samples/chats'
     | '/samples/pets'
     | '/samples/tasks'
     | '/samples/users'
+    | '/samples/pets/$id/edit'
   id:
     | '__root__'
     | '/_authenticated'
@@ -339,11 +363,13 @@ export interface FileRouteTypes {
     | '/_authenticated/help-center/'
     | '/_authenticated/settings/'
     | '/_authenticated/samples/pets/$id'
+    | '/_authenticated/samples/pets/new'
     | '/_authenticated/samples/apps/'
     | '/_authenticated/samples/chats/'
     | '/_authenticated/samples/pets/'
     | '/_authenticated/samples/tasks/'
     | '/_authenticated/samples/users/'
+    | '/_authenticated/samples/pets/$id/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -537,12 +563,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSamplesAppsIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/samples/pets/new': {
+      id: '/_authenticated/samples/pets/new'
+      path: '/samples/pets/new'
+      fullPath: '/samples/pets/new'
+      preLoaderRoute: typeof AuthenticatedSamplesPetsNewRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/samples/pets/$id': {
       id: '/_authenticated/samples/pets/$id'
       path: '/samples/pets/$id'
       fullPath: '/samples/pets/$id'
       preLoaderRoute: typeof AuthenticatedSamplesPetsIdRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/samples/pets/$id/edit': {
+      id: '/_authenticated/samples/pets/$id/edit'
+      path: '/edit'
+      fullPath: '/samples/pets/$id/edit'
+      preLoaderRoute: typeof AuthenticatedSamplesPetsIdEditRouteImport
+      parentRoute: typeof AuthenticatedSamplesPetsIdRoute
     }
   }
 }
@@ -570,12 +610,27 @@ const AuthenticatedSettingsRouteRouteWithChildren =
     AuthenticatedSettingsRouteRouteChildren,
   )
 
+interface AuthenticatedSamplesPetsIdRouteChildren {
+  AuthenticatedSamplesPetsIdEditRoute: typeof AuthenticatedSamplesPetsIdEditRoute
+}
+
+const AuthenticatedSamplesPetsIdRouteChildren: AuthenticatedSamplesPetsIdRouteChildren =
+  {
+    AuthenticatedSamplesPetsIdEditRoute: AuthenticatedSamplesPetsIdEditRoute,
+  }
+
+const AuthenticatedSamplesPetsIdRouteWithChildren =
+  AuthenticatedSamplesPetsIdRoute._addFileChildren(
+    AuthenticatedSamplesPetsIdRouteChildren,
+  )
+
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
   AuthenticatedErrorsErrorRoute: typeof AuthenticatedErrorsErrorRoute
   AuthenticatedHelpCenterIndexRoute: typeof AuthenticatedHelpCenterIndexRoute
-  AuthenticatedSamplesPetsIdRoute: typeof AuthenticatedSamplesPetsIdRoute
+  AuthenticatedSamplesPetsIdRoute: typeof AuthenticatedSamplesPetsIdRouteWithChildren
+  AuthenticatedSamplesPetsNewRoute: typeof AuthenticatedSamplesPetsNewRoute
   AuthenticatedSamplesAppsIndexRoute: typeof AuthenticatedSamplesAppsIndexRoute
   AuthenticatedSamplesChatsIndexRoute: typeof AuthenticatedSamplesChatsIndexRoute
   AuthenticatedSamplesPetsIndexRoute: typeof AuthenticatedSamplesPetsIndexRoute
@@ -588,7 +643,8 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
   AuthenticatedErrorsErrorRoute: AuthenticatedErrorsErrorRoute,
   AuthenticatedHelpCenterIndexRoute: AuthenticatedHelpCenterIndexRoute,
-  AuthenticatedSamplesPetsIdRoute: AuthenticatedSamplesPetsIdRoute,
+  AuthenticatedSamplesPetsIdRoute: AuthenticatedSamplesPetsIdRouteWithChildren,
+  AuthenticatedSamplesPetsNewRoute: AuthenticatedSamplesPetsNewRoute,
   AuthenticatedSamplesAppsIndexRoute: AuthenticatedSamplesAppsIndexRoute,
   AuthenticatedSamplesChatsIndexRoute: AuthenticatedSamplesChatsIndexRoute,
   AuthenticatedSamplesPetsIndexRoute: AuthenticatedSamplesPetsIndexRoute,

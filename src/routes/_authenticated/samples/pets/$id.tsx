@@ -1,13 +1,4 @@
-import React from "react";
-
-import { useQueryErrorResetBoundary } from "@tanstack/react-query";
-import {
-  createFileRoute,
-  ErrorComponent,
-  type ErrorComponentProps,
-  getRouteApi,
-  useRouter,
-} from "@tanstack/react-router";
+import { createFileRoute, getRouteApi } from "@tanstack/react-router";
 
 import { Main } from "@/components/layout/main";
 import { Badge } from "@/components/ui/badge";
@@ -15,11 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { getPetByIdQueryOptions, useGetPetByIdSuspense } from "@/gen/hooks";
+import { QueryError } from "@/components/query-error";
 
 const route = getRouteApi("/_authenticated/samples/pets/$id");
 
 function PetsDetail() {
   const { id } = route.useParams();
+  const navigate = route.useNavigate();
   const { data: pet } = useGetPetByIdSuspense({ petId: parseInt(id, 10) });
 
   return (
@@ -29,7 +22,9 @@ function PetsDetail() {
           <h2 className="font-bold text-2xl tracking-tight">{pet.name}</h2>
           <p className="text-muted-foreground">Pet details and information.</p>
         </div>
-        <Button variant="outline">Edit Pet</Button>
+        <Button variant="outline" onClick={() => navigate({ to: "/samples/pets/$id/edit", params: { id } })}>
+          Edit Pet
+        </Button>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -105,32 +100,9 @@ function PetsDetail() {
   );
 }
 
-const TanstackErrorComponent = ({ error }: ErrorComponentProps) => {
-  const router = useRouter();
-  const queryErrorResetBoundary = useQueryErrorResetBoundary();
-
-  React.useEffect(() => {
-    queryErrorResetBoundary.reset();
-  }, [queryErrorResetBoundary]);
-
-  return (
-    <div>
-      <button
-        type="button"
-        onClick={() => {
-          router.invalidate();
-        }}
-      >
-        retry
-      </button>
-      <ErrorComponent error={error} />
-    </div>
-  );
-};
-
 export const Route = createFileRoute("/_authenticated/samples/pets/$id")({
   loader: ({ context: { queryClient }, params: { id } }) =>
     queryClient.ensureQueryData(getPetByIdQueryOptions({ petId: parseInt(id, 10) })),
   component: PetsDetail,
-  errorComponent: TanstackErrorComponent,
+  errorComponent: QueryError,
 });

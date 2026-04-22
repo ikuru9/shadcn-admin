@@ -135,12 +135,12 @@ export const sidebarData: SidebarData = {
             },
             {
               title: "Apps",
-              url: "/apps",
+              url: "/samples/apps",
               icon: Package,
             },
             {
               title: "Chats",
-              url: "/chats",
+              url: "/samples/chats",
               badge: "3",
               icon: MessagesSquare,
             },
