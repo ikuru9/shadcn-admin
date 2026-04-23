@@ -60,6 +60,7 @@ export const petsColumns: ColumnDef<Pet>[] = [
       className: cn("max-md:sticky start-6 @4xl/content:table-cell @4xl/content:drop-shadow-none"),
     },
     enableHiding: false,
+    enableSorting: false,
   },
   {
     accessorKey: "name",
@@ -82,6 +83,7 @@ export const petsColumns: ColumnDef<Pet>[] = [
     meta: {
       className: "w-36",
     },
+    enableSorting: false,
   },
   {
     accessorKey: "category",

@@ -8,7 +8,6 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   type RowSelectionState,
-  type SortingState,
   useReactTable,
   type VisibilityState,
 } from "@tanstack/react-table";
@@ -29,10 +28,14 @@ interface DataTableProps {
 
 export function UsersTable({ data, search, navigate }: DataTableProps) {
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
-  const [sorting, setSorting] = useState<SortingState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
   const {
+    sorting,
+    onSortingChange,
+    queryValue,
+    queryPlaceholder,
+    onQueryChange,
     columnFilters,
     onColumnFiltersChange,
     pagination,
@@ -42,9 +45,9 @@ export function UsersTable({ data, search, navigate }: DataTableProps) {
     search,
     navigate,
     pagination: { defaultPage: 1, defaultPageSize: 10 },
-    globalFilter: { enabled: false },
+    sorting: { enabled: true },
+    query: { enabled: true, key: "username", placeholder: "Filter users..." },
     columnFilters: [
-      { columnId: "username", searchKey: "username", type: "string" },
       { columnId: "status", searchKey: "status", type: "array" },
       { columnId: "role", searchKey: "role", type: "array" },
     ],
@@ -58,13 +61,14 @@ export function UsersTable({ data, search, navigate }: DataTableProps) {
       columnVisibility,
       rowSelection,
       columnFilters,
+      globalFilter: queryValue,
       pagination,
     },
     enableRowSelection: true,
     onPaginationChange,
     onColumnFiltersChange,
     onRowSelectionChange: setRowSelection,
-    onSortingChange: setSorting,
+    onSortingChange,
     onColumnVisibilityChange: setColumnVisibility,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -72,6 +76,12 @@ export function UsersTable({ data, search, navigate }: DataTableProps) {
     getSortedRowModel: getSortedRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
+    globalFilterFn: (row, _columnId, filterValue) => {
+      const username = String(row.getValue("username")).toLowerCase();
+      const searchValue = String(filterValue).toLowerCase();
+
+      return username.includes(searchValue);
+    },
   });
 
   const pageCount = table.getPageCount();
@@ -84,8 +94,7 @@ export function UsersTable({ data, search, navigate }: DataTableProps) {
     <div className={'flex flex-1 flex-col gap-4 max-sm:has-[div[role="toolbar"]]:mb-16'}>
       <DataTableToolbar
         table={table}
-        searchPlaceholder="Filter users..."
-        searchKey="username"
+        query={{ enabled: true, value: queryValue ?? "", placeholder: queryPlaceholder, onChange: onQueryChange }}
         filters={[
           {
             columnId: "status",

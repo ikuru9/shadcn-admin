@@ -17,6 +17,8 @@ const usersSearchSchema = z.object({
   status: z.prefault(z.array(z.enum(["active", "inactive", "invited", "suspended"])), []),
   role: z.prefault(z.array(z.enum(roleValues)), []),
   username: z.prefault(z.string(), ""),
+  sort: z.optional(z.enum(["username", "fullName", "email"])),
+  order: z.optional(z.enum(["asc", "desc"])),
 });
 
 const route = getRouteApi("/_authenticated/samples/users/");

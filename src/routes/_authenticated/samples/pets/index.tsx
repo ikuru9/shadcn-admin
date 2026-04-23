@@ -3,17 +3,15 @@ import { Plus } from "lucide-react";
 import * as z from "zod/mini";
 
 import { Main } from "@/components/layout/main";
+import { QueryError } from "@/components/query-error";
 import { Button } from "@/components/ui/button";
 import { findPetsByStatusSuspenseQueryOptions, useFindPetsByStatusSuspense } from "@/gen/hooks";
+import { findPetsByStatusQueryParamsSchema } from "@/gen/zod";
 
-import { QueryError } from "@/components/query-error";
 import { PetsTable } from "./components/pets-table";
 
 const petSearchSchema = z.object({
-  page: z.prefault(z.number(), 1),
-  pageSize: z.prefault(z.number(), 10),
-  status: z.prefault(z.enum(["available", "pending", "sold"]), "available"),
-  filter: z.prefault(z.string(), ""),
+  status: z.optional(findPetsByStatusQueryParamsSchema.shape.status),
 });
 
 const route = getRouteApi("/_authenticated/samples/pets/");
@@ -21,10 +19,11 @@ const route = getRouteApi("/_authenticated/samples/pets/");
 function Pets() {
   const search = route.useSearch();
   const navigate = route.useNavigate();
+  const status = search.status ?? "available";
 
   const { data: pets } = useFindPetsByStatusSuspense({
     params: {
-      status: search.status,
+      status,
     },
   });
 
@@ -47,9 +46,9 @@ function Pets() {
 export const Route = createFileRoute("/_authenticated/samples/pets/")({
   validateSearch: petSearchSchema,
   loaderDeps: ({ search }) => ({
-    status: search.status,
+    status: search.status ?? "available",
   }),
-  loader: ({ context: { queryClient }, deps }) => {
+  loader: async ({ context: { queryClient }, deps }) => {
     const { status } = deps;
     return queryClient.ensureQueryData({
       ...findPetsByStatusSuspenseQueryOptions({

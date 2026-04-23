@@ -8,7 +8,6 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   type RowSelectionState,
-  type SortingState,
   useReactTable,
   type VisibilityState,
 } from "@tanstack/react-table";
@@ -30,13 +29,15 @@ interface DataTableProps {
 export function TasksTable({ data, search, navigate }: DataTableProps) {
   // Local UI-only states
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
-  const [sorting, setSorting] = useState<SortingState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
   // Synced with URL states (updated to match route search schema defaults)
   const {
-    globalFilter,
-    onGlobalFilterChange,
+    sorting,
+    onSortingChange,
+    queryValue,
+    queryPlaceholder,
+    onQueryChange,
     columnFilters,
     onColumnFiltersChange,
     pagination,
@@ -46,7 +47,8 @@ export function TasksTable({ data, search, navigate }: DataTableProps) {
     search,
     navigate,
     pagination: { defaultPage: 1, defaultPageSize: 10 },
-    globalFilter: { enabled: true, key: "filter" },
+    sorting: { enabled: true },
+    query: { enabled: true, placeholder: "Filter by title or ID..." },
     columnFilters: [
       { columnId: "status", searchKey: "status", type: "array" },
       { columnId: "priority", searchKey: "priority", type: "array" },
@@ -61,15 +63,14 @@ export function TasksTable({ data, search, navigate }: DataTableProps) {
       columnVisibility,
       rowSelection,
       columnFilters,
-      globalFilter,
+      globalFilter: queryValue,
       pagination,
     },
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
-    onSortingChange: setSorting,
+    onSortingChange,
     onColumnVisibilityChange: setColumnVisibility,
     onPaginationChange,
-    onGlobalFilterChange,
     onColumnFiltersChange,
     globalFilterFn: (row, _columnId, filterValue) => {
       const id = String(row.getValue("id")).toLowerCase();
@@ -95,7 +96,7 @@ export function TasksTable({ data, search, navigate }: DataTableProps) {
     <div className='flex flex-1 flex-col gap-4 max-sm:has-[div[role="toolbar"]]:mb-16'>
       <DataTableToolbar
         table={table}
-        searchPlaceholder="Filter by title or ID..."
+        query={{ enabled: true, value: queryValue ?? "", placeholder: queryPlaceholder, onChange: onQueryChange }}
         filters={[
           {
             columnId: "status",

@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 
-import type { ColumnFiltersState, OnChangeFn, PaginationState } from "@tanstack/react-table";
+import type { ColumnFiltersState, OnChangeFn, PaginationState, SortingState } from "@tanstack/react-table";
 
 type SearchRecord = Record<string, unknown>;
 
@@ -35,18 +35,42 @@ interface UseTableUrlStateParams {
     defaultPage?: number;
     defaultPageSize?: number;
   };
-  globalFilter?: {
+  sorting?: {
+    enabled?: boolean;
+    sortKey?: string;
+    orderKey?: string;
+  };
+  query?: {
     enabled?: boolean;
     key?: string;
+    value?: string;
     trim?: boolean;
+    placeholder?: string;
   };
+  customFilters?: Array<{
+    key: string;
+    enabled?: boolean;
+    multiple?: boolean;
+    value?: string | string[];
+  }>;
   columnFilters?: ColumnFilter[];
 }
 
 interface UseTableUrlStateReturn {
-  // Global filter
-  globalFilter?: string;
-  onGlobalFilterChange?: OnChangeFn<string>;
+  // Sorting
+  sorting: SortingState;
+  onSortingChange: OnChangeFn<SortingState>;
+  // Query
+  queryValue?: string;
+  queryPlaceholder?: string;
+  onQueryChange?: (value: string) => void;
+  // Custom filters
+  customFilters: Array<{
+    key: string;
+    multiple?: boolean;
+    value: string | string[];
+    onValueChange: (value: string | string[] | undefined) => void;
+  }>;
   // Column filters
   columnFilters: ColumnFiltersState;
   onColumnFiltersChange: OnChangeFn<ColumnFiltersState>;
@@ -62,7 +86,9 @@ export function useTableUrlState(params: UseTableUrlStateParams): UseTableUrlSta
     search,
     navigate,
     pagination: paginationCfg,
-    globalFilter: globalFilterCfg,
+    sorting: sortingCfg,
+    query: queryCfg,
+    customFilters: customFiltersCfg = [],
     columnFilters: columnFiltersCfg = [],
   } = params;
 
@@ -71,9 +97,74 @@ export function useTableUrlState(params: UseTableUrlStateParams): UseTableUrlSta
   const defaultPage = paginationCfg?.defaultPage ?? 1;
   const defaultPageSize = paginationCfg?.defaultPageSize ?? 10;
 
-  const globalFilterKey = globalFilterCfg?.key ?? ("filter" as string);
-  const globalFilterEnabled = globalFilterCfg?.enabled ?? true;
-  const trimGlobal = globalFilterCfg?.trim ?? true;
+  const sortKey = sortingCfg?.sortKey ?? ("sort" as string);
+  const orderKey = sortingCfg?.orderKey ?? ("order" as string);
+  const sortingEnabled = sortingCfg?.enabled ?? false;
+
+  const queryEnabled = queryCfg?.enabled ?? false;
+  const queryKey = queryCfg?.key ?? "query";
+  const queryTrim = queryCfg?.trim ?? true;
+  const queryPlaceholder = queryCfg?.placeholder ?? "Filter...";
+
+  const sorting: SortingState = useMemo(() => {
+    if (!sortingEnabled) {
+      return [];
+    }
+
+    const rawSort = (search as SearchRecord)[sortKey];
+    const rawOrder = (search as SearchRecord)[orderKey];
+
+    if (typeof rawSort !== "string") {
+      return [];
+    }
+
+    if (rawOrder !== "asc" && rawOrder !== "desc") {
+      return [];
+    }
+
+    return [{ id: rawSort, desc: rawOrder === "desc" }];
+  }, [orderKey, search, sortKey, sortingEnabled]);
+
+  const queryValue = useMemo(() => {
+    if (!queryEnabled) {
+      return undefined;
+    }
+
+    const raw = queryCfg?.value ?? (search as SearchRecord)[queryKey];
+    if (typeof raw !== "string") {
+      return "";
+    }
+
+    return raw;
+  }, [queryCfg?.value, queryEnabled, queryKey, search]);
+
+  const customFilters = useMemo(
+    () =>
+      customFiltersCfg.map((cfg) => {
+        const raw = cfg.value ?? (search as SearchRecord)[cfg.key];
+        const value = cfg.multiple ? (Array.isArray(raw) ? raw : []) : typeof raw === "string" ? raw : "";
+
+        return {
+          key: cfg.key,
+          multiple: cfg.multiple,
+          value,
+          onValueChange: (nextValue: string | string[] | undefined) => {
+            if (cfg.enabled === false) {
+              return;
+            }
+
+            navigate({
+              search: (prev) => ({
+                ...(prev as SearchRecord),
+                [pageKey]: undefined,
+                [cfg.key]: nextValue,
+              }),
+            });
+          },
+        };
+      }),
+    [customFiltersCfg, navigate, pageKey, search],
+  );
 
   // Build initial column filters from the current search params
   const initialColumnFilters: ColumnFiltersState = useMemo(() => {
@@ -120,22 +211,32 @@ export function useTableUrlState(params: UseTableUrlStateParams): UseTableUrlSta
     });
   };
 
-  const [globalFilter, setGlobalFilter] = useState<string | undefined>(() => {
-    if (!globalFilterEnabled) return undefined;
-    const raw = (search as SearchRecord)[globalFilterKey];
-    return typeof raw === "string" ? raw : "";
-  });
+  const onSortingChange: OnChangeFn<SortingState> = (updater) => {
+    if (!sortingEnabled) {
+      return;
+    }
 
-  const onGlobalFilterChange: OnChangeFn<string> | undefined = globalFilterEnabled
-    ? (updater) => {
-        const next = typeof updater === "function" ? updater(globalFilter ?? "") : updater;
-        const value = trimGlobal ? next.trim() : next;
-        setGlobalFilter(value);
+    const next = typeof updater === "function" ? updater(sorting) : updater;
+    const first = next[0];
+
+    navigate({
+      search: (prev) => ({
+        ...(prev as SearchRecord),
+        [pageKey]: defaultPage,
+        [sortKey]: first?.id,
+        [orderKey]: first ? (first.desc ? "desc" : "asc") : undefined,
+      }),
+    });
+  };
+
+  const onQueryChange = queryEnabled
+    ? (value: string) => {
+        const next = queryTrim ? value.trim() : value;
         navigate({
           search: (prev) => ({
             ...(prev as SearchRecord),
             [pageKey]: undefined,
-            [globalFilterKey]: value ? value : undefined,
+            [queryKey]: next ? next : undefined,
           }),
         });
       }
@@ -183,8 +284,12 @@ export function useTableUrlState(params: UseTableUrlStateParams): UseTableUrlSta
   };
 
   return {
-    globalFilter: globalFilterEnabled ? (globalFilter ?? "") : undefined,
-    onGlobalFilterChange,
+    sorting,
+    onSortingChange,
+    queryValue,
+    queryPlaceholder,
+    onQueryChange,
+    customFilters,
     columnFilters,
     onColumnFiltersChange,
     pagination,
