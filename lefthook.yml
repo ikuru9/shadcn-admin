@@ -13,5 +13,4 @@ pre-commit:
 commit-msg:
   commands:
     commitlint:
-      files: commit-msg
       run: pnpm -s commitlint --edit {1}

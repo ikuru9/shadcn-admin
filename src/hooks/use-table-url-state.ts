@@ -1,11 +1,12 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import type { ColumnFiltersState, OnChangeFn, PaginationState, SortingState } from "@tanstack/react-table";
 
 type SearchRecord = Record<string, unknown>;
+type SearchUpdaterResult = Partial<SearchRecord> | SearchRecord;
 
 export type NavigateFn = (opts: {
-  search: true | SearchRecord | ((prev: SearchRecord) => Partial<SearchRecord> | SearchRecord);
+  search: true | SearchRecord | ((prev: SearchRecord) => SearchUpdaterResult);
   replace?: boolean;
 }) => void;
 
@@ -81,6 +82,16 @@ interface UseTableUrlStateReturn {
   ensurePageInRange: (pageCount: number, opts?: { resetTo?: "first" | "last" }) => void;
 }
 
+const identity = <T>(value: T) => value;
+
+function getNextState<T>(updater: T | ((prev: T) => T), current: T): T {
+  if (typeof updater !== "function") {
+    return updater;
+  }
+
+  return (updater as (prev: T) => T)(current);
+}
+
 export function useTableUrlState(params: UseTableUrlStateParams): UseTableUrlStateReturn {
   const {
     search,
@@ -105,14 +116,28 @@ export function useTableUrlState(params: UseTableUrlStateParams): UseTableUrlSta
   const queryKey = queryCfg?.key ?? "query";
   const queryTrim = queryCfg?.trim ?? true;
   const queryPlaceholder = queryCfg?.placeholder ?? "Filter...";
+  const searchRecord = search as SearchRecord;
+
+  const updateSearch = useCallback(
+    (patch: SearchUpdaterResult, replace?: boolean) => {
+      navigate({
+        replace,
+        search: (prev) => ({
+          ...(prev as SearchRecord),
+          ...patch,
+        }),
+      });
+    },
+    [navigate],
+  );
 
   const sorting: SortingState = useMemo(() => {
     if (!sortingEnabled) {
       return [];
     }
 
-    const rawSort = (search as SearchRecord)[sortKey];
-    const rawOrder = (search as SearchRecord)[orderKey];
+    const rawSort = searchRecord[sortKey];
+    const rawOrder = searchRecord[orderKey];
 
     if (typeof rawSort !== "string") {
       return [];
@@ -123,25 +148,25 @@ export function useTableUrlState(params: UseTableUrlStateParams): UseTableUrlSta
     }
 
     return [{ id: rawSort, desc: rawOrder === "desc" }];
-  }, [orderKey, search, sortKey, sortingEnabled]);
+  }, [orderKey, searchRecord, sortKey, sortingEnabled]);
 
   const queryValue = useMemo(() => {
     if (!queryEnabled) {
       return undefined;
     }
 
-    const raw = queryCfg?.value ?? (search as SearchRecord)[queryKey];
+    const raw = queryCfg?.value ?? searchRecord[queryKey];
     if (typeof raw !== "string") {
       return "";
     }
 
     return raw;
-  }, [queryCfg?.value, queryEnabled, queryKey, search]);
+  }, [queryCfg?.value, queryEnabled, queryKey, searchRecord]);
 
   const customFilters = useMemo(
     () =>
       customFiltersCfg.map((cfg) => {
-        const raw = cfg.value ?? (search as SearchRecord)[cfg.key];
+        const raw = cfg.value ?? searchRecord[cfg.key];
         const value = cfg.multiple ? (Array.isArray(raw) ? raw : []) : typeof raw === "string" ? raw : "";
 
         return {
@@ -153,25 +178,22 @@ export function useTableUrlState(params: UseTableUrlStateParams): UseTableUrlSta
               return;
             }
 
-            navigate({
-              search: (prev) => ({
-                ...(prev as SearchRecord),
-                [pageKey]: undefined,
-                [cfg.key]: nextValue,
-              }),
+            updateSearch({
+              [pageKey]: undefined,
+              [cfg.key]: nextValue,
             });
           },
         };
       }),
-    [customFiltersCfg, navigate, pageKey, search],
+    [customFiltersCfg, pageKey, searchRecord, updateSearch],
   );
 
   // Build initial column filters from the current search params
   const initialColumnFilters: ColumnFiltersState = useMemo(() => {
     const collected: ColumnFiltersState = [];
     for (const cfg of columnFiltersCfg) {
-      const raw = (search as SearchRecord)[cfg.searchKey];
-      const deserialize = cfg.deserialize ?? ((v: unknown) => v);
+      const raw = searchRecord[cfg.searchKey];
+      const deserialize = cfg.deserialize ?? identity;
       if (cfg.type === "string") {
         const value = (deserialize(raw) as string) ?? "";
         if (typeof value === "string" && value.trim() !== "") {
@@ -186,28 +208,25 @@ export function useTableUrlState(params: UseTableUrlStateParams): UseTableUrlSta
       }
     }
     return collected;
-  }, [columnFiltersCfg, search]);
+  }, [columnFiltersCfg, searchRecord]);
 
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(initialColumnFilters);
 
   const pagination: PaginationState = useMemo(() => {
-    const rawPage = (search as SearchRecord)[pageKey];
-    const rawPageSize = (search as SearchRecord)[pageSizeKey];
+    const rawPage = searchRecord[pageKey];
+    const rawPageSize = searchRecord[pageSizeKey];
     const pageNum = typeof rawPage === "number" ? rawPage : defaultPage;
     const pageSizeNum = typeof rawPageSize === "number" ? rawPageSize : defaultPageSize;
     return { pageIndex: Math.max(0, pageNum - 1), pageSize: pageSizeNum };
-  }, [search, pageKey, pageSizeKey, defaultPage, defaultPageSize]);
+  }, [searchRecord, pageKey, pageSizeKey, defaultPage, defaultPageSize]);
 
   const onPaginationChange: OnChangeFn<PaginationState> = (updater) => {
-    const next = typeof updater === "function" ? updater(pagination) : updater;
+    const next = getNextState(updater, pagination);
     const nextPage = next.pageIndex + 1;
     const nextPageSize = next.pageSize;
-    navigate({
-      search: (prev) => ({
-        ...(prev as SearchRecord),
-        [pageKey]: nextPage <= defaultPage ? undefined : nextPage,
-        [pageSizeKey]: nextPageSize === defaultPageSize ? undefined : nextPageSize,
-      }),
+    updateSearch({
+      [pageKey]: nextPage <= defaultPage ? undefined : nextPage,
+      [pageSizeKey]: nextPageSize === defaultPageSize ? undefined : nextPageSize,
     });
   };
 
@@ -216,41 +235,35 @@ export function useTableUrlState(params: UseTableUrlStateParams): UseTableUrlSta
       return;
     }
 
-    const next = typeof updater === "function" ? updater(sorting) : updater;
+    const next = getNextState(updater, sorting);
     const first = next[0];
 
-    navigate({
-      search: (prev) => ({
-        ...(prev as SearchRecord),
-        [pageKey]: defaultPage,
-        [sortKey]: first?.id,
-        [orderKey]: first ? (first.desc ? "desc" : "asc") : undefined,
-      }),
+    updateSearch({
+      [pageKey]: defaultPage,
+      [sortKey]: first?.id,
+      [orderKey]: first ? (first.desc ? "desc" : "asc") : undefined,
     });
   };
 
   const onQueryChange = queryEnabled
     ? (value: string) => {
         const next = queryTrim ? value.trim() : value;
-        navigate({
-          search: (prev) => ({
-            ...(prev as SearchRecord),
-            [pageKey]: undefined,
-            [queryKey]: next ? next : undefined,
-          }),
+        updateSearch({
+          [pageKey]: undefined,
+          [queryKey]: next ? next : undefined,
         });
       }
     : undefined;
 
   const onColumnFiltersChange: OnChangeFn<ColumnFiltersState> = (updater) => {
-    const next = typeof updater === "function" ? updater(columnFilters) : updater;
+    const next = getNextState(updater, columnFilters);
     setColumnFilters(next);
 
     const patch: Record<string, unknown> = {};
 
     for (const cfg of columnFiltersCfg) {
       const found = next.find((f) => f.id === cfg.columnId);
-      const serialize = cfg.serialize ?? ((v: unknown) => v);
+      const serialize = cfg.serialize ?? identity;
       if (cfg.type === "string") {
         const value = typeof found?.value === "string" ? (found.value as string) : "";
         patch[cfg.searchKey] = value.trim() !== "" ? serialize(value) : undefined;
@@ -260,26 +273,22 @@ export function useTableUrlState(params: UseTableUrlStateParams): UseTableUrlSta
       }
     }
 
-    navigate({
-      search: (prev) => ({
-        ...(prev as SearchRecord),
-        [pageKey]: undefined,
-        ...patch,
-      }),
+    updateSearch({
+      [pageKey]: undefined,
+      ...patch,
     });
   };
 
   const ensurePageInRange = (pageCount: number, opts: { resetTo?: "first" | "last" } = { resetTo: "first" }) => {
-    const currentPage = (search as SearchRecord)[pageKey];
+    const currentPage = searchRecord[pageKey];
     const pageNum = typeof currentPage === "number" ? currentPage : defaultPage;
     if (pageCount > 0 && pageNum > pageCount) {
-      navigate({
-        replace: true,
-        search: (prev) => ({
-          ...(prev as SearchRecord),
+      updateSearch(
+        {
           [pageKey]: opts.resetTo === "last" ? pageCount : undefined,
-        }),
-      });
+        },
+        true,
+      );
     }
   };
 
