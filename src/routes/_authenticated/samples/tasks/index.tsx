@@ -21,11 +21,11 @@ const priorityValues = priorities.map((priority) => priority.value) as [
 ];
 
 const taskSearchSchema = z.object({
-  page: z.prefault(z.number(), 1),
-  pageSize: z.prefault(z.number(), 10),
-  status: z.prefault(z.array(z.enum(statusValues)), []),
-  priority: z.prefault(z.array(z.enum(priorityValues)), []),
-  query: z.prefault(z.string(), ""),
+  page: z.optional(z.number()),
+  pageSize: z.optional(z.number()),
+  status: z.optional(z.array(z.enum(statusValues))),
+  priority: z.optional(z.array(z.enum(priorityValues))),
+  query: z.optional(z.string()),
   sort: z.optional(z.enum(["title", "status", "priority"])),
   order: z.optional(z.enum(["asc", "desc"])),
 });

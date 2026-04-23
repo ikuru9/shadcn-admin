@@ -11,7 +11,7 @@ import { findPetsByStatusQueryParamsSchema } from "@/gen/zod";
 import { PetsTable } from "./components/pets-table";
 
 const petSearchSchema = z.object({
-  status: z.optional(findPetsByStatusQueryParamsSchema.shape.status),
+  status: z.prefault(findPetsByStatusQueryParamsSchema.shape.status, "available"),
 });
 
 const route = getRouteApi("/_authenticated/samples/pets/");

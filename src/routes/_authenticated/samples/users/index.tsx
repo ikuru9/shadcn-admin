@@ -12,11 +12,11 @@ import { UsersTable } from "./components/users-table";
 const roleValues = roles.map((r) => r.value) as [(typeof roles)[number]["value"], ...(typeof roles)[number]["value"][]];
 
 const usersSearchSchema = z.object({
-  page: z.prefault(z.number(), 1),
-  pageSize: z.prefault(z.number(), 10),
-  status: z.prefault(z.array(z.enum(["active", "inactive", "invited", "suspended"])), []),
-  role: z.prefault(z.array(z.enum(roleValues)), []),
-  username: z.prefault(z.string(), ""),
+  page: z.optional(z.number()),
+  pageSize: z.optional(z.number()),
+  status: z.optional(z.array(z.enum(["active", "inactive", "invited", "suspended"]))),
+  role: z.optional(z.array(z.enum(roleValues))),
+  username: z.optional(z.string()),
   sort: z.optional(z.enum(["username", "fullName", "email"])),
   order: z.optional(z.enum(["asc", "desc"])),
 });
