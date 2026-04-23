@@ -1,5 +1,8 @@
+import { useEffect, useMemo, useState } from "react";
+
 import type { Table } from "@tanstack/react-table";
 import { X } from "lucide-react";
+import { debounce } from "es-toolkit";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,6 +31,22 @@ export function DataTableToolbar<TData>({
   searchKey,
   filters = [],
 }: DataTableToolbarProps<TData>) {
+  const [globalFilter, setGlobalFilter] = useState(table.getState().globalFilter ?? "");
+
+  const debouncedSetGlobalFilter = useMemo(
+    () =>
+      debounce((value: string) => {
+        table.setGlobalFilter(value);
+      }, 500),
+    [table]
+  );
+
+  useEffect(() => {
+    return () => {
+      debouncedSetGlobalFilter.cancel();
+    };
+  }, [debouncedSetGlobalFilter]);
+
   const isFiltered = table.getState().columnFilters.length > 0 || table.getState().globalFilter;
 
   return (
@@ -43,8 +62,12 @@ export function DataTableToolbar<TData>({
         ) : (
           <Input
             placeholder={searchPlaceholder}
-            value={table.getState().globalFilter ?? ""}
-            onChange={(event) => table.setGlobalFilter(event.target.value)}
+            value={globalFilter}
+            onChange={(event) => {
+              const value = event.target.value;
+              setGlobalFilter(value);
+              debouncedSetGlobalFilter(value);
+            }}
             className="h-8 w-37.5 lg:w-62.5"
           />
         )}
@@ -66,8 +89,10 @@ export function DataTableToolbar<TData>({
           <Button
             variant="ghost"
             onClick={() => {
+              debouncedSetGlobalFilter.cancel();
               table.resetColumnFilters();
               table.setGlobalFilter("");
+              setGlobalFilter("");
             }}
             className="h-8 px-2 lg:px-3"
           >
