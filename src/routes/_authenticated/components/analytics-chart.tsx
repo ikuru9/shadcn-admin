@@ -1,4 +1,6 @@
-import { Area, AreaChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import { Area, AreaChart, XAxis, YAxis } from "recharts";
+
+import { ChartContainer } from "@/components/ui/chart";
 
 const data = [
   {
@@ -40,7 +42,13 @@ const data = [
 
 export function AnalyticsChart() {
   return (
-    <ResponsiveContainer width="100%" height={300}>
+    <ChartContainer
+      config={{
+        clicks: { label: "Clicks" },
+        uniques: { label: "Uniques" },
+      }}
+      className="aspect-auto h-[300px] w-full"
+    >
       <AreaChart data={data}>
         <XAxis dataKey="name" stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
         <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
@@ -61,6 +69,6 @@ export function AnalyticsChart() {
           fillOpacity={0.1}
         />
       </AreaChart>
-    </ResponsiveContainer>
+    </ChartContainer>
   );
 }
