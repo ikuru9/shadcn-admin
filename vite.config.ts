@@ -94,7 +94,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   optimizeDeps: {
-    include: ["axios", "date-fns", "clsx", "class-variance-authority"],
+    include: ["axios", "date-fns", "clsx", "class-variance-authority", "zod", "zod/mini"],
   },
   esbuild: {
     pure:

@@ -1,14 +1,21 @@
-import type { ColumnDef } from "@tanstack/react-table";
 import { Link } from "@tanstack/react-router";
+import type { ColumnDef } from "@tanstack/react-table";
+import { pascalCase } from "es-toolkit";
 
 import { DataTableColumnHeader } from "@/components/data-table";
 import { LongText } from "@/components/long-text";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
-import type { Pet } from "@/gen/types/Pet";
 import { petsStatuses } from "@/constants/pets";
+import { type Pet, petStatusEnum } from "@/gen/types/Pet";
 import { cn } from "@/lib/utils";
+
 import { DataTableRowActions } from "./data-table-row-actions";
+
+const petStatusFilterOptions = Object.values(petStatusEnum).map((value) => ({
+  value,
+  label: pascalCase(value),
+}));
 
 export const petsColumns: ColumnDef<Pet>[] = [
   {
@@ -107,6 +114,13 @@ export const petsColumns: ColumnDef<Pet>[] = [
           </Badge>
         </div>
       );
+    },
+    meta: {
+      customFilterOptions: {
+        title: "Status",
+        multiple: false,
+        options: petStatusFilterOptions,
+      },
     },
     enableHiding: false,
     enableSorting: false,

@@ -4,20 +4,20 @@ import { act, renderHook } from "@testing-library/react";
 import type { ColumnFiltersState } from "@tanstack/react-table";
 import { describe, expect, it, vi } from "vitest";
 
-import { useTableUrlState, type NavigateFn } from "./use-table-url-state";
+import { useDataTableUrlState, type NavigateFn } from "./use-data-table-url-state";
 
 type SearchRecord = Record<string, unknown>;
 
-function setup(overrides: Partial<Parameters<typeof useTableUrlState>[0]> = {}) {
+function setup(overrides: Partial<Parameters<typeof useDataTableUrlState>[0]> = {}) {
   let currentSearch = (overrides.search ?? {}) as SearchRecord;
 
-  const props: Parameters<typeof useTableUrlState>[0] = {
+  const props: Parameters<typeof useDataTableUrlState>[0] = {
     search: currentSearch,
     navigate: (() => undefined) as NavigateFn,
     ...overrides,
   };
 
-  let rerenderHook = (_nextProps: Parameters<typeof useTableUrlState>[0]) => {};
+  let rerenderHook = (_nextProps: Parameters<typeof useDataTableUrlState>[0]) => {};
 
   const navigate = vi.fn<NavigateFn>(({ search }) => {
     if (search === true) {
@@ -31,7 +31,7 @@ function setup(overrides: Partial<Parameters<typeof useTableUrlState>[0]> = {}) 
 
   props.navigate = navigate;
 
-  const hook = renderHook((nextProps: Parameters<typeof useTableUrlState>[0]) => useTableUrlState(nextProps), {
+  const hook = renderHook((nextProps: Parameters<typeof useDataTableUrlState>[0]) => useDataTableUrlState(nextProps), {
     initialProps: props,
   });
 
@@ -44,7 +44,7 @@ function setup(overrides: Partial<Parameters<typeof useTableUrlState>[0]> = {}) 
   };
 }
 
-describe("useTableUrlState", () => {
+describe("useDataTableUrlState", () => {
   it("search 값에서 table state를 읽는다", () => {
     const { result } = setup({
       search: {

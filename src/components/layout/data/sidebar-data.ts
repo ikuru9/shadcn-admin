@@ -10,7 +10,6 @@ import {
   GalleryVerticalEnd,
   HelpCircle,
   LayoutDashboard,
-  ListTodo,
   Lock,
   LockIcon,
   MessagesSquare,
@@ -129,9 +128,9 @@ export const sidebarData: SidebarData = {
               icon: DogIcon,
             },
             {
-              title: "Tasks",
-              url: "/samples/tasks",
-              icon: ListTodo,
+              title: "Users",
+              url: "/samples/users",
+              icon: Users,
             },
             {
               title: "Apps",
@@ -143,11 +142,6 @@ export const sidebarData: SidebarData = {
               url: "/samples/chats",
               badge: "3",
               icon: MessagesSquare,
-            },
-            {
-              title: "Users",
-              url: "/samples/users",
-              icon: Users,
             },
           ],
         },

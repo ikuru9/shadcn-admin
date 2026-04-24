@@ -1,25 +1,12 @@
 import { createFileRoute, getRouteApi } from "@tanstack/react-router";
-import * as z from "zod/mini";
 
 import { Main } from "@/components/layout/main";
 import { QueryError } from "@/components/query-error";
 
-import { roles } from "./components/data/data";
 import { users } from "./components/data/users";
+import { usersSearchSchema } from "./components/data/search-schema";
 import { UsersPrimaryButtons } from "./components/users-primary-buttons";
 import { UsersTable } from "./components/users-table";
-
-const roleValues = roles.map((r) => r.value) as [(typeof roles)[number]["value"], ...(typeof roles)[number]["value"][]];
-
-const usersSearchSchema = z.object({
-  page: z.optional(z.number()),
-  pageSize: z.optional(z.number()),
-  status: z.optional(z.array(z.enum(["active", "inactive", "invited", "suspended"]))),
-  role: z.optional(z.array(z.enum(roleValues))),
-  username: z.optional(z.string()),
-  sort: z.optional(z.enum(["username", "fullName", "email"])),
-  order: z.optional(z.enum(["asc", "desc"])),
-});
 
 const route = getRouteApi("/_authenticated/samples/users/");
 

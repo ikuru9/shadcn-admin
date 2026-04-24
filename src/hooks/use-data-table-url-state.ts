@@ -92,7 +92,7 @@ function getNextState<T>(updater: T | ((prev: T) => T), current: T): T {
   return (updater as (prev: T) => T)(current);
 }
 
-export function useTableUrlState(params: UseTableUrlStateParams): UseTableUrlStateReturn {
+export function useDataTableUrlState(params: UseTableUrlStateParams): UseTableUrlStateReturn {
   const {
     search,
     navigate,

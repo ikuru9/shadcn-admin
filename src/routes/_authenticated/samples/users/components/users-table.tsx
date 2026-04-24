@@ -13,10 +13,11 @@ import {
 } from "@tanstack/react-table";
 
 import { DataTable, DataTablePagination, DataTableToolbar } from "@/components/data-table";
-import { type NavigateFn, useTableUrlState } from "@/hooks/use-table-url-state";
+import { useDataTableConfigs } from "@/hooks/use-data-table-configs";
+import { type NavigateFn, useDataTableUrlState } from "@/hooks/use-data-table-url-state";
 
-import { roles } from "./data/data";
-import type { User } from "./data/schema";
+import { type User } from "./data/schema";
+import { usersSearchSchema } from "./data/search-schema";
 import { usersColumns as columns } from "./users-columns";
 import { DataTableBulkActions } from "./users-data-table-bulk-actions";
 
@@ -30,6 +31,14 @@ export function UsersTable({ data, search, navigate }: DataTableProps) {
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
+  const { urlStateParams, customFilters } = useDataTableConfigs({
+    columns,
+    schema: usersSearchSchema,
+    customFilterKeys: ["status", "role"],
+    pagination: { defaultPage: 1, defaultPageSize: 10 },
+    query: { enabled: true, key: "username", placeholder: "Filter users..." },
+  });
+
   const {
     sorting,
     onSortingChange,
@@ -41,16 +50,10 @@ export function UsersTable({ data, search, navigate }: DataTableProps) {
     pagination,
     onPaginationChange,
     ensurePageInRange,
-  } = useTableUrlState({
+  } = useDataTableUrlState({
     search,
     navigate,
-    pagination: { defaultPage: 1, defaultPageSize: 10 },
-    sorting: { enabled: true },
-    query: { enabled: true, key: "username", placeholder: "Filter users..." },
-    columnFilters: [
-      { columnId: "status", searchKey: "status", type: "array" },
-      { columnId: "role", searchKey: "role", type: "array" },
-    ],
+    ...urlStateParams,
   });
 
   const table = useReactTable({
@@ -95,23 +98,7 @@ export function UsersTable({ data, search, navigate }: DataTableProps) {
       <DataTableToolbar
         table={table}
         query={{ enabled: true, value: queryValue ?? "", placeholder: queryPlaceholder, onChange: onQueryChange }}
-        filters={[
-          {
-            columnId: "status",
-            title: "Status",
-            options: [
-              { label: "Active", value: "active" },
-              { label: "Inactive", value: "inactive" },
-              { label: "Invited", value: "invited" },
-              { label: "Suspended", value: "suspended" },
-            ],
-          },
-          {
-            columnId: "role",
-            title: "Role",
-            options: roles.map((role) => ({ ...role })),
-          },
-        ]}
+        filters={customFilters}
       />
       <div className="overflow-hidden rounded-md border">
         <DataTable table={table} className="min-w-xl" />

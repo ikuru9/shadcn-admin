@@ -10,6 +10,13 @@ import { callTypes, roles } from "./data/data";
 import type { User } from "./data/schema";
 import { DataTableRowActions } from "./users-data-table-row-actions";
 
+const statusFilterOptions = [
+  { label: "Active", value: "active" },
+  { label: "Inactive", value: "inactive" },
+  { label: "Invited", value: "invited" },
+  { label: "Suspended", value: "suspended" },
+] as const;
+
 export const usersColumns: ColumnDef<User>[] = [
   {
     id: "select",
@@ -83,6 +90,13 @@ export const usersColumns: ColumnDef<User>[] = [
         </div>
       );
     },
+    meta: {
+      customFilterOptions: {
+        title: "Status",
+        multiple: true,
+        options: statusFilterOptions.map((option) => ({ ...option })),
+      },
+    },
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id));
     },
@@ -106,6 +120,13 @@ export const usersColumns: ColumnDef<User>[] = [
           <span className="text-sm capitalize">{row.getValue("role")}</span>
         </div>
       );
+    },
+    meta: {
+      customFilterOptions: {
+        title: "Role",
+        multiple: true,
+        options: roles.map((role) => ({ ...role })),
+      },
     },
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id));
