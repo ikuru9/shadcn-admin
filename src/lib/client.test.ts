@@ -6,11 +6,18 @@ import {
   type AxiosResponse,
   type InternalAxiosRequestConfig,
 } from "axios";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "@/constants/cookie";
+import { refreshToken } from "@/gen/clients";
 import { axiosInstance, client } from "@/lib/client";
 import { getCookie, removeCookie, setCookie } from "@/lib/cookies";
+
+vi.mock("@/gen/clients", () => ({
+  refreshToken: vi.fn(),
+}));
+
+const refreshTokenMock = refreshToken as unknown as ReturnType<typeof vi.fn>;
 
 const waitForTick = () => new Promise((resolve) => setTimeout(resolve, 0));
 
@@ -28,6 +35,7 @@ const createError = (config: AxiosRequestConfig, response: AxiosResponse) =>
 
 describe("client 토큰 재발급", () => {
   beforeEach(() => {
+    refreshTokenMock.mockReset();
     removeCookie(ACCESS_TOKEN_KEY);
     removeCookie(REFRESH_TOKEN_KEY);
     const commonHeaders = axiosInstance.defaults.headers?.common as Record<string, string> | undefined;
@@ -37,6 +45,7 @@ describe("client 토큰 재발급", () => {
   });
 
   afterEach(() => {
+    refreshTokenMock.mockReset();
     removeCookie(ACCESS_TOKEN_KEY);
     removeCookie(REFRESH_TOKEN_KEY);
   });
@@ -47,16 +56,16 @@ describe("client 토큰 재발급", () => {
 
     let refreshCalls = 0;
 
+    refreshTokenMock.mockImplementation(async () => {
+      refreshCalls += 1;
+      await waitForTick();
+      return { accessToken: "new-access", refreshToken: "new-refresh" };
+    });
+
     const adapter: AxiosAdapter = async (config) => {
       const url = config.url ?? "";
       const headers = config.headers as Record<string, string> | undefined;
       const auth = headers?.Authorization;
-
-      if (url === "/auth/refresh") {
-        refreshCalls += 1;
-        await waitForTick();
-        return createResponse(config, { acc: "new-access", re: "new-refresh" }, 200);
-      }
 
       if (url === "/protected") {
         if (auth === "Bearer old-access") {
@@ -93,12 +102,14 @@ describe("client 토큰 재발급", () => {
     setCookie(ACCESS_TOKEN_KEY, "old-access");
     setCookie(REFRESH_TOKEN_KEY, "refresh-token");
 
+    refreshTokenMock.mockResolvedValue({ accessToken: "new-access", refreshToken: "new-refresh" });
+
     const adapter: AxiosAdapter = async (config) => {
       const url = config.url ?? "";
       const headers = config.headers as Record<string, string> | undefined;
       const auth = headers?.Authorization;
 
-      if (url === "/auth/refresh") {
+      if (url === "/api/auth/refresh") {
         return createResponse(config, { acc: "new-access", re: "new-refresh" }, 200);
       }
 
