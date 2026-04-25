@@ -1,6 +1,7 @@
 import axios, { type AxiosError, type AxiosHeaders, type AxiosRequestConfig } from "axios";
 
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "@/constants/cookie";
+import { refreshToken } from "@/gen/clients";
 import { getCookie, setCookie } from "@/lib/cookies";
 import { memoize } from "@/lib/memorize";
 
@@ -30,27 +31,28 @@ export const axiosInstance = axios.create({
   headers: typeof AXIOS_HEADERS !== "undefined" ? (JSON.parse(AXIOS_HEADERS) as AxiosHeaders) : undefined,
 });
 
-type RefreshResponse = { acc: string; re: string };
 type RefreshableRequestConfig = AxiosRequestConfig & { _retry?: boolean };
 
 const refreshAccessToken = async (): Promise<string | null> => {
-  const refreshToken = getCookie(REFRESH_TOKEN_KEY);
-  if (!refreshToken) return null;
+  const currentRefreshToken = getCookie(REFRESH_TOKEN_KEY);
+  if (!currentRefreshToken) return null;
 
-  const response = await axiosInstance.post<RefreshResponse>("/auth/refresh", undefined, {
-    headers: { Authorization: `Bearer ${refreshToken}` },
+  const response = await refreshToken({
+    data: {
+      refreshToken: currentRefreshToken,
+    },
   });
 
-  const { acc, re } = response.data;
-  setCookie(ACCESS_TOKEN_KEY, acc);
-  setCookie(REFRESH_TOKEN_KEY, re);
+  const { accessToken, refreshToken: newRefreshToken } = response;
+  setCookie(ACCESS_TOKEN_KEY, accessToken);
+  setCookie(REFRESH_TOKEN_KEY, newRefreshToken);
 
   const commonHeaders = axiosInstance.defaults.headers?.common as Record<string, string> | undefined;
   if (commonHeaders) {
-    commonHeaders.Authorization = `Bearer ${acc}`;
+    commonHeaders.Authorization = `Bearer ${accessToken}`;
   }
 
-  return acc;
+  return accessToken;
 };
 
 const getRefreshedAccessToken = memoize(async () => {
@@ -74,7 +76,7 @@ axiosInstance.interceptors.response.use(
       throw error;
     }
 
-    if (config.url?.includes("/auth/refresh")) {
+    if (config.url?.startsWith("/api/auth/refresh")) {
       throw error;
     }
 

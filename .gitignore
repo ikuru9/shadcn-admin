@@ -44,6 +44,9 @@ mocks/modules
 src/gen
 mocks/faker
 
+# ai
+.worktrees
+
 # graphify generated state
 .opencode/plugins/graphify.js
 graphify-out/*
