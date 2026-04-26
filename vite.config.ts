@@ -62,7 +62,7 @@ export default defineConfig(({ mode }) => ({
         name: "Shadcn Admin",
         short_name: "Shadcn Admin",
         description: "Admin Dashboard UI built with Shadcn and Vite.",
-        theme_color: "#ffffff",
+        theme_color: "#f2f0eb",
         display: "standalone",
         icons: [
           {
