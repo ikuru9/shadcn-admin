@@ -16,7 +16,7 @@ import { DataTable, DataTablePagination, DataTableToolbar } from "@/components/d
 import { useDataTableConfigs } from "@/hooks/use-data-table-configs";
 import { type NavigateFn, useDataTableUrlState } from "@/hooks/use-data-table-url-state";
 
-import { type User } from "./data/schema";
+import type { User } from "./data/schema";
 import { usersSearchSchema } from "./data/search-schema";
 import { usersColumns as columns } from "./users-columns";
 import { DataTableBulkActions } from "./users-data-table-bulk-actions";

@@ -18,8 +18,8 @@ export default defineConfig(() => ({
   output: {
     path: fileURLToPath(new URL("./src/gen", import.meta.url)),
     clean: true,
-    format: false,
-    lint: false,
+    format: "auto",
+    lint: "auto",
     barrelType: false,
   },
   plugins: [
