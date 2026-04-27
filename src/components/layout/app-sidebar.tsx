@@ -7,6 +7,12 @@ import { NavGroup } from "./nav-group";
 import { NavUser } from "./nav-user";
 import { TeamSwitcher } from "./team-switcher";
 
+const fallbackUser = {
+  name: "satnaing",
+  email: "satnaingdev@gmail.com",
+  avatar: "/avatars/shadcn.jpg",
+};
+
 export function AppSidebar() {
   const { collapsible, variant } = useLayout();
   return (
@@ -24,7 +30,7 @@ export function AppSidebar() {
         ))}
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={sidebarData.user} />
+        <NavUser user={fallbackUser} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

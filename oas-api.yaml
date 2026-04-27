@@ -547,19 +547,6 @@ paths:
       responses:
         "204":
           description: 사용자 삭제됨
-  /users/my-menus:
-    get:
-      tags:
-        - user
-      summary: 현재 사용자 메뉴 조회
-      operationId: getMyMenus
-      responses:
-        "200":
-          description: 성공적으로 처리됨
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/MenuKeyListResponse"
   /auth-groups:
     get:
       tags:
@@ -737,6 +724,20 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/LoginResponse"
+
+  /auth/my-menus:
+    get:
+      tags:
+        - auth
+      summary: 현재 사용자 메뉴 조회
+      operationId: getMyMenus
+      responses:
+        "200":
+          description: 성공적으로 처리됨
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MenuKeyListResponse"
 components:
   schemas:
     Order:
@@ -938,11 +939,14 @@ components:
       required:
         - accessToken
         - refreshToken
+        - user
       properties:
         accessToken:
           type: string
         refreshToken:
           type: string
+        user:
+          $ref: "#/components/schemas/User"
     RefreshTokenRequest:
       type: object
       required:

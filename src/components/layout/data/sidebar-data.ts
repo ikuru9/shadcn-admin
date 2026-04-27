@@ -26,12 +26,7 @@ import {
 
 import type { SidebarData } from "../types";
 
-export const sidebarData: SidebarData = {
-  user: {
-    name: "satnaing",
-    email: "satnaingdev@gmail.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
+export const sidebarData: Omit<SidebarData, "user"> = {
   teams: [
     {
       name: "Shadcn Admin",

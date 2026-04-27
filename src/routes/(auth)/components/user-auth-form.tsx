@@ -1,66 +1,54 @@
-import { useState } from "react";
-
 import { Link, useNavigate } from "@tanstack/react-router";
 import { Loader2, LogIn } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import * as z from "zod/mini";
+import type * as z from "zod/mini";
 
 import { IconFacebook, IconGithub } from "@/assets/brand-icons";
 import { PasswordInput } from "@/components/custom-input/password-input";
 import { Button } from "@/components/ui/button";
 import { FormControl, FormField, FormItem, FormLabel, FormMessage, FormProvider } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { sleep } from "@/lib/sleep";
+import { useLogin } from "@/gen/hooks";
+import { loginRequestSchema } from "@/gen/zod";
 import { cn } from "@/lib/utils";
 import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 import { useAuthStore } from "@/stores/auth-store";
-
-const formSchema = z.object({
-  email: z.email("Please enter your email"),
-  password: z
-    .string()
-    .check(z.minLength(1, "Please enter your password"), z.minLength(7, "Password must be at least 7 characters long")),
-});
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLFormElement> {
   redirectTo?: string;
 }
 
-export function UserAuthForm({ className, redirectTo, ...props }: UserAuthFormProps) {
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
-  const { setUser, setAccessToken } = useAuthStore();
+type UserAuthFormSchema = z.infer<typeof loginRequestSchema>;
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodMiniResolver(formSchema),
+export function UserAuthForm({ className, redirectTo, ...props }: UserAuthFormProps) {
+  const navigate = useNavigate();
+  const { setAccessToken } = useAuthStore();
+  const { isPending, mutateAsync: handleLogin } = useLogin({
+    mutation: {
+      gcTime: Infinity,
+      onSuccess: async (response) => {
+        await setAccessToken({
+          accessToken: response.accessToken,
+          refreshToken: response.refreshToken,
+          user: response.user,
+        });
+      },
+    },
+  });
+
+  const form = useForm<UserAuthFormSchema>({
+    resolver: zodMiniResolver(loginRequestSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
-    setIsLoading(true);
-
-    toast.promise(sleep(2000), {
+  function onSubmit(data: UserAuthFormSchema) {
+    toast.promise(handleLogin({ data }), {
       loading: "Signing in...",
       success: () => {
-        setIsLoading(false);
-
-        // Mock successful authentication with expiry computed at success time
-        const mockUser = {
-          accountNo: "ACC001",
-          email: data.email,
-          role: ["user"],
-          exp: Date.now() + 24 * 60 * 60 * 1000, // 24 hours from now
-        };
-
-        // Set user and access token
-        setUser(mockUser);
-        setAccessToken("mock-access-token");
-
-        // Redirect to the stored location or default to dashboard
         const targetPath = redirectTo || "/";
         navigate({ to: targetPath, replace: true });
 
@@ -105,8 +93,8 @@ export function UserAuthForm({ className, redirectTo, ...props }: UserAuthFormPr
             </FormItem>
           )}
         />
-        <Button className="mt-2" disabled={isLoading}>
-          {isLoading ? <Loader2 className="animate-spin" /> : <LogIn />}
+        <Button className="mt-2" type="submit" disabled={isPending}>
+          {isPending ? <Loader2 className="animate-spin" /> : <LogIn />}
           Sign in
         </Button>
 
@@ -120,10 +108,10 @@ export function UserAuthForm({ className, redirectTo, ...props }: UserAuthFormPr
         </div>
 
         <div className="grid grid-cols-2 gap-2">
-          <Button variant="outline" type="button" disabled={isLoading}>
+          <Button variant="outline" type="button" disabled={isPending}>
             <IconGithub className="h-4 w-4" /> GitHub
           </Button>
-          <Button variant="outline" type="button" disabled={isLoading}>
+          <Button variant="outline" type="button" disabled={isPending}>
             <IconFacebook className="h-4 w-4" /> Facebook
           </Button>
         </div>

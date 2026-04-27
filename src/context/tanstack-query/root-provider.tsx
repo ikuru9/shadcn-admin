@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { env } from "@/config/env";
 import { handleServerError } from "@/lib/handle-server-error";
 import { useAuthStore } from "@/stores/auth-store";
+import { registerQueryClient } from "./query-client-store";
 
 // biome-ignore lint/style/useComponentExportOnlyModules: getContext
 export function getContext() {
@@ -49,6 +50,8 @@ export function getContext() {
       },
     }),
   });
+
+  registerQueryClient(queryClient);
 
   return {
     queryClient,

@@ -3,7 +3,7 @@ import { devtools } from "@tanstack/devtools-vite";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import { playwright } from "@vitest/browser-playwright";
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import { compression } from "vite-plugin-compression2";
 import { VitePWA } from "vite-plugin-pwa";
 
@@ -11,154 +11,158 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const serverUrl = process.env.API_SERVER_URL || "";
-
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  plugins: [
-    devtools(),
-    tanstackRouter({
-      target: "react",
-      autoCodeSplitting: true,
-      routeFileIgnorePattern: "^(components|data)$",
-    }),
-    viteReact(),
-    tailwindcss(),
-    compression({
-      algorithms: ["gzip", "brotliCompress"],
-      exclude: [/\.(br)$/, /\.(gz)$/, /\.(png|jpe?g|gif|webp|woff2?)$/],
-      threshold: 1501, // 1.5KB 미만은 무시 (효율성)
-      skipIfLargerOrEqual: true, // 압축본이 더 크면 무시
-    }),
-    (() => {
-      let outDir = "dist";
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
 
-      return {
-        name: "exclude-mock-service-worker",
-        apply: "build",
-        configResolved(config) {
-          outDir = config.build.outDir;
-        },
-        generateBundle(_options, bundle) {
-          for (const fileName of Object.keys(bundle)) {
-            if (/^mockServiceWorker\.js(?:\.(?:gz|br))?$/.test(path.basename(fileName))) {
-              delete bundle[fileName];
+  const API_SERVER_URL = env.API_SERVER_URL || "";
+
+  return {
+    plugins: [
+      devtools(),
+      tanstackRouter({
+        target: "react",
+        autoCodeSplitting: true,
+        routeFileIgnorePattern: "^(components|data)$",
+      }),
+      viteReact(),
+      tailwindcss(),
+      compression({
+        algorithms: ["gzip", "brotliCompress"],
+        exclude: [/\.(br)$/, /\.(gz)$/, /\.(png|jpe?g|gif|webp|woff2?)$/],
+        threshold: 1501, // 1.5KB 미만은 무시 (효율성)
+        skipIfLargerOrEqual: true, // 압축본이 더 크면 무시
+      }),
+      (() => {
+        let outDir = "dist";
+
+        return {
+          name: "exclude-mock-service-worker",
+          apply: "build",
+          configResolved(config) {
+            outDir = config.build.outDir;
+          },
+          generateBundle(_options, bundle) {
+            for (const fileName of Object.keys(bundle)) {
+              if (/^mockServiceWorker\.js(?:\.(?:gz|br))?$/.test(path.basename(fileName))) {
+                delete bundle[fileName];
+              }
             }
-          }
-        },
-        async writeBundle() {
-          await Promise.all([
-            fs.rm(path.join(outDir, "mockServiceWorker.js"), { force: true }),
-            fs.rm(path.join(outDir, "mockServiceWorker.js.gz"), { force: true }),
-            fs.rm(path.join(outDir, "mockServiceWorker.js.br"), { force: true }),
-          ]);
-        },
-      };
-    })(),
-    VitePWA({
-      registerType: "autoUpdate",
-      includeAssets: ["images/*"],
-      manifest: {
-        name: "Shadcn Admin",
-        short_name: "Shadcn Admin",
-        description: "Admin Dashboard UI built with Shadcn and Vite.",
-        theme_color: "#f2f0eb",
-        display: "standalone",
-        icons: [
-          {
-            src: "/images/favicon.svg",
-            sizes: "any",
-            type: "image/svg+xml",
           },
-          {
-            src: "/images/favicon.png",
-            sizes: "512x512",
-            type: "image/png",
+          async writeBundle() {
+            await Promise.all([
+              fs.rm(path.join(outDir, "mockServiceWorker.js"), { force: true }),
+              fs.rm(path.join(outDir, "mockServiceWorker.js.gz"), { force: true }),
+              fs.rm(path.join(outDir, "mockServiceWorker.js.br"), { force: true }),
+            ]);
           },
-        ],
+        };
+      })(),
+      VitePWA({
+        registerType: "autoUpdate",
+        includeAssets: ["images/*"],
+        manifest: {
+          name: "Shadcn Admin",
+          short_name: "Shadcn Admin",
+          description: "Admin Dashboard UI built with Shadcn and Vite.",
+          theme_color: "#f2f0eb",
+          display: "standalone",
+          icons: [
+            {
+              src: "/images/favicon.svg",
+              sizes: "any",
+              type: "image/svg+xml",
+            },
+            {
+              src: "/images/favicon.png",
+              sizes: "512x512",
+              type: "image/png",
+            },
+          ],
+        },
+        workbox: {
+          globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
+          globIgnores: ["**/mockServiceWorker.js"],
+          navigateFallback: "/index.html",
+          navigateFallbackDenylist: [/^\/api\//],
+        },
+        devOptions: {
+          enabled: true,
+        },
+      }),
+    ],
+    resolve: {
+      alias: {
+        "@": fileURLToPath(new URL("./src", import.meta.url)),
       },
-      workbox: {
-        globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
-        globIgnores: ["**/mockServiceWorker.js"],
-        navigateFallback: "/index.html",
-        navigateFallbackDenylist: [/^\/api\//],
-      },
-      devOptions: {
-        enabled: true,
-      },
-    }),
-  ],
-  resolve: {
-    alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
-  },
-  optimizeDeps: {
-    include: ["axios", "date-fns", "clsx", "class-variance-authority", "zod", "zod/mini"],
-  },
-  esbuild: {
-    pure:
-      mode === "production"
-        ? [
-            "console.log",
-            "console.info",
-            "console.debug",
-            "console.trace",
-            "console.group", // 그룹 시작 제거
-            "console.groupCollapsed",
-            "console.groupEnd", // 그룹 종료 제거
-            "console.table", // 테이블 출력 제거
-            "console.time", // 타이머 제거
-            "console.timeEnd",
-            "console.count", // 카운터 제거
-          ]
-        : [],
-  },
-  build: {
-    chunkSizeWarningLimit: 1000,
-    rollupOptions: {
-      external: (_id) => {
-        // const pattern = /node_modules\/(@faker-js\/faker|msw)/;
-        // if (pattern.test(id)) {
-        //   return true;
-        // }
+    optimizeDeps: {
+      include: ["axios", "date-fns", "clsx", "class-variance-authority", "zod", "zod/mini"],
+    },
+    esbuild: {
+      pure:
+        mode === "production"
+          ? [
+              "console.log",
+              "console.info",
+              "console.debug",
+              "console.trace",
+              "console.group", // 그룹 시작 제거
+              "console.groupCollapsed",
+              "console.groupEnd", // 그룹 종료 제거
+              "console.table", // 테이블 출력 제거
+              "console.time", // 타이머 제거
+              "console.timeEnd",
+              "console.count", // 카운터 제거
+            ]
+          : [],
+    },
+    build: {
+      chunkSizeWarningLimit: 1000,
+      rollupOptions: {
+        external: (_id) => {
+          // const pattern = /node_modules\/(@faker-js\/faker|msw)/;
+          // if (pattern.test(id)) {
+          //   return true;
+          // }
 
-        return false;
-      },
-      output: {
-        // 가독성을 위해 에셋 이름을 깔끔하게 정리
-        assetFileNames: "assets/[name]-[hash][extname]",
-        chunkFileNames: "assets/[name]-[hash].js",
-        entryFileNames: "assets/[name]-[hash].js",
+          return false;
+        },
+        output: {
+          // 가독성을 위해 에셋 이름을 깔끔하게 정리
+          assetFileNames: "assets/[name]-[hash][extname]",
+          chunkFileNames: "assets/[name]-[hash].js",
+          entryFileNames: "assets/[name]-[hash].js",
+        },
       },
     },
-  },
-  server: {
-    proxy: serverUrl
-      ? {
-          "/api": {
-            target: serverUrl,
-            changeOrigin: true,
-            secure: false,
-          },
-        }
-      : undefined,
-  },
-  test: {
-    globals: true,
-    include: ["**/*.{test,spec}.{ts,tsx}"],
-    browser: {
-      enabled: true,
-      provider: playwright(),
-      // https://vitest.dev/config/browser/playwright
-      instances: [
-        { browser: "chromium" },
-        // { browser: "firefox" },
-        // { browser: "webkit" },
-      ],
-      // Optional: run in headed mode during development
-      headless: !!process.env.CI,
+    server: {
+      proxy: API_SERVER_URL
+        ? {
+            "/api": {
+              target: API_SERVER_URL,
+              changeOrigin: true,
+              secure: false,
+            },
+          }
+        : undefined,
     },
-    setupFiles: [`${fileURLToPath(new URL("./src", import.meta.url))}/vitest.setup.ts`],
-  },
-}));
+    test: {
+      globals: true,
+      include: ["**/*.{test,spec}.{ts,tsx}"],
+      browser: {
+        enabled: true,
+        provider: playwright(),
+        // https://vitest.dev/config/browser/playwright
+        instances: [
+          { browser: "chromium" },
+          // { browser: "firefox" },
+          // { browser: "webkit" },
+        ],
+        // Optional: run in headed mode during development
+        headless: !!env.CI || env.OPENCODE === "true",
+      },
+      setupFiles: [`${fileURLToPath(new URL("./src", import.meta.url))}/vitest.setup.ts`],
+    },
+  };
+});
