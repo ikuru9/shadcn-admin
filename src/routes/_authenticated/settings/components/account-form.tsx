@@ -1,5 +1,6 @@
 import { ArrowUpDown, Check } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import * as z from "zod/mini";
 
 import { DatePicker } from "@/components/custom-input/date-picker";
@@ -16,7 +17,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { useSubmissionToast } from "@/hooks/use-submission-toast";
 import { cn } from "@/lib/utils";
 import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 
@@ -57,14 +57,19 @@ const defaultValues: Partial<AccountFormValues> = {
 };
 
 export function AccountForm() {
-  const showSubmittedData = useSubmissionToast();
   const form = useForm<AccountFormValues>({
     resolver: zodMiniResolver(accountFormSchema),
     defaultValues,
   });
 
   function onSubmit(data: AccountFormValues) {
-    showSubmittedData(data);
+    toast.success("알림", {
+      description: (
+        <pre className="mt-2 w-full overflow-x-auto rounded-md bg-slate-950 p-4">
+          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+        </pre>
+      ),
+    });
   }
 
   return (

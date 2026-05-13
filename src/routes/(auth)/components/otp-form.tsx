@@ -2,12 +2,12 @@ import { useState } from "react";
 
 import { useNavigate } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import * as z from "zod/mini";
 
 import { Button } from "@/components/ui/button";
 import { FormControl, FormField, FormItem, FormLabel, FormMessage, FormProvider } from "@/components/ui/form";
 import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "@/components/ui/input-otp";
-import { useSubmissionToast } from "@/hooks/use-submission-toast";
 import { cn } from "@/lib/utils";
 import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 
@@ -20,7 +20,6 @@ type OtpFormProps = React.HTMLAttributes<HTMLFormElement>;
 export function OtpForm({ className, ...props }: OtpFormProps) {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  const showSubmittedData = useSubmissionToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodMiniResolver(formSchema),
@@ -31,7 +30,13 @@ export function OtpForm({ className, ...props }: OtpFormProps) {
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     setIsLoading(true);
-    showSubmittedData(data);
+    toast.success("알림", {
+      description: (
+        <pre className="mt-2 w-full overflow-x-auto rounded-md bg-slate-950 p-4">
+          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+        </pre>
+      ),
+    });
 
     setTimeout(() => {
       setIsLoading(false);

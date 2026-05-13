@@ -1,10 +1,16 @@
-import { createFileRoute, getRouteApi } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
+import { createFileRoute, getRouteApi } from "@tanstack/react-router";
+import { toast } from "sonner";
 
 import { Main } from "@/components/layout/main";
 import { QueryError } from "@/components/query-error";
-import { findPetsByStatusSuspenseQueryKey, getPetByIdQueryOptions, getPetByIdSuspenseQueryKey, useGetPetByIdSuspense, useUpdatePet } from "@/gen/hooks";
-import { useSubmissionToast } from "@/hooks/use-submission-toast";
+import {
+  findPetsByStatusSuspenseQueryKey,
+  getPetByIdQueryOptions,
+  getPetByIdSuspenseQueryKey,
+  useGetPetByIdSuspense,
+  useUpdatePet,
+} from "@/gen/hooks";
 
 import { PetUpsertForm, type PetUpsertValues } from "./components/pet-upsert-form";
 
@@ -16,7 +22,6 @@ function PetsEdit() {
   const { data: pet } = useGetPetByIdSuspense({ petId: parseInt(id, 10) });
   const updatePet = useUpdatePet();
   const queryClient = useQueryClient();
-  const showSubmittedData = useSubmissionToast();
 
   const handleSubmit = async (values: PetUpsertValues) => {
     await updatePet.mutateAsync({
@@ -37,7 +42,13 @@ function PetsEdit() {
       queryClient.invalidateQueries({ queryKey: getPetByIdSuspenseQueryKey({ petId: pet.id ?? parseInt(id, 10) }) }),
     ]);
 
-    showSubmittedData(values);
+    toast.success("알림", {
+      description: (
+        <pre className="mt-2 w-full overflow-x-auto rounded-md bg-slate-950 p-4">
+          <code className="text-white">{JSON.stringify(values, null, 2)}</code>
+        </pre>
+      ),
+    });
     navigate({ to: "/samples/pets/$id", params: { id } });
   };
 
@@ -48,7 +59,11 @@ function PetsEdit() {
           <h2 className="font-bold text-2xl tracking-tight">Edit Pet</h2>
           <p className="text-muted-foreground">Update pet information and return to the detail page.</p>
         </div>
-        <button type="button" className="text-sm underline underline-offset-4" onClick={() => navigate({ to: "/samples/pets/$id", params: { id } })}>
+        <button
+          type="button"
+          className="text-sm underline underline-offset-4"
+          onClick={() => navigate({ to: "/samples/pets/$id", params: { id } })}
+        >
           Back to detail
         </button>
       </div>

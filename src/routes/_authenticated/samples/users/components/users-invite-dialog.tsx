@@ -1,5 +1,6 @@
 import { MailPlus, Send } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import * as z from "zod/mini";
 
 import { SelectDropdown } from "@/components/select-dropdown";
@@ -8,7 +9,6 @@ import { DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/co
 import { FormControl, FormField, FormItem, FormLabel, FormMessage, FormProvider } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useSubmissionToast } from "@/hooks/use-submission-toast";
 import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 
 import { roles } from "./data/data";
@@ -27,7 +27,6 @@ interface UserInviteDialogProps {
 }
 
 export function UsersInviteDialog({ onConfirm, onCancel }: UserInviteDialogProps) {
-  const showSubmittedData = useSubmissionToast();
   const form = useForm<UserInviteForm>({
     resolver: zodMiniResolver(formSchema),
     defaultValues: { email: "", role: "", desc: "" },
@@ -35,7 +34,13 @@ export function UsersInviteDialog({ onConfirm, onCancel }: UserInviteDialogProps
 
   const onSubmit = (values: UserInviteForm) => {
     form.reset();
-    showSubmittedData(values);
+    toast.success("알림", {
+      description: (
+        <pre className="mt-2 w-full overflow-x-auto rounded-md bg-slate-950 p-4">
+          <code className="text-white">{JSON.stringify(values, null, 2)}</code>
+        </pre>
+      ),
+    });
     onConfirm(values);
   };
 

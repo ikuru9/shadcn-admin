@@ -1,5 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import * as z from "zod/mini";
 
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -16,7 +17,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { fonts } from "@/config/fonts";
 import { useFont } from "@/context/font-provider";
 import { useTheme } from "@/context/theme-provider";
-import { useSubmissionToast } from "@/hooks/use-submission-toast";
 import { cn } from "@/lib/utils";
 import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 
@@ -30,7 +30,6 @@ type AppearanceFormValues = z.infer<typeof appearanceFormSchema>;
 export function AppearanceForm() {
   const { font, setFont } = useFont();
   const { theme, setTheme } = useTheme();
-  const showSubmittedData = useSubmissionToast();
 
   // This can come from your database or API.
   const defaultValues: Partial<AppearanceFormValues> = {
@@ -47,7 +46,13 @@ export function AppearanceForm() {
     if (data.font !== font) setFont(data.font);
     if (data.theme !== theme) setTheme(data.theme);
 
-    showSubmittedData(data);
+    toast.success("알림", {
+      description: (
+        <pre className="mt-2 w-full overflow-x-auto rounded-md bg-slate-950 p-4">
+          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+        </pre>
+      ),
+    });
   }
 
   return (
@@ -76,7 +81,7 @@ export function AppearanceForm() {
                     ))}
                   </select>
                 </FormControl>
-                <ChevronDown className="absolute end-3 top-2.5 h-4 w-4 opacity-50" />
+                <ChevronDown className="absolute inset-e-3 top-2.5 h-4 w-4 opacity-50" />
               </div>
               <FormDescription className="font-manrope">Set the font you want to use in the dashboard.</FormDescription>
               <FormMessage />

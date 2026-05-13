@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import * as z from "zod/mini";
 
 import { Button } from "@/components/ui/button";
@@ -12,7 +13,6 @@ import {
   FormMessage,
   FormProvider,
 } from "@/components/ui/form";
-import { useSubmissionToast } from "@/hooks/use-submission-toast";
 import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 
 const items = [
@@ -54,7 +54,6 @@ const defaultValues: Partial<DisplayFormValues> = {
 };
 
 export function DisplayForm() {
-  const showSubmittedData = useSubmissionToast();
   const form = useForm<DisplayFormValues>({
     resolver: zodMiniResolver(displayFormSchema),
     defaultValues,
@@ -62,7 +61,18 @@ export function DisplayForm() {
 
   return (
     <FormProvider {...form}>
-      <form onSubmit={form.handleSubmit((data) => showSubmittedData(data))} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit((data) =>
+          toast.success("알림", {
+            description: (
+              <pre className="mt-2 w-full overflow-x-auto rounded-md bg-slate-950 p-4">
+                <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+              </pre>
+            ),
+          }),
+        )}
+        className="space-y-8"
+      >
         <FormField
           control={form.control}
           name="items"

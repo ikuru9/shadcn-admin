@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 import { Check, X } from "lucide-react";
+import { toast } from "sonner";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { useSubmissionToast } from "@/hooks/use-submission-toast";
 
 import type { ChatUser } from "./data/chat-types";
 
@@ -19,7 +19,6 @@ interface NewChatProps {
 }
 export function NewChat({ users, onOpenChange, open }: NewChatProps) {
   const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
-  const showSubmittedData = useSubmissionToast();
 
   const handleSelectUser = (user: User) => {
     if (!selectedUsers.find((u) => u.id === user.id)) {
@@ -99,7 +98,15 @@ export function NewChat({ users, onOpenChange, open }: NewChatProps) {
           </Command>
           <Button
             variant={"default"}
-            onClick={() => showSubmittedData(selectedUsers)}
+            onClick={() =>
+              toast.success("알림", {
+                description: (
+                  <pre className="mt-2 w-full overflow-x-auto rounded-md bg-slate-950 p-4">
+                    <code className="text-white">{JSON.stringify(selectedUsers, null, 2)}</code>
+                  </pre>
+                ),
+              })
+            }
             disabled={selectedUsers.length === 0}
           >
             Chat

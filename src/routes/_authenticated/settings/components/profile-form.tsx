@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useFieldArray, useForm } from "react-hook-form";
+import { toast } from "sonner";
 import * as z from "zod/mini";
 
 import { Button } from "@/components/ui/button";
@@ -15,7 +16,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { useSubmissionToast } from "@/hooks/use-submission-toast";
 import { cn } from "@/lib/utils";
 import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 
@@ -40,7 +40,6 @@ const defaultValues: Partial<ProfileFormValues> = {
 };
 
 export function ProfileForm() {
-  const showSubmittedData = useSubmissionToast();
   const form = useForm<ProfileFormValues>({
     resolver: zodMiniResolver(profileFormSchema),
     defaultValues,
@@ -54,7 +53,18 @@ export function ProfileForm() {
 
   return (
     <FormProvider {...form}>
-      <form onSubmit={form.handleSubmit((data) => showSubmittedData(data))} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit((data) =>
+          toast.success("알림", {
+            description: (
+              <pre className="mt-2 w-full overflow-x-auto rounded-md bg-slate-950 p-4">
+                <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+              </pre>
+            ),
+          }),
+        )}
+        className="space-y-8"
+      >
         <FormField
           control={form.control}
           name="username"

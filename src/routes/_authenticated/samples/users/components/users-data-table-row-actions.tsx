@@ -1,5 +1,6 @@
 import type { Row } from "@tanstack/react-table";
 import { MoreHorizontal, Trash2, UserPen } from "lucide-react";
+import { toast } from "sonner";
 import * as z from "zod/mini";
 
 import { Button } from "@/components/ui/button";
@@ -12,7 +13,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useDialog } from "@/hooks/use-dialog";
-import { useSubmissionToast } from "@/hooks/use-submission-toast";
 
 import type { User } from "./data/schema";
 import { UsersActionDialog } from "./users-action-dialog";
@@ -23,7 +23,6 @@ interface DataTableRowActionsProps {
 
 export function DataTableRowActions({ row }: DataTableRowActionsProps) {
   const { openDialog, prompt } = useDialog();
-  const showSubmittedData = useSubmissionToast();
 
   const handleDelete = async () => {
     const username = await prompt({
@@ -42,7 +41,13 @@ export function DataTableRowActions({ row }: DataTableRowActionsProps) {
 
     if (username == null) return;
 
-    showSubmittedData(row.original, "The following user has been deleted:");
+    toast.success("삭제되었습니다.", {
+      description: (
+        <pre className="mt-2 w-full overflow-x-auto rounded-md bg-slate-950 p-4">
+          <code className="text-white">{JSON.stringify(row.original, null, 2)}</code>
+        </pre>
+      ),
+    });
   };
   return (
     <DropdownMenu modal={false}>

@@ -1,11 +1,11 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { createFileRoute, getRouteApi } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
-import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 
 import { Main } from "@/components/layout/main";
 import { Button } from "@/components/ui/button";
 import { findPetsByStatusSuspenseQueryKey, useAddPet } from "@/gen/hooks";
-import { useSubmissionToast } from "@/hooks/use-submission-toast";
 
 import { PetUpsertForm, type PetUpsertValues } from "./components/pet-upsert-form";
 
@@ -15,7 +15,6 @@ function PetsCreate() {
   const navigate = route.useNavigate();
   const addPet = useAddPet();
   const queryClient = useQueryClient();
-  const showSubmittedData = useSubmissionToast();
 
   const handleSubmit = async (values: PetUpsertValues) => {
     await addPet.mutateAsync({
@@ -34,7 +33,13 @@ function PetsCreate() {
       queryClient.invalidateQueries({ queryKey: findPetsByStatusSuspenseQueryKey({ status: "sold" }) }),
     ]);
 
-    showSubmittedData(values);
+    toast.success("알림", {
+      description: (
+        <pre className="mt-2 w-full overflow-x-auto rounded-md bg-slate-950 p-4">
+          <code className="text-white">{JSON.stringify(values, null, 2)}</code>
+        </pre>
+      ),
+    });
     navigate({ to: "/samples/pets" });
   };
 
@@ -51,7 +56,12 @@ function PetsCreate() {
         </Button>
       </div>
 
-      <PetUpsertForm mode="create" isSubmitting={addPet.isPending} onSubmit={handleSubmit} onDone={() => navigate({ to: "/samples/pets" })} />
+      <PetUpsertForm
+        mode="create"
+        isSubmitting={addPet.isPending}
+        onSubmit={handleSubmit}
+        onDone={() => navigate({ to: "/samples/pets" })}
+      />
     </Main>
   );
 }

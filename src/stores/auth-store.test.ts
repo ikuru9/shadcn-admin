@@ -47,13 +47,13 @@ describe("useAuthStore", () => {
     );
   });
 
-  it("clears the query cache when reset is called", () => {
+  it("reset을 호출하면 쿼리 캐시를 비운다", () => {
     useAuthStore.getState().reset();
 
     expect(clearMock).toHaveBeenCalledTimes(1);
   });
 
-  it("loads my menus when access token is set", () => {
+  it("access token을 설정하면 내 메뉴를 불러온다", () => {
     useAuthStore.getState().setAccessToken({
       accessToken: "access-token",
       refreshToken: "refresh-token",
@@ -76,7 +76,7 @@ describe("useAuthStore", () => {
     resolveEnsureQueryData?.();
   });
 
-  it("waits for my menus to load before resolving setAccessToken", async () => {
+  it("setAccessToken이 해결되기 전에 내 메뉴 로드를 기다린다", async () => {
     const promise = useAuthStore.getState().setAccessToken({
       accessToken: "access-token",
       refreshToken: "refresh-token",

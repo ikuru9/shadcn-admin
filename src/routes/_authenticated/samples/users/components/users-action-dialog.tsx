@@ -1,6 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import * as z from "zod/mini";
 
 import { PasswordInput } from "@/components/custom-input/password-input";
@@ -9,7 +10,6 @@ import { Button } from "@/components/ui/button";
 import { DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { FormControl, FormField, FormItem, FormLabel, FormMessage, FormProvider } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useSubmissionToast } from "@/hooks/use-submission-toast";
 import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 
 import { roles } from "./data/data";
@@ -60,7 +60,7 @@ interface UserActionDialogProps {
 
 export function UsersActionDialog({ currentRow, onConfirm, onCancel }: UserActionDialogProps) {
   const isEdit = !!currentRow;
-  const showSubmittedData = useSubmissionToast();
+
   const form = useForm<UserForm>({
     resolver: zodMiniResolver(formSchema),
     defaultValues: isEdit
@@ -85,7 +85,13 @@ export function UsersActionDialog({ currentRow, onConfirm, onCancel }: UserActio
 
   const onSubmit = (values: UserForm) => {
     form.reset();
-    showSubmittedData(values);
+    toast.success("알림", {
+      description: (
+        <pre className="mt-2 w-full overflow-x-auto rounded-md bg-slate-950 p-4">
+          <code className="text-white">{JSON.stringify(values, null, 2)}</code>
+        </pre>
+      ),
+    });
     onConfirm(values);
   };
 

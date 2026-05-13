@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import * as z from "zod/mini";
 
 import { Button } from "@/components/ui/button";
@@ -15,7 +16,6 @@ import {
 } from "@/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Switch } from "@/components/ui/switch";
-import { useSubmissionToast } from "@/hooks/use-submission-toast";
 import { zodMiniResolver } from "@/lib/zod-mini-resolver";
 
 const notificationsFormSchema = z.object({
@@ -30,7 +30,6 @@ const notificationsFormSchema = z.object({
 type NotificationsFormValues = z.infer<typeof notificationsFormSchema>;
 
 export function NotificationsForm() {
-  const showSubmittedData = useSubmissionToast();
   const form = useForm<NotificationsFormValues>({
     resolver: zodMiniResolver(notificationsFormSchema),
     defaultValues: {
@@ -43,7 +42,18 @@ export function NotificationsForm() {
 
   return (
     <FormProvider {...form}>
-      <form onSubmit={form.handleSubmit((data) => showSubmittedData(data))} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit((data) =>
+          toast.success("알림", {
+            description: (
+              <pre className="mt-2 w-full overflow-x-auto rounded-md bg-slate-950 p-4">
+                <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+              </pre>
+            ),
+          }),
+        )}
+        className="space-y-8"
+      >
         <FormField
           control={form.control}
           name="type"
