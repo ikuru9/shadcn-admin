@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import { defineConfig } from "@kubb/core";
 import { pluginClient } from "@kubb/plugin-client";
 import { pluginFaker } from "@kubb/plugin-faker";
@@ -6,8 +7,6 @@ import { pluginOas } from "@kubb/plugin-oas";
 import { pluginReactQuery } from "@kubb/plugin-react-query";
 import { pluginTs } from "@kubb/plugin-ts";
 import { pluginZod } from "@kubb/plugin-zod";
-
-import { fileURLToPath } from "node:url";
 
 const baseURL = "/api" as const;
 

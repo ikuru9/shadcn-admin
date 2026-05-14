@@ -10,7 +10,7 @@
     "lint:staged": "biome lint",
     "fmt:staged": "biome format",
     "commitlint": "commitlint",
-    "lint": "biome lint --write",
+    "lint": "biome check --write",
     "fmt": "biome format --write",
     "commit": "git-cz",
     "test": "vitest --browser",

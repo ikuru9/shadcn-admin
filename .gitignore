@@ -44,6 +44,11 @@ mocks/modules
 src/gen
 mocks/faker
 
+# pi
+.pi/git
+.pi/npm
+.pi/agent/runs
+
 # ai
 .worktrees
 
