@@ -3,11 +3,11 @@ pre-commit:
   commands:
     lint:
       glob: "**/*.{js,jsx,ts,tsx}"
-      run: pnpm -s lint:staged {staged_files}
+      run: pnpm -s lint:staged --no-errors-on-unmatched {staged_files}
     format:
       glob: "**/*.{js,jsx,ts,tsx,json}"
       run: |
-        pnpm -s fmt:staged {staged_files}
+        pnpm -s fmt:staged --no-errors-on-unmatched {staged_files}
         git add {staged_files}
 
 commit-msg:
