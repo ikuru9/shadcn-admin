@@ -1,7 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { createFileRoute, getRouteApi } from "@tanstack/react-router";
 import { toast } from "sonner";
-
 import { Main } from "@/components/layout/main";
 import { QueryError } from "@/components/query-error";
 import {
@@ -11,9 +10,11 @@ import {
   useGetPetByIdSuspense,
   useUpdatePet,
 } from "@/gen/hooks";
+import { createAuthenticatedBeforeLoad } from "@/routes/_authenticated/-auth-guards";
 
 import { PetUpsertForm, type PetUpsertValues } from "./components/pet-upsert-form";
 
+const menuKey = "/samples/pets/$id/edit";
 const route = getRouteApi("/_authenticated/samples/pets/$id/edit");
 
 function PetsEdit() {
@@ -80,6 +81,7 @@ function PetsEdit() {
 }
 
 export const Route = createFileRoute("/_authenticated/samples/pets/$id/edit")({
+  beforeLoad: createAuthenticatedBeforeLoad(menuKey),
   loader: ({ context: { queryClient }, params: { id } }) =>
     queryClient.ensureQueryData(getPetByIdQueryOptions({ petId: parseInt(id, 10) })),
   component: PetsEdit,

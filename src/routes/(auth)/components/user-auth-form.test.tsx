@@ -76,9 +76,7 @@ describe("UserAuthForm", () => {
   it("로그인 mutation 캐시를 reset 전까지 유지하도록 gcTime을 지정한다", () => {
     render(<UserAuthForm redirectTo="/dashboard" />);
 
-    expect(
-      useLoginOptionsMock.mock.calls.some(([options]) => options?.mutation?.gcTime === Infinity),
-    ).toBe(true);
+    expect(useLoginOptionsMock.mock.calls.some(([options]) => options?.mutation?.gcTime === Infinity)).toBe(true);
   });
 
   it("로그인 성공 시 로그인 훅으로 토큰을 저장하고 리다이렉트한다", async () => {

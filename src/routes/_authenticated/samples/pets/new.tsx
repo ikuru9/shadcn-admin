@@ -2,13 +2,14 @@ import { useQueryClient } from "@tanstack/react-query";
 import { createFileRoute, getRouteApi } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
-
 import { Main } from "@/components/layout/main";
 import { Button } from "@/components/ui/button";
 import { findPetsByStatusSuspenseQueryKey, useAddPet } from "@/gen/hooks";
+import { createAuthenticatedBeforeLoad } from "@/routes/_authenticated/-auth-guards";
 
 import { PetUpsertForm, type PetUpsertValues } from "./components/pet-upsert-form";
 
+const menuKey = "/samples/pets/new";
 const route = getRouteApi("/_authenticated/samples/pets/new");
 
 function PetsCreate() {
@@ -67,5 +68,6 @@ function PetsCreate() {
 }
 
 export const Route = createFileRoute("/_authenticated/samples/pets/new")({
+  beforeLoad: createAuthenticatedBeforeLoad(menuKey),
   component: PetsCreate,
 });

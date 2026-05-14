@@ -2,8 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { ContentSection } from "@/components/content-section";
 
+import { createAuthenticatedBeforeLoad } from "@/routes/_authenticated/-auth-guards";
 import { AppearanceForm } from "./components/appearance-form";
 
+const menuKey = "/settings/appearance";
 const SettingsAppearance = () => {
   return (
     <ContentSection
@@ -16,5 +18,6 @@ const SettingsAppearance = () => {
 };
 
 export const Route = createFileRoute("/_authenticated/settings/appearance")({
+  beforeLoad: createAuthenticatedBeforeLoad(menuKey),
   component: SettingsAppearance,
 });

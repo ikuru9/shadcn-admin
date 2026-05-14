@@ -1,7 +1,6 @@
-import { useState } from "react";
-
 import type { Table } from "@tanstack/react-table";
 import { Trash2 } from "lucide-react";
+import { useState } from "react";
 
 import { DataTableBulkActions as BulkActionsToolbar } from "@/components/data-table";
 import { Button } from "@/components/ui/button";

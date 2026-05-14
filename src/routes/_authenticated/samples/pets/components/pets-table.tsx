@@ -1,6 +1,5 @@
-import { useState } from "react";
-
 import { getCoreRowModel, type RowSelectionState, useReactTable, type VisibilityState } from "@tanstack/react-table";
+import { useState } from "react";
 
 import { DataTable, DataTableToolbar } from "@/components/data-table";
 import type { Pet } from "@/gen/types/Pet";

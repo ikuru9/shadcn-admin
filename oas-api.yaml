@@ -725,7 +725,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/LoginResponse"
 
-  /auth/my-menus:
+  /auth/menus:
     get:
       tags:
         - auth
@@ -738,6 +738,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/MenuKeyListResponse"
+  /auth/menus/{menuKey}:
+    get:
+      tags:
+        - auth
+      summary: 현재 사용자 메뉴 권한 조회
+      operationId: getMyMenuPermissions
+      parameters:
+        - name: menuKey
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: 성공적으로 처리됨
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Permission"
 components:
   schemas:
     Order:

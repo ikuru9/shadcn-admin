@@ -5,10 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+import { createAuthenticatedBeforeLoad } from "./-auth-guards";
 import { Analytics } from "./components/analytics";
 import { Overview } from "./components/overview";
 import { RecentSales } from "./components/recent-sales";
 
+const menuKey = "/";
 const Dashboard = () => {
   return (
     <Main fluid>
@@ -158,5 +160,6 @@ const Dashboard = () => {
 };
 
 export const Route = createFileRoute("/_authenticated/")({
+  beforeLoad: createAuthenticatedBeforeLoad(menuKey),
   component: Dashboard,
 });

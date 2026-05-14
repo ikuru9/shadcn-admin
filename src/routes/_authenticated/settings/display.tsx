@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
+
 import { ContentSection } from "@/components/content-section";
+import { createAuthenticatedBeforeLoad } from "@/routes/_authenticated/-auth-guards";
 import { DisplayForm } from "./components/display-form";
 
+const menuKey = "/settings/display";
 const SettingsDisplay = () => {
   return (
     <ContentSection title="Display" desc="Turn items on or off to control what's displayed in the app.">
@@ -11,5 +14,6 @@ const SettingsDisplay = () => {
 };
 
 export const Route = createFileRoute("/_authenticated/settings/display")({
+  beforeLoad: createAuthenticatedBeforeLoad(menuKey),
   component: SettingsDisplay,
 });

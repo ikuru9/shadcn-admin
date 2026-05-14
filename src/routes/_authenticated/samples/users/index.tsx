@@ -1,13 +1,13 @@
 import { createFileRoute, getRouteApi } from "@tanstack/react-router";
-
 import { Main } from "@/components/layout/main";
 import { QueryError } from "@/components/query-error";
-
-import { users } from "./components/data/users";
+import { createAuthenticatedBeforeLoad } from "@/routes/_authenticated/-auth-guards";
 import { usersSearchSchema } from "./components/data/search-schema";
+import { users } from "./components/data/users";
 import { UsersPrimaryButtons } from "./components/users-primary-buttons";
 import { UsersTable } from "./components/users-table";
 
+const menuKey = "/samples/users/";
 const route = getRouteApi("/_authenticated/samples/users/");
 
 function Users() {
@@ -29,6 +29,7 @@ function Users() {
 }
 
 export const Route = createFileRoute("/_authenticated/samples/users/")({
+  beforeLoad: createAuthenticatedBeforeLoad(menuKey),
   validateSearch: usersSearchSchema,
   component: Users,
   errorComponent: QueryError,

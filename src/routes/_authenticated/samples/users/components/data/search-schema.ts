@@ -2,7 +2,10 @@ import * as z from "zod/mini";
 
 import { roles } from "./data";
 
-const roleValues = roles.map((role) => role.value) as [(typeof roles)[number]["value"], ...(typeof roles)[number]["value"][]];
+const roleValues = roles.map((role) => role.value) as [
+  (typeof roles)[number]["value"],
+  ...(typeof roles)[number]["value"][],
+];
 
 export const usersSearchSchema = z.object({
   page: z.optional(z.number()),

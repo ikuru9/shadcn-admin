@@ -68,7 +68,7 @@ export function UserAuthForm({ className, redirectTo, ...props }: UserAuthFormPr
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="name@example.com" {...field} />
+                <Input type="email" placeholder="name@example.com" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

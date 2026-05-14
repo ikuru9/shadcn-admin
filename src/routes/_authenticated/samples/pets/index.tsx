@@ -1,15 +1,16 @@
 import { createFileRoute, getRouteApi } from "@tanstack/react-router";
 import { Plus } from "lucide-react";
 import * as z from "zod/mini";
-
 import { Main } from "@/components/layout/main";
 import { QueryError } from "@/components/query-error";
 import { Button } from "@/components/ui/button";
 import { findPetsByStatusSuspenseQueryOptions, useFindPetsByStatusSuspense } from "@/gen/hooks";
 import { findPetsByStatusQueryParamsSchema } from "@/gen/zod";
+import { createAuthenticatedBeforeLoad } from "@/routes/_authenticated/-auth-guards";
 
 import { PetsTable } from "./components/pets-table";
 
+const menuKey = "/samples/pets/";
 const petSearchSchema = z.object({
   status: z.prefault(findPetsByStatusQueryParamsSchema.shape.status, "available"),
 });
@@ -44,6 +45,7 @@ function Pets() {
 }
 
 export const Route = createFileRoute("/_authenticated/samples/pets/")({
+  beforeLoad: createAuthenticatedBeforeLoad(menuKey),
   validateSearch: petSearchSchema,
   loaderDeps: ({ search }) => ({
     status: search.status ?? "available",

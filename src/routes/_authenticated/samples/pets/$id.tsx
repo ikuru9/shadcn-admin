@@ -1,13 +1,14 @@
 import { createFileRoute, getRouteApi } from "@tanstack/react-router";
-
 import { Main } from "@/components/layout/main";
+import { QueryError } from "@/components/query-error";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { getPetByIdQueryOptions, useGetPetByIdSuspense } from "@/gen/hooks";
-import { QueryError } from "@/components/query-error";
+import { createAuthenticatedBeforeLoad } from "@/routes/_authenticated/-auth-guards";
 
+const menuKey = "/samples/pets/$id";
 const route = getRouteApi("/_authenticated/samples/pets/$id");
 
 function PetsDetail() {
@@ -101,6 +102,7 @@ function PetsDetail() {
 }
 
 export const Route = createFileRoute("/_authenticated/samples/pets/$id")({
+  beforeLoad: createAuthenticatedBeforeLoad(menuKey),
   loader: ({ context: { queryClient }, params: { id } }) =>
     queryClient.ensureQueryData(getPetByIdQueryOptions({ petId: parseInt(id, 10) })),
   component: PetsDetail,

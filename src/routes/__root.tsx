@@ -1,9 +1,8 @@
-import { useEffect } from "react";
-
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import type { QueryClient } from "@tanstack/react-query";
 import { createRootRouteWithContext, Outlet, useNavigate, useRouter } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { useEffect } from "react";
 
 import { Dialoger } from "@/components/dialogs/dialoger";
 import { NavigationProgress } from "@/components/navigation-progress";

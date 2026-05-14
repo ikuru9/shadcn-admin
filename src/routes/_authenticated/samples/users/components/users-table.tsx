@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 import {
   getCoreRowModel,
   getFacetedRowModel,
@@ -11,6 +9,7 @@ import {
   useReactTable,
   type VisibilityState,
 } from "@tanstack/react-table";
+import { useEffect, useState } from "react";
 
 import { DataTable, DataTablePagination, DataTableToolbar } from "@/components/data-table";
 import { useDataTableConfigs } from "@/hooks/use-data-table-configs";

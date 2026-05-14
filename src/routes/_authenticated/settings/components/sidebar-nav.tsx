@@ -1,6 +1,5 @@
-import { type JSX, useState } from "react";
-
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
+import { type JSX, useState } from "react";
 
 import { buttonVariants } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";

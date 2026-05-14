@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { Fragment } from "react/jsx-runtime";
-
 import { createFileRoute } from "@tanstack/react-router";
 import { format } from "date-fns";
 import {
@@ -16,6 +13,8 @@ import {
   Send,
   Video,
 } from "lucide-react";
+import { useState } from "react";
+import { Fragment } from "react/jsx-runtime";
 
 import { Main } from "@/components/layout/main";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -24,10 +23,12 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 
+import { createAuthenticatedBeforeLoad } from "@/routes/_authenticated/-auth-guards";
 import type { ChatUser, Convo } from "./components/data/chat-types";
 import { conversations } from "./components/data/convo.json";
 import { NewChat } from "./components/new-chat";
 
+const menuKey = "/samples/chats/";
 const Chats = () => {
   const [search, setSearch] = useState("");
   const [selectedUser, setSelectedUser] = useState<ChatUser | null>(null);
@@ -263,5 +264,6 @@ const Chats = () => {
 };
 
 export const Route = createFileRoute("/_authenticated/samples/chats/")({
+  beforeLoad: createAuthenticatedBeforeLoad(menuKey),
   component: Chats,
 });

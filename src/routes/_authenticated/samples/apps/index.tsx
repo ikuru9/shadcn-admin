@@ -1,7 +1,6 @@
-import { type ChangeEvent, useState } from "react";
-
 import { createFileRoute, getRouteApi } from "@tanstack/react-router";
 import { ArrowDownAZ, ArrowUpAZ, SlidersHorizontal } from "lucide-react";
+import { type ChangeEvent, useState } from "react";
 import * as z from "zod/mini";
 
 import { Main } from "@/components/layout/main";
@@ -9,9 +8,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-
+import { createAuthenticatedBeforeLoad } from "@/routes/_authenticated/-auth-guards";
 import { apps } from "./components/data/apps";
 
+const menuKey = "/samples/apps/";
 const appsSearchSchema = z.object({
   type: z.optional(z.enum(["all", "connected", "notConnected"])),
   filter: z.prefault(z.string(), ""),
@@ -152,6 +152,7 @@ const Apps = () => {
 };
 
 export const Route = createFileRoute("/_authenticated/samples/apps/")({
+  beforeLoad: createAuthenticatedBeforeLoad(menuKey),
   validateSearch: appsSearchSchema,
   component: Apps,
 });
