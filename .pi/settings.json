@@ -1,0 +1,5 @@
+{
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.4-mini",
+  "packages": ["npm:pi-mcp-adapter", "npm:pi-markdown-preview", "git:github.com/tmdgusya/roach-pi", "npm:pi-sandbox"]
+}

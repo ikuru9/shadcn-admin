@@ -5,10 +5,10 @@
  * derived from Andrej Karpathy's observations on LLM coding pitfalls.
  */
 
-import fs from "fs";
-import os from "os";
-import path from "path";
-import { fileURLToPath } from "url";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -79,7 +79,7 @@ ${toolMapping}
       const bootstrap = getBootstrapContent();
       if (!bootstrap || !output.messages.length) return;
       const firstUser = output.messages.find((m) => m.info.role === "user");
-      if (!firstUser || !firstUser.parts.length) return;
+      if (!firstUser?.parts?.length) return;
       if (firstUser.parts.some((p) => p.type === "text" && p.text.includes("IMPORTANT_GUIDELINES"))) return;
       const ref = firstUser.parts[0];
       firstUser.parts.unshift({ ...ref, type: "text", text: bootstrap });
