@@ -1,9 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useNavigate, useRouter } from "@tanstack/react-router";
+import { createFileRoute, useNavigate, useRouter } from "@tanstack/react-router";
 
 import { Button } from "@/components/ui/button";
 
-const ForbiddenError = () => {
+function ForbiddenError() {
   const navigate = useNavigate();
   const { history } = useRouter();
 
@@ -25,7 +24,7 @@ const ForbiddenError = () => {
       </div>
     </div>
   );
-};
+}
 
 export const Route = createFileRoute("/(errors)/403")({
   component: ForbiddenError,

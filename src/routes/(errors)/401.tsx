@@ -1,9 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useNavigate, useRouter } from "@tanstack/react-router";
+import { createFileRoute, useNavigate, useRouter } from "@tanstack/react-router";
 
 import { Button } from "@/components/ui/button";
 
-const UnauthorisedError = () => {
+function UnauthorizedError() {
   const navigate = useNavigate();
   const { history } = useRouter();
 
@@ -24,8 +23,8 @@ const UnauthorisedError = () => {
       </div>
     </div>
   );
-};
+}
 
 export const Route = createFileRoute("/(errors)/401")({
-  component: UnauthorisedError,
+  component: UnauthorizedError,
 });

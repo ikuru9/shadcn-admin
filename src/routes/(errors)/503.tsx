@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 
-const MaintenanceError = () => {
+function MaintenanceError() {
   return (
     <div className="h-svh">
       <div className="m-auto flex h-full w-full flex-col items-center justify-center gap-2">
@@ -17,7 +17,7 @@ const MaintenanceError = () => {
       </div>
     </div>
   );
-};
+}
 
 export const Route = createFileRoute("/(errors)/503")({
   component: MaintenanceError,

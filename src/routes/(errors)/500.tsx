@@ -1,5 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useNavigate, useRouter } from "@tanstack/react-router";
+import { createFileRoute, useNavigate, useRouter } from "@tanstack/react-router";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -8,7 +7,7 @@ type GeneralErrorProps = React.HTMLAttributes<HTMLDivElement> & {
   minimal?: boolean;
 };
 
-const GeneralError = ({ className, minimal = false }: GeneralErrorProps) => {
+function GeneralError({ className, minimal = false }: GeneralErrorProps) {
   const navigate = useNavigate();
   const { history } = useRouter();
 
@@ -31,7 +30,7 @@ const GeneralError = ({ className, minimal = false }: GeneralErrorProps) => {
       </div>
     </div>
   );
-};
+}
 
 export const Route = createFileRoute("/(errors)/500")({
   component: GeneralError,
