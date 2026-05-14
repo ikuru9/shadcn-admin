@@ -1,7 +1,6 @@
-import { type KeyboardEvent, useCallback, useRef, useState } from "react";
-
 import { Command as CommandPrimitive } from "cmdk";
 import { Check } from "lucide-react";
+import { type KeyboardEvent, useCallback, useRef, useState } from "react";
 
 import { CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Skeleton } from "@/components/ui/skeleton";

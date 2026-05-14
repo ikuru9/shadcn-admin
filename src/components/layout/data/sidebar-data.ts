@@ -92,7 +92,7 @@ export const sidebarData: Omit<SidebarData, "user"> = {
             },
             {
               title: "Forbidden",
-              url: "/errors/forbidden",
+              url: "/403",
               icon: UserX,
             },
             {

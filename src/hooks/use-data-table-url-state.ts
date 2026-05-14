@@ -1,6 +1,5 @@
-import { useCallback, useMemo, useState } from "react";
-
 import type { ColumnFiltersState, OnChangeFn, PaginationState, SortingState } from "@tanstack/react-table";
+import { useCallback, useMemo, useState } from "react";
 
 type SearchRecord = Record<string, unknown>;
 type SearchUpdaterResult = Partial<SearchRecord> | SearchRecord;

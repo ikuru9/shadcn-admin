@@ -14,8 +14,6 @@ const { setQueryDataMock } = vi.hoisted(() => ({
   setQueryDataMock: vi.fn(),
 }));
 
-let resolveEnsureQueryData: (() => void) | undefined;
-
 vi.mock("@/context/tanstack-query/query-client-store", () => ({
   getQueryClient: () => ({
     ensureQueryData: ensureQueryDataMock,
@@ -35,26 +33,45 @@ import { useAuthStore } from "./auth-store";
 
 describe("useAuthStore", () => {
   beforeEach(() => {
+    vi.useFakeTimers();
     clearMock.mockReset();
     ensureQueryDataMock.mockReset();
     setQueryDataMock.mockReset();
-    resolveEnsureQueryData = undefined;
-    ensureQueryDataMock.mockImplementation(
-      () =>
-        new Promise<void>((resolve) => {
-          resolveEnsureQueryData = resolve;
-        }),
-    );
+    ensureQueryDataMock.mockResolvedValue(undefined);
   });
 
-  it("reset을 호출하면 쿼리 캐시를 비운다", () => {
+  it("reset을 호출하면 쿼리 캐시와 메뉴 갱신 타이머를 정리한다", async () => {
+    const clearIntervalSpy = vi.spyOn(globalThis, "clearInterval");
+
+    const promise = useAuthStore.getState().setAccessToken({
+      accessToken: "access-token",
+      refreshToken: "refresh-token",
+      user: {
+        id: "user-1",
+        name: "Kim",
+        email: "kim@example.com",
+        authGroupId: "group-1",
+      },
+    });
+
+    await promise;
+
+    expect(ensureQueryDataMock).toHaveBeenCalledTimes(1);
+
     useAuthStore.getState().reset();
 
     expect(clearMock).toHaveBeenCalledTimes(1);
+    expect(clearIntervalSpy).toHaveBeenCalled();
+
+    await vi.advanceTimersByTimeAsync(60 * 60 * 1000);
+
+    expect(ensureQueryDataMock).toHaveBeenCalledTimes(1);
+
+    clearIntervalSpy.mockRestore();
   });
 
-  it("access token을 설정하면 내 메뉴를 불러온다", () => {
-    useAuthStore.getState().setAccessToken({
+  it("access token을 설정하면 내 메뉴를 불러오고 1시간마다 다시 불러온다", async () => {
+    await useAuthStore.getState().setAccessToken({
       accessToken: "access-token",
       refreshToken: "refresh-token",
       user: {
@@ -73,10 +90,20 @@ describe("useAuthStore", () => {
     });
     expect(ensureQueryDataMock).toHaveBeenCalledTimes(1);
 
-    resolveEnsureQueryData?.();
+    await vi.advanceTimersByTimeAsync(60 * 60 * 1000);
+
+    expect(ensureQueryDataMock).toHaveBeenCalledTimes(2);
   });
 
   it("setAccessToken이 해결되기 전에 내 메뉴 로드를 기다린다", async () => {
+    let resolveEnsureQueryData: (() => void) | undefined;
+    ensureQueryDataMock.mockImplementation(
+      () =>
+        new Promise<void>((resolve) => {
+          resolveEnsureQueryData = resolve;
+        }),
+    );
+
     const promise = useAuthStore.getState().setAccessToken({
       accessToken: "access-token",
       refreshToken: "refresh-token",
@@ -102,5 +129,24 @@ describe("useAuthStore", () => {
     await promise;
 
     expect(settled).toBe(true);
+  });
+
+  it("메뉴 프리로드가 실패해도 로그인 흐름은 실패하지 않는다", async () => {
+    ensureQueryDataMock.mockRejectedValueOnce(new Error("menu fetch failed"));
+
+    await expect(
+      useAuthStore.getState().setAccessToken({
+        accessToken: "access-token",
+        refreshToken: "refresh-token",
+        user: {
+          id: "user-1",
+          name: "Kim",
+          email: "kim@example.com",
+          authGroupId: "group-1",
+        },
+      }),
+    ).resolves.toBeUndefined();
+
+    expect(ensureQueryDataMock).toHaveBeenCalledTimes(1);
   });
 });

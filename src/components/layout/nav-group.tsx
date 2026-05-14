@@ -1,7 +1,6 @@
-import type { ReactNode } from "react";
-
 import { Link, useLocation } from "@tanstack/react-router";
 import { ChevronRight } from "lucide-react";
+import type { ReactNode } from "react";
 
 import {
   SidebarGroup,
@@ -95,11 +94,7 @@ function SidebarMenuLink({ item, href }: { item: NavLink; href: string }) {
 function SidebarMenuCollapsible({ item, href }: { item: NavCollapsible; href: string }) {
   const { setOpenMobile } = useSidebar();
   return (
-    <Collapsible
-      render={<SidebarMenuItem />}
-      defaultOpen={isNavItemActive(href, item)}
-      className="group/collapsible"
-    >
+    <Collapsible render={<SidebarMenuItem />} defaultOpen={isNavItemActive(href, item)} className="group/collapsible">
       <CollapsibleTrigger render={<SidebarMenuButton tooltip={item.title} />}>
         {item.icon && <item.icon />}
         <span>{item.title}</span>
@@ -141,7 +136,11 @@ function NavSubTreeItem({
     );
 
   return (
-    <Collapsible render={<SidebarMenuSubItem />} defaultOpen={isNavItemActive(href, item)} className="group/collapsible">
+    <Collapsible
+      render={<SidebarMenuSubItem />}
+      defaultOpen={isNavItemActive(href, item)}
+      className="group/collapsible"
+    >
       <CollapsibleTrigger render={<SidebarMenuSubButton isActive={isNavItemActive(href, item)} />}>
         {item.icon && <item.icon />}
         <span>{item.title}</span>
@@ -198,10 +197,7 @@ function isNavItemActive(href: string, item: NavItem): boolean {
   if (isNavLink(item)) {
     const itemUrl = (item.url ?? "").split("?")[0];
 
-    return (
-      pathname === itemUrl ||
-      (itemUrl !== "/" && pathname.startsWith(`${itemUrl}/`))
-    );
+    return pathname === itemUrl || (itemUrl !== "/" && pathname.startsWith(`${itemUrl}/`));
   }
 
   return item.items.some((child) => isNavItemActive(href, child));

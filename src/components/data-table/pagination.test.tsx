@@ -1,8 +1,7 @@
 // @vitest-environment jsdom
 
-import { createContext, useContext } from "react";
-
 import { fireEvent, render, screen } from "@testing-library/react";
+import { createContext, useContext } from "react";
 import { describe, expect, it, vi } from "vitest";
 
 import { DataTablePagination } from "./pagination";

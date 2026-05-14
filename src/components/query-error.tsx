@@ -1,8 +1,7 @@
-import React from "react";
-
 import { useQueryErrorResetBoundary } from "@tanstack/react-query";
 import { type ErrorComponentProps, useNavigate, useRouter } from "@tanstack/react-router";
 import { AxiosError } from "axios";
+import React from "react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";

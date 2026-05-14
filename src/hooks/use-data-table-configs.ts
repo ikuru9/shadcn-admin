@@ -1,7 +1,6 @@
-import { useMemo } from "react";
-import type * as React from "react";
-
 import type { ColumnDef } from "@tanstack/react-table";
+import type * as React from "react";
+import { useMemo } from "react";
 
 type ZodSchemaLike = {
   shape?: Record<string, unknown>;
@@ -74,19 +73,31 @@ export interface DataTableConfigsResult {
   }>;
 }
 
-const wrapperTypes = new Set(["optional", "nullable", "default", "prefault", "nonoptional", "success", "catch", "readonly"]);
+const wrapperTypes = new Set([
+  "optional",
+  "nullable",
+  "default",
+  "prefault",
+  "nonoptional",
+  "success",
+  "catch",
+  "readonly",
+]);
 
 function resolveSchemaShape(schema: ZodSchemaLike) {
   return schema.shape ?? schema._zod?.def?.shape ?? {};
 }
 
-function resolveSchemaField(field: unknown): { _zod?: { def?: { type?: string; in?: unknown; out?: unknown; innerType?: unknown } } } | undefined {
+function resolveSchemaField(
+  field: unknown,
+): { _zod?: { def?: { type?: string; in?: unknown; out?: unknown; innerType?: unknown } } } | undefined {
   let current = field as typeof field | undefined;
   const seen = new Set<unknown>();
 
   while (current && typeof current === "object" && !seen.has(current)) {
     seen.add(current);
-    const def = (current as { _zod?: { def?: { type?: string; in?: unknown; out?: unknown; innerType?: unknown } } })._zod?.def;
+    const def = (current as { _zod?: { def?: { type?: string; in?: unknown; out?: unknown; innerType?: unknown } } })
+      ._zod?.def;
     const type = def?.type;
 
     if (!type) {
@@ -106,7 +117,9 @@ function resolveSchemaField(field: unknown): { _zod?: { def?: { type?: string; i
     break;
   }
 
-  return current as { _zod?: { def?: { type?: string; in?: unknown; out?: unknown; innerType?: unknown } } } | undefined;
+  return current as
+    | { _zod?: { def?: { type?: string; in?: unknown; out?: unknown; innerType?: unknown } } }
+    | undefined;
 }
 
 function resolveSchemaFieldType(schema: ZodSchemaLike, key: string): "string" | "array" {
@@ -157,7 +170,8 @@ export function useDataTableConfigs<TData>({
       }
 
       const customFilterOptions = getCustomFilterOptions(column);
-      const shouldIncludeCustomFilter = customFilterOptions && (!customFilterKeySet || customFilterKeySet.has(columnId));
+      const shouldIncludeCustomFilter =
+        customFilterOptions && (!customFilterKeySet || customFilterKeySet.has(columnId));
 
       if (!shouldIncludeCustomFilter) {
         continue;

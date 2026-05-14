@@ -1,7 +1,6 @@
-import React from "react";
-
 import { useNavigate } from "@tanstack/react-router";
 import { ArrowRight, ChevronRight, Laptop, Moon, Sun } from "lucide-react";
+import React from "react";
 
 import {
   Command,

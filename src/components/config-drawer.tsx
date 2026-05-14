@@ -1,7 +1,6 @@
-import type { SVGProps } from "react";
-
 import { Radio as RadioPrimitive } from "@base-ui/react/radio";
 import { CircleCheck, RotateCcw, Settings } from "lucide-react";
+import type { SVGProps } from "react";
 
 import { IconDir } from "@/assets/custom/icon-dir";
 import { IconLayoutCompact } from "@/assets/custom/icon-layout-compact";

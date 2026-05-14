@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
 import { renderHook } from "@testing-library/react";
-import { z } from "zod";
 import { describe, expect, it } from "vitest";
+import { z } from "zod";
 
 import { useDataTableConfigs } from "./use-data-table-configs";
 

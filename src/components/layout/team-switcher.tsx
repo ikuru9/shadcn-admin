@@ -1,6 +1,5 @@
-import * as React from "react";
-
 import { ChevronsUpDown, Plus } from "lucide-react";
+import * as React from "react";
 
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/layout/sidebar";
 import { useSidebar } from "@/components/layout/sidebar-context";

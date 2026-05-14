@@ -1,6 +1,5 @@
-import { createContext, useContext, useEffect, useState } from "react";
-
 import { DirectionProvider as BaseDirectionProvider } from "@base-ui/react/direction-provider";
+import { createContext, useContext, useEffect, useState } from "react";
 
 import { getCookie, removeCookie, setCookie } from "@/lib/cookies";
 

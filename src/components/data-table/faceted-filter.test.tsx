@@ -1,8 +1,7 @@
 // @vitest-environment jsdom
 
-import { cloneElement, useState } from "react";
-
 import { fireEvent, render, screen } from "@testing-library/react";
+import { cloneElement, useState } from "react";
 import { describe, expect, it, vi } from "vitest";
 
 import { DataTableFacetedFilter } from "./faceted-filter";

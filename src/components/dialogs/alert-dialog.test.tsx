@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
 import { AlertDialog } from "@/components/dialogs/alert-dialog";
-import { AlertDialog as AlertDialogRoot, AlertDialogContent } from "@/components/ui/alert-dialog";
+import { AlertDialogContent, AlertDialog as AlertDialogRoot } from "@/components/ui/alert-dialog";
 
 function renderAlertDialog(props?: Partial<React.ComponentProps<typeof AlertDialog>>) {
   const onConfirm = vi.fn();

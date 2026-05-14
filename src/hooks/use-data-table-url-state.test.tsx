@@ -1,10 +1,10 @@
 // @vitest-environment jsdom
 
-import { act, renderHook } from "@testing-library/react";
 import type { ColumnFiltersState } from "@tanstack/react-table";
+import { act, renderHook } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
-import { useDataTableUrlState, type NavigateFn } from "./use-data-table-url-state";
+import { type NavigateFn, useDataTableUrlState } from "./use-data-table-url-state";
 
 type SearchRecord = Record<string, unknown>;
 

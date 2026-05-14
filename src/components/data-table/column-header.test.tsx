@@ -1,8 +1,7 @@
 // @vitest-environment jsdom
 
-import { cloneElement } from "react";
-
 import { fireEvent, render, screen } from "@testing-library/react";
+import { cloneElement } from "react";
 import { describe, expect, it, vi } from "vitest";
 
 import { DataTableColumnHeader } from "./column-header";

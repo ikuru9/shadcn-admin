@@ -1,8 +1,7 @@
 // @vitest-environment jsdom
 
-import { cloneElement } from "react";
-
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { cloneElement } from "react";
 import { describe, expect, it, vi } from "vitest";
 
 import { DataTableBulkActions } from "./bulk-actions";
